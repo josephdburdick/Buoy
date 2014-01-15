@@ -69,7 +69,7 @@ $brand-danger        : #c1272c;
     @include transform-style(preserve-3d);
   }
   50% { 
-    top:0px; 
+    top:5px; 
     @include transform(rotate(15deg));
     @include transform-origin(center bottom);
     @include transform-style(preserve-3d);
@@ -89,7 +89,7 @@ $brand-danger        : #c1272c;
     @include transform-style(preserve-3d);
   }
   50% { 
-    top:0px; 
+    top:5px; 
     @include transform(rotate(15deg));
     @include transform-origin(center bottom);
     @include transform-style(preserve-3d);
@@ -109,7 +109,7 @@ $brand-danger        : #c1272c;
     @include transform-style(preserve-3d);
   }
   50% { 
-    top:0px; 
+    top:5px; 
     @include transform(rotate(15deg));
     @include transform-origin(center bottom);
     @include transform-style(preserve-3d);
@@ -129,7 +129,7 @@ $brand-danger        : #c1272c;
     @include transform-style(preserve-3d);
   }
   50% { 
-    top:0px; 
+    top:5px; 
     @include transform(rotate(15deg));
     @include transform-origin(center bottom);
     @include transform-style(preserve-3d);
@@ -757,7 +757,7 @@ User lists
   margin   : 0 auto;
   
   .water-back{
-    background: url('buoy-pieces-water-back.png');
+    background: asset-data-url('buoy-pieces-water-back.png');
     width     : 144px;
     height    : 23px;
     position  : absolute;
@@ -766,7 +766,7 @@ User lists
     left      : -10px;
   }
   .buoy-logo{
-    background: url('buoy-pieces-buoy.png');
+    background: asset-data-url('buoy-pieces-buoy.png');
     width     : 108px;
     height    : 155px;
     position  : absolute;
@@ -780,7 +780,7 @@ User lists
 
   }
   .water-front{
-    background: url('buoy-pieces-water-front.png'); 
+    background: asset-data-url('buoy-pieces-water-front.png'); 
     width     : 144px;
     height    : 101px;
     position  : absolute;
@@ -803,10 +803,6 @@ only screen and (     -o-min-device-pixel-ratio: 2/1),
 only screen and (        min-device-pixel-ratio: 2),
 only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) { 
-  
-  nav#main-navigation{
-    background-image:url('escheresque_ste_@2X.png');
-  }
 
 }
 
