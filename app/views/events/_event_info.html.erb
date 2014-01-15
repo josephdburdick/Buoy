@@ -1,0 +1,84 @@
+<% content_for :page_specific_javascript do %>
+  <% javascript_include_tag "custom_fb_url" %>
+<% end %>
+<div class="content">
+  <h2><%= @event.name %></h2>
+  <p>
+  <% if @event.start_time.future? %>
+    <i class="fa fa-clock-o"></i> Starts in: <%= distance_of_time_in_words(@event.start_time, Time.now) %><br>
+
+    <i class="fa fa-calendar"></i> <%= @event.start_time.to_formatted_s(:short) %><br>
+    <% unless @event.end_time.nil? %>
+    <i class="fa fa-clock-o"></i> Ends: <%= distance_of_time_in_words(@event.end_time, Time.now) %>
+    <% end %>
+  <% else %>
+    <i class="fa fa-clock-o"></i> <%= distance_of_time_in_words(@event.start_time, Time.now) %> ago<br>
+    <% unless @event.end_time.nil? %>
+    <i class="fa fa-calendar"></i> Ended: <%= distance_of_time_in_words(@event.end_time, Time.now) %> days ago
+    <% end %>
+  <% end %> 
+  </p>
+
+  <h3><%= @event.description %></h3>
+
+    <% unless @event.name.nil? %>
+      Hash Tag: 
+    <a href="http://facebook.com/hashtag/<%= to_hashtag(@event.name) %>">
+      <%= to_hashtag(@event.name) %>
+    </a><br>
+    <% end %>
+    <a href="http://facebook.com/<%= @event.fb_id %>" target="_blank">Facebook Permalink</a>
+  </p>
+  <ul class="pill-container">
+    <li class="danger">
+      <% if @event.venues.count == 0 %>
+      <span class="label label-danger">No Venue</span>
+      <% elsif @event.venues.count > 0 %>
+      
+        <%= @event.venues.count > 1 ? "#{@event.venues.count} Venues" : "1 Venue" %> 
+      
+      <% end %>
+    </li>
+    <li>
+      <% if @event.admins.count > 0 %>
+        <%= @event.admins.count > 1 ? "#{@event.admins.count} Admins" : "1 Admin" %>
+      <% else %>
+        No Admins
+      <% end %> 
+    </li>
+    <li>
+      <% if @event.attendees.count > 0 %>
+        <%= @event.attendees.count > 1 ? "#{@event.attendees.count} Attendees" : "1 Attendee" %>
+      <% else %>
+        No attendees
+      <% end %>
+    </li>
+    <li>
+      <% if @event.maybes.count > 0 %>
+        <%= @event.maybes.count > 1 ? "#{@event.maybes.count} maybes" : "1 maybe" %>
+      <% else %>
+        No maybes
+      <% end %>
+    </li>
+  </ul>
+      <hr>
+      <h1><%= @event.attendees.count > 1 ? "Attendees" : "Attendee" %></h1>
+      <ul class="list-users">
+      <% @event.attendees.each do |attendee| %>
+        <li><div class="circle bg-cover" style="background-image:url('<%= attendee.person.picture_url %>');"></div>
+          <%= attendee.person.first_name %>
+        </li>
+      <% end %>
+      </ul><br>
+  <% if @event.privacy == "OPEN"%>
+      <span class="privacy label label-success">OPEN TO PUBLIC</span>
+  <% elsif @event.privacy == "FRIENDS"%>
+      <span class="privacy label label-warning">FRIENDS OF FRIENDS</span>
+  <% else %>
+      <span class="privacy label label-danger">INVITE ONLY</span>
+  <% end %>
+
+  <div class="fb-comments" data-href="http://www.yobuoy.com/events/<%= @event.id %>" data-numposts="5" data-colorscheme="light"></div>
+
+</div> <!-- /.content -->
+  

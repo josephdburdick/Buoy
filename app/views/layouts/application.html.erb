@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<%= favicon_link_tag %>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1, user-scalable=0">
+  <title>Buoy</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+
+<body data-address="" data-lat="" data-lng="">
+
+  
+  <% if notice %>
+  <div class="alert alert-success"><%= notice %></div>
+  <% end %>
+
+  <% if alert %>
+  <div class="alert alert-danger"><%= alert %></div>
+  <% end %>
+
+    <%= yield %>
+
+<a href="javascript:faceMask();" id="face-mask"></a>
+
+
+
+<script type="text/javascript"> 
+
+  var LATITUDE;
+  var LONGITUDE;
+
+  /*
+  
+  Detect Mobile.
+  
+  */
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) 
+  {
+    $('html').addClass("is_mobile");
+  }
+  
+  /*
+
+  Geolocation
+
+  */
+  function getLocation()
+  {
+    if (navigator.geolocation)
+    {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    }
+
+  }
+
+  function showPosition(position)
+  {
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    LATITUDE = lat;
+    LONGITUDE = lng;
+    //debugger;
+    var latlon =  lat + "," + lng;
+    if ($('#user-lat,#user-lng').length>0){
+      $('#user-lat').text(LATITUDE);
+      $('#user-lng').text(LONGITUDE);
+    }
+
+    var img_url="http://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=14&size=400x300&sensor=false&markers=" + latlon;
+
+    var yourLocation = new google.maps.LatLng(lat, lng);
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ "latLng": yourLocation }, function (results, status) {
+        $('body').attr('data-lat', lat);
+        $('body').attr('data-lng', lng);
+        $('body').attr('data-address', results[0].formatted_address);
+    });
+    return latlon;
+  }
+    
+
+  /* 
+
+  Interface
+
+  */
+  function toggleNav()
+  {
+    $("#view, body, #face-mask, header#main, #main-navigation").toggleClass("menu-open");
+  }
+
+  function faceMask()
+  {
+    toggleNav();
+  }
+
+  function interfaces()
+  {
+    if ($('.alert').length > 0){
+      setTimeout(function(){
+        $('.alert').addClass('close'); 
+      },1000);
+    }
+  }
+  interfaces();
+  getLocation();
+
+
+</script>
+<%= yield :page_specific_javascript %>
+</body>
+</html>

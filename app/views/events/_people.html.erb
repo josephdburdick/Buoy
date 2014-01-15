@@ -1,0 +1,14 @@
+<%= @event.admins.count > 1 ? "Admins" : "Admin" %>:
+<ul>
+	<% @event.admins.each do |admin| %>
+	<li><%= admin.name %></li>
+	<% end %>
+</ul>
+
+<%= @event.attendees.count > 1 ? "Attendees" : "Attendee" %>:
+<ul>
+<% @event.attendees.each do |attendee| %>
+  <li><img src="<%= attendee.person.picture_url %>"></li>
+  <li><%= attendee.person.first_name %></li>              
+<% end %>
+</ul><br>

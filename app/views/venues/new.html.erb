@@ -1,0 +1,122 @@
+<script src="//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry,places" type="text/javascript"></script>
+
+<% content_for :page_specific_javascript do %>
+  <%= javascript_include_tag "geoposition" %>
+  <%= javascript_include_tag "geoposition-functions" %>
+<% end %>
+<header id="main">
+	<h1>Add Venue</h1>  
+  <%= link_to events_path, :class => "block" do %>
+    <div class="pull-left">
+      <i class="fa fa-chevron-left"></i>
+    </div>
+  <% end %>
+  <div class="pull-right">
+  	<a href="javascript:initialize();" class="block">
+  		<i class="fa fa-location-arrow brand-primary"></i>
+  	</a>
+  </div>
+</header>
+
+<div id="view">
+  <div class="container">
+    <div class="event-block">
+      <div class="event-map">
+        <div id="map"></div>
+      </div>
+   
+      <div class="event-info">
+      	<div class="content">
+      			
+      		<form role="form" action="#" onsubmit="showAddress(this.address.value); return false">
+					<div class="row">
+					  <div class="col-md-12">
+					  	<div class="form-group">
+						    <div class="input-group input-group-lg">
+						      <input type="text" class="input-large search-query form-control" placeholder="Type city, zip or address here.." name="address">
+						      <span class="input-group-btn">
+						      	<button type="submit" class="btn btn-large btn-primary"><i class="fa fa-icon-map-marker"></i> Search</button>
+						      </span>
+						    </div><!-- /input-group -->
+						  </div><!-- /form-group -->
+					  </div><!-- /.col-lg-6 -->
+					</div><!-- /.row -->
+				</form><!-- /google search form -->
+				<hr>
+				<%= form_for @venue, :html => {:role => 'form'} do |f| %>
+				<div class="row">
+				  <div class="col-md-6">
+				    <div class="form-group">
+				      <%= f.hidden_field :event_id, value: @event.id %>
+				      <%= f.label :name %><br>
+				      <%= f.text_field :name, id: "venue-name", class: "form-control", :placeholder => "Name your venue" %>
+				    </div>
+				  </div>
+				  <div class="col-md-6"> 
+				    <div class="form-group">
+				      <%= f.label :street %><br>
+				      <%= f.text_field :street, class: "form-control", :placeholder => "Street Address..." %>
+				    </div>
+				  </div>
+				</div><!-- /row -->
+
+				<div class="row">
+				  <div class="col-md-3 col-sm-6 col-xs-6">
+				  	<div class="input-group">
+				      <span class="input-group-addon"><i class="fa fa-map-marker"></i> LAT</span>
+				      <%= f.text_field :latitude, id:"venue_lat", class: "form-contol", disabled: "disabled" %>
+				    </div>
+				  </div>
+				  <div class="col-md-3 col-sm-6 col-xs-6">
+				  	<div class="input-group">
+				      <span class="input-group-addon"><i class="fa fa-map-marker"></i> LONG</span>
+				      <%= f.text_field :longitude, id:"venue_lng", disabled: "disabled" %>
+				    </div>
+				  </div>
+
+					<div class="clearfix visible-sm visible-xs"><br></div>
+				  <div class="col-md-2 col-sm-4 col-xs-4">
+				  	<div class="input-group">
+				      <%= f.text_field :city, id:"venue_city", class: "form-contol small", disabled: "disabled", :placeholder => "City" %>
+				    </div>
+				  </div>
+				  <div class="col-md-2 col-sm-4 col-xs-4">
+				  	<div class="input-group">
+				      <%= f.text_field :state, id:"venue_state", class: "form-contol small", disabled: "disabled", :placeholder => "State" %>
+				    </div>
+				  </div>
+				  <div class="col-md-2 col-sm-4 col-xs-4">
+				  	<div class="input-group">
+				      <%= f.text_field :zip, id:"venue_zip", class: "form-contol small", disabled: "disabled", :placeholder => "Zip" %>
+				      <%= f.hidden_field :country, id:"venue_county" %>
+				    </div>
+				  </div>
+				</div><!-- /row -->
+				
+				<div class="row">
+				  <br><br>
+					<div class=".col-md-offset-6 col-md-6">
+				    <%= link_to 'Cancel', events_path, :class => 'btn btn-lg btn-default btn-block' %>
+				  </div>
+				  <div class=".col-md-offset-6 col-md-6">
+				    <%= f.submit 'Save Venue', :class => 'btn btn-lg btn-primary btn-block' %>
+				  </div>
+				</div>
+				<% end %>
+
+
+      	</div> <!-- /.content -->
+			</div> <!-- /.event-info -->
+    </div> <!-- /.event-block -->
+  </div> <!-- /.container -->
+</div> <!-- /#view -->
+
+
+
+<script type="text/javascript">
+	var lat = $('body').attr('data-lat');
+	var lng = $('body').attr('data-lng');
+</script>
+
+
+ 

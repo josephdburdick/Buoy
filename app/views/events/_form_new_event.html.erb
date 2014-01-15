@@ -1,0 +1,88 @@
+<% 
+  # if @event.start_time.nil? 
+  #   @event.start_time = 1.days.from_now
+  # end
+  # if @event.end_time.nil? 
+  #   @event.end_time = 2.days.from_now
+  # end
+%>
+
+<%= form_for @event, :html => {:role => 'form'} do |f| %>
+
+
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <%= f.hidden_field :fb_id %>
+      <%= f.label :name %><br>
+      <%= f.text_field :name, id: "event-name", class: "form-control", :placeholder => "Name your event" %>
+    </div>
+  </div>
+  <div class="col-md-6"> 
+    <div class="form-group">
+      <%= f.label :description %><br>
+      <%= f.text_area :description, class: "form-control", :placeholder => "A quick description..." %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <div class="form-group">
+      <%= f.label :start_time, id: "start_time" %><br>
+      <%= f.datetime_local_field :start_time, class: "form-control small" %> 
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="form-group">
+      <%= f.label :end_time, id: "end_time" %><br>
+      <%= f.datetime_local_field :end_time, class: "form-control small" %> 
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="form-group">
+      <%= f.label :hash_tag, "Hashtag" %><br>
+      <div class="input-group">
+        <span class="input-group-addon">#</span>
+        <%= f.text_field :hash_tag, id: "hash_tag", :placeholder => "YoBuoy#{Time.now.year}", class: "form-control small" %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="form-group">
+      <%= f.label :privacy %><br>
+      <%= f.select :privacy, ['OPEN', 'FRIENDS', 'SECRET'], class: "form-control" %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <br><br>
+  <div class="col-md-6">
+    <%= link_to "Cancel", events_path, class: "btn btn-lg btn-default btn-block" %>
+  </div>
+  <div class="col-md-6">
+    <%= f.submit 'Save Event', class: "btn btn-lg btn-primary btn-block" %>
+  </div>
+
+  
+</div>
+ 
+<% end %>
+  
+<script>
+  $('#hash_tag').keyup(function(){
+    var splitJoin = $(this).val().split(' ').join('').replace(/\s{2,}/g," ");;
+    $(this).val(splitJoin)
+  });
+  if ($('#hash_tag').val() == ""){
+    var eventName = $('#event-name').val();
+    $('#hash_tag').val(eventName).trigger('keyup');
+  }
+  if ($('#hash_tag').val() == "" && $('#event-name').val() == ""){
+    var eventName = $('#event-name').val();
+    $('#hash_tag').val(eventName).trigger('keyup');
+  }
+  $('#hash_tag').val(eventName).trigger('keyup');
+  
+</script>

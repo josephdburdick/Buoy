@@ -1,0 +1,33 @@
+<h2>Find venue</h2>
+  <input type="text" id="search_address" value=""/> <button onclick="search();">Search</button>
+
+  <div id="map-container">
+    <div id="map"></div>
+  </div>
+
+
+
+  <!-- This needs to be included but for a new Venue instance 
+  < form_for @event.venue do |f| >
+    <fieldset>
+      < builder.hidden_field :fb_id >
+
+      < builder.label :name, "Name" ><br>
+      < builder.text_area :name ><br><br>
+
+      < builder.label :latitude, "latitude" > < builder.label :longitude, "longitude" ><br>
+      < builder.text_area :latitude > < builder.text_area :longitude ><br>
+
+      < builder.label :street, "Street" ><br>
+      < builder.text_area :street ><br><br>
+
+      <a href="javascript:getLocation()" id="geolocate">Get Location</a>
+
+      <script>
+      $("#geolocate").on('click',function(){
+
+      })
+      </script>
+    </fieldset>
+  < end > -->
+

@@ -1,0 +1,832 @@
+
+
+/*
+
+
+
+88888888ba     88        88      ,ad8888ba,    8b        d8
+88      "8b    88        88     d8"'    `"8b    Y8,    ,8P 
+88      ,8P    88        88    d8'        `8b    Y8,  ,8P  
+88aaaaaa8P'    88        88    88          88     "8aa8"   
+88""""""8b,    88        88    88          88      `88'    
+88      `8b    88        88    Y8,        ,8P       88     
+88      a8P    Y8a.    .a8P     Y8a.    .a8P        88     
+88888888P"      `"Y8888Y"'       `"Y8888Y"'         88     
+
+
+
+
+  by:        Joe Burdick
+  portfolio: joeylabs.com
+  blog:      j0e.me
+
+*/
+
+
+/*—————————————— 
+
+  VARIABLES
+
+*/
+$pageOffset          : 60px;
+$sideNavWidth        : 85%;
+
+$defaultSpeed        : .2s;
+$defaultMargin       : 50px;
+$defaultradius       : 10px;
+$defaultBorderStroke : 1px;
+$defaultMapHeight    : 300px;
+
+$viewBackgroundColor : #eee;
+$grayColor           : #ccc;
+$linkColor           : #FF69d6;
+$ArrowThickness      : 30px;
+
+$brand-primary       : #018279;
+$brand-warning       : #eeaf2a;
+$brand-danger        : #c1272c;
+
+/*—————————————— 
+
+  IMPORTS
+
+*/
+@import "bourbon";
+@import "font-awesome";
+@import "twitter/bootstrap";
+@import url(http://fonts.googleapis.com/css?family=News+Cycle|Roboto:400,100);
+
+/* —————————————
+
+  ANIMATIONS
+
+*/
+@-webkit-keyframes buoy-animated {
+  0%  { 
+    top:-15px; 
+    @include transform(rotate(10deg));
+    @include transform-origin(center bottom);
+    @include transform-style(preserve-3d);
+  }
+  50% { 
+    top:0px; 
+    @include transform(rotate(15deg));
+    @include transform-origin(center bottom);
+    @include transform-style(preserve-3d);
+  }
+  100%{ 
+    top:-15px; 
+    @include transform(rotate(10deg));
+    @include transform-origin(center bottom);
+    @include transform-style(preserve-3d);
+  }
+}
+@-moz-keyframes buoy-animated {
+  0%  { 
+    top:-15px; 
+    @include transform(rotate(10deg));
+    @include transform-origin(center bottom);
+    @include transform-style(preserve-3d);
+  }
+  50% { 
+    top:0px; 
+    @include transform(rotate(15deg));
+    @include transform-origin(center bottom);
+    @include transform-style(preserve-3d);
+  }
+  100%{ 
+    top:-15px; 
+    @include transform(rotate(10deg));
+    @include transform-origin(center bottom);
+    @include transform-style(preserve-3d);
+  }
+}
+@-o-keyframes buoy-animated {
+  0%  { 
+    top:-15px; 
+    @include transform(rotate(10deg));
+    @include transform-origin(center bottom);
+    @include transform-style(preserve-3d);
+  }
+  50% { 
+    top:0px; 
+    @include transform(rotate(15deg));
+    @include transform-origin(center bottom);
+    @include transform-style(preserve-3d);
+  }
+  100%{ 
+    top:-15px; 
+    @include transform(rotate(10deg));
+    @include transform-origin(center bottom);
+    @include transform-style(preserve-3d);
+  }
+}
+@keyframes buoy-animated {
+  0%  { 
+    top:-15px; 
+    @include transform(rotate(10deg));
+    @include transform-origin(center bottom);
+    @include transform-style(preserve-3d);
+  }
+  50% { 
+    top:0px; 
+    @include transform(rotate(15deg));
+    @include transform-origin(center bottom);
+    @include transform-style(preserve-3d);
+  }
+  100%{ 
+    top:-15px; 
+    @include transform(rotate(10deg));
+    @include transform-origin(center bottom);
+    @include transform-style(preserve-3d);
+  }
+}
+/* —————————————
+
+  MIXINS
+
+*/
+@mixin loading-animation-circle($size: 50, $border-size: 5, $speed: 1.0, $color: gray) {
+  height: #{$size}px;
+  width: #{$size}px;
+  margin: 0 auto;
+  position: relative;
+  @include animation(loading-animation-rotation #{$speed}s infinite linear);
+  border: #{$border-size}px solid tint($color, 70%);
+  border-radius: 100%;
+  &:before {
+   content: "";
+   display: block;
+   position: absolute;
+   left: -#{$border-size}px;
+   top: -#{$border-size}px;
+   height: 100%;
+   width: 100%;
+   border-top: #{$border-size}px solid $color;
+   border-left: #{$border-size}px solid transparent;
+   border-bottom: #{$border-size}px solid transparent;
+   border-right: #{$border-size}px solid transparent;
+   border-radius: 100%;
+  }
+}
+
+@include keyframes(loading-animation-rotation) {
+  from {
+    @include transform(rotate(0deg));
+  }
+  to {
+    @include transform(rotate(359deg));
+  }
+}
+
+
+/*—————————————— 
+
+  OVERRIDES
+
+*/
+.container{ padding-top    : $pageOffset * 2;
+            padding-bottom : $pageOffset / 2; }
+html{
+  overflow-x: hidden;
+}
+body { 
+  font-family : "News Cycle";
+  overflow    : auto;
+  font-size   : 16px;
+  &.menu-open{
+    overflow  : hidden;
+  } 
+}
+h1,h2,h3,
+h4,h5,h6  { font-family     : "Roboto"; 
+            font-weight     : 100;
+          }
+h2        { font-size       : 150%; }
+
+h3        { 
+            font-size       : 125%;
+            font-weight     : 400;
+            line-height     : 1.4;
+            font-family     : "News Cycle";
+          }
+p         { font-size       : 120%;}
+a         { text-decoration : none!important; }
+input, 
+button, 
+select, 
+textarea  { width:100%;}
+input,
+select,
+textarea  { padding: 5%; }
+textarea:focus,.form-control:focus, 
+input[type="text"]:focus, 
+input[type="password"]:focus, 
+input[type="datetime"]:focus, 
+input[type="datetime-local"]:focus, 
+input[type="date"]:focus, 
+input[type="month"]:focus, 
+input[type="time"]:focus, 
+input[type="week"]:focus, 
+input[type="number"]:focus, 
+input[type="email"]:focus, 
+input[type="url"]:focus, 
+input[type="search"]:focus, 
+input[type="tel"]:focus, 
+input[type="color"]:focus, 
+.uneditable-input:focus, {   
+border-color: $brand-primary;
+box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+outline: 0 none;}
+
+
+button,
+.btn      { position: relative; margin-bottom:5px; }
+
+textarea  { min-height: 130px;}
+.form-control { font-size: 120%;
+  &.small { font-size:85%;}
+}
+.fb-comments{ 
+  display          : block!important;
+  width            : 100% !important;
+  margin-top       : 40px;
+  span{ width      : 100% !important;
+    iframe { width : 100% !important;}
+  }
+}
+
+/*—————————————— 
+
+  WEAPONS
+
+*/
+.top0          { top      : 0 !important;  }
+.bottom0       { bottom   : 0 !important; }
+.ztop          { z-index  : 100 !important; }
+.absolute      { position : absolute !important; }
+.fixed         { position : fixed !important; }
+.brand-primary { color    : $brand-primary!important;}
+.brand-warning { color    : $brand-warning!important;}
+.brand-danger { color    : $brand-danger!important;}
+
+
+#face-mask{
+  position        : fixed;
+  top             : 0;
+  right           : 0;
+  left            : 0;
+  bottom          : 0;
+  display         : none;
+  z-index         : 0;
+  text-decoration : none;
+  box-shadow      : -10px 0 50px black;
+  &.menu-open{
+    display       : block;
+    left          : $sideNavWidth;
+    z-index       : 999;
+  }
+}
+/* This parent can be any width and height */
+.vertBlock {
+  text-align : center;
+  width      : 100%;
+  min-height     : 350px;
+}
+ 
+/* The ghost, nudged to maintain perfect centering */
+.vertBlock:before {
+  content        : '';
+  display        : inline-block;
+  height         : 100%;
+  vertical-align : middle;
+  margin-right   : -0.25em; /* Adjusts for spacing */
+}
+#login{
+  position       : relative;
+
+  margin         : 5%;
+  padding        : 8% 5%;
+
+  border-radius  : 25px; 
+  .logo {
+    position: relative;
+    margin-left: -4%;
+  }
+  #sign_in{
+    padding:20px 0;
+    font-weight: 100;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  h1{
+    font-size: 350%;
+    color: $brand-primary;
+  }
+}
+
+/* The element to be centered, can
+   also be of any width and height */ 
+.centered {
+  display        : inline-block;
+  vertical-align : middle;
+  width          : 100%;
+  text-align     : center;
+}
+.full-screen{
+  display        : inline-block;
+  text-align     : center;
+  vertical-align : middle;
+  position       : absolute;
+  color          : $grayColor;
+  z-index        : 20;
+  top            : 0;
+  left           : 0;
+  right          : 0;
+  bottom         : 0;
+}
+.block{
+  display  : block;
+}
+.tall-block{
+  display  : block;
+  position : absolute;
+  height   : 100%;
+  width    : 100%;
+}
+.bg-cover{
+  background-repeat       : no-repeat;
+  background-position     : center center;
+  -webkit-background-size : cover;
+  -moz-background-size    : cover;
+  -o-background-size      : cover;
+  background-size         : cover;
+}
+.pill-container{
+  margin        : 20px 0 0 0;
+  background    : #eee;
+  border-radius : 25px;
+  list-style    : none;
+  overflow      : hidden;
+  padding       : 8px 20px 10px;
+  display       : inline-block;
+  li{
+    border-left  : 1px solid #ddd;
+    position     : relative;
+    float        : left;
+    margin-left  : 10px;
+    padding-left : 10px;
+    &:first-child{
+      margin-left  : 0;
+      padding-left : 0;
+      border-left  : 0;
+    }
+  }
+}
+.notice,.alert{
+  position      : fixed;
+  top           : $pageOffset;
+  width         : 100%;
+  padding       : 20px;
+  font-size     : 150%;
+  text-align    : center;
+  margin-bottom : 0;
+  opacity       : 1;
+  z-index       : 999;
+
+  @include transition (all $defaultSpeed ease-out 1s);
+
+  &.close{
+    font-size   : 150%;
+    top         : -$pageOffset;
+    opacity     : 0;
+  }
+}
+
+
+
+/*—————————————— 
+
+  NAV
+
+*/
+nav#main-navigation{
+  width           : $sideNavWidth;
+  z-index         : 1;
+  background      : darken($brand-primary, 15%);
+  position        : fixed;
+  left            : 0;
+  top             : 0;
+  bottom          : 0;
+  color           : $grayColor;
+  padding : 20px 0;
+  overflow   : auto;
+  overflow-x : hidden;
+  -webkit-overflow-scrolling: touch;
+  
+  .content{
+    opacity: 0;
+    @include transform( scale(0.9) );
+    @include transition(all $defaultSpeed + .25);
+  }
+  &.menu-open{
+    .content{
+      opacity: 1;
+      @include transform( scale(1) );  
+    }
+  }
+  .logo{
+    width: 50px;
+    position: relative;
+    margin-left: -20px;
+  }
+  a:hover{
+    color:#fff;
+  }
+  h1 {
+    font-size:220%;
+  }
+  hr{
+    display       : block;
+    height        : 0px;
+    border-top    : 1px solid lighten($brand-primary, 10%);
+    border-bottom : 1px solid darken($brand-primary, 10%);
+  }
+  form hr { margin-top: 10px;}
+  #profile-picture{
+    position     : relative;
+    margin       : 5px auto 15px;
+    display      : block;
+    width        : 100px;
+    height       : 100px;
+    box-shadow   : 0 0 0 $defaultBorderStroke+3 #fff;
+    @include border-top-radius(75px);
+    @include border-bottom-radius(75px);
+    @include border-left-radius(75px);
+    @include border-right-radius(75px);
+  }
+
+  .menu{
+    list-style   : none;
+    position     : relative;
+    font-size    : 110%;
+    text-align   : center;
+    width        : 80%;
+    padding      : 0;
+    margin       : 50px auto;
+    font-family  : Roboto;
+    font-weight  : 400;
+    li{
+      margin-top : 20px;
+    }
+  }
+}
+
+/*—————————————— 
+
+  VIEW
+
+*/
+
+#view{
+  position   : relative; /* Experimental */
+  width      : 100%; /* Experimental */
+  //uheight     : 100%; /* Experimental */
+  background : $viewBackgroundColor;
+  z-index    : 2;
+  left       : 0;
+  overflow   : auto;
+  overflow-x : hidden;
+  -webkit-overflow-scrolling: touch;
+  @include transition(left, $defaultSpeed);
+  &.menu-open{
+    left     : $sideNavWidth;
+  }
+}
+
+/*—————————————— 
+
+  HEADER
+
+*/
+header#main{
+	height     : $pageOffset;
+	background : rgba(255,255,255,.90);
+	position   : fixed;
+	z-index    : 999;
+	top        : 0;
+	left       : 0;
+	right      : 0;
+  overflow   : hidden;
+  line-height: $pageOffset - 10;
+
+  @include transition(all, $defaultSpeed);
+  &.menu-open{
+    left : $sideNavWidth;
+    h1, .pull-right{
+      display : none;
+    }
+  }
+  h1{
+    margin       : 0;
+    overflow     : hidden;
+    white-space  : nowrap; 
+    text-overflow: ellipsis;
+    height       : $pageOffset;
+    text-align   : center;
+    color        : #666;
+    font-size    : 110%;
+    font-weight  : 400;
+    line-height  : $pageOffset - 5; 
+    position: absolute;
+    width: 100%;
+    padding: 0 40px;
+  }
+  a.block{ @include transition(all, $defaultSpeed);}
+  i{
+    font-size      : 150%;
+    vertical-align : middle;;
+    color          : $grayColor;
+    position       : relative;
+    margin         : 0;
+    padding        : 0px 20px;
+  }
+}
+
+/*
+
+User lists
+
+*/
+.list-users{
+  display:inline-block;
+  text-align: center;
+  padding:0;
+  li{
+    display:inline-block;
+    
+    position: relative;
+    margin: 0 1% 12px;
+    text-align: center;
+  }
+  .circle{
+      width:100px;
+      height:100px;
+      border-radius: 25px;
+      font-size: 200%;
+      color:lighten($grayColor,5%);
+      text-align: center;
+      line-height: 50px;
+      display:block;
+      background-position: top center;
+    }
+}
+
+
+
+/*—————————————— 
+
+  MAPS
+
+*/
+#map-container{
+	position   : relative;
+	width      : 100%;
+	max-width  : 2000px;
+	height     : $defaultMapHeight;
+
+	#map{
+		position : absolute;
+		top      : 0;
+		left     : 0;
+		right    : 0;
+		bottom   : 0;
+	}
+}
+.image-map{
+	width     : 100%;
+	max-width : 1000px;
+}
+.controls {
+        margin-top       : 16px;
+        border           : 1px solid transparent;
+        border-radius    : 2px 0 0 2px;
+        box-sizing       : border-box;
+        -moz-box-sizing  : border-box;
+        height           : 32px;
+        outline          : none;
+        box-shadow       : 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      #pac-input {
+        background-color : #fff;
+        margin           : 7px auto;
+        padding          : 4px 10px;
+        font-weight      : 400;
+        font-family      : roboto;
+        width            : 45%;
+        font-size        : 15px;
+        font-weight      : 300;
+        text-overflow    : ellipsis;
+        display          : none;
+        &.active{
+          display: block;
+        }
+      }
+      #pac-input:focus {
+        border-color: $brand-primary;
+        margin-left: -1px;
+      }
+
+      .pac-container {
+        font-family: Roboto;
+      }
+
+      #type-selector {
+        color: #fff;
+        background-color: $brand-primary;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #type-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+
+
+
+
+
+/*—————————————— 
+
+  EVENT BLOCKS
+
+*/
+.event-block{
+  margin-bottom : $defaultMargin;
+  
+  /* Map handling */
+  .event-map, .event-no-map{
+    position   : relative;
+    height     : $defaultMapHeight;
+    z-index    : 9;
+    border     : 1px solid $grayColor;
+    width      : 99%;
+    margin     : 0 auto;
+    z-index    : 9; 
+    [id^=map]{
+      min-height : $defaultMapHeight!important;
+    }
+  }
+  .event-no-map .tall-block, .tall-block.large{
+    line-height : $defaultMapHeight - 50px;
+    text-align  : center;
+    font-size   : 200%;
+    background  : darken($viewBackgroundColor, 5%);
+    color       : #aaa;  
+    text-shadow : 0 1px 1px lighten($viewBackgroundColor, 50%);  
+    @include transition(all, $defaultSpeed);
+  }
+  
+  .event-info{
+    position   : relative;
+    margin     : 0px auto 0; /* -80px auto 0*/
+    background : #fff;
+    z-index    : 10;
+    box-shadow : 0 -5px 8px rgba(0,0,0,.1);
+    border     : $defaultBorderStroke solid #aaa;
+    border-bottom-right-radius: $defaultradius;
+    border-bottom-left-radius: $defaultradius;
+
+    @include transition(all, $defaultSpeed);
+    .content{
+      padding  : 3%;
+    }    
+  }
+  .privacy.label{
+    position: absolute;
+    top:10px;
+    right:10px;
+  }
+  .pill-container{
+    font-size  : 80%;
+  }
+  
+  .event-map + .event-info{
+    /* Arrow for info boxes */
+    &:after, &:before {
+      bottom: 100%;
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+    &:after {
+      border-color: rgba(255, 255, 255, 0);
+      border-bottom-color: #ffffff;
+      border-width: $ArrowThickness;
+      margin-left: -$ArrowThickness;
+    }
+    &:before {
+      border-color: rgba(204, 204, 204, 0);
+      border-bottom-color: #aaa;
+      border-width: ($ArrowThickness + $defaultBorderStroke);
+      margin-left: -($ArrowThickness + $defaultBorderStroke);
+    }
+  }
+  &:hover, &:active{
+    .event-info{
+    }
+    .event-no-map .tall-block, .large.tall-block{
+      color      : #666;
+      background : darken($viewBackgroundColor, 3%); 
+    }
+  }
+}
+
+
+#buoy-animated{
+  width    : 142px;
+  height   : 210px;
+  position : relative;
+  margin   : 0 auto;
+  
+  .water-back{
+    background: url('buoy-pieces-water-back.png');
+    width     : 144px;
+    height    : 23px;
+    position  : absolute;
+    z-index   : 1;
+    bottom    : 91px;
+    left      : -10px;
+  }
+  .buoy-logo{
+    background: url('buoy-pieces-buoy.png');
+    width     : 108px;
+    height    : 155px;
+    position  : absolute;
+    z-index   : 2;
+    left      : -5px;
+    
+    -webkit-animation: buoy-animated 3s infinite ease-in-out; 
+    -moz-animation:    buoy-animated 3s infinite ease-in-out; 
+    -o-animation:      buoy-animated 3s infinite ease-in-out; 
+    animation:         buoy-animated 3s infinite ease-in-out; 
+
+  }
+  .water-front{
+    background: url('buoy-pieces-water-front.png'); 
+    width     : 144px;
+    height    : 101px;
+    position  : absolute;
+    z-index   : 3; 
+    bottom    : 0;
+    left      : -10px;
+  }
+
+}
+
+@media (max-width: $screen-sm-min) { 
+  .event-block .event-info {
+    margin-top: -50px;
+  }
+}
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) { 
+  
+  nav#main-navigation{
+    background-image:url('escheresque_ste_@2X.png');
+  }
+
+}
+
+/* portrait */
+@media screen and (orientation:portrait) {
+  /* portrait-specific styles */
+}
+/* landscape */
+@media screen and (orientation:landscape) {
+
+  .event-map, .event-no-map{
+    
+    height     : $defaultMapHeight/1.25 !important;
+    
+    [id^=map]{
+      height : $defaultMapHeight/1.25 !important;
+    }
+  }
+  .event-no-map .tall-block, .large.tall-block{
+    line-height: 165px!important;
+  }
+}
+
