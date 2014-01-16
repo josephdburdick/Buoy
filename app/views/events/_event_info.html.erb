@@ -63,8 +63,15 @@
       <h1><%= @event.attendees.count > 1 ? "Attendees" : "Attendee" %></h1>
       <ul class="list-users">
       <% @event.attendees.each do |attendee| %>
-        <li><div class="circle bg-cover" style="background-image:url('<%= attendee.person.picture_url %>');"></div>
-          <%= attendee.person.first_name %>
+        <li>
+          <div class="picture bg-cover" style="background-image:url('<%= attendee.person.picture_url %>');">
+            <div class="name-block">
+              <div class="name-text">
+                <%= attendee.person.first_name %>
+              </div>
+            </div>
+          </div>
+          
         </li>
       <% end %>
       </ul><br>

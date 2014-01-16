@@ -268,7 +268,6 @@ textarea  { min-height: 130px;}
   display         : none;
   z-index         : 0;
   text-decoration : none;
-  box-shadow      : -10px 0 50px black;
   
 }
 /* This parent can be any width and height */
@@ -401,7 +400,7 @@ nav#main-navigation{
   width           : $sideNavWidth;
   max-width       : $sideNavWidthMax; 
   z-index         : 1;
-  background      : darken($brand-primary, 15%);
+  background      : desaturate(darken($brand-primary, 20%), 5%);
   position        : fixed;
   left            : 0;
   top             : 0;
@@ -487,6 +486,7 @@ nav#main-navigation{
   overflow-x : hidden;
   -webkit-overflow-scrolling: touch;
   @include transition(left, $defaultSpeed);
+  box-shadow : 0 -10px 30px #000;
   &.menu-open{
     left     : $sideNavWidthMax;
     width    : 100 - $sideNavWidthMax;
@@ -562,13 +562,32 @@ User lists
       width:100px;
       height:100px;
       border-radius: 25px;
-      font-size: 200%;
       color:lighten($grayColor,5%);
       text-align: center;
       line-height: 50px;
       display:block;
       background-position: top center;
     }
+  .picture{
+    width:100px;
+    height:100px;
+    border-radius: 5px;
+    color:lighten($grayColor,5%);
+    text-align: center;
+    line-height: 50px;
+    display:block;
+    background-position: top center;
+    .name-block{
+      @include position(absolute, 0 0 0px 0px);
+      @include linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.7));
+      padding: 10px 0 0 0;
+      .name-text{
+        position: relative;
+        margin:5px;
+        color: #fff;
+      }
+    }
+  }
 }
 
 
