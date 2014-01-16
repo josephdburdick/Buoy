@@ -12,13 +12,13 @@ class Venue < ActiveRecord::Base
 
   def self.formatted_facebook_venue(venue)
     fb_hash = {
-      latitude:     event["venue"]["latitude"],
-      longitude:    event["venue"]["longitude"],
-      city:         event["venue"]["city"],
-      state:        event["venue"]["state"],
-      country:      event["venue"]["country"],
-      street:       event["venue"]["street"],
-      zip:          event["venue"]["zip"]
+      latitude:     venue["latitude"],
+      longitude:    venue["longitude"],
+      city:         venue["city"],
+      state:        venue["state"],
+      country:      venue["country"],
+      street:       venue["street"],
+      zip:          venue["zip"]
     }
     fb_hash
   end
