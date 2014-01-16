@@ -737,13 +737,26 @@ User lists
 
 }
 
+
 @media (max-width: $screen-md-min) { 
+  #view.menu-open, #face-mask.menu-open, header#main.menu-open{
+    left: 50%;
+  }
+  #main-navigation.menu-open{
+    max-width: 50%;
+  }
   
+  .container
+    { 
+      padding-top    : $pageOffset * 2;
+      padding-bottom : $pageOffset / 2; 
+    }
+
 }
 
 @media (max-width: $screen-xs-min) { 
   #view.menu-open, #face-mask.menu-open, header#main.menu-open{
-    left:85%;
+    left: $sideNavWidth;
   }
   #main-navigation.menu-open{
     max-width: 100%;
