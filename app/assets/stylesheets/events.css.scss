@@ -64,121 +64,49 @@ $brand-danger        : #c1272c;
 @-webkit-keyframes buoy-animated {
   0%  { 
     top:-15px; 
-    @include transform(rotate(10deg));
-    @include transform-origin(center bottom);
-    @include transform-style(preserve-3d);
   }
   50% { 
     top:5px; 
-    @include transform(rotate(15deg));
-    @include transform-origin(center bottom);
-    @include transform-style(preserve-3d);
   }
   100%{ 
     top:-15px; 
-    @include transform(rotate(10deg));
-    @include transform-origin(center bottom);
-    @include transform-style(preserve-3d);
   }
 }
 @-moz-keyframes buoy-animated {
   0%  { 
     top:-15px; 
-    @include transform(rotate(10deg));
-    @include transform-origin(center bottom);
-    @include transform-style(preserve-3d);
   }
   50% { 
     top:5px; 
-    @include transform(rotate(15deg));
-    @include transform-origin(center bottom);
-    @include transform-style(preserve-3d);
   }
   100%{ 
     top:-15px; 
-    @include transform(rotate(10deg));
-    @include transform-origin(center bottom);
-    @include transform-style(preserve-3d);
   }
 }
 @-o-keyframes buoy-animated {
   0%  { 
     top:-15px; 
-    @include transform(rotate(10deg));
-    @include transform-origin(center bottom);
-    @include transform-style(preserve-3d);
   }
   50% { 
     top:5px; 
-    @include transform(rotate(15deg));
-    @include transform-origin(center bottom);
-    @include transform-style(preserve-3d);
   }
   100%{ 
     top:-15px; 
-    @include transform(rotate(10deg));
-    @include transform-origin(center bottom);
-    @include transform-style(preserve-3d);
   }
 }
 @keyframes buoy-animated {
   0%  { 
     top:-15px; 
-    @include transform(rotate(10deg));
-    @include transform-origin(center bottom);
-    @include transform-style(preserve-3d);
   }
   50% { 
     top:5px; 
-    @include transform(rotate(15deg));
-    @include transform-origin(center bottom);
-    @include transform-style(preserve-3d);
   }
   100%{ 
     top:-15px; 
-    @include transform(rotate(10deg));
-    @include transform-origin(center bottom);
-    @include transform-style(preserve-3d);
   }
 }
 
-/* —————————————
 
-  MIXINS
-
-*/
-@mixin loading-animation-circle($size: 50, $border-size: 5, $speed: 1.0, $color: gray) {
-  height: #{$size}px;
-  width: #{$size}px;
-  margin: 0 auto;
-  position: relative;
-  @include animation(loading-animation-rotation #{$speed}s infinite linear);
-  border: #{$border-size}px solid tint($color, 70%);
-  border-radius: 100%;
-  &:before {
-   content: "";
-   display: block;
-   position: absolute;
-   left: -#{$border-size}px;
-   top: -#{$border-size}px;
-   height: 100%;
-   width: 100%;
-   border-top: #{$border-size}px solid $color;
-   border-left: #{$border-size}px solid transparent;
-   border-bottom: #{$border-size}px solid transparent;
-   border-right: #{$border-size}px solid transparent;
-   border-radius: 100%;
-  }
-}
-
-@include keyframes(loading-animation-rotation) {
-  from {
-    @include transform(rotate(0deg));
-  }
-  to {
-    @include transform(rotate(359deg));
-  }
-}
 
 
 /*—————————————— 
@@ -313,14 +241,15 @@ textarea  { min-height: 130px;}
 
   border-radius  : 25px; 
   .logo {
-    position: relative;
+    position   : relative;
     margin-left: -4%;
   }
   #sign_in{
-    padding:20px 0;
-    font-weight: 100;
-    max-width: 500px;
-    margin: 0 auto;
+    padding    : 20px 0;
+    font-weight: 300;
+    max-width  : 500px;
+    margin     : 0 auto;
+    font-family: "Roboto", "News Cycle";
   }
   h1{
     font-size: 350%;
@@ -753,7 +682,7 @@ User lists
 }
 
 
-#buoy-animated{
+.buoy-animated{
   width    : 142px;
   height   : 210px;
   position : relative;
@@ -774,7 +703,7 @@ User lists
     height    : 155px;
     position  : absolute;
     z-index   : 2;
-    left      : -5px;
+    left      : 2px;
     
     -webkit-animation: buoy-animated 3s infinite ease-in-out; 
     -moz-animation:    buoy-animated 3s infinite ease-in-out; 
