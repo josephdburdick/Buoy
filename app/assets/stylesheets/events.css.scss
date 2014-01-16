@@ -745,6 +745,9 @@ User lists
   #view.menu-open, #face-mask.menu-open, header#main.menu-open{
     left:85%;
   }
+  #main-navigation.menu-open{
+    max-width: 100%;
+  }
   
 }
 @media
