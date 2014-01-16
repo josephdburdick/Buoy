@@ -442,7 +442,7 @@ nav#main-navigation{
   @include transition(left, $defaultSpeed);
   &.menu-open{
     left     : $sideNavWidthMax;
-    width    : 70%;
+    width    : 100 - $sideNavWidthMax;
     .container{
       width  : 100%;
     }
@@ -626,7 +626,7 @@ User lists
     }
   }
   .event-no-map .tall-block, .tall-block.large{
-    line-height : $defaultMapHeight - 50px;
+    line-height : 290px;
     text-align  : center;
     font-size   : 200%;
     font-weight : 100;
