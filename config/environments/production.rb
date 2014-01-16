@@ -3,7 +3,7 @@ Buoy::Application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
-  
+
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both thread web servers
@@ -78,4 +78,5 @@ Buoy::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
 end
