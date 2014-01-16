@@ -30,7 +30,7 @@
 */
 $pageOffset          : 60px;
 $sideNavWidth        : 85%;
-$sideNavWidthMax       : 400px;
+$sideNavWidthMax     : 35%;
 
 $defaultSpeed        : .2s;
 $defaultMargin       : 50px;
@@ -133,7 +133,7 @@ h1,h2,h3,
 h4,h5,h6  { font-family     : "Roboto"; 
             font-weight     : 400;
           }
-h1        { font-weight: 300;}
+h1        { font-weight     : 300;}
 h2        { font-size       : 150%; }
 
 h3        { 
@@ -442,6 +442,10 @@ nav#main-navigation{
   @include transition(left, $defaultSpeed);
   &.menu-open{
     left     : $sideNavWidthMax;
+    width    : 70%;
+    .container{
+      width  : 100%;
+    }
   }
 }
 
