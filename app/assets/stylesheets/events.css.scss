@@ -456,14 +456,14 @@ header#main{
 	position   : fixed;
 	z-index    : 999;
 	top        : 0;
-	margin-left: 0;
+	left: 0;
 	right      : 0;
   overflow   : hidden;
   line-height: $pageOffset - 10;
 
   @include transition(all, $defaultSpeed);
   &.menu-open{
-    margin-left : $sideNavWidthMax;
+    left : $sideNavWidthMax;
     h1, .pull-right{
       display : none;
     }
