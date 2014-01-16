@@ -163,30 +163,30 @@
           </div>
         </div>
         <% end %><!-- /if Events exist -->
-
-
-        <% else %> <!-- Not logged in -->
-        <div id="login">
-          <div class="vertBlock">
-            <div class="centered">
-                <div class="buoy-animated">
-                  <div class="water-back"></div>
-                  <div class="buoy-logo"><div class="buoy-flag"></div></div>
-                  <div class="water-front"></div>
-                </div>
-              <h1>Buoy</h1>
-              <h2>Manage your events, preserve the voyage.</h2><br>
-              
-              <%= link_to "Facebook Login", "/auth/facebook", class:"btn btn-lg btn-primary btn-block", id: "sign_in" %>
-          
-            </div><!-- /.centered -->
-          </div><!-- /vertBlock -->
-
-        <div class="loading-circle"></div>
-        </div><!-- /#login -->
-        <% end %>
       </div> <!-- /.container -->
     </div> <!-- /#view-->
+
+    <% else %> <!-- Not logged in -->
+      <div id="login">
+        <div class="vertBlock">
+          <div class="centered">
+              <div class="buoy-animated">
+                <div class="water-back"></div>
+                <div class="buoy-logo"><div class="buoy-flag"></div></div>
+                <div class="water-front"></div>
+              </div>
+            <h1>Buoy</h1>
+            <h2>Manage your events, preserve the voyage.</h2><br>
+            
+            <%= link_to "Facebook Login", "/auth/facebook", class:"btn btn-lg btn-primary btn-block", id: "sign_in" %>
+        
+          </div><!-- /.centered -->
+        </div><!-- /vertBlock -->
+
+        <div class="loading-circle"></div>
+      </div><!-- /#login -->
+    <% end %>
+
     <script src="//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry,places" type="text/javascript"></script>
     <script type="text/javascript">
     $(document).ready(function(){
