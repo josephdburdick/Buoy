@@ -16,4 +16,4 @@
 //= require tooltip
 //= require turbolinks
 //= require underscore
-// require gmaps/google
+//= require gmaps/google

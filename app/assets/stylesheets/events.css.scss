@@ -30,6 +30,7 @@
 */
 $pageOffset          : 60px;
 $sideNavWidth        : 85%;
+$sideNavMaxPx       : 400px;
 
 $defaultSpeed        : .2s;
 $defaultMargin       : 50px;
@@ -130,14 +131,14 @@ body {
 
 h1,h2,h3,
 h4,h5,h6  { font-family     : "Roboto"; 
-            font-weight     : 300;
+            font-weight     : 400;
           }
 h1        { font-weight: 300;}
 h2        { font-size       : 150%; }
 
 h3        { 
             font-size       : 125%;
-            font-weight     : 400;
+            font-weight     : 300;
             line-height     : 1.4;
             font-family     : "Roboto";
           }
@@ -214,7 +215,9 @@ textarea  { min-height: 130px;}
   box-shadow      : -10px 0 50px black;
   &.menu-open{
     display       : block;
-    left          : $sideNavWidth;
+    right         : 0;
+    width         : $sideNavWidth;
+    left          : $sideNavMaxPx;
     z-index       : 999;
   }
 }
@@ -344,6 +347,7 @@ textarea  { min-height: 130px;}
 */
 nav#main-navigation{
   width           : $sideNavWidth;
+  max-width       : $sideNavMaxPx; 
   z-index         : 1;
   background      : darken($brand-primary, 15%);
   position        : fixed;
@@ -351,9 +355,9 @@ nav#main-navigation{
   top             : 0;
   bottom          : 0;
   color           : $grayColor;
-  padding : 20px 0;
-  overflow   : auto;
-  overflow-x : hidden;
+  padding         : 20px 0;
+  overflow        : auto;
+  overflow-x      : hidden;
   -webkit-overflow-scrolling: touch;
   
   .content{
@@ -432,7 +436,8 @@ nav#main-navigation{
   -webkit-overflow-scrolling: touch;
   @include transition(left, $defaultSpeed);
   &.menu-open{
-    left     : $sideNavWidth;
+
+    left     : $sideNavMaxPx;
   }
 }
 
@@ -454,7 +459,7 @@ header#main{
 
   @include transition(all, $defaultSpeed);
   &.menu-open{
-    left : $sideNavWidth;
+    left : $sideNavMaxPx;
     h1, .pull-right{
       display : none;
     }
@@ -616,6 +621,7 @@ User lists
     line-height : $defaultMapHeight - 50px;
     text-align  : center;
     font-size   : 200%;
+    font-weight : 100;
     background  : darken($viewBackgroundColor, 5%);
     color       : #aaa;  
     text-shadow : 0 1px 1px lighten($viewBackgroundColor, 50%);  
