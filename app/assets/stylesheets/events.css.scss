@@ -30,7 +30,7 @@
 */
 $pageOffset          : 60px;
 $sideNavWidth        : 85%;
-$sideNavMaxPx       : 400px;
+$sideNavWidthMax       : 400px;
 
 $defaultSpeed        : .2s;
 $defaultMargin       : 50px;
@@ -217,7 +217,7 @@ textarea  { min-height: 130px;}
     display       : block;
     right         : 0;
     width         : $sideNavWidth;
-    left          : $sideNavMaxPx;
+    left          : $sideNavWidthMax;
     z-index       : 999;
   }
 }
@@ -246,6 +246,9 @@ textarea  { min-height: 130px;}
   .logo {
     position   : relative;
     margin-left: -4%;
+  }
+  h2{
+    font-weight: 200;
   }
   #sign_in{
     padding    : 20px 0;
@@ -328,11 +331,13 @@ textarea  { min-height: 130px;}
   margin-bottom : 0;
   opacity       : 1;
   z-index       : 999;
+  font-weight   : 200;
 
   @include transition (all $defaultSpeed ease-out 1s);
 
   &.close{
     font-size   : 150%;
+    font-weight : 200;
     top         : -$pageOffset;
     opacity     : 0;
   }
@@ -347,7 +352,7 @@ textarea  { min-height: 130px;}
 */
 nav#main-navigation{
   width           : $sideNavWidth;
-  max-width       : $sideNavMaxPx; 
+  max-width       : $sideNavWidthMax; 
   z-index         : 1;
   background      : darken($brand-primary, 15%);
   position        : fixed;
@@ -430,14 +435,13 @@ nav#main-navigation{
   //uheight     : 100%; /* Experimental */
   background : $viewBackgroundColor;
   z-index    : 2;
-  left       : 0;
+  margin-left: 0;
   overflow   : auto;
   overflow-x : hidden;
   -webkit-overflow-scrolling: touch;
   @include transition(left, $defaultSpeed);
   &.menu-open{
-
-    left     : $sideNavMaxPx;
+    left     : $sideNavWidthMax;
   }
 }
 
@@ -452,14 +456,14 @@ header#main{
 	position   : fixed;
 	z-index    : 999;
 	top        : 0;
-	left       : 0;
+	margin-left: 0;
 	right      : 0;
   overflow   : hidden;
   line-height: $pageOffset - 10;
 
   @include transition(all, $defaultSpeed);
   &.menu-open{
-    left : $sideNavMaxPx;
+    margin-left : $sideNavWidthMax;
     h1, .pull-right{
       display : none;
     }
@@ -709,7 +713,8 @@ User lists
     height    : 155px;
     position  : absolute;
     z-index   : 2;
-    left      : 2px;
+    left      : 16px;
+    @include transform(rotate(23deg));
     
     -webkit-animation: buoy-animated 3s infinite ease-in-out; 
     -moz-animation:    buoy-animated 3s infinite ease-in-out; 
@@ -728,10 +733,15 @@ User lists
 
 }
 
-@media (max-width: $screen-sm-min) { 
-  .event-block .event-info {
-    margin-top: -50px;
+@media (max-width: $screen-md-min) { 
+  
+}
+
+@media (max-width: $screen-xs-min) { 
+  #view.menu-open, #face-mask.menu-open, header#main.menu-open{
+    left:85%;
   }
+  
 }
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -750,16 +760,5 @@ only screen and (                min-resolution: 2dppx) {
 /* landscape */
 @media screen and (orientation:landscape) {
 
-  .event-map, .event-no-map{
-    
-    height     : $defaultMapHeight/1.25 !important;
-    
-    [id^=map]{
-      height : $defaultMapHeight/1.25 !important;
-    }
-  }
-  .event-no-map .tall-block, .large.tall-block{
-    /*line-height: 165px!important;*/
-  }
 }
 

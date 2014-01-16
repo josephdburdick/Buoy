@@ -28,6 +28,7 @@ class VenuesController < ApplicationController
   def create
     @venue = Venue.find safe_params(params[:id])
   end
+
   def edit
   	@venue = Venue.find params[:id]
   end
@@ -40,7 +41,7 @@ class VenuesController < ApplicationController
 
   def save_update_venue
     if @venue.save
-      flash[:notice] = "Spot saved successfully"
+      flash[:notice] = "Buoy saved successfully"
       redirect_to @venue
     else
       render 'new'
@@ -58,7 +59,7 @@ class VenuesController < ApplicationController
       :latitude, 
       :longitude
 
-      )
+    )
   end
 
 end

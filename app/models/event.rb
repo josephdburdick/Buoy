@@ -1,9 +1,11 @@
 class Event < ActiveRecord::Base
 	has_and_belongs_to_many :venues 
-	has_many :attendees, :dependent => :destroy
-	has_many :people, through: :attendees
+	has_many :attendees, 
+    :dependent => :destroy
+	has_many :people, 
+    through: :attendees
 	accepts_nested_attributes_for :venues
-  #belongs_to :person
+  
 
   def owner
     Person.joins(:people).where(events: {owner_id: self.id})

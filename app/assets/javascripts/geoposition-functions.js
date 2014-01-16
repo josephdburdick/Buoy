@@ -26,6 +26,7 @@
                 $("#venue_lng").val(marker.getPosition().lng());
                 $("#venue_city").val(responses[1].address_components[1].short_name);
                 $("#venue_state").val(responses[1].address_components[3].long_name);
+                debugger
                 $("#venue_zip").val(responses[1].address_components[6].long_name);
                 $("#venue_country").val(responses[1].address_components[4].long_name);
              } else {
