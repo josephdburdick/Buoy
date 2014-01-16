@@ -66,14 +66,15 @@
 <% end %>
   
 <script>
-    $('#hash_tag').keyup(function(){
-    var splitJoin = $(this).val().split(' ').join('').replace(/\s{2,}/g," ");;
+  $('#hash_tag').keyup(function(){
+    var splitJoin = $(this).val().split(' ').join('').replace(/\s{2,}/g," "); //get rid of spaces.
+    splitJoin = splitJoin.replace(/[^\w\s]/gi, '') //get rid of special characters.
     $(this).val(splitJoin)
   });
-  if ($('#hash_tag').val() == ""){
-    var eventName = $('#event-name').val();
-    $('#hash_tag').val(eventName).trigger('keyup');
-  }
+  // if ($('#hash_tag').val() == ""){
+  //   var eventName = $('#event-name').val();
+  //   $('#hash_tag').val(eventName).trigger('keyup');
+  // }
   if ($('#hash_tag').val() == "" && $('#event-name').val() == ""){
     var eventName = $('#event-name').val();
     $('#hash_tag').val(eventName).trigger('keyup');
