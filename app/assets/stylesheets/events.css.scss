@@ -788,12 +788,11 @@ User lists
   #main-navigation.menu-open{
     max-width: 50%;
   }
-  
+
   #face-mask.menu-open{
     display       : block;
     right         : 0;
     width         : $sideNavWidth;
-    left          : $sideNavWidthMax;
     z-index       : 999;
   }
   
