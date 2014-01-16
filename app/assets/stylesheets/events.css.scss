@@ -54,7 +54,7 @@ $brand-danger        : #c1272c;
 @import "bourbon";
 @import "font-awesome";
 @import "twitter/bootstrap";
-@import url(https://fonts.googleapis.com/css?family=News+Cycle|Roboto:100,300,400,500);
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500);
 
 /* —————————————
 
@@ -120,7 +120,7 @@ html{
   overflow-x: hidden;
 }
 body { 
-  font-family : "News Cycle";
+  font-family : "Roboto";
   overflow    : auto;
   font-size   : 16px;
   &.menu-open{
@@ -139,7 +139,7 @@ h3        {
             font-size       : 125%;
             font-weight     : 400;
             line-height     : 1.4;
-            font-family     : "News Cycle";
+            font-family     : "Roboto";
           }
 p         { font-size       : 120%;}
 a         { text-decoration : none!important; }
@@ -249,7 +249,7 @@ textarea  { min-height: 130px;}
     font-weight: 300;
     max-width  : 500px;
     margin     : 0 auto;
-    font-family: "Roboto", "News Cycle";
+    font-family: "Roboto";
   }
   h1{
     font-size: 350%;
