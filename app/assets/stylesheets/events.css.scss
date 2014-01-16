@@ -366,13 +366,13 @@ nav#main-navigation{
   -webkit-overflow-scrolling: touch;
   
   .content{
-    opacity: 0;
+    //opacity: 0;
     @include transform( scale(0.9) );
     @include transition(all $defaultSpeed + .25);
   }
   &.menu-open{
     .content{
-      opacity: 1;
+      //opacity: 1;
       @include transform( scale(1) );  
     }
   }
@@ -465,12 +465,9 @@ header#main{
   overflow   : hidden;
   line-height: $pageOffset - 10;
 
-  @include transition(all, $defaultSpeed);
+  @include transition(left, $defaultSpeed);
   &.menu-open{
     left : $sideNavWidthMax;
-    h1, .pull-right{
-      display : none;
-    }
   }
   h1{
     margin       : 0;
@@ -553,51 +550,51 @@ User lists
 	max-width : 1000px;
 }
 .controls {
-        margin-top       : 16px;
-        border           : 1px solid transparent;
-        border-radius    : 2px 0 0 2px;
-        box-sizing       : border-box;
-        -moz-box-sizing  : border-box;
-        height           : 32px;
-        outline          : none;
-        box-shadow       : 0 2px 6px rgba(0, 0, 0, 0.3);
-      }
+  margin-top       : 16px;
+  border           : 1px solid transparent;
+  border-radius    : 2px 0 0 2px;
+  box-sizing       : border-box;
+  -moz-box-sizing  : border-box;
+  height           : 32px;
+  outline          : none;
+  box-shadow       : 0 2px 6px rgba(0, 0, 0, 0.3);
+}
 
-      #pac-input {
-        background-color : #fff;
-        margin           : 7px auto;
-        padding          : 4px 10px;
-        font-weight      : 400;
-        font-family      : roboto;
-        width            : 45%;
-        font-size        : 15px;
-        font-weight      : 300;
-        text-overflow    : ellipsis;
-        display          : none;
-        &.active{
-          display: block;
-        }
-      }
-      #pac-input:focus {
-        border-color: $brand-primary;
-        margin-left: -1px;
-      }
+#pac-input {
+  background-color : #fff;
+  margin           : 7px auto;
+  padding          : 4px 10px;
+  font-weight      : 400;
+  font-family      : roboto;
+  width            : 45%;
+  font-size        : 15px;
+  font-weight      : 300;
+  text-overflow    : ellipsis;
+  display          : none;
+  &.active{
+    display: block;
+  }
+}
+#pac-input:focus {
+  border-color: $brand-primary;
+  margin-left: -1px;
+}
 
-      .pac-container {
-        font-family: Roboto;
-      }
+.pac-container {
+  font-family: Roboto;
+}
 
-      #type-selector {
-        color: #fff;
-        background-color: $brand-primary;
-        padding: 5px 11px 0px 11px;
-      }
+#type-selector {
+  color: #fff;
+  background-color: $brand-primary;
+  padding: 5px 11px 0px 11px;
+}
 
-      #type-selector label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
+#type-selector label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
 
 
 
@@ -755,6 +752,11 @@ User lists
 }
 
 @media (max-width: $screen-xs-min) { 
+  header#main.menu-open{
+    h1, .pull-right{
+      display : none;
+    }
+  }
   #view.menu-open, #face-mask.menu-open, header#main.menu-open{
     left: $sideNavWidth;
   }

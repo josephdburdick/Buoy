@@ -19,6 +19,7 @@
   </p>
   
   <h3><%= @event.description %></h3>
+
   <p>&nbsp;</p>
   <p>
     <% unless @event.name.nil? %>
@@ -58,6 +59,15 @@
       <li><%= @event.maybes.count > 1 ? "#{@event.maybes.count} maybes" : "1 maybe" %></li>
       <% end %>
   </ul>
+  <hr>
+      <h1><%= @event.attendees.count > 1 ? "Attendees" : "Attendee" %></h1>
+      <ul class="list-users">
+      <% @event.attendees.each do |attendee| %>
+        <li><div class="circle bg-cover" style="background-image:url('<%= attendee.person.picture_url %>');"></div>
+          <%= attendee.person.first_name %>
+        </li>
+      <% end %>
+      </ul><br>
   <% if @event.privacy == "OPEN"%>
       <span class="privacy label label-success">OPEN TO PUBLIC</span>
   <% elsif @event.privacy == "FRIENDS"%>
@@ -65,6 +75,7 @@
   <% else %>
       <span class="privacy label label-danger">INVITE ONLY</span>
   <% end %>
+
 
   <div class="fb-comments" data-href="http://www.yobuoy.com/events/<%= @event.id %>" data-numposts="5" data-colorscheme="light"></div>
 
