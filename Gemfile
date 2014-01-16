@@ -44,6 +44,7 @@ group :production do
   gem 'rails_stdout_logging'
   gem 'rails_serve_static_assets'
 end
+gem 'devise'
 gem 'figaro'
 gem 'jquery-turbolinks'
 gem 'bourbon'

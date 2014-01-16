@@ -64,46 +64,102 @@ $brand-danger        : #c1272c;
 */
 @-webkit-keyframes buoy-animated {
   0%  { 
-    top:-15px; 
+    //top:-15px; 
+    @include transform(rotate(10deg));
+
   }
-  50% { 
-    top:5px; 
+  25% { 
+    //top:5px; 
+    @include transform(rotate(35deg));
+  }
+  50%{ 
+    //top:-15px; 
+    @include transform(rotate(10deg));
+
+  }
+  75%{ 
+    //top:-15px; 
+    @include transform(rotate(35deg));
+
   }
   100%{ 
-    top:-15px; 
+    //top:-15px; 
+    @include transform(rotate(10deg));
   }
 }
 @-moz-keyframes buoy-animated {
   0%  { 
-    top:-15px; 
+    //top:-15px; 
+    @include transform(rotate(10deg));
+
   }
-  50% { 
-    top:5px; 
+  25% { 
+    //top:5px; 
+    @include transform(rotate(35deg));
+  }
+  50%{ 
+    //top:-15px; 
+    @include transform(rotate(10deg));
+
+  }
+  75%{ 
+    //top:-15px; 
+    @include transform(rotate(35deg));
+
   }
   100%{ 
-    top:-15px; 
+    //top:-15px; 
+    @include transform(rotate(10deg));
   }
 }
 @-o-keyframes buoy-animated {
   0%  { 
-    top:-15px; 
+    //top:-15px; 
+    @include transform(rotate(10deg));
+
   }
-  50% { 
-    top:5px; 
+  25% { 
+    //top:5px; 
+    @include transform(rotate(35deg));
+  }
+  50%{ 
+    //top:-15px; 
+    @include transform(rotate(10deg));
+
+  }
+  75%{ 
+    //top:-15px; 
+    @include transform(rotate(35deg));
+
   }
   100%{ 
-    top:-15px; 
+    //top:-15px; 
+    @include transform(rotate(10deg));
   }
 }
 @keyframes buoy-animated {
   0%  { 
-    top:-15px; 
+    //top:-15px; 
+    @include transform(rotate(10deg));
+
   }
-  50% { 
-    top:5px; 
+  25% { 
+    //top:5px; 
+    @include transform(rotate(35deg));
+  }
+  50%{ 
+    //top:-15px; 
+    @include transform(rotate(10deg));
+
+  }
+  75%{ 
+    //top:-15px; 
+    @include transform(rotate(35deg));
+
   }
   100%{ 
-    top:-15px; 
+    //top:-15px; 
+    @include transform(rotate(10deg));
   }
 }
 
@@ -213,13 +269,7 @@ textarea  { min-height: 130px;}
   z-index         : 0;
   text-decoration : none;
   box-shadow      : -10px 0 50px black;
-  &.menu-open{
-    display       : block;
-    right         : 0;
-    width         : $sideNavWidth;
-    left          : $sideNavWidthMax;
-    z-index       : 999;
-  }
+  
 }
 /* This parent can be any width and height */
 .vertBlock {
@@ -238,10 +288,7 @@ textarea  { min-height: 130px;}
 }
 #login{
   position       : relative;
-
-  margin         : 5%;
   padding        : 8% 5%;
-
   border-radius  : 25px; 
   .logo {
     position   : relative;
@@ -715,12 +762,11 @@ User lists
     position  : absolute;
     z-index   : 2;
     left      : 16px;
-    @include transform(rotate(23deg));
     
-    -webkit-animation: buoy-animated 3s infinite ease-in-out; 
-    -moz-animation:    buoy-animated 3s infinite ease-in-out; 
-    -o-animation:      buoy-animated 3s infinite ease-in-out; 
-    animation:         buoy-animated 3s infinite ease-in-out; 
+    -webkit-animation: buoy-animated 5s infinite ease-in-out; 
+    -moz-animation:    buoy-animated 5s infinite ease-in-out; 
+    -o-animation:      buoy-animated 5s infinite ease-in-out; 
+    animation:         buoy-animated 5s infinite ease-in-out; 
   }
   .water-front{
     background: url('buoy-pieces-water-front.png');
@@ -741,6 +787,14 @@ User lists
   }
   #main-navigation.menu-open{
     max-width: 50%;
+  }
+  
+  #face-mask.menu-open{
+    display       : block;
+    right         : 0;
+    width         : $sideNavWidth;
+    left          : $sideNavWidthMax;
+    z-index       : 999;
   }
   
   .container
