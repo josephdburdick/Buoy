@@ -189,6 +189,8 @@ DEPENDENCIES
   pry-rails
   rails (= 4.0.1)
   rails_12factor
+  rails_serve_static_assets
+  rails_stdout_logging
   sass-rails (~> 4.0.0)
   sdoc
   sqlite3
