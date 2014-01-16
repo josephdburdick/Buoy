@@ -366,14 +366,14 @@ nav#main-navigation{
   -webkit-overflow-scrolling: touch;
   
   .content{
-    //opacity: 0;
+/*    //opacity: 0;
     @include transform( scale(0.9) );
-    @include transition(all $defaultSpeed + .25);
+    @include transition(all $defaultSpeed + .25);*/
   }
   &.menu-open{
     .content{
-      //opacity: 1;
-      @include transform( scale(1) );  
+      /*//opacity: 1;
+      @include transform( scale(1) );  */
     }
   }
   .logo{
