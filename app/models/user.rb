@@ -74,21 +74,32 @@ class User < ActiveRecord::Base
               @new_event = Event.where(fb_id: event['id']).first_or_create(Event.formatted_facebook_event(event))
             end
             unless event["venue"].nil?
-              if Venue.where(fb_id: event["venue"]["id"]).present?
-                @new_venue = Venue.find_by(fb_id: event["venue"]["id"])
-                unless @new_event.venues.include?(@new_venue)
-                  @new_event.venues << @new_venue
-                end
-              else # If a venue doesn't already exist, create or reference the one that does.
-                @new_venue = Venue.where(fb_id: event["venue"]["id"]).first_or_create(
-                  latitude:     event["venue"]["latitude"],
-                  longitude:    event["venue"]["longitude"],
-                  city:         event["venue"]["city"],
-                  state:        event["venue"]["state"],
-                  country:      event["venue"]["country"],
-                  street:       event["venue"]["street"],
-                  zip:          event["venue"]["zip"]
-                )
+              venue_hash = Venue.formatted_facebook_venue(venue)
+              
+
+              if Venue.where(fb_id: event["venue"]["id"]).present?              
+                new_venue_id = Venue.where(fb_id: event["venue"]["id"]).update_all(venue_hash)
+                @new_venue = Venue.find(new_venue_id)
+              else
+                @new_venue = Venue.where(fb_id: event["venue"]["id"]).first_or_create(Venue.formatted_facebook_event(event))
+              end
+
+
+              # if Venue.where(fb_id: event["venue"]["id"]).present?
+              #   @new_venue = Venue.find_by(fb_id: event["venue"]["id"])
+              #   unless @new_event.venues.include?(@new_venue)
+              #     @new_event.venues << @new_venue
+              #   end
+              # else # If a venue doesn't already exist, create or reference the one that does.
+              #   @new_venue = Venue.where(fb_id: event["venue"]["id"]).first_or_create(
+              #     latitude:     event["venue"]["latitude"],
+              #     longitude:    event["venue"]["longitude"],
+              #     city:         event["venue"]["city"],
+              #     state:        event["venue"]["state"],
+              #     country:      event["venue"]["country"],
+              #     street:       event["venue"]["street"],
+              #     zip:          event["venue"]["zip"]
+              #   )
                 unless @new_event.venues.include?(@new_venue)
                   @new_event.venues << @new_venue
                 end
