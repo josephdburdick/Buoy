@@ -68,8 +68,10 @@ class User < ActiveRecord::Base
 
             event_hash = Event.formatted_facebook_event(event)
             if Event.where(fb_id: event["id"]).present?
-              #binding.pry
-              @new_event = Event.where(fb_id: event["id"]).update_all(event_hash)
+              
+              new_event_id = Event.where(fb_id: event["id"]).update_all(event_hash).save!
+              @new_event = Event.find(new_event_id)
+              binding.pry
             else
               @new_event = Event.where(fb_id: event['id']).first_or_create(Event.formatted_facebook_event(event))
             end

@@ -757,7 +757,7 @@ User lists
   margin   : 0 auto;
   
   .water-back{
-    background: asset-data-url('buoy-pieces-water-back.png');
+    background: url(image-path('buoy-pieces-water-back.png'));
     width     : 144px;
     height    : 23px;
     position  : absolute;
@@ -766,7 +766,7 @@ User lists
     left      : -10px;
   }
   .buoy-logo{
-    background: asset-data-url('buoy-pieces-buoy.png');
+    background: url(image-path('buoy-pieces-buoy.png'));
     width     : 108px;
     height    : 155px;
     position  : absolute;
@@ -780,7 +780,7 @@ User lists
 
   }
   .water-front{
-    background: asset-data-url('buoy-pieces-water-front.png'); 
+    background: url(image-path('buoy-pieces-water-front.png')); 
     width     : 144px;
     height    : 101px;
     position  : absolute;
