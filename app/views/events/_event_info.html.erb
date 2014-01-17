@@ -61,20 +61,63 @@
   </ul>
   <hr>
       <h1><%= @event.attendees.count > 1 ? "Attendees" : "Attendee" %></h1>
-      <ul class="list-users">
-      <% @event.attendees.each do |attendee| %>
-        <li>
-          <div class="picture bg-cover" style="background-image:url('<%= attendee.person.picture_url %>');">
-            <div class="name-block">
-              <div class="name-text">
-                <%= attendee.person.first_name %>
+
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs">
+        <li><a href="#attendees" data-toggle="tab">Attendees</a></li>
+        <li><a href="#admins" data-toggle="tab">Admins</a></li>
+        <li><a href="#maybes" data-toggle="tab">Maybes</a></li>
+      </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane active" id="attendees">
+          <ul class="list-users">
+            <% @event.attendees.each do |attendee| %>
+              <li>
+                <div class="picture bg-cover" style="background-image:url('<%= attendee.person.picture_url %>');">
+                  <div class="name-block">
+                    <div class="name-text">
+                      <%= attendee.person.first_name %>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="tab-pane" id="admins">
+          <ul class="list-users">
+          <% @event.admins.each do |admin| %>
+            <li>
+              <div class="picture bg-cover" style="background-image:url('<%= admin.person.picture_url %>');">
+                <div class="name-block">
+                  <div class="name-text">
+                    <%= admin.person.first_name %>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          
-        </li>
-      <% end %>
-      </ul><br>
+            </li>
+          <% end %>
+          </ul>
+        </div>
+        <div class="tab-pane" id="maybes">
+          <ul class="list-users">
+          <% @event.maybes.each do |maybe| %>
+            <li>
+              <div class="picture bg-cover" style="background-image:url('<%= maybe.person.picture_url %>');">
+                <div class="name-block">
+                  <div class="name-text">
+                    <%= maybe.person.first_name %>
+                  </div>
+                </div>
+              </div>
+            </li>
+          <% end %>
+          </ul>
+        </div>
+
+      </div>
+      <br>
   <% if @event.privacy == "OPEN"%>
       <span class="privacy label label-success">OPEN TO PUBLIC</span>
   <% elsif @event.privacy == "FRIENDS"%>
