@@ -123,7 +123,7 @@
   <div class="fb-comments" data-href="http://www.yobuoy.com/events/<%= @event.id %>" data-numposts="5" data-colorscheme="light"></div>
 
   <script type="text/javascript">
-  $('a[data-target]="#iframe-modal"]').on('click',function(e){
+  $('a[data-target="#iframe-modal"]').on('click',function(e){
     $('#iframe-modal').on('show.bs.modal', function () {
       $('iframe').attr('src', thisHref);
     });
