@@ -51,7 +51,7 @@
     <% if @events.count > 0 %>
     <% @events.each do |event| %>
     <div class="event-block">
-      <% binding.pry %>
+      <% if event.admins.include?(current_user) %>
         <div class="admin-cert">
           <i class="fa fa-certificate"></i> Admin
         </div>
