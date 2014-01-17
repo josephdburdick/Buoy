@@ -142,10 +142,9 @@
   
 <script>
   $('.list-users a').on('click',function(e){
-    console.log(2397847293)
     var profileUrl = $(this).attr('href');
     $('#fb-modal').on('show', function () {
-      $('iframe').attr("src", profileUrl);
+      $('#fb-modal iframe').attr("src", profileUrl);
     });
     $('#fb-modal').modal({show:true})
     e.preventDefault();
