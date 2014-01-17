@@ -135,9 +135,9 @@ class User < ActiveRecord::Base
                     is_admin: false, 
                     rsvp_status: "unsure"
                   )
-                end
-              end
-            end
+                end #/if maybe exists in db
+              end #event["maybe"] loop
+            end # if any maybes are present for this event
 
             event["attending"]["data"].each do |attendee|
               if Person.where(fb_id: attendee["id"]).present?
@@ -181,16 +181,18 @@ class User < ActiveRecord::Base
                     is_admin: true, 
                     rsvp_status: "attending"
                   )
-                end 
-              end 
+                end #/unless the new event's admins already include this admin
+              end  #/if this person exists in the database
             end #/ admin collection
+
+
           end #/ is_admin_for_event?
         end #/ event[admins]
       end #/ each do |event|
     end #/ check to see if user has events
   end
 
-end
+#end
 
 
 private 
