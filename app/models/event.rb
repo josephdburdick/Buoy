@@ -19,7 +19,7 @@ class Event < ActiveRecord::Base
 	def maybes
   	Person.joins(:attendees).where(attendees: {is_admin: false, event_id: self.id, rsvp_status: "unsure"})
 	end
-  def maybes
+  def declines
     Person.joins(:attendees).where(attendees: {is_admin: false, event_id: self.id, rsvp_status: "declined"})
   end
 
