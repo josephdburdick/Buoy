@@ -84,10 +84,10 @@
           <ul class="list-users">
             <% @event.definites.each do |definite| %>
               <li>
-                <div class="picture bg-cover" style="background-image:url('<%= definite.person.picture_url %>');">
+                <div class="picture bg-cover" style="background-image:url('<%= definite.picture_url %>');">
                   <div class="name-block">
                     <div class="name-text">
-                      <%= definite.person.first_name %>
+                      <%= definite.first_name %>
                     </div>
                   </div>
                 </div>

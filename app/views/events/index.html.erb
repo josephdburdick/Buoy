@@ -51,7 +51,7 @@
     <% if @events.count > 0 %>
     <% @events.each do |event| %>
     <div class="event-block">
-      <% if event.admins.include?(current_user) %>
+      <% if event.admins.include?(current_user.id) %>
         <div class="admin-cert">
           <i class="fa fa-certificate"></i> Admin
         </div>
@@ -140,7 +140,7 @@
               </li>
               
                 <% if event.maybes.count > 0 %>
-                <li><%= event.maybes.count > 1 ? "#{event.maybes.count} maybes" : "1 maybe" %></li>
+                <li><%= event.maybes.count > 1 ? "#{event.maybes.count} Maybes" : "1 Maybe" %></li>
                 <% end %>
             </ul>
 
