@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.order_by(start_time)
+    @events = Event.order('start_time DESC').all
     @venues = Venue.all
     unless current_user.nil?
       @profile_picture = graph.get_picture("Me", :type => "large")
