@@ -45,6 +45,7 @@ group :production do
   gem 'rails_serve_static_assets'
 end
 gem 'devise'
+gem 'cocoon'
 gem 'figaro'
 gem 'jquery-turbolinks'
 gem 'bourbon'

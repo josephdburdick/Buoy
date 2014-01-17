@@ -19,6 +19,10 @@ class Event < ActiveRecord::Base
 	def maybes
   	Person.joins(:attendees).where(attendees: {is_admin: false, event_id: self.id, rsvp_status: "unsure"})
 	end
+  def maybes
+    Person.joins(:attendees).where(attendees: {is_admin: false, event_id: self.id, rsvp_status: "declined"})
+  end
+
 
   def sort_ascending_by_id
     self.venues.sort.reverse!
