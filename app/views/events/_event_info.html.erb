@@ -1,5 +1,6 @@
 <% content_for :page_specific_javascript do %>
   <% javascript_include_tag "custom_fb_url" %>
+  <% javascript_include_tag "tabs" %>
 <% end %>
 <div class="content">
   <h2><%= link_to @event.name, event_path(@event.id) %></h2>
@@ -30,43 +31,38 @@
     <% end %>
     <i class="fa fa-facebook-square"></i> <a href="http://facebook.com/<%= @event.fb_id %>" target="_blank">Facebook Event</a>
   </p>
-
-  <ul class="pill-container">
-    <li>
-      <% if @event.venues.count == 0 %>
-      <span class="label label-default">No Venue</span>
-      <% elsif @event.venues.count > 0 %>
-      
-        <%= @event.venues.count > 1 ? "#{@event.venues.count} Venues" : "1 Venue" %> 
-      <% end %>
-    </li>
-    <li>
-      <% if @event.admins.count > 0 %>
-        <%= @event.admins.count > 1 ? "#{@event.admins.count} Admins" : "1 Admin" %>
-      <% else %>
-        No Admins
-      <% end %> 
-    </li>
-    <li>
-      <% if @event.attendees.count > 0 %>
-        <%= @event.attendees.count > 1 ? "#{@event.attendees.count} Attendees" : "1 Attendee" %>
-      <% else %>
-        No attendees
-      <% end %>
-    </li>
-    
-      <% if @event.maybes.count > 0 %>
-      <li><%= @event.maybes.count > 1 ? "#{@event.maybes.count} maybes" : "1 maybe" %></li>
-      <% end %>
-  </ul>
   <hr>
-      <h1><%= @event.attendees.count > 1 ? "Attendees" : "Attendee" %></h1>
+      <h1>People</h1>
 
       <!-- Nav tabs -->
-      <ul class="nav nav-tabs">
-        <li><a href="#attendees" data-toggle="tab">Attendees</a></li>
-        <li><a href="#admins" data-toggle="tab">Admins</a></li>
-        <li><a href="#maybes" data-toggle="tab">Maybes</a></li>
+      <ul class="nav nav-pills">
+        <li>
+          <a href="#attendees" data-toggle="tab">
+            <% if @event.attendees.count > 0 %>
+              <%= @event.attendees.count > 1 ? "Attendees" : "Attendee" %>
+            <% else %>
+            No attendees
+            <% end %> <span class="badge"><%= @event.attendees.count %></span>
+          </a>
+        </li>
+        <li>
+          <a href="#admins" data-toggle="tab">
+            <% if @event.admins.count > 0 %>
+              <%= @event.admins.count > 1 ? "Admins" : "Admin" %>
+            <% else %>
+            No admins
+            <% end %> <span class="badge"><%= @event.admins.count %></span>
+          </a>
+        </li>
+        <li>
+          <a href="#maybes" data-toggle="tab">
+            <% if @event.maybes.count > 0 %>
+              <%= @event.maybes.count > 1 ? "Maybes" : "Maybe" %>
+            <% else %>
+            No maybes
+            <% end %> <span class="badge"><%= @event.maybes.count %></span>
+          </a>
+        </li>
       </ul>
       <!-- Tab panes -->
       <div class="tab-content">
