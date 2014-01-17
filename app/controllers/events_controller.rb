@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.order('start_time DESC').all
+    @events = Event.order('start_time ASC').all
     @venues = Venue.all
     unless current_user.nil?
       @profile_picture = graph.get_picture("Me", :type => "large")
@@ -26,10 +26,10 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event =  Event.find params[:id]
+    find_event
     @venues          = find_event.venues
     marker_image_url = ActionController::Base.helpers.asset_path("buoy-icon.png").to_s
-    @hash =            Gmaps4rails.build_markers(@venues) do |venue, marker|
+    @hash            = Gmaps4rails.build_markers(@venues) do |venue, marker|
       marker.lat venue.latitude
       marker.lng venue.longitude
       marker.picture({
@@ -49,7 +49,11 @@ class EventsController < ApplicationController
   end
 
   def create
-    hash_tag = "#" + safe_params[:hash_tag] 
+    if hash_tag.nil?
+      hash_tag = "#YoBuoy"
+    else
+      hash_tag = "#" + safe_params[:hash_tag] 
+    end
     event_response = graph.graph_call("/me/events",{
       name:         safe_params[:name],
       description:  safe_params[:description],
@@ -63,8 +67,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = Event.find params[:id]
-    
+    find_event
     start_time = safe_params[:start_time].in_time_zone
     end_time = safe_params[:end_time].in_time_zone
 
@@ -88,9 +91,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    safe_params
-    @event = Event.find params[:id]
-
+    find_event
     graph.delete_connections(safe_params[:fb_id], "event")
     @event.destroy
     redirect_to events_path, :alert => "Successfully deleted #{@event.name}."
@@ -124,7 +125,7 @@ private
   end
 
   def find_event
-    @event = Event.find params[:id]
+    @event = Event.find safe_params[:id]
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path
   end

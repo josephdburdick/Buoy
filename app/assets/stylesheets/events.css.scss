@@ -534,13 +534,13 @@ User lists
 */
 .list-users{
   margin-top  : 10px;
-  display     : inline-block;
+  display     : block;
   text-align  : center;
   padding     : 0;
   li{
     display   : inline-block;
     position  : relative;
-    margin    : 0 1% 12px;
+    margin    : 0 .5% 12px;
     text-align: center;
   }
   .circle{
@@ -554,8 +554,8 @@ User lists
       background-position : top center;
     }
   .picture{
-    width               : 100px;
-    height              : 100px;
+    width               : 140px;
+    height              : 140px;
     border-radius       : 5px;
     color               : lighten($grayColor,5%);
     text-align          : center;
