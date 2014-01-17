@@ -1,0 +1,23 @@
+<%= form_for @event do |f| %>
+  <%= f.hidden_field :fb_id %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br><br>
+
+  <%= f.label :description %><br>
+  <%= f.text_area :description%><br><br>
+
+  <%= f.label :start_time %><br>
+  <%= f.datetime_local_field :start_time, :value => Time.now.in_time_zone(Time.zone) %><br>   
+  <%= f.label :end_time %><br>
+  <%= f.datetime_local_field :end_time %><br>     
+  <%= f.label :privacy %><br><br>
+  <%= f.text_field :privacy %><br><br>
+    
+  <%= f.fields_for :venues do |builder| %>
+    <%= render "venue_fields", :f => builder %>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>
+  
+

@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   has_many :people
-  has_many :events
-  has_many :venues, 
-    :through => :events
+  # has_many :events
+  # has_many :venues, 
+  #   :through => :events
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :fb_id)).first_or_initialize.tap do |user|
