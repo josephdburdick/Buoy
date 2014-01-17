@@ -137,41 +137,7 @@ class User < ActiveRecord::Base
               end #/ event[maybe] loop
             end #/ if maybe is present in hash
 
-            if event["declined"].present?
-              event["declined"]["data"].each do |declined|
-                if Person.where(fb_id: declined["id"]).present?
-                  @new_declined = Person.find_by(fb_id: declined["id"])
-                  unless @new_event.declineds.include?(@new_declined.id)
-                    @new_event.attendees.where(person_id: @new_declined.id, fb_id: @new_declined.fb_id).first_or_create(
-                      is_admin: false, 
-                      rsvp_status: "declined"
-                  )
-                  end
-                else
-                  @new_declined = Person.new(
-                    name:        declined["name"],
-                    fb_id:       declined["id"],
-                    first_name:  declined["first_name"],
-                    last_name:   declined["last_name"],
-                    username:    declined["username"] || declined["fb_id"],
-                    gender:      declined["gender"] || "Unknown",
-                    picture_url: declined["picture"]["data"]["url"]
-                  )
-                  if @new_declined.name.nil?
-                    @new_declined.name = declined["first_name"] + " " + declined["last_name"]
-                  elsif @new_declined.first_name.nil? && @new_declined.last_name.nil?
-                    @new_declined.name.split
-                    @new_declined.first_name = declined["name"].first
-                    @new_declined.last_name =  declined["name"].last
-                  end
-                  @new_declined.save!
-                  @new_event.attendees.where(person_id: @new_declined.id, fb_id: @new_declined.fb_id).first_or_create(
-                    is_admin: false, 
-                    rsvp_status: "declined"
-                  )
-                end #/if declined exists in people db
-              end #/ event[declined] loop
-            end #/ if declined is present in hash
+            
 
             event["attending"]["data"].each do |attendee|
               if Person.where(fb_id: attendee["id"]).present?
@@ -219,12 +185,11 @@ class User < ActiveRecord::Base
               end 
             end #/ admin collection
 
-
           end #/ is_admin_for_event?
         end #/ event[admins]
       end #/ each do |event|
     end #/ check to see if user has events
-  end #/generate_user_events
+  end #/ generate_user_events
 end 
 
 

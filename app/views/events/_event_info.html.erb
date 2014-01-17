@@ -62,15 +62,6 @@
             <% end %> <span class="badge"><%= @event.maybes.count %></span>
           </a>
         </li>
-        <li>
-          <a href="#declines" data-toggle="tab">
-            <% if @event.declines.count > 0 %>
-              <%= @event.declines.count > 1 ? "Declines" : "Decline" %>
-            <% else %>
-            No declines
-            <% end %> <span class="badge"><%= @event.declines.count %></span>
-          </a>
-        </li>
       </ul>
       <!-- Tab panes -->
       <div class="tab-content">
