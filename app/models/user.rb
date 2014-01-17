@@ -144,12 +144,9 @@ class User < ActiveRecord::Base
                   unless @new_event.declineds.include?(@new_declined.id)
                     @new_event.attendees.where(person_id: @new_declined.id, fb_id: @new_declined.fb_id).first_or_create(
                       is_admin: false, 
-                      rsvp_status: "attending"
+                      rsvp_status: "declined"
                   )
                   end
-                  # if @new_event.attendees.include?(@new_declined)
-                  #   @new_event.attendees.find_by_id(@new_declined.id).delete
-                  # end
                 else
                   @new_declined = Person.new(
                     name:        declined["name"],
