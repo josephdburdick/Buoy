@@ -1,6 +1,6 @@
 <% content_for :page_specific_javascript do %>
   <% javascript_include_tag "custom_fb_url" %>
-  <% javascript_include_tag "tabs" %>
+  <% javascript_include_tag "tab" %>
 <% end %>
 <div class="content">
   <h2><%= link_to @event.name, event_path(@event.id) %></h2>
@@ -32,12 +32,10 @@
     <i class="fa fa-facebook-square"></i> <a href="http://facebook.com/<%= @event.fb_id %>" target="_blank">Facebook Event</a>
   </p>
   <hr>
-      <h1>People</h1>
-
       <!-- Nav tabs -->
       <ul class="nav nav-pills">
         <li>
-          <a href="#attendees" data-toggle="tab">
+          <a href="#attendees" data-toggle="tab" class="active">
             <% if @event.attendees.count > 0 %>
               <%= @event.attendees.count > 1 ? "Attendees" : "Attendee" %>
             <% else %>
@@ -121,8 +119,7 @@
   <% else %>
       <span class="privacy label label-danger">INVITE ONLY</span>
   <% end %>
-
-
+  <hr>
   <div class="fb-comments" data-href="http://www.yobuoy.com/events/<%= @event.id %>" data-numposts="5" data-colorscheme="light"></div>
 
 </div> <!-- /.content -->
