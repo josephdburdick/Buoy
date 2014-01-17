@@ -51,7 +51,7 @@
     <% if @events.count > 0 %>
     <% @events.each do |event| %>
     <div class="event-block">
-      <% if event.admins.to_a.include? current_user["fb_id"] %>
+      <% binding.pry %>
         <div class="admin-cert">
           <i class="fa fa-certificate"></i> Admin
         </div>
@@ -132,10 +132,10 @@
                 <% end %> 
               </li>
               <li>
-                <% if event.attendees.count > 0 %>
-                  <%= event.attendees.count > 1 ? "#{event.attendees.count} Attendees" : "1 Attendee" %>
+                <% if event.definites.count > 0 %>
+                  <%= event.definites.count > 1 ? "#{event.definites.count} Definites" : "1 Definite" %>
                 <% else %>
-                  No attendees
+                  No definites
                 <% end %>
               </li>
               

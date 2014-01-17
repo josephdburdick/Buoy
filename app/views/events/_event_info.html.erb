@@ -33,16 +33,7 @@
   </p>
   <hr>
       <!-- Nav tabs -->
-      <ul class="nav nav-pills centered">
-        <li class="active">
-          <a href="#attendees" data-toggle="tab">
-            <% if @event.definites.count > 0 %>
-              <%= @event.definites.count > 1 ? "Definites" : "Definite" %>
-            <% else %>
-            No definites
-            <% end %> <span class="badge"><%= @event.definites.count %></span>
-          </a>
-        </li>
+      <ul class="nav nav-pills nav-justified">
         <li>
           <a href="#admins" data-toggle="tab">
             <% if @event.admins.count > 0 %>
@@ -52,6 +43,16 @@
             <% end %> <span class="badge"><%= @event.admins.count %></span>
           </a>
         </li>
+        <li class="active">
+          <a href="#definites" data-toggle="tab">
+            <% if @event.definites.count > 0 %>
+              <%= @event.definites.count > 1 ? "Definites" : "Definite" %>
+            <% else %>
+            No definites
+            <% end %> <span class="badge"><%= @event.definites.count %></span>
+          </a>
+        </li>
+        
         <li>
           <a href="#maybes" data-toggle="tab">
             <% if @event.maybes.count > 0 %>
@@ -64,21 +65,6 @@
       </ul>
       <!-- Tab panes -->
       <div class="tab-content">
-        <div class="tab-pane active" id="attendees">
-          <ul class="list-users">
-            <% @event.attendees.each do |attendee| %>
-              <li>
-                <div class="picture bg-cover" style="background-image:url('<%= attendee.person.picture_url %>');">
-                  <div class="name-block">
-                    <div class="name-text">
-                      <%= attendee.person.first_name %>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            <% end %>
-          </ul>
-        </div>
         <div class="tab-pane" id="admins">
           <ul class="list-users">
           <% @event.admins.each do |admin| %>
@@ -92,6 +78,21 @@
               </div>
             </li>
           <% end %>
+          </ul>
+        </div>
+        <div class="tab-pane active" id="definites">
+          <ul class="list-users">
+            <% @event.definites.each do |definite| %>
+              <li>
+                <div class="picture bg-cover" style="background-image:url('<%= definite.person.picture_url %>');">
+                  <div class="name-block">
+                    <div class="name-text">
+                      <%= definite.person.first_name %>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            <% end %>
           </ul>
         </div>
         <div class="tab-pane" id="maybes">
@@ -109,7 +110,6 @@
           <% end %>
           </ul>
         </div>
-
       </div>
       <br>
   <% if @event.privacy == "OPEN"%>
