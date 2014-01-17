@@ -89,10 +89,10 @@
           <ul class="list-users">
           <% @event.admins.each do |admin| %>
             <li>
-              <div class="picture bg-cover" style="background-image:url('<%= admin.person.picture_url %>');">
+              <div class="picture bg-cover" style="background-image:url('<%= admin.picture_url %>');">
                 <div class="name-block">
                   <div class="name-text">
-                    <%= admin.person.first_name %>
+                    <%= admin.first_name %>
                   </div>
                 </div>
               </div>
@@ -104,10 +104,10 @@
           <ul class="list-users">
           <% @event.maybes.each do |maybe| %>
             <li>
-              <div class="picture bg-cover" style="background-image:url('<%= maybe.person.picture_url %>');">
+              <div class="picture bg-cover" style="background-image:url('<%= maybe.picture_url %>');">
                 <div class="name-block">
                   <div class="name-text">
-                    <%= maybe.person.first_name %>
+                    <%= maybe.first_name %>
                   </div>
                 </div>
               </div>
