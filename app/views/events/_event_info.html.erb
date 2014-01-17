@@ -99,7 +99,7 @@
           <ul class="list-users">
           <% @event.maybes.each do |maybe| %>
             <li>
-              <a data-target="#iframe-modal" data-toggle="modal" href="http://m.facebook.com/<%= maybe.fb_id %>" class="picture bg-cover" style="background-image:url('<%= maybe.picture_url %>');">
+              <a data-target="#iframe-modal" href="http://m.facebook.com/<%= maybe.fb_id %>" class="picture bg-cover" style="background-image:url('<%= maybe.picture_url %>');">
                 <div class="name-block">
                   <div class="name-text">
                     <%= maybe.first_name %>
@@ -123,10 +123,10 @@
   <div class="fb-comments" data-href="http://www.yobuoy.com/events/<%= @event.id %>" data-numposts="5" data-colorscheme="light"></div>
 
   <script type="text/javascript">
-  $('a[data-modal]').on('click',function(e){
+  $('[data-modal]').on('click',function(e){
     var thisHref = $(this).attr('href');
     console.log(thisHref);
-    $('#iframe-modal').on('show.bs.modal', function () {
+    $('#iframe-modal').on('shown.bs.modal', function () {
       $('iframe').attr('src', thisHref);
     });
     $('#iframe-modal').modal('show')
