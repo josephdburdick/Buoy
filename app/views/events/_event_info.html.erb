@@ -99,7 +99,7 @@
           <ul class="list-users">
           <% @event.maybes.each do |maybe| %>
             <li>
-              <a href="http://m.facebook.com/<%= maybe.fb_id %>" class="picture bg-cover" style="background-image:url('<%= maybe.picture_url %>');">
+              <a data-toggle="modal" href="http://m.facebook.com/<%= maybe.fb_id %>" data-target="#fb-modal" class="picture bg-cover" style="background-image:url('<%= maybe.picture_url %>');">
                 <div class="name-block">
                   <div class="name-text">
                     <%= maybe.first_name %>
@@ -137,16 +137,3 @@
   <hr>
   <div class="fb-comments" data-href="http://www.yobuoy.com/events/<%= @event.id %>" data-numposts="5" data-colorscheme="light"></div>
 
-
-
-  
-<script>
-  $('.list-users a').on('click',function(e){
-    var profileUrl = $(this).attr('href');
-    $('#fb-modal').on('show', function () {
-      $('#fb-modal iframe').attr("src", profileUrl);
-    });
-    $('#fb-modal').modal({show:true})
-    e.preventDefault();
-  });
-</script>
