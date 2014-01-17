@@ -188,7 +188,7 @@ class User < ActiveRecord::Base
         end #/ event[admins]
       end #/ each do |event|
     end #/ check to see if user has events
-  end
+  end #/generate_user_events
 end 
 
 
