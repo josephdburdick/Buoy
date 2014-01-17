@@ -125,7 +125,7 @@ private
   end
 
   def find_event
-    @event = Event.find safe_params[:id]
+    @event = Event.find params[:id]
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path
   end
