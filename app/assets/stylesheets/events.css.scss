@@ -260,11 +260,7 @@ textarea  { min-height: 130px;}
 
 
 #face-mask{
-  position        : fixed;
-  top             : 0;
-  right           : 0;
-  left            : 0;
-  bottom          : 0;
+  @include position(fixed, 0px 0px 0px 0px);
   display         : none;
   z-index         : 0;
   text-decoration : none;
@@ -272,9 +268,9 @@ textarea  { min-height: 130px;}
 }
 /* This parent can be any width and height */
 .vertBlock {
-  text-align : center;
-  width      : 100%;
-  min-height     : 350px;
+  text-align      : center;
+  width           : 100%;
+  min-height      : 350px;
 }
  
 /* The ghost, nudged to maintain perfect centering */
@@ -318,16 +314,12 @@ textarea  { min-height: 130px;}
   text-align     : center;
 }
 .full-screen{
+  @include position(absolute, 0px 0px 0px 0px);
   display        : inline-block;
   text-align     : center;
   vertical-align : middle;
-  position       : absolute;
   color          : $grayColor;
   z-index        : 20;
-  top            : 0;
-  left           : 0;
-  right          : 0;
-  bottom         : 0;
 }
 .block{
   display  : block;
@@ -368,8 +360,7 @@ textarea  { min-height: 130px;}
   }
 }
 .notice,.alert{
-  position      : fixed;
-  top           : $pageOffset;
+  @include position(fixed, $pageOffset 0 0 0);
   width         : 100%;
   padding       : 20px;
   font-size     : 150%;
@@ -401,10 +392,7 @@ nav#main-navigation{
   max-width       : $sideNavWidthMax; 
   z-index         : 1;
   background      : desaturate(darken($brand-primary, 20%), 5%);
-  position        : fixed;
-  left            : 0;
-  top             : 0;
-  bottom          : 0;
+  @include position(fixed, 0px 0 0px 0px);
   color           : $grayColor;
   padding         : 20px 0;
   overflow        : auto;
@@ -504,11 +492,8 @@ nav#main-navigation{
 header#main{
 	height     : $pageOffset;
 	background : rgba(255,255,255,.90);
-	position   : fixed;
 	z-index    : 999;
-	top        : 0;
-	left: 0;
-	right      : 0;
+  @include position(fixed, 0px 0px 0 0px);
   overflow   : hidden;
   line-height: $pageOffset - 10;
 
@@ -527,9 +512,9 @@ header#main{
     font-size    : 110%;
     font-weight  : 400;
     line-height  : $pageOffset - 5; 
-    position: absolute;
-    width: 100%;
-    padding: 0 40px;
+    position     : absolute;
+    width        : 100%;
+    padding      : 0 40px;
   }
   a.block{ @include transition(all, $defaultSpeed);}
   i{
@@ -588,9 +573,10 @@ User lists
       border-bottom-right-radius: 5px;
       border-bottom-left-radius: 5px;
       .name-text{
-        position: relative;
-        margin:5px;
-        color: #fff;
+        position   : relative;
+        margin     : 5px;
+        color      : #fff;
+        text-shadow: 0 1px 1px #000;
       }
     }
   }
@@ -610,11 +596,7 @@ User lists
 	height     : $defaultMapHeight;
 
 	#map{
-		position : absolute;
-		top      : 0;
-		left     : 0;
-		right    : 0;
-		bottom   : 0;
+    @include position(absolute, 0px 0px 0px 0px);
 	}
 }
 .image-map{
@@ -649,23 +631,23 @@ User lists
 }
 #pac-input:focus {
   border-color: $brand-primary;
-  margin-left: -1px;
+  margin-left : -1px;
 }
 
 .pac-container {
-  font-family: Roboto;
+  font-family : Roboto;
 }
 
 #type-selector {
-  color: #fff;
+  color           : #fff;
   background-color: $brand-primary;
-  padding: 5px 11px 0px 11px;
+  padding         : 5px 11px 0px 11px;
 }
 
 #type-selector label {
-  font-family: Roboto;
-  font-size: 13px;
-  font-weight: 300;
+  font-family     : Roboto;
+  font-size       : 13px;
+  font-weight     : 300;
 }
 
 
@@ -721,9 +703,7 @@ User lists
     }    
   }
   .privacy.label{
-    position: absolute;
-    top:10px;
-    right:10px;
+    @include position(absolute, 10px 0px 0 0);
   }
   .pill-container{
     font-size  : 80%;
@@ -732,13 +712,11 @@ User lists
   .event-map + .event-info{
     /* Arrow for info boxes */
     &:after, &:before {
-      bottom: 100%;
-      left: 50%;
+      @include position(absolute, 0 0 100% 50%);
       border: solid transparent;
       content: " ";
       height: 0;
       width: 0;
-      position: absolute;
       pointer-events: none;
     }
     &:after {
@@ -775,16 +753,14 @@ User lists
     background: url('buoy-pieces-water-back.png');
     width     : 144px;
     height    : 23px;
-    position  : absolute;
+    @include position(absolute, 0 0 92px -10px);
     z-index   : 1;
-    bottom    : 92px;
-    left      : -10px;
   }
   .buoy-logo{
     background: url('buoy-pieces-buoy.png');
     width     : 108px;
     height    : 155px;
-    position  : absolute;
+    @include position(absolute, 0 0 0 16px);
     z-index   : 2;
     left      : 16px;
     
@@ -797,10 +773,8 @@ User lists
     background: url('buoy-pieces-water-front.png');
     width     : 144px;
     height    : 102px;
-    position  : absolute;
+    @include position(absolute, 0 0 0px -10px);
     z-index   : 3; 
-    bottom    : 0;
-    left      : -10px;
   }
 
 }
