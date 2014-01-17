@@ -107,6 +107,7 @@ class User < ActiveRecord::Base
                       is_admin: false, 
                       rsvp_status: "attending"
                   )
+                  end
                   # if @new_event.attendees.include?(@new_maybe)
                   #   @new_event.attendees.find_by_id(@new_maybe.id).delete
                   # end
@@ -132,9 +133,9 @@ class User < ActiveRecord::Base
                     is_admin: false, 
                     rsvp_status: "unsure"
                   )
-                end
-              end
-            end
+                end #/if maybe exists in people db
+              end #/ event[maybe] loop
+            end #/ if maye is present in hash
 
             event["attending"]["data"].each do |attendee|
               if Person.where(fb_id: attendee["id"]).present?
@@ -167,7 +168,7 @@ class User < ActiveRecord::Base
                   is_admin: false, 
                   rsvp_status: "attending"
                 )
-              end
+              end #/ if attendee exists in people db
             end #/ attendee collection
 
             event["admins"]["data"].each do |admin|                            
@@ -181,13 +182,15 @@ class User < ActiveRecord::Base
                 end 
               end 
             end #/ admin collection
+
+
           end #/ is_admin_for_event?
         end #/ event[admins]
       end #/ each do |event|
     end #/ check to see if user has events
   end
 end 
-end
+
 
 
 
