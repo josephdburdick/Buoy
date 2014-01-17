@@ -125,10 +125,11 @@
   <script type="text/javascript">
   $('a[data-modal]').on('click',function(e){
     var thisHref = $(this).attr('href');
+    console.log(thisHref);
     $('#iframe-modal').on('show.bs.modal', function () {
       $('iframe').attr('src', thisHref);
     });
-    $('#iframe-modal').modal(show)
+    $('#iframe-modal').modal('show')
     e.preventDefault();
   });
   </script>
