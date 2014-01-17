@@ -69,7 +69,7 @@
           <ul class="list-users">
           <% @event.admins.each do |admin| %>
             <li>
-              <a href="http://m.facebook.com/<%= admin.fb_id %>" class="picture bg-cover" style="background-image:url('<%= admin.picture_url %>');">
+              <a data-target="#fb-modal" data-toggle="modal" href="http://m.facebook.com/<%= admin.fb_id %>" class="picture bg-cover" style="background-image:url('<%= admin.picture_url %>');">
                 <div class="name-block">
                   <div class="name-text">
                     <%= admin.first_name %>
@@ -84,7 +84,7 @@
           <ul class="list-users">
             <% @event.definites.each do |definite| %>
               <li>
-                <a href="http://m.facebook.com/<%= definite.fb_id %>" class="picture bg-cover" style="background-image:url('<%= definite.picture_url %>');">
+                <a data-target="#fb-modal" data-toggle="modal" href="http://m.facebook.com/<%= definite.fb_id %>" class="picture bg-cover" style="background-image:url('<%= definite.picture_url %>');">
                   <div class="name-block">
                     <div class="name-text">
                       <%= definite.first_name %>
@@ -99,28 +99,13 @@
           <ul class="list-users">
           <% @event.maybes.each do |maybe| %>
             <li>
-              <a data-toggle="modal" href="http://m.facebook.com/<%= maybe.fb_id %>" data-target="#fb-modal" class="picture bg-cover" style="background-image:url('<%= maybe.picture_url %>');">
+              <a data-target="#fb-modal" data-toggle="modal" href="http://m.facebook.com/<%= maybe.fb_id %>" class="picture bg-cover" style="background-image:url('<%= maybe.picture_url %>');">
                 <div class="name-block">
                   <div class="name-text">
                     <%= maybe.first_name %>
                   </div>
                 </div>
               </a>
-            </li>
-          <% end %>
-          </ul>
-        </div>
-        <div class="tab-pane" id="declines">
-          <ul class="list-users">
-          <% @event.declines.each do |decline| %>
-            <li>
-              <div class="picture bg-cover" style="background-image:url('<%= decline.picture_url %>');">
-                <div class="name-block">
-                  <div class="name-text">
-                    <%= decline.first_name %>
-                  </div>
-                </div>
-              </div>
             </li>
           <% end %>
           </ul>
