@@ -124,10 +124,10 @@
 
   <script type="text/javascript">
   $('a[data-target]="#iframe-modal"]').on('click',function(e){
-    $('#iframe-modal').modal(show)
     $('#iframe-modal').on('show.bs.modal', function () {
-      $('iframe').attr('href', thisHref);
+      $('iframe').attr('src', thisHref);
     });
+    $('#iframe-modal').modal(show)
     e.preventDefault();
   });
   </script>
