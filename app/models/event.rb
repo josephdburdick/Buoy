@@ -8,14 +8,16 @@ class Event < ActiveRecord::Base
   
 
   def owner
-    Person.joins(:people).where(events: {owner_id: self.id})
+    Person.joins(:event).where(people: {owner_id: self.id})
   end
 	def admins
-  		Person.joins(:attendees).where(attendees: {is_admin: true, event_id: self.id})
+  	Person.joins(:attendees).where(attendees: {is_admin: true, event_id: self.id})
 	end
-
+  def definites
+    Person.joins(:attendees).where(attendees: {is_admin: false, event_id: self.id, rsvp_status: "attending"})  
+  end
 	def maybes
-  		Person.joins(:attendees).where(attendees: {is_admin: false, event_id: self.id, rsvp_status: "unsure"})
+  	Person.joins(:attendees).where(attendees: {is_admin: false, event_id: self.id, rsvp_status: "unsure"})
 	end
 
   def sort_ascending_by_id

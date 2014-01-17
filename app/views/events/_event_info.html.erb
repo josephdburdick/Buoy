@@ -33,14 +33,14 @@
   </p>
   <hr>
       <!-- Nav tabs -->
-      <ul class="nav nav-pills">
-        <li>
-          <a href="#attendees" data-toggle="tab" class="active">
-            <% if @event.attendees.count > 0 %>
-              <%= @event.attendees.count > 1 ? "Attendees" : "Attendee" %>
+      <ul class="nav nav-pills centered">
+        <li class="active">
+          <a href="#attendees" data-toggle="tab">
+            <% if @event.definites.count > 0 %>
+              <%= @event.definites.count > 1 ? "Definites" : "Definite" %>
             <% else %>
-            No attendees
-            <% end %> <span class="badge"><%= @event.attendees.count %></span>
+            No definites
+            <% end %> <span class="badge"><%= @event.definites.count %></span>
           </a>
         </li>
         <li>

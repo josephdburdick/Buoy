@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   has_many :people
+  has_many :events
+  has_many :venues, 
+    :through => :events
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :fb_id)).first_or_initialize.tap do |user|
@@ -103,8 +106,10 @@ class User < ActiveRecord::Base
                     @new_event.attendees.where(person_id: @new_maybe.id, fb_id: @new_maybe.fb_id).first_or_create(
                       is_admin: false, 
                       rsvp_status: "attending"
-                    )
-                  end
+                  )
+                  # if @new_event.attendees.include?(@new_maybe)
+                  #   @new_event.attendees.find_by_id(@new_maybe.id).delete
+                  # end
                 else
                   @new_maybe = Person.new(
                     name:        maybe["name"],
