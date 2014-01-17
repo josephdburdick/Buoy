@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   has_many :people
-  # has_many :events
-  # has_many :venues, 
-  #   :through => :events
+  has_many :events
+  has_many :venues, 
+    :through => :events
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :fb_id)).first_or_initialize.tap do |user|
@@ -59,11 +59,9 @@ class User < ActiveRecord::Base
           @new_person.first_name = friend["name"].first
           @new_person.last_name = friend["name"].last
           @new_person.save!
-        end #/if new_person.name is nil?
-      end #/friend do block
-    end # unless you have no friends
-
-
+        end
+      end
+    end
     unless fb_call["events"].nil?
       events = fb_call["events"]["data"]
       events.each do |event|
@@ -96,8 +94,8 @@ class User < ActiveRecord::Base
                 )
                 unless @new_event.venues.include?(@new_venue)
                   @new_event.venues << @new_venue
-                end # unless this venue already exists for this event
-              end # Test to see if the venue already exists in the database from FB
+                end
+              end
             end # Check to see if there are any venues for this event.
 
             if event["maybe"].present?
@@ -109,7 +107,6 @@ class User < ActiveRecord::Base
                       is_admin: false, 
                       rsvp_status: "attending"
                   )
-                  end
                   # if @new_event.attendees.include?(@new_maybe)
                   #   @new_event.attendees.find_by_id(@new_maybe.id).delete
                   # end
@@ -135,9 +132,9 @@ class User < ActiveRecord::Base
                     is_admin: false, 
                     rsvp_status: "unsure"
                   )
-                end #/if maybe exists in db
-              end #event["maybe"] loop
-            end # if any maybes are present for this event
+                end
+              end
+            end
 
             event["attending"]["data"].each do |attendee|
               if Person.where(fb_id: attendee["id"]).present?
@@ -164,13 +161,13 @@ class User < ActiveRecord::Base
                   @new_attendee.name.split
                   @new_attendee.first_name = attendee["name"].first
                   @new_attendee.last_name  =  attendee["name"].last
-                end #/end if new_attendee.name.nil?
+                end
                 @new_attendee.save!
                 @new_event.attendees.where(person_id: @new_attendee.id, fb_id: @new_attendee.fb_id).first_or_create(
                   is_admin: false, 
                   rsvp_status: "attending"
                 )
-              end #/ end if person with attendee's id is present
+              end
             end #/ attendee collection
 
             event["admins"]["data"].each do |admin|                            
@@ -181,18 +178,16 @@ class User < ActiveRecord::Base
                     is_admin: true, 
                     rsvp_status: "attending"
                   )
-                end #/unless the new event's admins already include this admin
-              end  #/if this person exists in the database
+                end 
+              end 
             end #/ admin collection
-
-
           end #/ is_admin_for_event?
         end #/ event[admins]
       end #/ each do |event|
     end #/ check to see if user has events
   end
 
-#end
+end
 
 
 private 
