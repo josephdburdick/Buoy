@@ -56,7 +56,7 @@
 <div class="row">
   <br><br>
   <div class="col-md-6">
-    <%= button_to "Delete", @event, :method => :delete, data: {confirm: "Are you sure you want to delete this event?"}, class: "btn btn-lg btn-danger btn-block" %>
+    <!-- <= button_to "Delete", @event, :method => :delete, data: {confirm: "Are you sure you want to delete this event?"}, class: "btn btn-lg btn-danger btn-block" %> -->
   </div>
   <div class="col-md-6">
     <%= f.submit 'Update Event', class: "btn btn-lg btn-primary btn-block" %>
@@ -66,15 +66,25 @@
 <% end %>
   
 <script>
+
   $('#hash_tag').keyup(function(){
-    var splitJoin = $(this).val().split(' ').join('').replace(/\s{2,}/g," "); //get rid of spaces.
-    splitJoin = splitJoin.replace(/[^\w\s]/gi, '') //get rid of special characters.
-    $(this).val(splitJoin)
+    var splitJoin = $(this).val().split(' ').join('').replace(/\s{2,}/g," ");
+    splitJoin = splitJoin.replace(/[^\w\s]/gi, '');
+    $(this).val(splitJoin);
   });
 
-  if ($('#hash_tag').val() == "" && $('#event-name').val() == ""){
+  if ($('#event-name').val() !== ""){
+    console.log("Event-name isn't empty but Hashtag is.");
     var eventName = $('#event-name').val();
-    $('#hash_tag').val(eventName).trigger('keyup');
+    $('#hash_tag').val(eventName);
+
+    $('#event-name').keyup(function(){
+      var splitJoin = $(this).val().split(' ').join('').replace(/\s{2,}/g," "); 
+      splitJoin = splitJoin.replace(/[^\w\s]/gi, '');
+      $("#hash_tag").val(splitJoin).trigger('keyup');
+
+    });
+
   }
   $('#hash_tag').val(eventName).trigger('keyup');
   

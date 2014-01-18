@@ -109,7 +109,7 @@
               <% unless event.name.nil? %>
               <i class="fa fa-bullhorn"></i>
               <a href="http://facebook.com/hashtag/<%= to_hashtag(event.name) %>">
-                <%= to_hashtag(event.name) %>
+                #<%= to_hashtag(event.name) %>
               </a><br>
               <% end %>
               <i class="fa fa-facebook-square"></i> <a href="http://facebook.com/<%= event.fb_id %>" target="_blank">Facebook Event</a>
