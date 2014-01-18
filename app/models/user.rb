@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
     :through => :events
 
   def self.from_omniauth(auth)
-    where(auth.slice(:provider, :fb_id)).first_or_initialize.tap do |user|
+    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider          = auth.provider
-      user.fb_id             = auth.uid
+      user.uid               = auth.uid
       user.name              = auth.info.name
       user.first_name        = auth["info"]["first_name"] unless auth["info"].blank?
       user.last_name         = auth["info"]["last_name"] unless auth["info"].blank?
@@ -70,12 +70,12 @@ class User < ActiveRecord::Base
           if true #(is_admin_for_event? event_admins)
 
             event_hash = Event.formatted_facebook_event(event)
-            # if Event.where(fb_id: event["id"]).present?
-            #   new_event_id = Event.where(fb_id: event['id']).update_all(event_hash)
-            #   @new_event   = Event.find(new_event_id)
-            # else
-              @new_event   = Event.where(fb_id: event['id']).first_or_create(Event.formatted_facebook_event(event))
-            # end
+            if Event.where(fb_id: event["id"]).present?
+              Event.where(fb_id: event['id']).update_all(event_hash)
+              @new_event = Event.find_by_fb_id(event["id"])
+            else
+              @new_event = Event.where(fb_id: event['id']).first_or_create(Event.formatted_facebook_event(event))
+            end
             unless event["venue"].nil?
               if Venue.where(fb_id: event["venue"]["id"]).present?
                 @new_venue = Venue.find_by(fb_id: event["venue"]["id"])

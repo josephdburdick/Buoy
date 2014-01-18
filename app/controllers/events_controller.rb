@@ -2,9 +2,10 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.order('start_time ASC').all
-    @venues = Venue.all
+    @venues = Venue.
     unless current_user.nil?
       @profile_picture = graph.get_picture("Me", :type => "large")
+      @user   = current_user
     end
   end
 
@@ -67,11 +68,12 @@ class EventsController < ApplicationController
   end
 
   def update
-    find_event
+    @event = Event.find params[:id]
+    binding.pry
     start_time = safe_params[:start_time].in_time_zone
     end_time = safe_params[:end_time].in_time_zone
 
-    if @event.update(safe_params)
+    if @event.save! #update(safe_params)
       redirect_to @event, notice: 'Event successfully updated.'
       graph.put_connections(safe_params[:fb_id], "event", {
         name:        safe_params[:name], 
@@ -91,15 +93,13 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    find_event
+    @event = Event.find params[:id]
     graph.delete_connections(safe_params[:fb_id], "event")
     @event.destroy
     redirect_to events_path, :alert => "Successfully deleted #{@event.name}."
   end
   
  
-
-private
   
   def graph
     @graph ||= Koala::Facebook::API.new(current_user.oauth_token)
