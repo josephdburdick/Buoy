@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  has_many :users
 	has_and_belongs_to_many :venues 
 	has_many :attendees, 
     :dependent => :destroy

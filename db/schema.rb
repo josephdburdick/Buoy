@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140115163844) do
+ActiveRecord::Schema.define(version: 20140118024611) do
 
   create_table "attendees", force: true do |t|
     t.boolean  "is_admin",    default: false
@@ -44,6 +44,13 @@ ActiveRecord::Schema.define(version: 20140115163844) do
     t.integer "venue_id"
   end
 
+  create_table "friends", force: true do |t|
+    t.integer  "person_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "people", force: true do |t|
     t.string   "fb_id"
     t.string   "name"
@@ -58,8 +65,16 @@ ActiveRecord::Schema.define(version: 20140115163844) do
     t.datetime "updated_at"
   end
 
+  create_table "people_users", id: false, force: true do |t|
+    t.integer "user_id",   null: false
+    t.integer "person_id", null: false
+  end
+
+  add_index "people_users", ["person_id", "user_id"], name: "index_people_users_on_person_id_and_user_id"
+  add_index "people_users", ["user_id", "person_id"], name: "index_people_users_on_user_id_and_person_id"
+
   create_table "users", force: true do |t|
-    t.string   "fb_id"
+    t.string   "uid"
     t.string   "provider"
     t.string   "name"
     t.text     "oauth_token"

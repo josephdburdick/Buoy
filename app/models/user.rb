@@ -1,25 +1,23 @@
 class User < ActiveRecord::Base
   has_many :people
+  has_many :people, 
+    :through => :friends 
+
   has_many :events
   has_many :venues, 
     :through => :events
 
   def self.from_omniauth(auth)
-    where(auth.slice(:provider, :fb_id)).first_or_initialize.tap do |user|
+    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider          = auth.provider
-      user.fb_id             = auth.uid
+      user.uid               = auth.uid
       user.name              = auth.info.name
       user.first_name        = auth["info"]["first_name"] unless auth["info"].blank?
       user.last_name         = auth["info"]["last_name"] unless auth["info"].blank?
-      user.picture_url       = auth.info.image
+      user.picture_url       = auth.info.image.sub("square", "large")
       user.email             = auth.info.email
       user.oauth_token       = auth.credentials.token unless auth["info"].blank?
       user.location          = auth.info.location unless auth["info"].blank?
-      #user.gender            = auth.info.gender unless auth["info"].blank?
-      #user.link              = auth.info.link unless auth["info"].blank?
-      #user.username          = auth.info.username unless auth["info"].blank?
-      #user.age_range         = auth.info.age_range unless auth["info"].blank?
-      #user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
     end
   end
@@ -60,6 +58,8 @@ class User < ActiveRecord::Base
           @new_person.last_name = friend["name"].last
           @new_person.save!
         end
+        # binding.pry
+        # self.people << @new_person
       end
     end
     unless fb_call["events"].nil?
@@ -70,12 +70,12 @@ class User < ActiveRecord::Base
           if true #(is_admin_for_event? event_admins)
 
             event_hash = Event.formatted_facebook_event(event)
-            # if Event.where(fb_id: event["id"]).present?
-            #   new_event_id = Event.where(fb_id: event['id']).update_all(event_hash)
-            #   @new_event   = Event.find(new_event_id)
-            # else
-              @new_event   = Event.where(fb_id: event['id']).first_or_create(Event.formatted_facebook_event(event))
-            # end
+            if Event.where(fb_id: event["id"]).present?
+              Event.where(fb_id: event['id']).update_all(event_hash)
+              @new_event = Event.find_by_fb_id(event["id"])
+            else
+              @new_event = Event.where(fb_id: event['id']).first_or_create(Event.formatted_facebook_event(event))
+            end
             unless event["venue"].nil?
               if Venue.where(fb_id: event["venue"]["id"]).present?
                 @new_venue = Venue.find_by(fb_id: event["venue"]["id"])
@@ -96,6 +96,7 @@ class User < ActiveRecord::Base
                   @new_event.venues << @new_venue
                 end
               end
+              #self.events << @new_event
             end # Check to see if there are any venues for this event.
 
             if event["maybe"].present?
@@ -108,9 +109,6 @@ class User < ActiveRecord::Base
                       rsvp_status: "attending"
                   )
                   end
-                  # if @new_event.attendees.include?(@new_maybe)
-                  #   @new_event.attendees.find_by_id(@new_maybe.id).delete
-                  # end
                 else
                   @new_maybe = Person.new(
                     name:        maybe["name"],
