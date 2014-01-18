@@ -676,8 +676,9 @@ User lists
       min-height : $defaultMapHeight!important;
     }
   }
+  .event-no-map { height:150px; }
   .event-no-map .tall-block, .tall-block.large{
-    line-height : 290px;
+    line-height : 140px;
     text-align  : center;
     font-size   : 200%;
     font-weight : 100;

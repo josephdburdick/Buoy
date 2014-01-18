@@ -15,11 +15,6 @@ class User < ActiveRecord::Base
       user.email             = auth.info.email
       user.oauth_token       = auth.credentials.token unless auth["info"].blank?
       user.location          = auth.info.location unless auth["info"].blank?
-      #user.gender            = auth.info.gender unless auth["info"].blank?
-      #user.link              = auth.info.link unless auth["info"].blank?
-      #user.username          = auth.info.username unless auth["info"].blank?
-      #user.age_range         = auth.info.age_range unless auth["info"].blank?
-      #user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
     end
   end

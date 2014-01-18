@@ -1,15 +1,5 @@
-<% 
-  # if @event.start_time.nil? 
-  #   @event.start_time = 1.days.from_now
-  # end
-  # if @event.end_time.nil? 
-  #   @event.end_time = 2.days.from_now
-  # end
-%>
 
 <%= form_for @event, :html => {:role => 'form'} do |f| %>
-
-
 
 <div class="row">
   <div class="col-md-6">
@@ -34,10 +24,10 @@
     </div>
   </div>
   <div class="col-md-3">
-    <div class="form-group">
+   <!--  <div class="form-group">
       <%= f.label :end_time, id: "end_time" %><br>
       <%= f.datetime_local_field :end_time, class: "form-control small" %> 
-    </div>
+    </div> -->
   </div>
 
   <div class="col-md-3">
@@ -71,18 +61,27 @@
 <% end %>
   
 <script>
+
   $('#hash_tag').keyup(function(){
-    var splitJoin = $(this).val().split(' ').join('').replace(/\s{2,}/g," ");;
-    $(this).val(splitJoin)
+    var splitJoin = $(this).val().split(' ').join('').replace(/\s{2,}/g," ");
+    splitJoin = splitJoin.replace(/[^\w\s]/gi, '');
+    $(this).val(splitJoin);
   });
-  if ($('#hash_tag').val() == ""){
+
+  if ($('#event-name').val() == ""){
+    console.log("Event-name isn't empty but Hashtag is.");
     var eventName = $('#event-name').val();
-    $('#hash_tag').val(eventName).trigger('keyup');
-  }
-  if ($('#hash_tag').val() == "" && $('#event-name').val() == ""){
-    var eventName = $('#event-name').val();
-    $('#hash_tag').val(eventName).trigger('keyup');
+    $('#hash_tag').val(eventName);
+
+    $('#event-name').keyup(function(){
+      var splitJoin = $(this).val().split(' ').join('').replace(/\s{2,}/g," "); 
+      splitJoin = splitJoin.replace(/[^\w\s]/gi, '');
+      $("#hash_tag").val(splitJoin).trigger('keyup');
+
+    });
+
   }
   $('#hash_tag').val(eventName).trigger('keyup');
   
 </script>
+
