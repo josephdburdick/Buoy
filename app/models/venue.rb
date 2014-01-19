@@ -9,9 +9,6 @@ class Venue < ActiveRecord::Base
     [street,city,state,country,zip].compact.join(", ")
   end
 
-  # geocoded_by :address
-  # after_validation :geocode #, :if => :address_changed?
-
   def self.formatted_facebook_venue(venue)
     fb_hash = {
       latitude:     venue["latitude"],

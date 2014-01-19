@@ -47,7 +47,8 @@ class User < ActiveRecord::Base
           last_name:      friend["last_name"],
           username:       friend["username"] || friend["fb_id"],
           gender:         friend["gender"] || "Unknown",
-          picture_url:    friend["picture"]["data"]["url"]
+          picture_url:    friend["picture"]["data"]["url"],
+          is_friend:      true
         )
         if @new_person.name.nil?
           @new_person.name = friend["first_name"] + " " + friend["last_name"]
@@ -59,7 +60,7 @@ class User < ActiveRecord::Base
           @new_person.save!
         end
         # binding.pry
-        # self.people << @new_person
+        self.people << @new_person
       end
     end
     unless fb_call["events"].nil?

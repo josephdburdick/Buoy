@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    find_event
+    @event = Event.find params[:id]
     @venues          = find_event.venues
     @users           = User.all
     marker_image_url = ActionController::Base.helpers.asset_path("buoy-icon.png").to_s
@@ -27,7 +27,7 @@ class EventsController < ApplicationController
   end
 
   def edit
-    find_event
+    @event           = Event.find params[:id]
     @venues          = find_event.venues
     marker_image_url = ActionController::Base.helpers.asset_path("buoy-icon.png").to_s
     @hash            = Gmaps4rails.build_markers(@venues) do |venue, marker|
@@ -64,11 +64,12 @@ class EventsController < ApplicationController
 
     @event = Event.create safe_params
     @event.admins << current_user
+    @event.save!
     redirect_to @event, notice: 'Event successfully created.'
   end
 
   def update
-    find_event
+    @event = Event.find params[:id]
 
     start_time = safe_params[:start_time].in_time_zone
     end_time = safe_params[:end_time].in_time_zone

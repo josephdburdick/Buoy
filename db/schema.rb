@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140118024611) do
+ActiveRecord::Schema.define(version: 20140119200058) do
 
   create_table "attendees", force: true do |t|
     t.boolean  "is_admin",    default: false

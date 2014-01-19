@@ -9,6 +9,8 @@ class Person < ActiveRecord::Base
   end
 
   def friends
-    Person.joins(:friends)
+    Person.where(is_friend:true)
   end
+
+
 end
