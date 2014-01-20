@@ -806,7 +806,7 @@ User lists
 
 @media (max-width: $screen-xs-min) { 
   .container{
-    padding: $pageOffset+5, 5px, 5px, 5px;
+    padding: $pageOffset+10 5px 5px 5px;
   }
   header#main.menu-open{
     h1, .pull-right{

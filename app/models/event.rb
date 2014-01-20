@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  has_many :users
+  belongs_to :user
 	has_and_belongs_to_many :venues 
 	has_many :attendees, 
     :dependent => :destroy
@@ -29,7 +29,7 @@ class Event < ActiveRecord::Base
     self.venues.sort.reverse!
   end
 
-  def self.formatted_facebook_event(event)
+  def self.formatted_facebook_event(event, user)
     fb_hash = {
       fb_id:          event["id"],
       name:           event["name"],
@@ -49,6 +49,8 @@ class Event < ActiveRecord::Base
         cover_url_y: event["cover"]["offset_y"]
       }) 
     end
+
+    fb_hash['user_id'] = user.id
 
     fb_hash
   end

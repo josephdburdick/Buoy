@@ -1,12 +1,14 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.order('start_time ASC').all
+    @events = Event.order('start_time ASC')
 
     unless current_user.nil?
+      @events = @events.where(user_id: current_user.id)
       @profile_picture = graph.get_picture("Me", :type => "large")
-      #@user   = current_user
     end
+
+    @events = @events.all
   end
 
   def show

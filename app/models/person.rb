@@ -1,6 +1,5 @@
 class Person < ActiveRecord::Base
-  has_many :users, 
-    :through => :friends
+  belongs_to :user
 	has_many :attendees
 	has_many :events, through: :attendees
 
@@ -11,6 +10,5 @@ class Person < ActiveRecord::Base
   def friends
     Person.where(is_friend:true)
   end
-
 
 end

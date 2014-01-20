@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140119200058) do
+ActiveRecord::Schema.define(version: 20140119213438) do
 
   create_table "attendees", force: true do |t|
     t.boolean  "is_admin",    default: false
@@ -37,7 +37,10 @@ ActiveRecord::Schema.define(version: 20140119200058) do
     t.string   "hash_tag"
     t.string   "cover_url"
     t.integer  "cover_url_y"
+    t.integer  "user_id"
   end
+
+  add_index "events", ["user_id"], name: "index_events_on_user_id"
 
   create_table "events_venues", force: true do |t|
     t.integer "event_id"
@@ -63,6 +66,7 @@ ActiveRecord::Schema.define(version: 20140119200058) do
     t.string   "username"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_friend"
   end
 
   create_table "people_users", id: false, force: true do |t|
