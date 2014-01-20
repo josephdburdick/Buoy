@@ -31,12 +31,12 @@ class User < ActiveRecord::Base
     nil
   end
 
-  def api_call
+  def init_api_call
     query = "Me?fields=picture.type(large),location,events.fields(name,location,end_time,privacy,updated_time,description,rsvp_status,venue,start_time,id,ticket_uri,picture.type(large),cover,owner,admins.fields(picture.type(large),name,location),attending.fields(picture.type(large),name,rsvp_status,first_name,last_name,email,location),maybe.fields(rsvp_status,picture.type(large),name,first_name,last_name,email,age_range,location)),friends.fields(cover,id,gender,location,username,email,first_name,last_name,picture.type(large))"
   end
 
-  def fb_call
-    fb_call = facebook { |fb| fb.graph_call(api_call)}
+  def fb_call(string)
+    fb_call = facebook { |fb| fb.graph_call(string)}
   end
 
   def generate_user
@@ -44,9 +44,22 @@ class User < ActiveRecord::Base
     generate_user_events
   end
 
+
+
+
+
+
+
+
+
+
+
+
+
   def generate_user_friends
-    unless fb_call["friends"].nil?
-      friends = fb_call["friends"]["data"]
+    fb_api_call = fb_call(init_api_call)["friends"]["data"]
+    unless fb_api_call.nil?
+      friends = fb_api_call
       friends.each do |friend|
         @new_person = Person.where(fb_id: friend["id"]).first_or_create(
           name:           friend["name"],
@@ -66,14 +79,15 @@ class User < ActiveRecord::Base
           @new_person.last_name = friend["name"].last
           @new_person.save!
         end
+        new_person_events = @new_person
       end
     end
   end
 
   def generate_user_events
-    
-    unless fb_call["events"].nil?
-      events = fb_call["events"]["data"]
+    fb_api_call = fb_call(init_api_call)["events"]["data"]
+    unless fb_api_call.nil?
+      events = fb_api_call
       events.each do |event|
         if event["admins"]
           event_admins = event["admins"]["data"]
@@ -87,20 +101,16 @@ class User < ActiveRecord::Base
               @new_event = Event.where(fb_id: event['id']).first_or_create(event_hash)
             end
 
-
             generate_event_venues(event["venue"])
             generate_event_maybes(event["maybe"])
             generate_event_admins(event["admin"])
             generate_event_attendees(event["attending"]["data"])
-
       
           end #/ is_admin_for_event?
         end #/ event[admins]
       end #/ each do |event|
     end #/ check to see if user has events
   end #/ generate_user_events
-#end 
-
 
 
 

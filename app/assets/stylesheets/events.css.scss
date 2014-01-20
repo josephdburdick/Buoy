@@ -43,9 +43,10 @@ $grayColor           : #ccc;
 $linkColor           : #FF69d6;
 $ArrowThickness      : 30px;
 
-$brand-primary       : #018279;
-$brand-warning       : #eeaf2a;
+$brand-primary       : #4896ac;
+$brand-warning       : #D5984A;
 $brand-danger        : #c1272c;
+$brand-success       : #018279;
 
 /*—————————————— 
 
@@ -554,7 +555,7 @@ User lists
       background-position : top center;
     }
   .picture{
-    width               : 140px;
+    width               : 110px;
     height              : 140px;
     border-radius       : 5px;
     color               : lighten($grayColor,5%);

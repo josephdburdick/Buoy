@@ -4,8 +4,9 @@ class EventsController < ApplicationController
     @events = Event.order('start_time ASC')
 
     unless current_user.nil?
-      @events = @events.where(user_id: current_user.id)
+      @events = @events.where(user_id: current_user.id) || @events.where(privacy: "OPEN")
       @profile_picture = graph.get_picture("Me", :type => "large")
+      
     end
 
     @events = @events.all
