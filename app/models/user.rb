@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
         if event["admins"]
           event_admins = event["admins"]["data"]
           if true #(is_admin_for_event? event_admins)
-
+            
             event_hash = Event.formatted_facebook_event(event, self)
             if Event.where(fb_id: event["id"]).present?
               Event.where(fb_id: event['id']).update_all(event_hash)

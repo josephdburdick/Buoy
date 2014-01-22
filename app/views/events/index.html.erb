@@ -165,14 +165,34 @@
         <% end %><!-- /if Events exist -->
       </div> <!-- /.container -->
     </div> <!-- /#view-->
-
+    <script type="text/javascript">
+    $(function(){
+      if ($('.event-map').length >0){
+        var i = 0;
+        $('.event-map').each(function(i){
+          $(this).find('#map').attr('id', ('map-'+i));
+          $(this).find('#map-container').attr('id', ('map-container-'+i));
+          var coords = $(this).find('.coords').val();
+          i++;
+          console.log(coords)      
+        }); // End of each
+      } // .event-map > 0 ?  
+    })
+    
+    </script>
+      
     <% else %> <!-- Not logged in -->
       <div id="login">
         <div class="vertBlock">
           <div class="centered">
               <div class="buoy-animated">
                 <div class="water-back"></div>
-                <div class="buoy-logo"><div class="buoy-flag"></div></div>
+                <div class="buoy-logo">
+                  <div class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                  </div>
+                </div>
                 <div class="water-front"></div>
               </div>
             <h1>Buoy</h1>
@@ -188,20 +208,9 @@
 
 
   <script type="text/javascript">
-    $(document).ready(function(){
-      if ($('.event-map').length >0){
-        var i = 0;
-        $('.event-map').each(function(i){
-          $(this).find('#map').attr('id', ('map-'+i));
-          $(this).find('#map-container').attr('id', ('map-container-'+i));
-          var coords = $(this).find('.coords').val();
-          i++;
-          console.log(coords)      
-        }); // End of each
-      } // .event-map > 0 ?
-
+    $(function(){
       $('#sign_in').on('click',function(){
-        console.log("Sign in clicked.")
+        $('.buoy-logo .spinner').addClass('active');
       });
-    }); // doc.ready
+    });
   </script>

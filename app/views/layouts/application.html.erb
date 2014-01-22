@@ -2,7 +2,7 @@
 <html>
 <%= favicon_link_tag %>
 <head>
-	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1, user-scalable=0">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1, user-scalable=0">
   <title>Buoy</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag "application", 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500', :media => "all" %>
@@ -29,7 +29,13 @@
     <%= yield %>
 
 <a href="javascript:faceMask();" id="face-mask"></a>
-
+<div class="bg-loader">
+  <div class="buoy-logo-fixed"></div>
+  <div class="spinner">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+</div>
 
 
 <script type="text/javascript"> 
@@ -65,13 +71,17 @@
   {
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
-    LATITUDE = lat;
-    LONGITUDE = lng;
-    //debugger;
-    var latlon =  lat + "," + lng;
+    var latlon = lat+","+lng;
+    
+    $.cookie('latitude', lat);
+    $.cookie('longitude', lng);
+
+    // LATITUDE = lat;
+    // LONGITUDE = lng;
+
     if ($('#user-lat,#user-lng').length>0){
-      $('#user-lat').text(LATITUDE);
-      $('#user-lng').text(LONGITUDE);
+      $('#user-lat').text($.cookie('latitude'));
+      $('#user-lng').text($.cookie('longitude'));
     }
 
     var img_url="http://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=14&size=400x300&sensor=false&markers=" + latlon;
@@ -82,18 +92,16 @@
         $('body').attr('data-lat', lat);
         $('body').attr('data-lng', lng);
         $('body').attr('data-address', results[0].formatted_address);
+        $.cookie('street-address', results[0].formatted_address)
     });
     return latlon;
   }
-    
-
   /* 
 
   Interface
 
   */
-  function toggleNav()
-  {
+  function toggleNav(){
     $("#view, body, #face-mask, header#main, #main-navigation").toggleClass("menu-open");
   }
 
