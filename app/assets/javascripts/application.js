@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require tooltip
 //= require turbolinks
+//= require jquery.cookie
 //= require underscore
 //= require gmaps/google
