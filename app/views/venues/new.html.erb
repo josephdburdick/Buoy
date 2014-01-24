@@ -27,7 +27,7 @@
    
       <div class="event-info">
       	<div class="content">
-      		<a href="https://graph.facebook.com/search?q=coffee&type=place&center=37.76,-122.427&distance=1000&access_token=<%=current_user.oauth_token %>">Search near me</a>	
+      		<a href="https://graph.facebook.com/search?q=bar&type=place&center=<%= cookies[:latlng] %>&distance=1000&access_token=<%=current_user.oauth_token %>">Search near me</a>	
       		<form role="form" action="#" onsubmit="showAddress(this.address.value); return false">
 					<div class="row">
 					  <div class="col-md-12">

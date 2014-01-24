@@ -270,7 +270,9 @@ h3        {
             line-height     : 1.4;
             font-family     : "Roboto";
           }
-p         { font-size       : 120%;}
+p         { font-weight     : 400;
+            font-size       : 110%;
+          }
 a         { text-decoration : none!important; }
 input, 
 button, 
@@ -471,11 +473,6 @@ nav#main-navigation{
   overflow-x      : hidden;
   -webkit-overflow-scrolling: touch;
   
-  .content{
-/*    //opacity: 0;
-    @include transform( scale(0.9) );
-    @include transition(all $defaultSpeed + .25);*/
-  }
   &.menu-open{
     .content{
       /*//opacity: 1;

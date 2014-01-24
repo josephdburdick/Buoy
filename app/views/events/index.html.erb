@@ -51,13 +51,9 @@
     <% if @events.count > 0 %>
     <% @events.each do |event| %>
     <div class="event-block">
-      <% if event.admins.include?(current_user.id) %>
-        <div class="admin-cert">
-          <i class="fa fa-certificate"></i> Admin
-        </div>
-      <% end %>
-      <% if event.venues.count > 0 %>
-      <% 
+      
+      <% if event.venues.count > 0 
+    
       venues = event.venues
       @hash = venues.map do |v|
         {lat: v.latitude, lng: v.longitude}
@@ -87,6 +83,12 @@
         <% end %>
         <div class="event-info">
           <div class="content">
+            <% event.admins.each do |admin| 
+              if admin[:name].eql?(current_user[:name]) %>
+                <span class="label label-default">Admin</span> 
+              <% end %>
+            <% end %>
+            
             <h2><%= link_to event.name, event_path(event.id) %></h2>
             <p>
             <% if event.start_time.future? %>
@@ -96,23 +98,21 @@
               <i class="fa fa-clock-o"></i> Ends: <%= distance_of_time_in_words(event.end_time, Time.now) %>
               <% end %>
             <% else %>
-              <i class="fa fa-clock-o"></i> <%= distance_of_time_in_words(event.start_time, Time.now) %> ago<br>
+              <i class="fa fa-clock-o fa-fw"></i> <%= distance_of_time_in_words(event.start_time, Time.now) %> ago<br>
               <% unless event.end_time.nil? %>
-              <i class="fa fa-calendar"></i> Ended: <%= distance_of_time_in_words(event.end_time, Time.now) %>
+              <i class="fa fa-calendar fa-fw"></i> Ended: <%= distance_of_time_in_words(event.end_time, Time.now) %>
               <% end %>
             <% end %> 
             </p>
-            
-            <h3><%= event.description %></h3>
-            <p>&nbsp;</p>
+         
             <p>
               <% unless event.name.nil? %>
-              <i class="fa fa-bullhorn"></i>
+              <i class="fa fa-bullhorn fa-fw"></i>
               <a href="http://facebook.com/hashtag/<%= to_hashtag(event.name) %>">
                 #<%= to_hashtag(event.name) %>
               </a><br>
               <% end %>
-              <i class="fa fa-facebook-square"></i> <a href="http://facebook.com/<%= event.fb_id %>" target="_blank">Facebook Event</a>
+              <i class="fa fa-facebook-square fa-fw"></i> <a href="http://facebook.com/<%= event.fb_id %>" target="_blank">Facebook Event</a>
             </p>
 
             <ul class="pill-container">

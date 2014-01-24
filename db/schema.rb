@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140119213438) do
+ActiveRecord::Schema.define(version: 20140123001010) do
 
   create_table "attendees", force: true do |t|
     t.boolean  "is_admin",    default: false
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20140119213438) do
     t.string   "username"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_friend"
+    t.boolean  "is_friend",   default: false
   end
 
   create_table "people_users", id: false, force: true do |t|

@@ -6,7 +6,7 @@ class EventsController < ApplicationController
     unless current_user.nil?
       @events = @events.where(user_id: current_user.id) || @events.where(privacy: "OPEN")
       @profile_picture = graph.get_picture("Me", :type => "large")
-      
+      @current_user_person = Person.where(name: current_user["name"])
     end
 
     @events = @events.all
