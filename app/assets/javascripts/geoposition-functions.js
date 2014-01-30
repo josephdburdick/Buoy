@@ -73,7 +73,6 @@
 
         marker = new google.maps.Marker({
           icon: image, position: latLng, map: map, draggable: true, animation: google.maps.Animation.DROP
-
         });
 
         $("#venue_lat").val(lat)

@@ -40,6 +40,7 @@ class VenuesController < ApplicationController
   end
 
   def save_update_venue
+    
     if @venue.save
       flash[:notice] = "Buoy saved successfully"
       redirect_to @venue
