@@ -54,16 +54,15 @@
             <% end %> <span class="badge"><%= @event.definites.count %></span>
           </a>
         </li>
-        
-        <li>
-          <a href="#maybes" data-toggle="tab">
-            <% if @event.maybes.count > 0 %>
+        <% if @event.maybes.count > 0 %>
+          <li>
+            <a href="#maybes" data-toggle="tab">
+              
               <%= @event.maybes.count > 1 ? "Maybes" : "Maybe" %>
-            <% else %>
-            No maybes
-            <% end %> <span class="badge"><%= @event.maybes.count %></span>
-          </a>
-        </li>
+              
+            </a>
+          </li>
+        <% end %>
       </ul>
       <!-- Tab panes -->
       <div class="tab-content">

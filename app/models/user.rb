@@ -91,22 +91,20 @@ class User < ActiveRecord::Base
       events.each do |event|
         if event["admins"]
           event_admins = event["admins"]["data"]
-          if true #(is_admin_for_event? event_admins)
-            
-            event_hash = Event.formatted_facebook_event(event, self)
-            if Event.where(fb_id: event["id"]).present?
-              Event.where(fb_id: event['id']).update_all(event_hash)
-              @new_event = Event.find_by_fb_id(event["id"])
-            else
-              @new_event = Event.where(fb_id: event['id']).first_or_create(event_hash)
-            end
+          
+          event_hash = Event.formatted_facebook_event(event, self)
+          if Event.where(fb_id: event["id"]).present?
+            Event.where(fb_id: event['id']).update_all(event_hash)
+            @new_event = Event.find_by_fb_id(event["id"])
+          else
+            @new_event = Event.where(fb_id: event['id']).first_or_create(event_hash)
+          end
 
-            generate_event_venues(event["venue"])
-            generate_event_maybes(event["maybe"])
-            generate_event_admins(event["admin"])
-            generate_event_attendees(event["attending"]["data"])
-      
-          end #/ is_admin_for_event?
+          generate_event_venues(event["venue"])
+          generate_event_maybes(event["maybe"])
+          generate_event_admins(event["admins"])
+          generate_event_attendees(event["attending"]["data"])
+          
         end #/ event[admins]
       end #/ each do |event|
     end #/ check to see if user has events
@@ -147,16 +145,16 @@ class User < ActiveRecord::Base
     end # Check to see if there are any venues for this event.
   end
 
-  def generate_event_maybes(maybe)
-    if maybe.present?
-      maybe["data"].each do |maybe|
+  def generate_event_maybes(maybes)
+    if maybes.present?
+      maybes["data"].each do |maybe|
         if Person.where(fb_id: maybe["id"]).present?
           @new_maybe = Person.find_by(fb_id: maybe["id"])
           unless @new_event.maybes.include?(@new_maybe.id)
             @new_event.attendees.where(person_id: @new_maybe.id, fb_id: @new_maybe.fb_id).first_or_create(
               is_admin: false, 
-              rsvp_status: "attending"
-          )
+              rsvp_status: "unsure"
+            )
           end
         else
           @new_maybe = Person.new(
@@ -173,7 +171,7 @@ class User < ActiveRecord::Base
           elsif @new_maybe.first_name.nil? && @new_maybe.last_name.nil?
             @new_maybe.name.split
             @new_maybe.first_name = maybe["name"].first
-            @new_maybe.last_name =  maybe["name"].last
+            @new_maybe.last_name  = maybe["name"].last
           end
           @new_maybe.save!
           @new_event.attendees.where(person_id: @new_maybe.id, fb_id: @new_maybe.fb_id).first_or_create(
@@ -181,8 +179,8 @@ class User < ActiveRecord::Base
             rsvp_status: "unsure"
           )
         end #/if maybe exists in people db
-      end #/ event[maybe] loop
-    end #/ if maybe is present in hash
+      end #/ event[maybes] loop
+    end #/ if maybes is present in hash
   end
 
   def generate_event_admins(admin)
