@@ -206,14 +206,14 @@ LOADER
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: $brand-warning;
+  background-color: #ddd; //$brand-warning;
   opacity: 0.45;
   position: absolute;
   top: 0;
   left: 0;
   
-  -webkit-animation: bounce 2.0s infinite ease-in-out;
-  animation: bounce 2.0s infinite ease-in-out;
+  -webkit-animation: bounce 2.5s infinite ease-in-out;
+  animation: bounce 2.5s infinite ease-in-out;
 }
 
 .double-bounce2 {

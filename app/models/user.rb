@@ -78,8 +78,7 @@ class User < ActiveRecord::Base
     unless fb_api_call.nil?
       events = fb_api_call
       events.each do |event|
-        if event["admins"]
-          event_admins = event["admins"]["data"]
+
           event_hash = Event.formatted_facebook_event(event, self)
 
           if Event.where(fb_id: event["id"]).present?
@@ -94,7 +93,6 @@ class User < ActiveRecord::Base
           generate_event_admins(event["admins"])
           generate_event_attendees(event["attending"]["data"])
           
-        end #/ event[admins]
       end #/ each do |event|
     end #/ check to see if user has events
   end #/ generate_user_events
