@@ -94,11 +94,9 @@
             <h2><%= link_to event.name, event_path(event.id) %></h2>
             <p>
             <% if event.start_time.future? %>
-              <i class="fa fa-clock-o"></i> Starts in: <%= distance_of_time_in_words(event.start_time, Time.now) %><br>
-              <i class="fa fa-calendar"></i> <%= event.start_time.to_formatted_s(:short) %><br>
-              <% unless event.end_time.nil? %>
-              <i class="fa fa-clock-o"></i> Ends: <%= distance_of_time_in_words(event.end_time, Time.now) %>
-              <% end %>
+              <i class="fa fa-clock-o fa-fw"></i> Starts in: <%= distance_of_time_in_words(event.start_time, Time.now) %><br>
+              <i class="fa fa-calendar fa-fw"></i> <%= event.start_time.to_formatted_s(:short) %><br>
+              
             <% else %>
               <i class="fa fa-clock-o fa-fw"></i> <%= distance_of_time_in_words(event.start_time, Time.now) %> ago<br>
               <% unless event.end_time.nil? %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140123001010) do
+ActiveRecord::Schema.define(version: 20140203144124) do
 
   create_table "attendees", force: true do |t|
     t.boolean  "is_admin",    default: false
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20140123001010) do
     t.datetime "end_time"
     t.string   "privacy"
     t.datetime "updated_time"
-    t.integer  "owner_id"
+    t.string   "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "hash_tag"

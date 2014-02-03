@@ -548,7 +548,7 @@ nav#main-navigation{
   position   : relative; /* Experimental */
   width      : 100%; /* Experimental */
   //uheight     : 100%; /* Experimental */
-  background : $viewBackgroundColor;
+  background : $viewBackgroundColor url('http://joeylabs.com/sites/buoy/assets/images/subtle_dots.png') fixed;
   z-index    : 2;
   margin-left: 0;
   overflow   : auto;
