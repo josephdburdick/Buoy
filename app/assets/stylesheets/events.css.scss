@@ -32,7 +32,7 @@ $pageOffset          : 60px;
 $sideNavWidth        : 85%;
 $sideNavWidthMax     : 35%;
 
-$defaultSpeed        : 0s;
+$defaultSpeed        : .25s;
 $defaultMargin       : 50px;
 $defaultradius       : 10px;
 $defaultBorderStroke : 1px;
@@ -275,7 +275,7 @@ h3        {
             font-family     : "Roboto";
           }
 p         { font-weight     : 400;
-            font-size       : 110%;
+            //font-size       : 100%;
           }
 a         { text-decoration : none!important; }
 input, 
@@ -409,12 +409,20 @@ textarea  { min-height: 130px;}
   width    : 100%;
 }
 .bg-cover{
-  background-repeat       : no-repeat;
-  background-position     : center center;
-  -webkit-background-size : cover;
-  -moz-background-size    : cover;
-  -o-background-size      : cover;
-  background-size         : cover;
+  background-repeat       : no-repeat !important;
+  background-position     : center center !important;
+  -webkit-background-size : cover !important;
+  -moz-background-size    : cover !important;
+  -o-background-size      : cover !important;
+  background-size         : cover !important;
+}
+.bg-contain{
+  background-repeat       : no-repeat !important;
+  background-position     : center center !important;
+  -webkit-background-size : contain;
+  -moz-background-size    : contain;
+  -o-background-size      : contain;
+  background-size         : contain;
 }
 .pill-container{
   margin        : 20px 0 0 0;
@@ -751,7 +759,6 @@ User lists
       min-height : $defaultMapHeight!important;
     }
   }
-  .event-no-map { height:150px; }
   .event-no-map .tall-block, .tall-block.large{
     line-height : 140px;
     text-align  : center;
@@ -765,7 +772,7 @@ User lists
   
   .event-info{
     position   : relative;
-    margin     : 0px auto 0; /* -80px auto 0*/
+    margin     : -10px auto 0; /* -80px auto 0*/
     background : #fff;
     z-index    : 10;
     box-shadow : 0 -5px 8px rgba(0,0,0,.1);

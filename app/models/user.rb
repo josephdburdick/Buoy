@@ -45,17 +45,6 @@ class User < ActiveRecord::Base
   end
 
 
-
-
-
-
-
-
-
-
-
-
-
   def generate_user_friends
     fb_api_call = fb_call(init_api_call)["friends"]["data"]
     unless fb_api_call.nil?
@@ -91,8 +80,8 @@ class User < ActiveRecord::Base
       events.each do |event|
         if event["admins"]
           event_admins = event["admins"]["data"]
-          
           event_hash = Event.formatted_facebook_event(event, self)
+
           if Event.where(fb_id: event["id"]).present?
             Event.where(fb_id: event['id']).update_all(event_hash)
             @new_event = Event.find_by_fb_id(event["id"])
@@ -194,7 +183,29 @@ class User < ActiveRecord::Base
               rsvp_status: "attending"
             )
           end 
-        end 
+        else
+          @new_admin = Person.new(
+            name:        admin["name"],
+            fb_id:       admin["id"],
+            first_name:  admin["first_name"],
+            last_name:   admin["last_name"],
+            username:    admin["username"] || admin["fb_id"],
+            gender:      admin["gender"] || "Unknown",
+            picture_url: admin["picture"]["data"]["url"]
+          )
+          if @new_admin.name.nil?
+            @new_admin.name = admin["first_name"] + " " + admin["last_name"]
+          elsif @new_admin.first_name.nil? && @new_admin.last_name.nil?
+            @new_admin.name.split
+            @new_admin.first_name = admin["name"].first
+            @new_admin.last_name  = admin["name"].last
+          end
+          @new_admin.save!
+          @new_event.attendees.where(person_id: @new_admin.id, fb_id: @new_admin.fb_id).first_or_create(
+            is_admin: false, 
+            rsvp_status: "unsure"
+          )
+        end
       end
     end #/ admin collection
   end

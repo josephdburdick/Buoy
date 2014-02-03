@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.where('start_time > ?', Time.now).order('start_time ASC')
+    @events = Event.where("start_time > ? OR privacy = ? AND start_time > ?", Time.now, 'OPEN', Time.now).order('start_time ASC')
 
     unless current_user.nil?
       @events = @events.where(user_id: current_user.id) || @events.where(privacy: "OPEN")

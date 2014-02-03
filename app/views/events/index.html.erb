@@ -4,7 +4,7 @@
 <nav id="main-navigation">
   <div class="content">
     <h1 class="text-center">
-    <img src="<%= ActionController::Base.helpers.asset_path("buoy-logo.png").to_s %>" class="logo" width="75%">
+    <img src="<%= ActionController::Base.helpers.asset_path("buoy-logo.png").to_s %>" class="logo" width="50" alt="Buoy logo">
     Buoy</h1>
   <ul class="menu">
     <li id="profile-picture" 
@@ -77,11 +77,13 @@
         <% else %>
         <div class="event-no-map">
           <%= link_to event_path(event.id), :class => "tall-block" do %>
-            <i class="fa fa-map-marker"></i> Create a Buoy...          
+            <!-- <i class="fa fa-map-marker"></i> Create a Buoy...   -->
+            <div class="tall-block" style="background:url('<%= event.cover_url %>') center center no-repeat">  
+            </div>      
           <% end %>
         </div>
         <% end %>
-        <div class="event-info">
+        <div class="event-info" >
           <div class="content">
             <% event.admins.each do |admin| 
               if admin[:name].eql?(current_user[:name]) %>
