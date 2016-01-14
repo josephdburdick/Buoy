@@ -1,4 +1,4 @@
-# The Meteor Chef - Base
+# Buoy
 A starting point for Meteor apps.
 
 <table>
