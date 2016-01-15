@@ -6,6 +6,7 @@ Meteor.users.allow({
 
 let Schema = {};
 
+// This is the schema for the basic user collection
 Schema.User = new SimpleSchema({
   "userId": {
     type: String,
@@ -35,6 +36,7 @@ Schema.User = new SimpleSchema({
   "emails.$.verified": {
     type: Boolean
   },
+  // Here we add the schema for the additional informations
   "profile": {
     type: Schema.UserProfile,
     optional: true
@@ -57,6 +59,7 @@ Schema.User = new SimpleSchema({
   }
 });
 
+// Additional user informations
 Schema.UserProfile = {
   "firstName": {
     type: String,
