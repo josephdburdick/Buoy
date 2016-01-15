@@ -58,7 +58,7 @@ let EventsSchema = new SimpleSchema({
   	optional: false
   },
   eventChannel: {
-    type: ChannelsSchema,
+    type: Object,
     optional: false
   },
   "location_id": {
