@@ -30,8 +30,37 @@ let FriendsSchema = new SimpleSchema({
     }
 	},
 	"friends.items": {
-		type: [String]
-	}
+		type: [Object]
+	},
+	"friends.items.$": {
+		type: Object
+	},
+	"friends.items.name": {
+		type: String
+	},
+	"friends.items._id": {
+		type: String
+	},
+	"createdAt": {
+    type: Date,
+    label: "Date created",
+    optional: true,
+    autoValue: function () {
+      if ( this.isInsert ) {
+        return new Date();
+      }
+    }
+  },
+	"updatedAt": {
+    type: Date,
+    label: "Date created",
+    optional: true,
+    autoValue: function () {
+      if ( this.isInsert ) {
+        return new Date();
+      }
+    }
+  }
 });
 
 Friends.attachSchema( FriendsSchema );

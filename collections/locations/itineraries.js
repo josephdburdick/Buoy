@@ -50,6 +50,26 @@ let ItinerariesSchema = new SimpleSchema({
   },
   "locations.items": {
     type: [String]
+  },
+	"createdAt": {
+    type: Date,
+    label: "Date created",
+    optional: true,
+    autoValue: function () {
+      if ( this.isInsert ) {
+        return new Date();
+      }
+    }
+  },
+	"updatedAt": {
+    type: Date,
+    label: "Date created",
+    optional: true,
+    autoValue: function () {
+      if ( this.isInsert ) {
+        return new Date();
+      }
+    }
   }
 });
 

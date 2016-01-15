@@ -28,8 +28,37 @@ let FollowersSchema = new SimpleSchema({
     }
 	},
 	"followers.items": {
-		type: [String]
-	}
+		type: [Object]
+	},
+	"followers.items.$": {
+		type: Object
+	},
+	"followers.items.name": {
+		type: String
+	},
+	"followers.items._id": {
+		type: String
+	},
+	"createdAt": {
+    type: Date,
+    label: "Date created",
+    optional: true,
+    autoValue: function () {
+      if ( this.isInsert ) {
+        return new Date();
+      }
+    }
+  },
+	"updatedAt": {
+    type: Date,
+    label: "Date created",
+    optional: true,
+    autoValue: function () {
+      if ( this.isInsert ) {
+        return new Date();
+      }
+    }
+  }
 });
 
 Followers.attachSchema( FollowersSchema );

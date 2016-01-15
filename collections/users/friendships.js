@@ -25,7 +25,27 @@ let FriendshipsSchema = new SimpleSchema({
 	},
 	"userIds.$": {
 		optional: false
-	}
+	},
+	"createdAt": {
+    type: Date,
+    label: "Date created",
+    optional: true,
+    autoValue: function () {
+      if ( this.isInsert ) {
+        return new Date();
+      }
+    }
+  },
+	"updatedAt": {
+    type: Date,
+    label: "Date created",
+    optional: true,
+    autoValue: function () {
+      if ( this.isInsert ) {
+        return new Date();
+      }
+    }
+  }
 });
 
 Friendships.attachSchema( FriendshipsSchema );

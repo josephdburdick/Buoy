@@ -1,25 +1,30 @@
-Locations = new Meteor.Collection( 'locations' );
+locationComments = new Meteor.Collection( 'locationMessages' );
 
-Locations.allow({
+locationComments.allow({
   insert: () => false,
   update: () => false,
   remove: () => false
 });
 
-Locations.deny({
+locationComments.deny({
   insert: () => true,
   update: () => true,
   remove: () => true
 });
 
-let LocationsSchema = new SimpleSchema({
-  "ownerId": {
-    type: String,
-    label: "The ID of the owner of this document."
-  },
-	"markerId": {
+let locationCommentsSchema = new SimpleSchema({
+	"locationId": {
 		type: String
 	},
+  "senderId": {
+    type: String
+  },
+	"channelId": {
+    type: String
+  },
+	"messageId": {
+    type: String
+  },
 	"createdAt": {
     type: Date,
     label: "Date created",
@@ -30,9 +35,9 @@ let LocationsSchema = new SimpleSchema({
       }
     }
   },
-	"updatedAt": {
+  "updatedAt": {
     type: Date,
-    label: "Date created",
+    label: "Date updated",
     optional: true,
     autoValue: function () {
       if ( this.isInsert ) {
@@ -42,4 +47,4 @@ let LocationsSchema = new SimpleSchema({
   }
 });
 
-Locations.attachSchema( LocationsSchema );
+locationComments.attachSchema( locationCommentsSchema );

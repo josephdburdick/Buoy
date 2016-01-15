@@ -4,6 +4,6 @@ Template.dashboard.onCreated( () => {
 
 Template.dashboard.helpers({
 	itineraries(){
-		return Itineraries.find().fetch();
+		return Itineraries.find();
 	}
 });

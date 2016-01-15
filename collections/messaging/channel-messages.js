@@ -22,7 +22,7 @@ let ChannelMessagesSchema = new SimpleSchema({
 	"messageId": {
     type: String
   },
-	"created": {
+	"createdAt": {
     type: Date,
     label: "Date created",
     optional: true,
@@ -32,7 +32,7 @@ let ChannelMessagesSchema = new SimpleSchema({
       }
     }
   },
-  "updated": {
+  "updatedAt": {
     type: Date,
     label: "Date updated",
     optional: true,

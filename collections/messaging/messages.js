@@ -13,6 +13,10 @@ Messages.deny({
 });
 
 let MessagesSchema = new SimpleSchema({
+	"channelId": {
+		type: String,
+		optional: false
+	},
 	"senderId": {
     type: String,
 		optional: false
@@ -21,7 +25,7 @@ let MessagesSchema = new SimpleSchema({
 		type: String,
 		optional: false
 	},
-	"created": {
+	"createdAt": {
     type: Date,
     label: "Date created",
     optional: true,
@@ -31,7 +35,7 @@ let MessagesSchema = new SimpleSchema({
       }
     }
   },
-  "updated": {
+  "updatedAt": {
     type: Date,
     label: "Date updated",
     optional: true,

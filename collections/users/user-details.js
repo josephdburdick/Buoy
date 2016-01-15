@@ -1,4 +1,4 @@
-UserDetails = new Meteor.Collection( 'UserDetails' );
+UserDetails = new Meteor.Collection( 'userDetails' );
 
 UserDetails.allow({
   insert: () => false,
@@ -45,7 +45,27 @@ let UserDetailsSchema = new SimpleSchema({
 	},
 	"preferences": {
 		type: Object
-	}
+	},
+	"createdAt": {
+    type: Date,
+    label: "Date created",
+    optional: true,
+    autoValue: function () {
+      if ( this.isInsert ) {
+        return new Date();
+      }
+    }
+  },
+	"updatedAt": {
+    type: Date,
+    label: "Date created",
+    optional: true,
+    autoValue: function () {
+      if ( this.isInsert ) {
+        return new Date();
+      }
+    }
+  }
 });
 
 UserDetails.attachSchema( UserDetailsSchema );

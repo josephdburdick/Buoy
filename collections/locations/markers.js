@@ -39,9 +39,9 @@ let MarkersSchema = new SimpleSchema( {
     decimal: true,
     label: "Marker coordinate"
   },
-  "created": {
+	"createdAt": {
     type: Date,
-    label: "Date created Marker in System",
+    label: "Date created",
     optional: true,
     autoValue: function () {
       if ( this.isInsert ) {
@@ -49,7 +49,7 @@ let MarkersSchema = new SimpleSchema( {
       }
     }
   },
-  "updated": {
+  "updatedAt": {
     type: Date,
     label: "Date updated Marker in System",
     optional: true,

@@ -49,7 +49,27 @@ let ChannelsSchema = new SimpleSchema({
 	"participants.items.$.name": {
 		type: String,
 		optional: false
-	}
+	},
+	"createdAt": {
+    type: Date,
+    label: "Date created",
+    optional: true,
+    autoValue: function () {
+      if ( this.isInsert ) {
+        return new Date();
+      }
+    }
+  },
+	"updatedAt": {
+    type: Date,
+    label: "Date created",
+    optional: true,
+    autoValue: function () {
+      if ( this.isInsert ) {
+        return new Date();
+      }
+    }
+  }
 });
 
 Channels.attachSchema( ChannelsSchema );
