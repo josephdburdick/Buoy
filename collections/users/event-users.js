@@ -1,12 +1,12 @@
-Messages = new Meteor.Collection( 'messages' );
+EventUsers = new Meteor.Collection( 'eventUsers' );
 
-Messages.allow({
+EventUsers.allow({
   insert: () => false,
   update: () => false,
   remove: () => false
 });
 
-Messages.deny({
+EventUsers.deny({
   insert: () => true,
   update: () => true,
   remove: () => true
@@ -14,17 +14,27 @@ Messages.deny({
 
 let Schema = Schema || {};
 
-Schema.Messages = new SimpleSchema({
-	channelId: {
-		type: String,
-		optional: false
-	},
-	ownerId: {
+Schema.EventUsers = new SimpleSchema({
+  eventId: {
     type: String
   },
-	body: {
-		type: String,
-		optional: false
+	users: {
+		type: Object
+	},
+	"users.items": {
+		type: [Object]
+	},
+	"users.items.$": {
+		type: Object
+	},
+	"users.items._id": {
+		type: String
+	},
+	"users.items.username": {
+		type: String
+	},
+	"users.items.rsvpStatus":{
+		type: String
 	},
 	createdAt: {
     type: Date,
@@ -50,4 +60,4 @@ Schema.Messages = new SimpleSchema({
   }
 });
 
-Messages.attachSchema( Schema.Messages );
+EventUsers.attachSchema( Schema.EventUsers );

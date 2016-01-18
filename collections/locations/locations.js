@@ -12,34 +12,38 @@ Locations.deny({
   remove: () => true
 });
 
-let LocationsSchema = new SimpleSchema({
-  "ownerId": {
+let Schema = Schema || {};
+
+Schema.Locations = new SimpleSchema({
+  ownerId: {
     type: String,
     label: "The ID of the owner of this document."
   },
-	"markerId": {
+	markerId: {
 		type: String
 	},
-	"createdAt": {
+	createdAt: {
     type: Date,
-    label: "Date created",
-    optional: true,
-    autoValue: function () {
-      if ( this.isInsert ) {
+    autoValue: function() {
+      if (this.isInsert) {
         return new Date();
+      } else if (this.isUpsert) {
+        return {$setOnInsert: new Date()};
+      } else {
+        this.unset();  // Prevent user from supplying their own value
       }
     }
   },
-	"updatedAt": {
+  updatedAt: {
     type: Date,
-    label: "Date created",
-    optional: true,
-    autoValue: function () {
-      if ( this.isInsert ) {
+    autoValue: function() {
+      if (this.isUpdate) {
         return new Date();
       }
-    }
+    },
+    denyInsert: true,
+    optional: true
   }
 });
 
-Locations.attachSchema( LocationsSchema );
+Locations.attachSchema( Schema.Locations );

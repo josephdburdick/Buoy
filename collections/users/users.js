@@ -4,7 +4,7 @@ Meteor.users.allow({
   remove: () => allow
 });
 
-let Schema = {};
+let Schema = Schema || {};
 
 // This is the schema for the basic user collection
 Schema.User = new SimpleSchema({
@@ -44,8 +44,27 @@ Schema.User = new SimpleSchema({
   "preferences": {
     type: Object
   },
-  createdAt: {
-    type: Date
+	createdAt: {
+    type: Date,
+    autoValue: function() {
+      if (this.isInsert) {
+        return new Date();
+      } else if (this.isUpsert) {
+        return {$setOnInsert: new Date()};
+      } else {
+        this.unset();  // Prevent user from supplying their own value
+      }
+    }
+  },
+  updatedAt: {
+    type: Date,
+    autoValue: function() {
+      if (this.isUpdate) {
+        return new Date();
+      }
+    },
+    denyInsert: true,
+    optional: true
   },
   // Make sure this services field is in your schema if you're using any of the accounts packages
   services: {
@@ -56,7 +75,41 @@ Schema.User = new SimpleSchema({
   heartbeat: {
     type: Date,
     optional: true
-  }
+  },
+
+	// Friends abstraction
+	friends: {
+		type: Object
+	},
+	"friends.items": {
+		type: [Object]
+	},
+	"friends.items.$": {
+		type: Object
+	},
+	"friends.items.name": {
+		type: String
+	},
+	"friends.items._id": {
+		type: String
+	},
+
+	// Followers abstraction
+	followers: {
+		type: Object
+	},
+	"followers.items": {
+		type: [Object]
+	},
+	"followers.items.$": {
+		type: Object
+	},
+	"followers.items.name": {
+		type: String
+	},
+	"followers.items._id": {
+		type: String
+	},
 });
 
 // Additional user informations

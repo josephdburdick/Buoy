@@ -1,50 +1,60 @@
-locationComments = new Meteor.Collection( 'locationMessages' );
+LocationComments = new Meteor.Collection( 'locationMessages' );
 
-locationComments.allow({
+LocationComments.allow({
   insert: () => false,
   update: () => false,
   remove: () => false
 });
 
-locationComments.deny({
+LocationComments.deny({
   insert: () => true,
   update: () => true,
   remove: () => true
 });
 
-let locationCommentsSchema = new SimpleSchema({
-	"locationId": {
+let Schema = Schema || {};
+
+Schema.LocationComments = new SimpleSchema({
+	locationId: {
 		type: String
 	},
-  "senderId": {
+	channelId: {
     type: String
   },
-	"channelId": {
-    type: String
-  },
-	"messageId": {
-    type: String
-  },
-	"createdAt": {
+	comments: {
+		type: Array
+	},
+	"comments.$": {
+		type: Object
+	},
+	"comments.name": {
+		type: String
+	},
+	"comments._id": {
+		type: String
+	},
+	createdAt: {
     type: Date,
-    label: "Date created",
-    optional: true,
-    autoValue: function () {
-      if ( this.isInsert ) {
+    autoValue: function() {
+      if (this.isInsert) {
         return new Date();
+      } else if (this.isUpsert) {
+        return {$setOnInsert: new Date()};
+      } else {
+        this.unset();  // Prevent user from supplying their own value
       }
     }
   },
-  "updatedAt": {
+  updatedAt: {
     type: Date,
-    label: "Date updated",
-    optional: true,
-    autoValue: function () {
-      if ( this.isInsert ) {
+    autoValue: function() {
+      if (this.isUpdate) {
         return new Date();
       }
-    }
+    },
+    denyInsert: true,
+    optional: true
   }
 });
 
-locationComments.attachSchema( locationCommentsSchema );
+LocationComments.attachSchema( Schema.LocationComments );

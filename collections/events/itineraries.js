@@ -22,11 +22,16 @@ Itineraries.deny({
 //   }
 // });
 
-let ItinerariesSchema = new SimpleSchema({
+let Schema = Schema || {};
+
+Schema.Itineraries = new SimpleSchema({
   "ownerId": {
     type: String,
     label: "The ID of the owner of this document"
   },
+	"eventId": {
+		type: String
+	},
   "type": {
     type: String,
   },
@@ -48,35 +53,40 @@ let ItinerariesSchema = new SimpleSchema({
       return items.length;
     }
   },
-  "locations.items": {
-    type: [String]
-  },
-	"createdAt": {
+	"locations.items":{
+		type: Array
+	},
+	"locations.items.$":{
+		type: Object
+	},
+	"locations.items.$.name": {
+		type: String
+	},
+	"locations.items.$._id": {
+		type: String
+	},
+	createdAt: {
     type: Date,
-    label: "Date created",
-    optional: true,
-    autoValue: function () {
-      if ( this.isInsert ) {
+    autoValue: function() {
+      if (this.isInsert) {
         return new Date();
+      } else if (this.isUpsert) {
+        return {$setOnInsert: new Date()};
+      } else {
+        this.unset();  // Prevent user from supplying their own value
       }
     }
   },
-	"updatedAt": {
+  updatedAt: {
     type: Date,
-    label: "Date created",
-    optional: true,
-    autoValue: function () {
-      if ( this.isInsert ) {
+    autoValue: function() {
+      if (this.isUpdate) {
         return new Date();
       }
-    }
+    },
+    denyInsert: true,
+    optional: true
   }
 });
 
-Itineraries.attachSchema(ItinerariesSchema);
-
-if (Meteor.isServer) {
-  Itineraries._ensureIndex({
-    "coordinates": "2dsphere"
-  });
-}
+Itineraries.attachSchema(Schema.Itineraries);
