@@ -19,18 +19,12 @@ Schema.Attendees = new SimpleSchema({
     type: String
   },
 	users: {
-		type: Object
-	},
-	"users.items": {
 		type: [Object]
 	},
-	"users.items.$": {
-		type: Object
-	},
-	"users.items.name": {
+	"users.$.name": {
 		type: String
 	},
-	"users.items.userId": {
+	"users.$.userId": {
 		type: String
 	},
 	createdAt: {

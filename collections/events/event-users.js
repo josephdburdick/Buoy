@@ -19,21 +19,15 @@ Schema.EventUsers = new SimpleSchema({
     type: String
   },
 	users: {
-		type: Object
-	},
-	"users.items": {
 		type: [Object]
 	},
-	"users.items.$": {
-		type: Object
-	},
-	"users.items._id": {
+	"users.$._id": {
 		type: String
 	},
-	"users.items.username": {
+	"users.$.username": {
 		type: String
 	},
-	"users.items.rsvpStatus":{
+	"users.$.rsvpStatus":{
 		type: String
 	},
 	createdAt: {

@@ -22,11 +22,8 @@ Schema.UserMessages = new SimpleSchema({
     type: String
   },
 	messages: {
-    type: Array
+    type: [Object]
   },
-	"messages.$":{
-		type: Object
-	},
 	"messages.$.userId": {
 		type: String
 	},

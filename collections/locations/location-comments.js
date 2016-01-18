@@ -22,15 +22,12 @@ Schema.LocationComments = new SimpleSchema({
     type: String
   },
 	comments: {
-		type: Array
+		type: [Object]
 	},
-	"comments.$": {
-		type: Object
-	},
-	"comments.name": {
+	"comments.$.name": {
 		type: String
 	},
-	"comments._id": {
+	"comments.$.userId": {
 		type: String
 	},
 	createdAt: {

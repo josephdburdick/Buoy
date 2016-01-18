@@ -12,16 +12,6 @@ Itineraries.deny({
   remove: () => true
 });
 
-// Itineraries.insert({
-//   "ownerId": Meteor.userId(),
-//   "type": "Outdoors",
-//   "channelId": Meteor.userId(),
-//   "isPublic": true,
-//   "locations": {
-//     "items": ['sjdflkjlkdf', 'qweqwjelqwjel', 'qlwkejlqkwjelqkw']
-//   }
-// });
-
 let Schema = Schema || {};
 
 Schema.Itineraries = new SimpleSchema({
@@ -54,15 +44,12 @@ Schema.Itineraries = new SimpleSchema({
     }
   },
 	"locations.items":{
-		type: Array
-	},
-	"locations.items.$":{
-		type: Object
+		type: [Object]
 	},
 	"locations.items.$.name": {
 		type: String
 	},
-	"locations.items.$._id": {
+	"locations.items.$.locationId": {
 		type: String
 	},
 	createdAt: {

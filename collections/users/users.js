@@ -8,9 +8,10 @@ let Schema = Schema || {};
 
 // This is the schema for the basic user collection
 Schema.User = new SimpleSchema({
-  "userId": {
+  userId: {
     type: String,
-    label: "The ID of the owner of this document."
+    label: "The ID of the owner of this document.",
+		optional: true
   },
   username: {
     type: String,
@@ -42,7 +43,8 @@ Schema.User = new SimpleSchema({
     optional: true
   },
   "preferences": {
-    type: Object
+    type: Object,
+		optional: true
   },
 	createdAt: {
     type: Date,
@@ -79,37 +81,39 @@ Schema.User = new SimpleSchema({
 
 	// Friends abstraction
 	friends: {
-		type: Object
+		type: [Object],
+		optional: true
 	},
-	"friends.items": {
-		type: [Object]
-	},
-	"friends.items.$": {
-		type: Object
-	},
-	"friends.items.name": {
+	"friends.$.name": {
 		type: String
 	},
-	"friends.items._id": {
+	"friends.$.userId": {
 		type: String
 	},
 
 	// Followers abstraction
 	followers: {
-		type: Object
+		type: [Object],
+		optional: true
 	},
-	"followers.items": {
-		type: [Object]
-	},
-	"followers.items.$": {
-		type: Object
-	},
-	"followers.items.name": {
+	"followers.$.name": {
 		type: String
 	},
-	"followers.items._id": {
+	"followers.$.userId": {
 		type: String
 	},
+
+	// Following abstraction
+	following: {
+		type: [Object],
+		optional: true
+	},
+	"following.$.name": {
+		type: String
+	},
+	"following.$.userId": {
+		type: String
+	}
 });
 
 // Additional user informations
