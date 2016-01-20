@@ -1,9 +1,29 @@
 <template name="itineraries">
 	<div class="itineraries-container">
-		{{#each itineraries}}
-      {{> itinerary }}
-    {{/each}}
-	</div>
-
-
+		<div class="row">
+			<div id="view" class="col-sm-12">
+				<nav>
+					<ul class="filters">
+						<li>View:</li>
+						<li><a href="#" class="filter active" data-filter="not_deleted">All</a></li>
+						<li><a href="#" class="filter" data-filter="published">Published</a></li>
+						<li><a href="#" class="filter" data-filter="draft">Drafts</a></li>
+						<li><a href="#" class="filter" data-filter="deleted">Cancelled</a></li>
+					</ul> <a href="/u/56998922acb652fb416624f9" class="external">your public profile <i class="fa fa-angle-right"></i></a> </nav>
+			</div>
+		</div>
+		<div class="row">
+			<div id="flyers_container">
+				<div class="create-new col-lg-3 col-md-6 col-sm-12">
+					<div class="panel">
+						<a class="thumbnail" href="/flyer/new"> <span>Create a new event</span> </a>
+					</div>
+				</div>
+				<div class="create-new import facebook col-lg-3 col-md-6 col-sm-12 end">
+					<div class="panel">
+						<a class="thumbnail" href="javascript:;"> <span>Import from Facebook</span> </a>
+					</div>
+				</div>
+			</div>
+		</div> {{#each itineraries}} {{> itinerary }} {{/each}} </div>
 </template>
