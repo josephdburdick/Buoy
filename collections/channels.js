@@ -12,9 +12,7 @@ Channels.deny({
   remove: () => true
 });
 
-let Schema = Schema || {};
-
-Schema.Channels = new SimpleSchema({
+ChannelsSchema = new SimpleSchema({
   ownerId: {
     type: String
   },
@@ -46,4 +44,5 @@ Schema.Channels = new SimpleSchema({
   }
 });
 
-Channels.attachSchema( Schema.Channels );
+Channels.attachSchema( ChannelsSchema );
+Schema.Channels = ChannelsSchema;

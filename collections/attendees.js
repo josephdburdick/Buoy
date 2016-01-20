@@ -1,33 +1,28 @@
-LocationComments = new Meteor.Collection( 'locationMessages' );
+Attendees = new Meteor.Collection( 'attendees' );
 
-LocationComments.allow({
+Attendees.allow({
   insert: () => false,
   update: () => false,
   remove: () => false
 });
 
-LocationComments.deny({
+Attendees.deny({
   insert: () => true,
   update: () => true,
   remove: () => true
 });
 
-let Schema = Schema || {};
-
-Schema.LocationComments = new SimpleSchema({
-	locationId: {
-		type: String
-	},
-	channelId: {
+let AttendeesSchema = new SimpleSchema({
+  eventId: {
     type: String
   },
-	comments: {
+	users: {
 		type: [Object]
 	},
-	"comments.$.name": {
+	"users.$.name": {
 		type: String
 	},
-	"comments.$.userId": {
+	"users.$.userId": {
 		type: String
 	},
 	createdAt: {
@@ -54,4 +49,5 @@ Schema.LocationComments = new SimpleSchema({
   }
 });
 
-LocationComments.attachSchema( Schema.LocationComments );
+Attendees.attachSchema( AttendeesSchema );
+Schema.Attendees = AttendeesSchema;

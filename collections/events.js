@@ -12,9 +12,7 @@ Events.deny({
   remove: () => true
 });
 
-let Schema = Schema || {};
-
-Schema.Events = new SimpleSchema({
+EventsSchema = new SimpleSchema({
 	"ownerId": {
 		type: String,
 		optional: false
@@ -83,4 +81,5 @@ Schema.Events = new SimpleSchema({
   }
 });
 
-Events.attachSchema(Events.Schema);
+Events.attachSchema(EventsSchema);
+Schema.Events = EventsSchema;

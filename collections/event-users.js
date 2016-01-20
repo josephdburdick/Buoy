@@ -1,30 +1,31 @@
-ChannelMessages = new Meteor.Collection( 'channelMessages' );
+EventUsers = new Meteor.Collection( 'eventUsers' );
 
-ChannelMessages.allow({
+EventUsers.allow({
   insert: () => false,
   update: () => false,
   remove: () => false
 });
 
-ChannelMessages.deny({
+EventUsers.deny({
   insert: () => true,
   update: () => true,
   remove: () => true
 });
 
-let Schema = Schema || {};
-
-Schema.ChannelMessages = new SimpleSchema({
-	channelId: {
+let EventUsersSchema = new SimpleSchema({
+  eventId: {
     type: String
   },
-	messages: {
-    type: [Object]
-  },
-	"messages.$.name": {
+	users: {
+		type: [Object]
+	},
+	"users.$._id": {
 		type: String
 	},
-	"messages.$.userId": {
+	"users.$.username": {
+		type: String
+	},
+	"users.$.rsvpStatus":{
 		type: String
 	},
 	createdAt: {
@@ -51,4 +52,5 @@ Schema.ChannelMessages = new SimpleSchema({
   }
 });
 
-ChannelMessages.attachSchema( Schema.ChannelMessages );
+EventUsers.attachSchema( EventUsersSchema );
+Schema.EventUsers = EventUsersSchema;

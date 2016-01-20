@@ -14,7 +14,7 @@ Locations.deny({
 
 let Schema = Schema || {};
 
-Schema.Locations = new SimpleSchema({
+LocationsSchema = new SimpleSchema({
   ownerId: {
     type: String,
     label: "The ID of the owner of this document."
@@ -46,4 +46,5 @@ Schema.Locations = new SimpleSchema({
   }
 });
 
-Locations.attachSchema( Schema.Locations );
+Locations.attachSchema( LocationsSchema );
+Schema.Locations = LocationsSchema;

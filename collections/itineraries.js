@@ -12,9 +12,7 @@ Itineraries.deny({
   remove: () => true
 });
 
-let Schema = Schema || {};
-
-Schema.Itineraries = new SimpleSchema({
+ItinerariesSchema = new SimpleSchema({
   "ownerId": {
     type: String,
     label: "The ID of the owner of this document"
@@ -76,4 +74,5 @@ Schema.Itineraries = new SimpleSchema({
   }
 });
 
-Itineraries.attachSchema(Schema.Itineraries);
+Itineraries.attachSchema(ItinerariesSchema);
+Schema.Itineraries = ItinerariesSchema;

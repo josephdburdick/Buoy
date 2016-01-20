@@ -1,33 +1,31 @@
-EventUsers = new Meteor.Collection( 'eventUsers' );
+LocationComments = new Meteor.Collection( 'locationMessages' );
 
-EventUsers.allow({
+LocationComments.allow({
   insert: () => false,
   update: () => false,
   remove: () => false
 });
 
-EventUsers.deny({
+LocationComments.deny({
   insert: () => true,
   update: () => true,
   remove: () => true
 });
 
-let Schema = Schema || {};
-
-Schema.EventUsers = new SimpleSchema({
-  eventId: {
+let LocationCommentsSchema = new SimpleSchema({
+	locationId: {
+		type: String
+	},
+	channelId: {
     type: String
   },
-	users: {
+	comments: {
 		type: [Object]
 	},
-	"users.$._id": {
+	"comments.$.name": {
 		type: String
 	},
-	"users.$.username": {
-		type: String
-	},
-	"users.$.rsvpStatus":{
+	"comments.$.userId": {
 		type: String
 	},
 	createdAt: {
@@ -54,4 +52,5 @@ Schema.EventUsers = new SimpleSchema({
   }
 });
 
-EventUsers.attachSchema( Schema.EventUsers );
+LocationComments.attachSchema( LocationCommentsSchema );
+Schema.LocationComments = LocationCommentsSchema;

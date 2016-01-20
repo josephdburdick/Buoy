@@ -1,30 +1,32 @@
-Messages = new Meteor.Collection( 'messages' );
+UserMessages = new Meteor.Collection( 'userMessages' );
 
-Messages.allow({
+UserMessages.allow({
   insert: () => false,
   update: () => false,
   remove: () => false
 });
 
-Messages.deny({
+UserMessages.deny({
   insert: () => true,
   update: () => true,
   remove: () => true
 });
 
-let Schema = Schema || {};
-
-Schema.Messages = new SimpleSchema({
-	channelId: {
-		type: String,
-		optional: false
-	},
-	ownerId: {
+let UserMessagesSchema = new SimpleSchema({
+  "senderId": {
     type: String
   },
-	body: {
-		type: String,
-		optional: false
+	"recieverId": {
+    type: String
+  },
+	messages: {
+    type: [Object]
+  },
+	"messages.$.userId": {
+		type: String
+	},
+	"messages.$.username": {
+		type: String
 	},
 	createdAt: {
     type: Date,
@@ -50,4 +52,5 @@ Schema.Messages = new SimpleSchema({
   }
 });
 
-Messages.attachSchema( Schema.Messages );
+UserMessages.attachSchema( UserMessagesSchema );
+Schema.UserMessages = UserMessagesSchema;

@@ -1,13 +1,27 @@
-Meteor.users.allow({
-  insert: () => allow,
-  update: () => allow,
-  remove: () => allow
+Meteor.users.deny({
+  insert: () => false,
+  update: () => false,
+  remove: () => false
 });
 
-let Schema = Schema || {};
+Meteor.users.allow({
+  insert: () => true,
+  update: (userId, user, fields, modifier) => {
+    // can only change your own documents
+    if(user._id === userId)
+    {
+      Meteor.users.update({_id: userId}, modifier);
+      return true;
+    }
+    else return false;
+  },
+  remove: () => true
+});
+
+let UserSchema = {};
 
 // This is the schema for the basic user collection
-Schema.User = new SimpleSchema({
+UserSchema.User = new SimpleSchema({
   userId: {
     type: String,
     label: "The ID of the owner of this document.",
@@ -38,11 +52,11 @@ Schema.User = new SimpleSchema({
     type: Boolean
   },
   // Here we add the schema for the additional informations
-  "profile": {
-    type: Schema.UserProfile,
+  profile: {
+    type: UserSchema.UserProfile,
     optional: true
   },
-  "preferences": {
+  preferences: {
     type: Object,
 		optional: true
   },
@@ -117,16 +131,16 @@ Schema.User = new SimpleSchema({
 });
 
 // Additional user informations
-Schema.UserProfile = {
-  "firstName": {
+UserSchema.UserProfile = {
+  firstName: {
     type: String,
     optional: true
   },
-  "lastName": {
+  lastName: {
     type: String,
     optional: true
   },
-  "fullName": {
+  fullName: {
     type: String,
     optional: true,
     autoValue: function() {
@@ -135,9 +149,16 @@ Schema.UserProfile = {
       return firstName + ' ' + lastName;
     }
   },
-  "biography": {
-    type: String
+	gender: {
+    type: String,
+    allowedValues: ['Male', 'Female'],
+    optional: true
+  },
+  biography: {
+    type: String,
+		optional: true
   }
 };
 
-Meteor.users.attachSchema(Schema.User);
+Meteor.users.attachSchema(UserSchema.User);
+Schema.User = UserSchema.User;

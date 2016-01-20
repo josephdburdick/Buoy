@@ -12,9 +12,7 @@ Markers.deny( {
   remove: () => true
 } );
 
-let Schema = Schema || {};
-
-Schema.Markers = new SimpleSchema( {
+let MarkersSchema = new SimpleSchema( {
   ownerId: {
     type: String,
     label: "The ID of the owner of this document"
@@ -67,7 +65,8 @@ Schema.Markers = new SimpleSchema( {
   }
 } );
 
-Markers.attachSchema( Schema.Markers );
+Markers.attachSchema( MarkersSchema );
+Schema.Markers = MarkersSchema;
 
 if (Meteor.isServer){
   Markers._ensureIndex({
