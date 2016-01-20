@@ -15,3 +15,10 @@ authenticatedRoutes.route( '/dashboard', {
     BlazeLayout.render( 'default', { yield: 'dashboard' } );
   }
 });
+
+authenticatedRoutes.route( '/profile', {
+  name: 'userProfile',
+  action() {
+    BlazeLayout.render( 'default', { yield: 'userProfile' } );
+  }
+});
