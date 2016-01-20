@@ -1,0 +1,39 @@
+<template name="userProfile">
+	<h3>User Profile</h3> {{{userProfile._id}}}
+	<form class="form-horizontal">
+		<fieldset>
+			<!-- Form Name -->
+			<legend>Form Name</legend>
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="textinput">Username</label>
+				<div class="col-md-4">
+					<input id="textinput" name="textinput" type="text" placeholder="placeholder" class="form-control input-md">
+				</div>
+			</div>
+			<!-- Password input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="passwordinput">Password</label>
+				<div class="col-md-4">
+					<input id="passwordinput" name="passwordinput" type="password" placeholder="placeholder" class="form-control input-md">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="passwordinput">Confirm Password</label>
+				<div class="col-md-4">
+					<input id="passwordinput" name="passwordinput" type="password" placeholder="placeholder" class="form-control input-md">
+				</div>
+			</div>
+			<!-- Select Basic -->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="selectbasic">Select Basic</label>
+				<div class="col-md-4">
+					<select id="selectbasic" name="selectbasic" class="form-control">
+						<option value="1">Option one</option>
+						<option value="2">Option two</option>
+					</select>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</template>

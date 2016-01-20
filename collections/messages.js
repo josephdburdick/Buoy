@@ -13,34 +13,40 @@ Messages.deny({
 });
 
 let MessagesSchema = new SimpleSchema({
-	"senderId": {
-    type: String,
-		optional: false
-  },
-	"body": {
+	channelId: {
 		type: String,
 		optional: false
 	},
-	"created": {
+	ownerId: {
+    type: String
+  },
+	body: {
+		type: String,
+		optional: false
+	},
+	createdAt: {
     type: Date,
-    label: "Date created",
-    optional: true,
-    autoValue: function () {
-      if ( this.isInsert ) {
+    autoValue: function() {
+      if (this.isInsert) {
         return new Date();
+      } else if (this.isUpsert) {
+        return {$setOnInsert: new Date()};
+      } else {
+        this.unset();  // Prevent user from supplying their own value
       }
     }
   },
-  "updated": {
+  updatedAt: {
     type: Date,
-    label: "Date updated",
-    optional: true,
-    autoValue: function () {
-      if ( this.isInsert ) {
+    autoValue: function() {
+      if (this.isUpdate) {
         return new Date();
       }
-    }
+    },
+    denyInsert: true,
+    optional: true
   }
 });
 
 Messages.attachSchema( MessagesSchema );
+Schema.Messages = MessagesSchema;

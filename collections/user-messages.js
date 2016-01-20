@@ -19,29 +19,38 @@ let UserMessagesSchema = new SimpleSchema({
 	"recieverId": {
     type: String
   },
-	"messageId": {
-    type: String
+	messages: {
+    type: [Object]
   },
-	"created": {
+	"messages.$.userId": {
+		type: String
+	},
+	"messages.$.username": {
+		type: String
+	},
+	createdAt: {
     type: Date,
-    label: "Date created",
-    optional: true,
-    autoValue: function () {
-      if ( this.isInsert ) {
+    autoValue: function() {
+      if (this.isInsert) {
         return new Date();
+      } else if (this.isUpsert) {
+        return {$setOnInsert: new Date()};
+      } else {
+        this.unset();  // Prevent user from supplying their own value
       }
     }
   },
-  "updated": {
+  updatedAt: {
     type: Date,
-    label: "Date updated",
-    optional: true,
-    autoValue: function () {
-      if ( this.isInsert ) {
+    autoValue: function() {
+      if (this.isUpdate) {
         return new Date();
       }
-    }
+    },
+    denyInsert: true,
+    optional: true
   }
 });
 
 UserMessages.attachSchema( UserMessagesSchema );
+Schema.UserMessages = UserMessagesSchema;

@@ -1,28 +1,28 @@
-ChannelMessages = new Meteor.Collection( 'channelMessages' );
+Channels = new Meteor.Collection( 'channels' );
 
-ChannelMessages.allow({
+Channels.allow({
   insert: () => false,
   update: () => false,
   remove: () => false
 });
 
-ChannelMessages.deny({
+Channels.deny({
   insert: () => true,
   update: () => true,
   remove: () => true
 });
 
-let ChannelMessagesSchema = new SimpleSchema({
-  "senderId": {
+ChannelsSchema = new SimpleSchema({
+  ownerId: {
     type: String
   },
-	"channelId": {
-    type: String
-  },
-	"messageId": {
-    type: String
-  },
-	"created": {
+	public: {
+		type: Boolean
+	},
+	name: {
+		type: String
+	},
+	createdAt: {
     type: Date,
     label: "Date created",
     optional: true,
@@ -32,16 +32,17 @@ let ChannelMessagesSchema = new SimpleSchema({
       }
     }
   },
-  "updated": {
+	updatedAt: {
     type: Date,
-    label: "Date updated",
+    label: "Date created",
     optional: true,
     autoValue: function () {
-      if ( this.isInsert ) {
+      if ( this.isUpdated ) {
         return new Date();
       }
     }
   }
 });
 
-ChannelMessages.attachSchema( ChannelMessagesSchema );
+Channels.attachSchema( ChannelsSchema );
+Schema.Channels = ChannelsSchema;

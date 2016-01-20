@@ -13,55 +13,60 @@ Markers.deny( {
 } );
 
 let MarkersSchema = new SimpleSchema( {
-  "ownerId": {
+  ownerId: {
     type: String,
     label: "The ID of the owner of this document"
   },
-  "type": {
+  type: {
     type: String,
     label: "The kind of marker (user, venue, etc)"
   },
-  "lat": {
+  lat: {
     type: Number,
     decimal: true,
     label: "Marker Latitude"
   },
-  "lng": {
+  lng: {
     type: Number,
     decimal: true,
     label: "Marker Longitude"
   },
-  "coordinates": {
-    type: [ Number ]
+  coordinates: {
+    type: Array,
+		min: 2,
+		max: 2
   },
   "coordinates.$": {
     type: Number,
     decimal: true,
     label: "Marker coordinate"
   },
-  "created": {
+	createdAt: {
     type: Date,
-    label: "Date created Marker in System",
-    optional: true,
-    autoValue: function () {
-      if ( this.isInsert ) {
+    autoValue: function() {
+      if (this.isInsert) {
         return new Date();
+      } else if (this.isUpsert) {
+        return {$setOnInsert: new Date()};
+      } else {
+        this.unset();  // Prevent user from supplying their own value
       }
     }
   },
-  "updated": {
+  updatedAt: {
     type: Date,
-    label: "Date updated Marker in System",
-    optional: true,
-    autoValue: function () {
-      if ( this.isInsert ) {
+    autoValue: function() {
+      if (this.isUpdate) {
         return new Date();
       }
-    }
+    },
+    denyInsert: true,
+    optional: true
   }
 } );
 
 Markers.attachSchema( MarkersSchema );
+Schema.Markers = MarkersSchema;
 
 if (Meteor.isServer){
   Markers._ensureIndex({

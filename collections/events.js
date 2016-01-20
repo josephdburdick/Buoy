@@ -12,7 +12,7 @@ Events.deny({
   remove: () => true
 });
 
-let EventsSchema = new SimpleSchema({
+EventsSchema = new SimpleSchema({
 	"ownerId": {
 		type: String,
 		optional: false
@@ -53,18 +53,33 @@ let EventsSchema = new SimpleSchema({
     type: String,
   	optional: false
   },
-  "venue": {
-    type: String,
-  	optional: false
-  },
   eventChannel: {
     type: Object,
     optional: false
   },
-  "location_id": {
-    type: String,
-  	optional: false
+	createdAt: {
+    type: Date,
+    autoValue: function() {
+      if (this.isInsert) {
+        return new Date();
+      } else if (this.isUpsert) {
+        return {$setOnInsert: new Date()};
+      } else {
+        this.unset();  // Prevent user from supplying their own value
+      }
+    }
+  },
+  updatedAt: {
+    type: Date,
+    autoValue: function() {
+      if (this.isUpdate) {
+        return new Date();
+      }
+    },
+    denyInsert: true,
+    optional: true
   }
 });
 
 Events.attachSchema(EventsSchema);
+Schema.Events = EventsSchema;
