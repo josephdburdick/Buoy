@@ -1,11 +1,27 @@
 <template name="itinerary">
-	<div class="itinerary-container">
-		{{name}}
-	  <!-- {{type}}
-	  {{channelId}}
-	  {{isPublic}}
-	  {{locations}}
-	  {{locations.count}}
-	  {{locations.items}} -->
+	<div class="col-lg-3 col-md-6 col-sm-12 itinerary-item" data-id="{{_id}}">
+		<div class="panel panel-default">
+			<a class="thumbnail" href="/flyer/edit/id/{{_id}}" data-href="/flyer/edit/id/{{_id}}" style="background-image: url('https://s3-eu-west-1.amazonaws.com/cdn.metooo.common/bgs/44.jpeg')">
+				<span>Edit</span> <span class="import facebook ">Imported from Facebook</span>
+			</a>
+
+			<p>{{name}}
+				<br> <i class="italic">{{start_datetime}}</i> <span>last update: {{updatedAt}}</span>
+				<a data-dropdown="drop{{_id}}" class="drop"></a>
+			</p>
+			<ul data-dropdown-content="" class="f-dropdown" id="drop{{_id}}">
+				<li><a href="/flyer/ticketlist/id/{{_id}}"><i class="fa fa-ticket"></i> Tickets</a></li>
+				<li class="duplicate"><a href="/flyer/duplicate/id/{{_id}}"><i class="fa fa-clone"></i> Duplicate</a></li>
+				<li class="delete"><a href="#" data-rel="remove" data-id="{{_id}}"><i class="fa fa-trash-o"></i> Delete</a></li>
+				<li class="recover"><a href="#" data-rel="recover" data-id="{{_id}}"><i class="fa fa-trash-o"></i> Recover</a></li>
+			</ul>
+			<div class="undo_confirm hidden">
+
+				<p>You removed event:</p>
+
+				<p><strong>{{name}}</strong></p>
+				<div class="undo_confirm_link"> <a href="javascript:;" data-rel="confirm" data-id="{{_id}}">Ok</a> <a href="javascript:;" data-rel="undo" data-id="{{_id}}">Cancel</a> </div>
+			</div>
+		</div>
 	</div>
 </template>

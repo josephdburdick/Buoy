@@ -1,29 +1,30 @@
 <template name="itineraries">
-	<div class="itineraries-container">
-		<div class="row">
-			<div id="view" class="col-sm-12">
-				<nav>
-					<ul class="filters">
-						<li>View:</li>
-						<li><a href="#" class="filter active" data-filter="not_deleted">All</a></li>
-						<li><a href="#" class="filter" data-filter="published">Published</a></li>
-						<li><a href="#" class="filter" data-filter="draft">Drafts</a></li>
-						<li><a href="#" class="filter" data-filter="deleted">Cancelled</a></li>
-					</ul> <a href="/u/56998922acb652fb416624f9" class="external">your public profile <i class="fa fa-angle-right"></i></a> </nav>
+	<nav class="clearfix navbar navbar-default">
+		<ul class="nav navbar-nav filters">
+			<li>View:</li>
+			<li><a href="#" class="filter active" data-filter="not_deleted">All</a></li>
+			<li><a href="#" class="filter" data-filter="published">Published</a></li>
+			<li><a href="#" class="filter" data-filter="draft">Drafts</a></li>
+			<li><a href="#" class="filter" data-filter="deleted">Cancelled</a></li>
+		</ul>
+	</nav>
+	<div class="row itineraries-actions">
+		<div class="col-lg-3 col-md-6 col-sm-12 action-item">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<a href data-role="create-event"> <span>Create a new event</span> </a>
+				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div id="flyers_container">
-				<div class="create-new col-lg-3 col-md-6 col-sm-12">
-					<div class="panel">
-						<a class="thumbnail" href="/flyer/new"> <span>Create a new event</span> </a>
-					</div>
-				</div>
-				<div class="create-new import facebook col-lg-3 col-md-6 col-sm-12 end">
-					<div class="panel">
-						<a class="thumbnail" href="javascript:;"> <span>Import from Facebook</span> </a>
-					</div>
+		<div class="col-lg-3 col-md-6 col-sm-12 action-item">
+			<div class="panel panel-default facebook">
+				<div class="panel-body">
+					<a href data-role="import-events"> <span>Import from Facebook</span> </a>
 				</div>
 			</div>
-		</div> {{#each itineraries}} {{> itinerary }} {{/each}} </div>
+		</div>
+	</div>
+	<div class="row itineraries-list">
+		{{#each itineraries}} {{> itinerary }} {{/each}}
+	</div>
 </template>

@@ -1,12 +1,77 @@
 <template name="eventDetail">
-	<div id="flyer_theme_container">
+	header
+	<div class="page-header">
+	  <h1>Example page header <small>Subtext for header</small></h1>
+	</div>
+	<div class="container">
+
+	</div>
+	<!-- Full Width Image Header -->
+    <header class="header-image">
+        <div class="headline">
+            <div class="container">
+                <h1>One Page Wonder</h1>
+                <h2>Will Knock Your Socks Off</h2>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <hr class="featurette-divider">
+
+        <!-- First Featurette -->
+        <div class="featurette" id="about">
+            <img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">
+            <h2 class="featurette-heading">This First Heading
+                <span class="text-muted">Will Catch Your Eye</span>
+            </h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <!-- Second Featurette -->
+        <div class="featurette" id="services">
+            <img class="featurette-image img-circle img-responsive pull-left" src="http://placehold.it/500x500">
+            <h2 class="featurette-heading">The Second Heading
+                <span class="text-muted">Is Pretty Cool Too.</span>
+            </h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <!-- Third Featurette -->
+        <div class="featurette" id="contact">
+            <img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">
+            <h2 class="featurette-heading">The Third Heading
+                <span class="text-muted">Will Seal the Deal.</span>
+            </h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright © Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+	<div class="flyer-container">
 		<header class="front" style="top: -52px;">
 			<div class="row">
 				<div class="col-lg-12 columns">
-					<nav data-topbar="" class="top-bar">
+					<nav data-topbar class="top-bar">
 						<ul class="title-area clearfix">
 							<li class="title">
-
 								<p class="event_title">Pizza History Tour</p>
 							</li>
 							<li class="toggle-topbar menu-icon">
@@ -25,7 +90,7 @@
 				</div>
 			</div>
 		</header>
-		<div class="event" data-id="569a8484acb652fb416629e0" itemprop="event" itemscope="" itemtype="http://schema.org/Event">
+		<div class="event" data-id="569a8484acb652fb416629e0" itemprop="event" itemscope itemtype="http://schema.org/Event">
 			<meta itemprop="url" content="https://metooo.io/e/pizza-history-tour">
 			<section class="img-full-top" style="background-image:url(https://s3-eu-west-1.amazonaws.com/cdn.metooo.it/flyer_image/f99d233167ba72e272c5dd692625b041442f3957.jpg);background-position:center center;" itemprop="image" content="https://s3-eu-west-1.amazonaws.com/cdn.metooo.it/flyer_image/f99d233167ba72e272c5dd692625b041442f3957.jpg">
 				<div class="color-overlay" style="background-color:rgba(0,0,0,0.3);"></div>
@@ -65,19 +130,19 @@
 							<h3>Where</h3>
 
 							<p> <span>Via Port'Alba, 80134 Napoli, Italia</span> </p>
-						</div> <span itemprop="location" itemscope="" itemtype="http://schema.org/Place">
+						</div> <span itemprop="location" itemscope itemtype="http://schema.org/Place">
                             <meta itemprop="name" content="Via Port'Alba, 80134 Napoli, Italia">
-                            <span itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+                            <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
                                 <meta itemprop="streetAddress" content="Via Port'Alba, 80134 Napoli, Italia">
                                 <meta itemprop="addressLocality" content="Napoli">
                                 <meta itemprop="addressRegion" content="IT">
-                            </span> <span itemprop="geo" itemscope="" itemtype="http://schema.org/GeoCoordinates">
+                            </span> <span itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
                                 <meta itemprop="latitude" content="40.8493231">
                                 <meta itemprop="longitude" content="14.251166">
                             </span> </span>
 						<div class="col-lg-12 columns">
 							<div class="map_container" data-lat="40.8493231" data-lng="14.251166" data-heading="0" data-tilt="0" data-map-type="roadmap" data-zoom="17" style="position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);">
-								<img src="http://http://placehold.it/640/480?text=Location+Map+Here" alt="">
+								<img src="http://http://placehold.it/640/480?text=Location+Map+Here" alt>
 							</div>
 						</div>
 						<ul class="map_navigation">
@@ -124,7 +189,7 @@
 
 <p class="tdcont"> <span class="show-for-small-only">Price:</span> <strong>free</strong> <strong data-link="~getPrice(base_price,discount_code)"></strong> <span>EUR</span> <strike data-link="css-display{:discount_code?'inline':'none'}">&nbsp; <span>EUR</span></strike>	<span class="discount_code_name" data-link="css-display{:discount_code?'inline':'none'}">&nbsp;</span>
 											<input class="medium" name="ticket[Meteor.userId][user_price]"
-											type="number" value="basePrice" step="any" min="minPrice" placeholder="" /></p>
+											type="number" value="basePrice" step="any" min="minPrice" placeholder /></p>
 									</div>
 									<div class="col-md-3 columns">
 
@@ -135,7 +200,7 @@
 										<p class="tdcont">Sold out</p>
 										<span class="show-for-small-only">Quantity</span>
 										<select class="ticket_quantity" data-id="Meteor.userId" data-type=":type" name="ticket[Meteor.userId][quantity]">
-											<option value="">Select quantity</option>
+											<option value>Select quantity</option>
 
 										</select>
 
@@ -187,12 +252,12 @@
 								};
 								var timezone = 'Europe/Rome'; -->
 
-							 <span itemprop="offers" itemscope="" itemtype="http://schema.org/AggregateOffer">
+							 <span itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
         <meta itemprop="offerCount" content="29">
         <meta itemprop="lowprice" content="35.5">
         <meta itemprop="priceCurrency" content="EUR">
         <meta itemprop="url" content="https://metooo.io/e/pizza-history-tour">
-    </span> <span itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+    </span> <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
             <meta itemprop="availability" content="29">
             <meta itemprop="price" content="35.5">
             <meta itemprop="priceCurrency" content="EUR">
@@ -200,7 +265,7 @@
         </span>
 							<form action="/buy/index/event/pizza-history-tour" method="post" target="_parent" novalidate="novalidate">
 								<input type="hidden" name="_id" value="569a8484acb652fb416629e0">
-								<input type="hidden" name="access_code" value="">
+								<input type="hidden" name="access_code" value>
 								<section class="ticket" id="tckt" data-offset="38">
 									<div class="ticket-container">
 										<div class="row collapse underlined tickets_actions" style="display: block;">
@@ -259,8 +324,8 @@
 													<script type="jsv#12_"></script>
 													<script type="jsv#7^"></script>
 													<script type="jsv#13_"></script> <span class="show-for-small-only">Quantity</span>
-													<select class="ticket_quantity" data-id="569a863aacb652fb41662a00" data-type="payed" name="ticket[569a863aacb652fb41662a00][quantity]" data-jsv-df="">
-														<option value="">Select quantity</option>
+													<select class="ticket_quantity" data-id="569a863aacb652fb41662a00" data-type="payed" name="ticket[569a863aacb652fb41662a00][quantity]" data-jsv-df>
+														<option value>Select quantity</option>
 														<option data-jsv="#6^#14_#15_" value="1">1</option>
 													</select>
 
@@ -325,7 +390,7 @@
 					<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" title="Twitter Tweet Button" src="https://platform.twitter.com/widgets/tweet_button.24a8e21c9032b45e8d193d263743d845.en.html#dnt=true&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=https%3A%2F%2Fmetooo.io%2Fe%2Fpizza-history-tour&amp;size=m&amp;text=Pizza%20History%20Tour&amp;time=1453271136980&amp;type=share&amp;url=https%3A%2F%2Fmetooo.io%2Fe%2Fpizza-history-tour&amp;via=wemetooo"
 					style="position: static; visibility: visible; width: 62px; height: 20px;" data-url="https://metooo.io/e/pizza-history-tour"></iframe>
 
-					<div class="fb-share-button fb_iframe_widget" data-layout="button_count" data-href="https://metooo.io/e/pizza-history-tour" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=233646893428965&amp;container_width=1200&amp;href=https%3A%2F%2Fmetooo.io%2Fe%2Fpizza-history-tour&amp;layout=button_count&amp;locale=it_IT&amp;sdk=joey"><span style="vertical-align: bottom; width: 107px; height: 20px;"><iframe name="f39c9f767c" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:share_button Facebook Social Plugin" src="https://www.facebook.com/v2.4/plugins/share_button.php?app_id=233646893428965&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D42%23cb%3Df3f21456cc%26domain%3Dmetooo.io%26origin%3Dhttps%253A%252F%252Fmetooo.io%252Ff268e7c56c%26relation%3Dparent.parent&amp;container_width=1200&amp;href=https%3A%2F%2Fmetooo.io%2Fe%2Fpizza-history-tour&amp;layout=button_count&amp;locale=it_IT&amp;sdk=joey" style="border: none; visibility: visible; width: 107px; height: 20px;" class=""></iframe></span></div>
+					<div class="fb-share-button fb_iframe_widget" data-layout="button_count" data-href="https://metooo.io/e/pizza-history-tour" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=233646893428965&amp;container_width=1200&amp;href=https%3A%2F%2Fmetooo.io%2Fe%2Fpizza-history-tour&amp;layout=button_count&amp;locale=it_IT&amp;sdk=joey"><span style="vertical-align: bottom; width: 107px; height: 20px;"><iframe name="f39c9f767c" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:share_button Facebook Social Plugin" src="https://www.facebook.com/v2.4/plugins/share_button.php?app_id=233646893428965&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D42%23cb%3Df3f21456cc%26domain%3Dmetooo.io%26origin%3Dhttps%253A%252F%252Fmetooo.io%252Ff268e7c56c%26relation%3Dparent.parent&amp;container_width=1200&amp;href=https%3A%2F%2Fmetooo.io%2Fe%2Fpizza-history-tour&amp;layout=button_count&amp;locale=it_IT&amp;sdk=joey" style="border: none; visibility: visible; width: 107px; height: 20px;" class></iframe></span></div>
 					<div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background: transparent;">
 						<iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%"
 						id="I0_1453271135982" name="I0_1453271135982" src="https://apis.google.com/se/0/_/+1/fastbutton?usegapi=1&amp;size=medium&amp;origin=https%3A%2F%2Fmetooo.io&amp;url=https%3A%2F%2Fmetooo.io%2Fe%2Fpizza-history-tour&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en_US.0U4anFtK7rk.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Ft%3Dzcms%2Frs%3DAGLTcCOK6iGKlcynYd3c3B_myLwB6482-A#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&amp;id=I0_1453271135982&amp;parent=https%3A%2F%2Fmetooo.io&amp;pfname=&amp;rpctoken=11230440"
@@ -343,7 +408,7 @@
 				</div>
 			</section>
 			</div>
-		<div id="contactModal" class="reveal-modal small" data-reveal="">
+		<div id="contactModal" class="reveal-modal small" data-reveal>
 			<h2 id="modalTitle">Contact</h2>
 			<form id="contact_form" novalidate="novalidate">
 				<input type="hidden" name="contact[user]" value="569a80dbacb652fb41662976">

@@ -25,14 +25,6 @@ EventsSchema = new SimpleSchema({
     type: String,
   	optional: false
   },
-	"start_time": {
-		type: String,
-		optional: true
-	},
-  "end_time": {
-    type: String,
-  	optional: true
-  },
   "itineraryId": {
     type: String,
   	optional: false
@@ -49,7 +41,15 @@ EventsSchema = new SimpleSchema({
     type: String,
   	optional: false
   },
-  "updated_time": {
+	"start_datetime": {
+		type: String,
+		optional: true
+	},
+	"end_datetime": {
+		type: String,
+		optional: true
+	},
+  "updated_datetime": {
     type: String,
   	optional: false
   },
