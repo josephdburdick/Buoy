@@ -1,13 +1,22 @@
 Meteor.publish('userData', function() {
   if(!this.userId) return null;
-  let userData = Meteor.users.find(this.userId, {fields: {
-    profile: 1,
-    services: 1
-  }});
-  if (userData){
-    return userData;
-  }
-
-  return this.ready();
+  return Meteor.users.find(this.userId, {
+    fields: {
+      profile: 1
+    }
+  });
 });
 
+
+// Publish the user directory which everbody can see
+Meteor.publish("allUsers", function () {
+  if(!this.userId) return null;
+  return Meteor.users.find({}, {
+    fields: {
+      _id: 1,
+      username: 1,
+      profile: 1,
+      emails: 1
+    }
+  });
+});
