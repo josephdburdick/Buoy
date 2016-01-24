@@ -34,7 +34,21 @@ let MarkersSchema = new SimpleSchema( {
   coordinates: {
     type: Array,
 		min: 2,
-		max: 2
+		max: 2,
+    autoValue: function() {
+      let
+        lat = this.field('lat').value,
+        lng = this.field('lng').value,
+        coords = [lat, lng];
+
+      if (this.isInsert) {
+        return coords;
+      } else if (this.isUpsert) {
+        return {$setOnInsert: coords };
+      } else {
+        this.unset();  // Prevent user from supplying their own value
+      }
+    }
   },
   "coordinates.$": {
     type: Number,

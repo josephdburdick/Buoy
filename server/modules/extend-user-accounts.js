@@ -34,9 +34,6 @@ let extendAccounts = () => {
     if (typeof options.profile.username === "undefined")
       user.username = _createUsernameFromEmail(user.emails[0].address);
 
-    if (typeof user.profile.picture === "undefined")
-      user.profile.picture = "http://graph.facebook.com/" + user.services.facebook.id + "/picture/?type=large";
-
     return user;
   });
 };

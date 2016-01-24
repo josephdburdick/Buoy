@@ -27,7 +27,7 @@ EventsSchema = new SimpleSchema({
 	},
   description: {
     type: String,
-  	optional: false
+  	optional: true
   },
   place:{
     type: Object,

@@ -32,12 +32,6 @@ let getFacebookToken = (cb) => {
         });
     }
   }
-
-  // if (Meteor.isServer){
-  //   let token = Meteor.call('readFBAccessToken');
-
-  //   return !!cb ? cb(token) : token;
-  // }
 };
 
 

@@ -39,3 +39,5 @@ service-configuration
 accounts-facebook
 http
 deanius:promise
+aldeed:geocoder
+random

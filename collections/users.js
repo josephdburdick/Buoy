@@ -23,7 +23,7 @@ UserSchema.User = new SimpleSchema({
   // Basic User
   _id: {
     type: String,
-    label: "The ID of the owner of this document.",
+    label: "The ID of the owner of this document",
 		optional: true
   },
   username: {
