@@ -13,33 +13,41 @@ Events.deny({
 });
 
 EventsSchema = new SimpleSchema({
-	"ownerId": {
+	ownerId: {
 		type: String,
 		optional: false
 	},
-	"name": {
+  fbId: {
+    type: String,
+    optional: false
+  },
+	name: {
 		type: String,
 		optional: false
 	},
-  "description": {
+  description: {
     type: String,
   	optional: false
   },
-  "itineraryId": {
-    type: String,
-  	optional: false
+  place:{
+    type: Object,
+    optional: true
   },
-  "picture": {
+  itineraryId: {
     type: String,
-  	optional: false
+  	optional: true //will want to create an itinerary first and push Id or array here...
   },
-  "privacy": {
+  picture: {
     type: String,
-  	optional: false
+  	optional: true
+  },
+  privacy: {
+    type: String,
+  	optional: true
   },
   "ticket_uri": {
     type: String,
-  	optional: false
+  	optional: true
   },
 	"start_datetime": {
 		type: String,
@@ -51,11 +59,11 @@ EventsSchema = new SimpleSchema({
 	},
   "updated_datetime": {
     type: String,
-  	optional: false
+  	optional: true
   },
   eventChannel: {
     type: Object,
-    optional: false
+    optional: true //will want to create an channel first and push Id or array here...
   },
 	createdAt: {
     type: Date,
