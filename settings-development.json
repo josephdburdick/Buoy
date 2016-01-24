@@ -1,8 +1,31 @@
 {
-  "public": {
-    "key": "value"
+	"public": {
+		"services":{
+			"facebook": {
+				"permissions": [
+					"public_profile",
+					"user_location",
+					"user_events",
+					"user_friends",
+					"email",
+					"user_activities",
+					"read_friendlists"
+				],
+				"profileFields": [
+					"name",
+					"gender",
+					"location"
+				]
+			}
+		}
   },
   "private": {
-    "MAIL_URL": ""
+    "MAIL_URL": "",
+		"services":{
+			"facebook": {
+				"appId": "",
+				"secret": ""
+			}
+		}
   }
 }
