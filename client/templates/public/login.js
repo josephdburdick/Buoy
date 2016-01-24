@@ -8,7 +8,9 @@ Template.login.events({
 	'click [data-action="facebook-login"]': ( event ) => {
 		event.preventDefault();
 
-		Meteor.loginWithFacebook({
+    let facebookLogin = Modules.client.loginWithFacebook;
+
+    return Meteor.loginWithFacebook({
 			requestPermissions: Meteor.settings.public.services.facebook.permissions,
 			redirectUrl: 'http://localhost:3000/'
 		}, function (error) {

@@ -5,32 +5,44 @@ Template.dashboard.onCreated(() => {
   Template.instance().subscribe('events');
   Template.instance().subscribe('itineraries');
 
-  let facebook = {
+  let facebook = new ReactiveDict({
     token: false,
     data: false,
     events: false
-  };
+  });
 
   let
     getFacebookToken = Modules.both.getFacebookToken,
     getFacebookData = (cb) => {
-      let facebookDataPromise = Meteor.callPromise('readFBdata', {
-        token: facebook.token,
+      return Meteor.callPromise('readFBdata', {
+        token: facebook.get('token'),
         query: '/me?fields=events'
       })
       .catch((error) => {
         Bert.alert(error.reason, 'warning');
+        return false;
       })
       .then((data) => {
-        facebook.data = JSON.parse(data.content);
-        facebook.events = facebook.data.events;
-        if (cb) cb();
+        if (data){
+          facebook.set('data', JSON.parse(data.content));
+          facebook.set('events', JSON.parse(data.content).events);
+        }
+        if (cb) cb(data);
       });
     },
     init = (() => {
       getFacebookToken((token) => {
-        facebook.token = token;
-        console.log(facebook.token);
+        facebook.set('token', token);
+
+        getFacebookData((data) => {
+          if (data) {
+            Bert.alert('Data found!', 'success');
+            console.log(facebook.keys);
+          }
+          else {
+            Bert.alert('Data not found. You probably need to allow access to Facebook.');
+          }
+        });
       });
     })();
 
@@ -71,3 +83,4 @@ Template.dashboard.onCreated(() => {
 Template.dashboard.helpers({
 
 });
+
