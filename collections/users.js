@@ -19,10 +19,9 @@ Meteor.users.allow({
 });
 
 let UserSchema = {};
-
-// This is the schema for the basic user collection
 UserSchema.User = new SimpleSchema({
-  userId: {
+  // Basic User
+  _id: {
     type: String,
     label: "The ID of the owner of this document.",
 		optional: true
@@ -51,11 +50,65 @@ UserSchema.User = new SimpleSchema({
   "emails.$.verified": {
     type: Boolean
   },
-  // Here we add the schema for the additional informations
+
+
+  // User Profile
   profile: {
-    type: UserSchema.UserProfile,
+    type: Object,//UserSchema.UserProfile,
     optional: true
   },
+  'profile.name': {
+    type: Object,
+    optional: true
+  },
+  'profile.name.first': {
+    type: String,
+    optional: true
+  },
+  'profile.name.last': {
+    type: String,
+    optional: true
+  },
+  'profile.name.full': {
+    type: String,
+    optional: true,
+    autoValue: function() {
+      let
+        firstName = this.siblingField('first').value,
+        lastName = this.siblingField('last').value,
+        fullName = `${firstName} ${lastName}`;
+
+      if (this.isInsert) {
+        return fullName;
+      } else if (this.isUpsert) {
+        return {$setOnInsert: fullName };
+      } else {
+        this.unset();  // Prevent user from supplying their own value
+      }
+    }
+  },
+  'profile.picture': {
+    type: String,
+    optional: true
+  },
+  'profile.gender': {
+    type: String,
+    allowedValues: ['male', 'female'],
+    optional: true
+  },
+  'profile.locale': {
+    type: String,
+    optional: true
+  },
+  'profile.age_range': {
+    type: Object,
+    optional: true
+  },
+  'profile.biography': {
+    type: String,
+    optional: true
+  },
+
   preferences: {
     type: Object,
 		optional: true
@@ -82,6 +135,7 @@ UserSchema.User = new SimpleSchema({
     denyInsert: true,
     optional: true
   },
+
   // Make sure this services field is in your schema if you're using any of the accounts packages
   services: {
     type: Object,
@@ -130,35 +184,6 @@ UserSchema.User = new SimpleSchema({
 	}
 });
 
-// Additional user informations
-UserSchema.UserProfile = {
-  firstName: {
-    type: String,
-    optional: true
-  },
-  lastName: {
-    type: String,
-    optional: true
-  },
-  fullName: {
-    type: String,
-    optional: true,
-    autoValue: function() {
-      let firstName = this.siblingField("firstName"),
-      lastName = this.siblingField("lastName");
-      return firstName + ' ' + lastName;
-    }
-  },
-	gender: {
-    type: String,
-    allowedValues: ['Male', 'Female'],
-    optional: true
-  },
-  biography: {
-    type: String,
-		optional: true
-  }
-};
 
 Meteor.users.attachSchema(UserSchema.User);
 Schema.User = UserSchema.User;
