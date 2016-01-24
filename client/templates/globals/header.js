@@ -7,11 +7,12 @@ Template.header.helpers({
 });
 
 Template.header.events({
-  'click .logout' () {
+  'click [data-action="logout"]' () {
     Meteor.logout( ( error ) => {
       if ( error ) {
         Bert.alert( error.reason, 'warning' );
       } else {
+        FlowRouter.go('/')
         Bert.alert( 'Logged out!', 'success' );
       }
     });
