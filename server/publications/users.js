@@ -20,10 +20,3 @@ Meteor.publish("allUsers", function () {
     }
   });
 });
-
-Meteor.publish("userPlaces", function () {
-  if(!this.userId) return null;
-  return Places.find({
-    ownerId : this.userId
-  });
-});

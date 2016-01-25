@@ -38,6 +38,7 @@ babrahams:constellation
 service-configuration
 accounts-facebook
 http
-deanius:promise
+promise
 aldeed:geocoder
 random
+momentjs:moment

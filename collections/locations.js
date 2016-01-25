@@ -15,12 +15,33 @@ Locations.deny({
 let Schema = Schema || {};
 
 LocationsSchema = new SimpleSchema({
-  ownerId: {
+  placeId: {
     type: String,
     label: "The ID of the owner of this document."
   },
+	city: {
+		type: String,
+		optional: true
+	},
+	country: {
+		type: String,
+		optional: true
+	},
+	state: {
+		type: String,
+		optional: true
+	},
+	street: {
+		type: String,
+		optional: true
+	},
+	zip: {
+		type: String,
+		optional: true
+	},
 	markerId: {
-		type: String
+		type: String,
+		optional: true
 	},
 	createdAt: {
     type: Date,

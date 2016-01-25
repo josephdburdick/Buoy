@@ -1,22 +1,36 @@
 Meteor.methods({
-  upsertEventPlace( event ) {
-    if (!Meteor.userId()) {
-      throw new Meteor.Error("not-authorized");
-    }
-    check( event, Object );
-
-    try {
-      var documentId = Places.upsert( {
-        ownerId: event.ownerId,
-        eventId: event.eventId,
-        markerId: event.markerId,
-        fbId: event.fbId
-      }, {
-        $set: event
-      });
-      return documentId;
-    } catch( exception ) {
-      return exception;
-    }
-  }
+  upsertEventPlace( place ) {
+		if (!Meteor.userId()) {
+			throw new Meteor.Error("not-authorized");
+		}
+		check( place, Object );
+		if (Meteor.isServer){
+			var documentId;
+			try {
+				if (place._id){
+					documentId = Places.upsert( {
+						eventId: place.eventId
+					}, {
+						$set: place,
+						$addToSet: { 'events': { $each: place.events } }
+					});
+					return documentId.insertedId;
+				}
+				else {
+					if (!!place.fbId){
+						documentId = Places.upsert({
+							fbId: place.fbId
+						}, {
+							$set: place
+						});
+					} else {
+						documentId = Places.insert(place);
+					}
+					return documentId;
+				}
+			} catch( exception ) {
+				return exception;
+			}
+		}
+	}
 });

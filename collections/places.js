@@ -15,22 +15,35 @@ Places.deny({
 let Schema = Schema || {};
 
 PlacesSchema = new SimpleSchema({
-  ownerId: {
-    type: String,
-    label: "The ID of the owner of this document"
+  events: {
+    type: [Object],
+    label: "The event IDs of that contain this place",
+		optional: true
   },
-  eventId: {
-    type: String,
-    label: "The ID of the owner of this document"
-  },
+	"events.$._id": {
+		type: String,
+		optional: true
+	},
+	"events.$.name": {
+		type: String,
+		optional: true
+	},
+	"events.$.ownerId": {
+		type: String,
+		optional: true
+	},
   fbId: {
     type: String,
     label: "The Facebook ID of this place",
     optional: true
   },
-	markerId: {
+	name: {
 		type: String,
-    optional: true
+		label: "The name of this place"
+	},
+	locations : {
+		type: [String],
+		optional: true
 	},
 	createdAt: {
     type: Date,

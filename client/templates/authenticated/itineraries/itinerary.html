@@ -1,12 +1,34 @@
 <template name="itinerary">
 	<div class="col-lg-3 col-md-6 col-sm-12 itinerary-item" data-id="{{_id}}">
 		<div class="panel panel-default">
-			<a class="thumbnail" href="/flyer/edit/id/{{_id}}" data-href="/flyer/edit/id/{{_id}}">
+			{{ownerId}}<br>
+			{{fbId}}<br>
+			{{name}}<br>
+			{{description}}<br>
+			{{#if places.length}}
+				<ul>
+				{{#each places}}
+					<li>{{_id}}</li>
+					<li>{{ownerId}}</li>
+					<li>{{name}}</li>
+					<li>{{address}}</li>
+					<li>{{coords}}</li>
+				{{/each}}
+				</ul>
+			{{/if}}
+			{{itineraryId}}<br>
+			{{picture}}<br>
+			{{privacy}}<br>
+			{{ticket_uri}}<br>
+			{{start_time}}<br>
+			{{end_time}}<br>
+			{{updated_time}}<br>
+			<!-- <a class="thumbnail" href="/flyer/edit/id/{{_id}}" data-href="/flyer/edit/id/{{_id}}">
 				<span>Edit</span> <span class="import facebook ">Imported from Facebook</span>
 			</a>
 
 			<p>{{name}}
-				<br> <i class="italic">{{start_datetime}}</i> <span>last update: {{updatedAt}}</span>
+				<br> <i class="italic">{{start_datetime}}</i> <span>last update{updatedAt}}</span>
 				<a data-dropdown="drop{{_id}}" class="drop"></a>
 			</p>
 			<ul data-dropdown-content="" class="f-dropdown" id="drop{{_id}}">
@@ -21,7 +43,7 @@
 
 				<p><strong>{{name}}</strong></p>
 				<div class="undo_confirm_link"> <a href="javascript:;" data-rel="confirm" data-id="{{_id}}">Ok</a> <a href="javascript:;" data-rel="undo" data-id="{{_id}}">Cancel</a> </div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </template>

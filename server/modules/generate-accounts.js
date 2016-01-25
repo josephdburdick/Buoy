@@ -37,8 +37,6 @@ let _checkIfUserExists = ( email ) => {
 };
 
 let _createUser = ( user ) => {
-  console.log('in generate accounts');
-  console.log(user);
   Accounts.createUser({
     email: user.email,
     password: user.password,

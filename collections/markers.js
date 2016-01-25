@@ -13,7 +13,7 @@ Markers.deny( {
 } );
 
 let MarkersSchema = new SimpleSchema( {
-  ownerId: {
+  locationId: {
     type: String,
     label: "The ID of the owner of this document"
   },
@@ -35,6 +35,7 @@ let MarkersSchema = new SimpleSchema( {
     type: Array,
 		min: 2,
 		max: 2,
+		optional: true,
     autoValue: function() {
       let
         lat = this.field('lat').value,

@@ -7,12 +7,13 @@ Template.header.helpers({
 });
 
 Template.header.events({
-  'click [data-action="logout"]' () {
-    Meteor.logout( ( error ) => {
+  "click [data-action='logout']": (event) => {
+		event.preventDefault();
+    Meteor.logout(function( error ) {
       if ( error ) {
         Bert.alert( error.reason, 'warning' );
       } else {
-        FlowRouter.go('/')
+        FlowRouter.go('/');
         Bert.alert( 'Logged out!', 'success' );
       }
     });
