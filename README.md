@@ -1,6 +1,11 @@
 # Buoy
 A starting point for Meteor apps.
 
+#Tasks:
+- [ ] populate events, places, and locations collections from Facebook API
+- [ ] refractor population methods into their own files
+- [ ] modularise methods to create Facebook event Import button
+
 <table>
   <tbody>
     <tr>
