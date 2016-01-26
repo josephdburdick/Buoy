@@ -1,5 +1,5 @@
 Meteor.methods({
-  upsertUserEvent( event ) {
+  upsertEvent( event ) {
     if (!Meteor.userId()) {
       throw new Meteor.Error("not-authorized");
     }
@@ -8,32 +8,22 @@ Meteor.methods({
 			var documentId;
 	    try {
 				if (!!event._id){
-					if (!event.places.length){
-						Events.update( {
-							_id: event._id,
-						}, {
-							$set: event,
-						});
-					} else {
-						Events.update( {
+					if (event.places.length){
+						Events.upsert( {
 							_id: event._id
 						}, {
 							$addToSet: { 'places': { $each: event.places }}
 						});
-					}
-					return event._id;
-				}
-				else {
-					if (!!event.fbId) {
-						documentId = Events.upsert( {
-							fbId: event.fbId,
-							ownerId: event.ownerId
+					} else {
+						Events.upsert( {
+							_id: event._id,
 						}, {
 							$set: event,
 						});
-					} else {
-						documentId = Events.insert(event);
 					}
+					return event._id;
+				} else {
+					documentId = Events.insert(event);
 					return documentId;
 				}
 	    } catch( exception ) {

@@ -17,9 +17,16 @@ Meteor.publish( 'eventsPlacesAndLocations', function() {
 Meteor.publish( 'locations', function() {
   return Locations.find();
 });
+
 Meteor.publish( 'places', function() {
   return Places.find();
 });
+
 Meteor.publish( 'markers', function() {
   return Markers.find();
 });
+
+Meteor.publish( 'userFacebookEvents', function(userId){
+	check(userId, String);
+	return FacebookEvents.find({ ownerId: userId });
+})

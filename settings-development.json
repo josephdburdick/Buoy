@@ -24,7 +24,8 @@
 		"services":{
 			"facebook": {
 				"appId": "",
-				"secret": ""
+				"secret": "",
+				"redirectUrl": "http://localhost:3000"
 			}
 		}
   }

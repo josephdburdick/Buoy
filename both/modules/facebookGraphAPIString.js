@@ -1,5 +1,4 @@
-let facebookGraphAPI = (params) => {
-
+let facebookGraphAPIString = (params) => {
   let
     prefix = "https://graph.facebook.com/v2.5",
     accessToken = params.token,
@@ -10,5 +9,4 @@ let facebookGraphAPI = (params) => {
 };
 
 
-Modules.both.facebookGraphAPI = facebookGraphAPI;
-
+Modules.both.facebookGraphAPIString = facebookGraphAPIString;

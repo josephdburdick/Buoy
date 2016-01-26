@@ -1,5 +1,5 @@
 Meteor.methods({
-  upsertPlaceLocation( location ) {
+  upsertLocation( location ) {
     if (!Meteor.userId()) {
       throw new Meteor.Error("not-authorized");
     }

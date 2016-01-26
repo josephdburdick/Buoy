@@ -1,5 +1,5 @@
 // let getFacebookData = (params, cb) => {
-//   let facebookDataPromise = Meteor.callPromise('readFBdata', {
+//   let facebookDataPromise = Meteor.callPromise('getFacebookAPI', {
 //     token: _this.fb.token,
 //     query: '/me?fields=events'
 //   })

@@ -1,18 +1,18 @@
-Events = new Meteor.Collection('events');
+FacebookEvents = new Meteor.Collection('facebookEvents');
 
-Events.allow({
+FacebookEvents.allow({
   insert: () => false,
   update: () => false,
   remove: () => false
 });
 
-Events.deny({
+FacebookEvents.deny({
   insert: () => true,
   update: () => true,
   remove: () => true
 });
 
-EventsSchema = new SimpleSchema({
+FacebookEventsSchema = new SimpleSchema({
 	ownerId: {
 		type: String,
 		optional: false
@@ -125,5 +125,5 @@ EventsSchema = new SimpleSchema({
   }
 });
 
-// Events.attachSchema(EventsSchema);
-// Schema.Events = EventsSchema;
+// FacebookEvents.attachSchema(FacebookEventsSchema);
+// Schema.FacebookEvents = FacebookEventsSchema;

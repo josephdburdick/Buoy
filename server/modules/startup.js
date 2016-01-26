@@ -6,10 +6,10 @@ let startup = () => {
   _generateAccounts();
 };
 
-var _setEnvironmentVariables = () => Modules.server.setEnvironmentVariables();
-var _serviceConfiguration = () => Modules.server.serviceConfiguration();
-var _setBrowserPolicies = () => {};
-var _extendAccounts = () => Modules.server.extendAccounts();
-var _generateAccounts = () => Modules.server.generateAccounts();
+let _setEnvironmentVariables = () => Modules.server.setEnvironmentVariables();
+let _serviceConfiguration = () => Modules.server.serviceConfiguration();
+let _setBrowserPolicies = () => {};
+let _extendAccounts = () => Modules.server.extendAccounts();
+let _generateAccounts = () => Modules.server.generateAccounts();
 
 Modules.server.startup = startup;

@@ -1,15 +1,14 @@
 Meteor.methods({
-  updateUserEvent( event ) {
+  updateEvent( event ) {
     if (!Meteor.userId()) {
       throw new Meteor.Error("not-authorized");
     }
     check( event, Object );
-    console.log('inside meteor method');
-    // console.log(event);
     var vals = Object.keys(event).map(key => event[key]);
-    console.log(vals);
+
     try {
       var documentId = Events.update( {
+				_id: event._id,
         ownerId: Meteor.userId(),
         fbId: event.id
       }, {

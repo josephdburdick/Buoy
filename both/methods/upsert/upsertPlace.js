@@ -1,5 +1,5 @@
 Meteor.methods({
-  upsertEventPlace( place ) {
+  upsertPlace( place ) {
 		if (!Meteor.userId()) {
 			throw new Meteor.Error("not-authorized");
 		}
@@ -23,10 +23,11 @@ Meteor.methods({
 						}, {
 							$set: place
 						});
+						return documentId.insertedId;
 					} else {
 						documentId = Places.insert(place);
+						return documentId;
 					}
-					return documentId;
 				}
 			} catch( exception ) {
 				return exception;

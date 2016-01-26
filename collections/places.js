@@ -69,5 +69,5 @@ PlacesSchema = new SimpleSchema({
   }
 });
 
-Places.attachSchema( PlacesSchema );
-Schema.Places = PlacesSchema;
+// Places.attachSchema( PlacesSchema );
+// Schema.Places = PlacesSchema;

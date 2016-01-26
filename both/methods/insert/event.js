@@ -3,7 +3,7 @@ Meteor.methods({
     check( argument, Object );
 
     try {
-      var documentId = Collection.insert( argument );
+      var documentId = Events.insert( argument );
       return documentId;
     } catch( exception ) {
       return exception;
