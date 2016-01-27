@@ -32,7 +32,7 @@ Template.dashboard.onCreated(() => {
 	        query: params.query
 	      }, (error, response) => {
 					if ( error ){
-						reject( error.reason );
+						reject( error );
 					} else {
 						resolve( response );
 					}
@@ -45,48 +45,30 @@ Template.dashboard.onCreated(() => {
         events = facebookDict.get('events');
 
       events.forEach((event, index, array) => {
-        /*
-        users -> itineraries (events)
-        events (channels) -> places -> locations (comments) -> markers
-        */
 				let processedFacebookEvent = processUserFacebookEvent(event);
 					addEventToUserFacebookEvents(processedFacebookEvent)
-					.then((data) => processEvent(data))
-					.then((data) => addEvent(data))
-
-					.then((data) => processPlace(data))
-					.then((data) => addPlace(data))
-					.then((data) => addPlaceToEvent(data))
-
-					.then((data) => processLocation(data))
-					.then((data) => addLocation(data))
-					.then((data) => addLocationToPlace(data))
-
-					.then((data) => processMarker(data))
-					.then((data) => addMarker(data))
-					.then((data) => addMarkerToLocation(data))
 					.then((data) => {
-						debugger;
-					});
+						console.log(data);
+					})
       })
     },
 		processUserFacebookEvent = (event) => {
 			console.log('> processUserFacebookEvent function');
+
 			// Assign ownerId to current user if it's not already set
 			if (typeof event === "object" && !event.ownerId) event.ownerId = Meteor.userId();
 			if (!event.fbId) event.fbId = event.id;
-			//if (event.id) delete event.id;
+			if (event.id) delete event.id;
+
 			return event;
 		},
 		addEventToUserFacebookEvents = (event) => {
 			console.log('> addEventToUserFacebookEvents function');
-			// Store Facebook event locally
-			// facebookDict.set('currentFacebookEventImport', event);
 
 			return new Promise((resolve, reject) => {
 				Meteor.call('upsertUserFacebookEvent', event, function(error, response){
 					if ( error ){
-						reject( error.reason );
+						reject( error );
 					} else {
 						if (response){
 							event._id = response;
@@ -103,12 +85,8 @@ Template.dashboard.onCreated(() => {
       processedEvent.ownerId = Meteor.userId();
 
 			if (!processedEvent.fbId) processedEvent.fbId = event.id;
+
 			//if (event.id) delete event.id;
-
-			// delete processedEvent.id;
-
-			processedEvent.places = [];
-
 			return processedEvent;
     },
 		addEvent = (event) => {
@@ -116,11 +94,32 @@ Template.dashboard.onCreated(() => {
 			return new Promise((resolve, reject) => {
 				Meteor.call('upsertEvent', event, (error, response) => {
 					if ( error ){
-						reject( error.reason );
+						reject( error );
 					} else {
 						if (response){
-							event._id = response;
+							console.log('Returned response from upsertEvent');
+							event._id = response.insertedId;
 							facebookDict.set('currentEvent', event);
+
+							// process/add place
+							debugger;
+							let place = processPlace(event);
+							// processedEvent.places = [];
+							// processedEvent.places.push(event);
+							//
+							//
+							// let location = processLocation(place);
+							// processedEvent.locations = [];
+							// processedEvent.locations.push(location);
+							//
+							// debugger;
+							// // addPlace(place).then((addedPlace) => {
+							// // 	debugger;
+							// // });
+							// // addLocation(location).then((addedLocation) => {
+							// // 	debugger;
+							// // });
+
 
 							resolve(event);
 						}
@@ -130,10 +129,10 @@ Template.dashboard.onCreated(() => {
 		},
     processPlace = (event) => {
 			console.log('> processPlace function');
-			let place = !!event.place ? event.place : false;
-			let location = false;
+			let place = !!event.place ? event.place : {};
+			let location = {};
 			if (place){
-				location = !!event.place.location ? event.place.location : false;
+				location = !!event.place.location ? event.place.location : {};
 				// If there's no fbId, assign it then trash the original.
 				if (!place.fbId) place.fbId = place.id;
 				// if (place.id) delete place.id;
@@ -166,12 +165,11 @@ Template.dashboard.onCreated(() => {
 			return new Promise((resolve, reject) => {
 				Meteor.call('upsertPlace', place, (error, response) => {
 					if ( error ){
-						reject( error.reason );
+						reject( error );
 					} else {
 						if (response){
 							place._id = response;
 							facebookDict.set('currentPlace', place);
-							//debugger;
 							resolve(place);
 						}
 					}
@@ -198,7 +196,7 @@ Template.dashboard.onCreated(() => {
 			return new Promise((resolve, reject) => {
 				Meteor.call('upsertEvent', event, (error, response) => {
 					if ( error ){
-						reject ( error.reason )
+						reject ( error )
 					} else {
 						facebookDict.set('currentPlace', place);
 						resolve(place);
@@ -230,7 +228,7 @@ Template.dashboard.onCreated(() => {
 				// insert Locations
 				Meteor.call('upsertLocation', location , (error, response) => {
 					if ( error ){
-						reject( error.reason );
+						reject( error );
 					} else {
 						location._id = response.insertedId;
 						resolve(location);
@@ -244,7 +242,7 @@ Template.dashboard.onCreated(() => {
 				// insert Locations
 				Meteor.call('upsertPlace', location , (error, response) => {
 					if ( error ){
-						reject( error.reason );
+						reject( error );
 					} else {
 						location._id = response.insertedId;
 						resolve(location);
@@ -269,7 +267,7 @@ Template.dashboard.onCreated(() => {
 			return new Promise((resolve, reject) => {
 				Meteor.call('upsertMarker', _marker , (error, response) => {
 					if ( error ){
-						reject( error.reason );
+						reject( error );
 					} else {
 						_marker._id = response.insertedId;
 						resolve(_marker);
@@ -280,29 +278,50 @@ Template.dashboard.onCreated(() => {
 		addMarkerToLocation = () => {
 			debugger;
 		},
-    init = (() => {
-      return new Promise((resolve, reject) => {
-				getFacebookToken()
-					.then((token) => {
-						facebookDict.set('token', token);
-						console.log(facebookDict.keys);
-					})
-					.then(() => {
-						getFacebookData({query: '/me?fields=events'})
-						 	.then((response) => {
-			          if (response) {
-									facebookDict.set('events', response.data.events.data);
-			            Bert.alert('Data retrieved. Loading events...');
-			            importUserFacebookEvents();
-			          } else {
-			            Bert.alert('Data not found. You probably need to allow access to Facebook.', 'warning');
-			          }
-			        });
-					});
-      });
+		getFacebookEventData = () => {
+			getFacebookData({token: token, query: '/me?fields=events'})
+			.then((response) => {
+				if (response) {
+					facebookDict.set('events', response.data.events.data);
+					Bert.alert('Data retrieved. Loading events...');
+					importUserFacebookEvents();
+				} else {
+					Bert.alert('Data not found. You probably need to allow access to Facebook.', 'warning');
+				}
+			});
+		}
+		init = (() => {
+			Meteor.call('getFacebookAccessToken', (error, response) => {
+				if (!error){
+					token = response;
+					facebookDict.set('token', token);
+					getFacebookEventData({token: token});
+				} else {
+					Bert.alert('You must login with Facebook to use this feature.', 'warning');
+					return false;
+				}
+			});
+      // return new Promise((resolve, reject) => {
+				// let token = getFacebookToken();
+				// if (token){
+				// 	facebookDict.set('token', token);
+				// 	getFacebookEventData({token: token});
+				// } else {
+				// 	Bert.alert('You must login with Facebook to use this feature.', 'warning');
+				// 	Modules.client.loginWithFacebook({}, () => {
+				// 		let token = getFacebookToken();
+				// 		facebookDict.set('token', token);
+				// 		getFacebookEventData({token: token});
+				// 	});
+				//
+				// 	return false;
+				// }
+      //});
     })();
 });
 
 Template.dashboard.helpers({
-
+	numberOfEvents(){
+		return FacebookEvents.find().count();
+	}
 });

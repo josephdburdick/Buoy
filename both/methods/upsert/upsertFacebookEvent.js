@@ -17,8 +17,12 @@ if (Meteor.isServer){
 					});
 					return documentId.insertedId;
 				} else {
-					documentId = FacebookEvents.insert(event);
-					return documentId;
+					documentId = FacebookEvents.upsert({
+						fbId: event.fbId
+					}, {
+						$set : event
+					});
+					return documentId.insertedId;
 				}
 			} catch( exception ) {
 				return exception;

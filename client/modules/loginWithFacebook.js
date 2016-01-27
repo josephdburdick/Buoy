@@ -1,4 +1,4 @@
-let loginWithFacebook = ( params, cb ) => {
+let loginWithFacebook = ( params, callback ) => {
   params = params || {}
   params.requestPermissions = !!params.requestPermissions ? params.requestPermissions : Meteor.settings.public.services.facebook.permissions;
   params.redirectUrl = !!params.redirectUrl ? params.redirectUrl : Meteor.settings.public.services.facebook.redirectUrl;
@@ -7,12 +7,11 @@ let loginWithFacebook = ( params, cb ) => {
     requestPermissions: params.requestPermissions,
     redirectUrl: params.redirectUrl
   }, function (error) {
-    if (error){
-      console.log(error);
+		if (!error) {
+			if (callback) callback();
+		} else {
+      Bert.alert(error, 'error');
       return false;
-    } else {
-      if (cb) { console.log(cb); cb(); }
-      return true;
     }
   });
 }
