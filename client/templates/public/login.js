@@ -8,7 +8,7 @@ Template.login.events({
 	'click [data-action="facebook-login"]': ( event ) => {
 		event.preventDefault();
 
-    Modules.client.loginWithFacebook({}, () => {
+    Modules.client.facebook.loginWithFacebook({}, () => {
 			FlowRouter.go('dashboard');
 		});
 	}

@@ -1,7 +1,3 @@
-let startup = () => {
-	_facebookGraphAPIString();
-};
-
-let _facebookGraphAPIString = () => Modules.both.facebookGraphAPIString;
+let startup = () => {};
 
 Modules.both.startup = startup;

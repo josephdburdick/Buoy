@@ -27,7 +27,7 @@ Meteor.methods({
 				});
 
 				let
-				facebookGraphAPIRequest = Modules.both.facebookGraphAPIString(params),
+				facebookGraphAPIRequest = Modules.both.facebook.facebookGraphAPIString(params),
 				response = HTTP.get(facebookGraphAPIRequest);
 
 				if (response.statusCode === 200){
@@ -44,11 +44,12 @@ Meteor.methods({
     if (!Meteor.userId()) {
       throw new Meteor.Error("not-authorized");
     }
-
-		try {
-			return Meteor.user().services.facebook.accessToken;
-		} catch(e) {
-			return null;
+		if (Meteor.isServer){
+			try {
+				return Meteor.user().services.facebook.accessToken;
+			} catch(e) {
+				return null;
+			}
 		}
   }
 });
