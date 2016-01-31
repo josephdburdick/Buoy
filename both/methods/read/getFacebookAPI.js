@@ -44,21 +44,11 @@ Meteor.methods({
     if (!Meteor.userId()) {
       throw new Meteor.Error("not-authorized");
     }
-		if (Meteor.isServer){
-			try {
-				return Meteor.user().services.facebook.accessToken;
-			} catch(e) {
-				return null;
-			}
-		}
-		if (Meteor.isClient){
-			Meteor.call("getFacebookAccessToken", (error, accessToken) => {
-			  if (!error){
-					return accessToken;
-				} else {
-					return error;
-				}
-			});
+
+		try {
+			return Meteor.user().services.facebook.accessToken;
+		} catch(e) {
+			return null;
 		}
   }
 });
