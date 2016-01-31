@@ -28,6 +28,9 @@ Template.dashboard.onCreated(() => {
 Template.dashboard.helpers({
 	numberOfEvents(){
 		return FacebookEvents.find().count();
+	},
+	facebookEvents(){
+		return FacebookEvents.find();
 	}
 });
 

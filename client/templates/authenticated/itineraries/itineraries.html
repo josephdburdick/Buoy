@@ -24,7 +24,5 @@
 			</div>
 		</div>
 	</div>
-	<div class="row itineraries-list">
-		{{#each itineraries}} {{> itinerary }} {{/each}}
-	</div>
+	{{> Template.dynamic template="importEvents" data=facebookEvents }}
 </template>

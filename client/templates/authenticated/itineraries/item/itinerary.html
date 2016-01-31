@@ -1,0 +1,28 @@
+<template name="itinerary">
+	<div class="col-lg-3 col-md-6 col-sm-12 itinerary-item" data-id="{{_id}}">
+		<div class="panel panel-default">
+			{{ownerId}}<br>
+			{{fbId}}<br>
+			{{name}}<br>
+			{{description}}<br>
+			{{#if places.length}}
+				<ul>
+				{{#each places}}
+					<li>{{_id}}</li>
+					<li>{{ownerId}}</li>
+					<li>{{name}}</li>
+					<li>{{address}}</li>
+					<li>{{coords}}</li>
+				{{/each}}
+				</ul>
+			{{/if}}
+			{{itineraryId}}<br>
+			{{picture}}<br>
+			{{privacy}}<br>
+			{{ticket_uri}}<br>
+			{{start_time}}<br>
+			{{end_time}}<br>
+			{{updated_time}}<br>
+		</div>
+	</div>
+</template>
