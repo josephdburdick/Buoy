@@ -8,10 +8,12 @@
 		{{#if authenticated}}
 			{{#unless redirectAuthenticated}}
 				{{> Template.dynamic template=yield}}
+				{{> modal}}
 			{{/unless}}
 		{{else}}
 			{{#unless redirectPublic}}
 				{{> Template.dynamic template=yield}}
+				{{> modal}}
 			{{/unless}}
 		{{/if}}
 	{{/if}}
