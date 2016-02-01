@@ -6,7 +6,7 @@ A starting point for Meteor apps.
 - [X] Add import Facebook event button to user dashboard.
 - [ ] populate events, places, and locations collections from Facebook API
 - [ ] refractor population methods into their own files
-- [ ] modularize methods to create Facebook event Import button
+- [X] modularize methods to create Facebook event Import button
 
 <table>
   <tbody>
