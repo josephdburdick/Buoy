@@ -1,0 +1,17 @@
+<template name="modal">
+  {{#if modalIsVisible}}
+	<div class="modal fade {{modalIsVisible}}" tabindex="-1" role="dialog" id="modal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-body">
+					{{#if activeModal}}
+	        	{{> Template.dynamic template=activeModal}}
+					{{else}}
+						{{> loading}}
+					{{/if}}
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	{{/if}}
+</template>
