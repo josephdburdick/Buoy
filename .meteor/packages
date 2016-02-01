@@ -9,10 +9,9 @@ jquery
 check
 audit-argument-checks
 themeteorchef:jquery-validation
-twbs:bootstrap
 browser-policy
 meteorhacks:npm
-
+reywood:bootstrap3-sass
 themeteorchef:bert
 meteorhacks:ssr
 standard-minifiers
