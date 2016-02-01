@@ -1,0 +1,12 @@
+<template name="importEventItem">
+	<div class="col-lg-3 col-md-6 col-sm-12 itinerary-item" data-id="{{_id}}">
+		<div class="panel panel-default">
+			{{ownerId}}<br>
+			{{fbId}}<br>
+			{{name}}<br>
+			{{descriptionSummary hasEllipsis=true wordLength=5}}<br>
+			{{start_time}}<br>
+			{{end_time}}
+		</div>
+	</div>
+</template>

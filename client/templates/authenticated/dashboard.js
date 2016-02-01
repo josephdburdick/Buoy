@@ -41,11 +41,10 @@ Template.dashboard.events({
 		let eventsData = facebook.getFacebookEventsPromise();
 		eventsData.then((events) => {
 			template.dictionary.facebook.set('events', events);
+			$('#modal').modal('show');
 			events.forEach((event, index, array) => {
 				let processedFacebookEvent = facebook.processUserFacebookEvent(event);
-				facebook.addEventToUserFacebookEvents(processedFacebookEvent).then((data) => {
-					//Act on imported events from DB
-				});
+				facebook.addEventToUserFacebookEvents(processedFacebookEvent);
 			});
 		});
 	}

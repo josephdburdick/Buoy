@@ -1,7 +1,7 @@
 {
   "name": "Buoy",
   "version": "1.0.1",
-  "description": "Application description.",
+  "description": "Your on-the-go event manager",
   "scripts": {
     "start": "meteor --settings settings-development.json",
 		"debug": "meteor debug --settings settings-development.json",

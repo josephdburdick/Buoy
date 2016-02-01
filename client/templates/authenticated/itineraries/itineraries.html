@@ -19,10 +19,10 @@
 		<div class="col-lg-3 col-md-6 col-sm-12 action-item">
 			<div class="panel panel-default facebook">
 				<div class="panel-body">
-					<a href data-role="import-events"> <span>Import from Facebook</span> </a>
+					<a href data-role="import-events" data-toggle="modal" data-target="#modal" data-modal-template="importEvents"> <span>Import from Facebook</span> </a>
 				</div>
 			</div>
 		</div>
 	</div>
-	{{> Template.dynamic template="importEvents" data=facebookEvents }}
+
 </template>
