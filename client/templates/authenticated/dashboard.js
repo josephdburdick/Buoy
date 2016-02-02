@@ -30,7 +30,7 @@ Template.dashboard.helpers({
 		return FacebookEvents.find().count();
 	},
 	facebookEvents(){
-		return FacebookEvents.find();
+		return FacebookEvents.find( {}, { sort: { 'start_time': -1 } });
 	}
 });
 

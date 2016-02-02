@@ -5,12 +5,14 @@ let text = {
 			truncatedString,
 			settings = {
 				hasEllipsis: false,
-				stringLength: 5
+				max: 5
 			};
 		settings = Object.assign(settings, options);
 
-		truncatedString = str.split(" ").splice(0, settings.stringLength).join(" ");
-		truncatedString += settings.hasEllipsis ? "…" : "";
+		if (str.split(" ").length > settings.max){
+			truncatedString = str.split(" ").splice(0, settings.max).join(" ");
+			truncatedString += settings.hasEllipsis ? "…" : "";
+		}
 
 		return truncatedString;
 	},
@@ -19,12 +21,13 @@ let text = {
 			truncatedString,
 			settings = {
 				hasEllipsis: false,
-				stringLength: 5
+				max: 5
 			};
 		settings = Object.assign(settings, options);
-
-		truncatedString = str.splice(0, settings.stringLength);
-		truncatedString += settings.hasEllipsis ? "…" : "";
+		if (str.length > settings.max){
+			truncatedString = str.splice(0, settings.max);
+			truncatedString += settings.hasEllipsis ? "…" : "";
+		}
 
 		return truncatedString;
 	}

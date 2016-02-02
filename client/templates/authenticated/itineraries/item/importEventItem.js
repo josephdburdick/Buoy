@@ -1,5 +1,8 @@
 Template.importEventItem.helpers({
 	descriptionSummary: function(){
-		return Modules.both.text.truncateWords(this.description, {hasEllipsis: true, wordLength: 12});
+		return Modules.both.text.truncateWords(this.description, {hasEllipsis: true, max: 24});
+	},
+	humanReadableTime: function(time){
+		return moment(time).fromNow();
 	}
 })
