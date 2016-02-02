@@ -1,25 +1,16 @@
 <template name="itineraries">
-	<nav class="clearfix navbar navbar-default">
-		<ul class="nav navbar-nav filters">
-			<li>View:</li>
-			<li><a href="#" class="filter active" data-filter="not_deleted">All</a></li>
-			<li><a href="#" class="filter" data-filter="published">Published</a></li>
-			<li><a href="#" class="filter" data-filter="draft">Drafts</a></li>
-			<li><a href="#" class="filter" data-filter="deleted">Cancelled</a></li>
-		</ul>
-	</nav>
 	<div class="row itineraries-actions">
-		<div class="col-lg-3 col-md-6 col-sm-12 action-item">
+		<div class="col-md-6 col-sm-12 action-item">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<a href data-role="create-event"> <span>Create a new event</span> </a>
+					<a href class="display-block text-center" data-role="create-event"> <span>Create a new event</span> </a>
 				</div>
 			</div>
 		</div>
-		<div class="col-lg-3 col-md-6 col-sm-12 action-item">
+		<div class="col-md-6 col-sm-12 action-item">
 			<div class="panel panel-default facebook">
 				<div class="panel-body">
-					<a href data-role="import-events" data-toggle="modal" data-target="#modal" data-modal-template="importEvents"> <span>Import from Facebook</span> </a>
+					<a href class="display-block text-center" data-role="import-events" data-toggle="modal" data-target="#modal" data-modal-template="importEvents" data-modal-size="lg"> <span>Import from Facebook</span> </a>
 				</div>
 			</div>
 		</div>
