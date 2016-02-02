@@ -1,0 +1,12 @@
+.itineraries-list{
+	flex-wrap: wrap;
+	flex-flow: row wrap;
+  align-items: stretch;
+
+	.panel{
+		margin-bottom: 0;
+	}
+	.itinerary-item{
+		margin-bottom: 2rem;
+	}
+}
