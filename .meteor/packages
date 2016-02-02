@@ -14,7 +14,7 @@ meteorhacks:npm
 reywood:bootstrap3-sass
 themeteorchef:bert
 meteorhacks:ssr
-standard-minifiers
+seba:minifiers-autoprefixer
 
 npm-container
 ecmascript
