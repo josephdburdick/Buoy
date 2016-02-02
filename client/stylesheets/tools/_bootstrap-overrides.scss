@@ -1,0 +1,24 @@
+// Scale up the modal
+@media (min-width: $screen-sm-min) {
+  // Automatically set modal's width for larger viewports
+  .modal-dialog {
+
+		width: auto;
+		max-width: $modal-md;
+    margin: 30px auto;
+  }
+  .modal-content {
+    @include box-shadow(0 5px 15px rgba(0,0,0,.5));
+  }
+
+  // Modal sizes
+  .modal-sm {
+		width: auto;
+		max-width: $modal-sm; }
+}
+
+@media (min-width: $screen-md-min) {
+  .modal-lg {
+		width: auto;
+		max-width: $modal-lg; }
+}
