@@ -28,5 +28,5 @@ Meteor.publish( 'markers', function() {
 
 Meteor.publish( 'userFacebookEvents', function(userId){
 	check(userId, String);
-	return FacebookEvents.find({ ownerId: userId });
+	return FacebookEvents.find({ ownerId: userId }, { sort: { 'start_time': -1 } });
 })
