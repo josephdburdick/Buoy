@@ -4,15 +4,19 @@ let setBrowserPolicies = () => {
     '*.apis.google.com',
     '*.googleapis.com',
     '*.gstatic.com',
-    'google-analytics.com'
+    'google-analytics.com',
+		'*.fbcdn.net',
+		'*.facebook.com'
   ];
 
   _.each(trusted, function (origin) {
-    origin = "https://" + origin;
+    //origin = "https://" + origin;
     BrowserPolicy.content.allowOriginForAll(origin);
     BrowserPolicy.content.allowFrameOrigin(origin);
     BrowserPolicy.content.allowEval(origin);
   });
+
+	BrowserPolicy.content.allowOriginForAll('graph.facebook.com');
 
   BrowserPolicy.content.allowImageOrigin('https://maps.gstatic.com');
   BrowserPolicy.content.allowImageOrigin('http://chart.apis.google.com');

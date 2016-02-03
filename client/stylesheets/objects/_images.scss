@@ -1,0 +1,21 @@
+.rounded{
+	border-radius: 9999rem;
+	overflow: hidden;
+}
+
+.square {
+  position: relative;
+  width: 50%;
+}
+
+.square:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.embed-responsive-item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}

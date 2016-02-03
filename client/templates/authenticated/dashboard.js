@@ -2,7 +2,7 @@ Template.dashboard.onCreated(() => {
 	let self = Template.instance();
   self.subscribe('allUsers');
   self.subscribe('userData');
-	self.subscribe('userEvents');
+	self.subscribe('userEvents', Meteor.userId());
 	self.subscribe('userFacebookEvents', Meteor.userId());
 	self.subscribe('places');
 	self.subscribe('markers');
@@ -26,8 +26,11 @@ Template.dashboard.onCreated(() => {
 });
 
 Template.dashboard.helpers({
+	userHasEvents(){
+		return !!Events.find().count();
+	},
 	numberOfEvents(){
-		return FacebookEvents.find().count();
+		return Events.find().count();
 	},
 	facebookEvents(){
 		return FacebookEvents.find( {}, { sort: { 'start_time': -1 } });

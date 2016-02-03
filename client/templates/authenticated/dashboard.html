@@ -3,7 +3,26 @@
 		<div class="page-header">
 		  <h1>Your Events</h1>
 		</div>
-		{{ numberOfEvents }} Facebook Events
-		{{> itineraries}}
+
+		{{#if userHasEvents}}
+			{{> itineraries}}
+			{{ numberOfEvents }} Events
+		{{else}}
+			<div class="well text-center">
+				<h1 class="text-muted">No Events</h1>
+					<hr>
+					<a href data-role="create-event">
+						Create event</a><br>
+					or<br>
+					<a href data-role="import-events"
+							data-toggle="modal"
+							data-target="#modal"
+							data-modal-template="importEvents"
+							data-modal-size="full">
+						Import events from Facebook
+					</a>
+			</div>
+		{{/if}}
+
 	</div>
 </template>

@@ -7,13 +7,16 @@
 	{{else}}
 		{{#if authenticated}}
 			{{#unless redirectAuthenticated}}
-				{{> Template.dynamic template=yield}}
+				<main>
+					{{> Template.dynamic template=yield}}
+				</main>
 				{{> modal}}
 			{{/unless}}
 		{{else}}
 			{{#unless redirectPublic}}
-				{{> Template.dynamic template=yield}}
-				{{> modal}}
+				<main>
+					{{> Template.dynamic template=yield}}
+				</main>
 			{{/unless}}
 		{{/if}}
 	{{/if}}

@@ -1,4 +1,5 @@
-Meteor.publish( 'userEvents', function() {
+Meteor.publish( 'userEvents', function(userId) {
+	check(userId, String);
   return Events.find( { 'ownerId': this.userId } );
 });
 
