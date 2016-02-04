@@ -5,7 +5,6 @@ Template.importEvents.onCreated(() => {
 
 Template.importEvents.helpers({
 	facebookEvents(){
-		console.log(FacebookEvents.find().fetch());
-		return FacebookEvents.find();
+		return FacebookEvents.find( {}, { sort: { 'start_time': 1 } });
 	}
 });

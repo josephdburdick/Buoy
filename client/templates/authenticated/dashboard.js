@@ -33,22 +33,34 @@ Template.dashboard.helpers({
 		return Events.find().count();
 	},
 	facebookEvents(){
-		return FacebookEvents.find( {}, { sort: { 'start_time': -1 } });
+		return FacebookEvents.find( {}, { sort: { 'start_time': 1 } });
 	}
 });
-
 Template.dashboard.events({
 	'click [data-role="import-events"]': function(e, template){
 		e.preventDefault();
 		let facebook = Modules.client.facebook;
-		let eventsData = facebook.getFacebookEventsPromise();
-		eventsData.then((events) => {
-			template.dictionary.facebook.set('events', events);
+
+		if (!!template.dictionary.facebook.keys.events){
 			$('#modal').modal('show');
-			events.forEach((event, index, array) => {
-				let processedFacebookEvent = facebook.processUserFacebookEvent(event);
-				facebook.addEventToUserFacebookEvents(processedFacebookEvent);
+		} else {
+			let eventsData = facebook.getFacebookEventsPromise();
+			eventsData.then((events) => {
+				template.dictionary.facebook.set('events', events);
+				$('#modal').modal('show');
+				events.forEach((event, index, array) => {
+					let
+						then = new Date(event.start_time),
+						now = new Date(),
+						processedFacebookEvent;
+
+					// Only include events happening in the future.
+					if (now < then){
+						processedFacebookEvent = facebook.processUserFacebookEvent(event);
+						facebook.addEventToUserFacebookEvents(processedFacebookEvent);
+					}
+				});
 			});
-		});
+		}
 	}
 })

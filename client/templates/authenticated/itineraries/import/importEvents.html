@@ -1,6 +1,4 @@
 <template name="importEvents">
-	{{> Template.dynamic template="itinerariesList" data=facebookEvents }}
-
 	<div class="row itineraries-list">
 		{{#each facebookEvents}}
 			{{> Template.dynamic template="importEventItem" data=this }}

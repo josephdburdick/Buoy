@@ -63,7 +63,7 @@ let facebook = {
 		return new Promise((resolve, reject) => {
 			Modules.both.facebook.getFacebookData({token: Session.get('facebookAccessToken'), query: '/me?fields=events'})
 			.then((response) => {
-				if (response.statusCode = 200){
+				if (response.statusCode === 200){
 					resolve(response.data.events.data);
 				} else {
 					reject(response);
