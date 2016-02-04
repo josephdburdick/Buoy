@@ -1,8 +1,6 @@
 <template name="dashboard">
 	<div class="container">
-		<div class="page-header">
-		  <h1>Your Events</h1>
-		</div>
+		<header class="lead">Your Events</header>
 
 		{{#if userHasEvents}}
 			{{> itineraries}}
@@ -11,7 +9,7 @@
 			<div class="well text-center">
 				<h1 class="text-muted">No Events</h1>
 					<hr>
-					<a href data-role="create-event">
+					<a href="/event/create">
 						Create One</a><br>
 					or<br>
 					<a href data-role="import-events"

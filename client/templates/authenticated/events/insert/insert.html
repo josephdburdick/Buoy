@@ -1,0 +1,14 @@
+<template name="insertEvent">
+	<div class="container">
+		<header class="lead">Create event</header>
+		<!-- {{> quickForm collection="Events" id="insertEventForm" type="insert"}} -->
+		{{#autoForm collection="Events" id="insertEventForm" type="insert"}}
+	    <fieldset>
+	      <legend>Add an Event</legend>
+	      {{> afQuickField name='name'}}
+
+	    </fieldset>
+	    <button type="submit" class="btn btn-primary">Insert</button>
+  	{{/autoForm}}
+	</div>
+</template>

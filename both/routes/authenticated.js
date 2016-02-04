@@ -16,6 +16,14 @@ authenticatedRoutes.route( '/dashboard', {
   }
 });
 
+authenticatedRoutes.route( '/event/create', {
+  name: 'insertEvent',
+  action() {
+    BlazeLayout.render( 'default', { yield: 'insertEvent' } );
+  }
+});
+
+
 authenticatedRoutes.route( '/profile', {
   name: 'userProfile',
   action() {
