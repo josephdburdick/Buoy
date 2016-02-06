@@ -6,16 +6,21 @@
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-				<div class="row middle-xs">
-					<div class="col-xs">
-						<div class="rounded">
-							<img src="{{currentUser.profile.picture}} " alt="{{currentUser.username}}" width="30">
+				{{#if currentUser.profile.picture}}
+					<div class="row middle-xs">
+						<div class="col-xs">
+							<div class="rounded">
+								<img src="{{currentUser.profile.picture}} " alt="{{currentUser.username}}" width="30">
+							</div>
+						</div>
+						<div class="col-xs">
+							<span class="caret"></span>
 						</div>
 					</div>
-					<div class="col-xs">
-						<span class="caret"></span>
-					</div>
-				</div>
+				{{else}}
+					{{currentUser.username}}
+					<span class="caret"></span>
+				{{/if}}
 
 			</a>
       <ul class="dropdown-menu" role="menu">
