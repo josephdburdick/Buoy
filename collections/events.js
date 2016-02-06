@@ -24,9 +24,9 @@ EventsSchema = new SimpleSchema({
 	name: {
 		type: String,
 		optional: true,
-		defaultValue: function(){
+		autoValue: function(){
 			let
-				time = this.siblingField('start_time'),
+				time = !!this.field('start_time').value ? this.field('start_time').value : new Date(),
 				dayPeriod = Modules.both.getDayPeriod(time),
 				humanizedDate = `${moment(time).format("dddd")} ${dayPeriod}, ${moment(time).format("MMMM Do YYYY, h:mm:ss")}`;
 				console.log(humanizedDate);
@@ -125,5 +125,5 @@ EventsSchema = new SimpleSchema({
   }
 });
 
-// Events.attachSchema(EventsSchema);
-// Schema.Events = EventsSchema;
+Events.attachSchema(EventsSchema);
+Schema.Events = EventsSchema;
