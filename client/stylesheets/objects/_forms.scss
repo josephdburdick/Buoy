@@ -1,6 +1,18 @@
+form{
+	background: #eee;
+	padding: 2rem 2rem;
+}
 label.error {
   display: block;
   margin-top: 10px;
   font-weight: normal;
   color: lighten( red, 20% );
+}
+
+[type="text"], textarea{
+	background-color: #fff;
+	
+	label ~ &{
+		margin-top: .25rem;
+	}
 }
