@@ -21,8 +21,10 @@ Meteor.methods({
 							$set: event,
 						});
 					}
+					console.log('> Meteor method: upsert')
 					return event._id;
 				} else {
+					console.log('> Meteor method: insert')
 					documentId = Events.insert(event);
 					return documentId;
 				}
