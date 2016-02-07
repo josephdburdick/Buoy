@@ -1,4 +1,4 @@
-FacebookEvents = new Meteor.Collection('facebookEvents');
+FacebookEvents = new Mongo.Collection('facebookEvents');
 
 FacebookEvents.allow({
   insert: () => false,

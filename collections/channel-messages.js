@@ -1,4 +1,4 @@
-ChannelMessages = new Meteor.Collection( 'channelMessages' );
+ChannelMessages = new Mongo.Collection( 'channelMessages' );
 
 ChannelMessages.allow({
   insert: () => false,

@@ -1,32 +1,35 @@
 <template name="dashboard">
 	<div class="container">
-		<header class="lead">Your Events</header>
+		<div class="col-xs-12">
 
-		{{#if userHasEvents}}
+			<header class="lead">Your Events</header>
+
+			{{#if userHasEvents}}
 			{{> itineraries}}
 			{{ numberOfEvents }} Events
 
 			<div class="row">
 				{{#each userEvents}}
-					{{> Template.dynamic template="importEventItem" data=this }}
+				{{> Template.dynamic template="importEventItem" data=this }}
 				{{/each}}
 			</div>
-		{{else}}
+			{{else}}
 			<div class="well text-center">
 				<h1 class="text-muted">No Events</h1>
-					<hr>
-					<a href="{{pathFor 'insertEvent'}}">
-						Create One</a><br>
+				<hr>
+				<a href="{{pathFor 'insertEvent'}}">
+					Create One</a><br>
 					or<br>
 					<a href data-role="import-events"
-							data-toggle="modal"
-							data-target="#modal"
-							data-modal-template="importEvents"
-							data-modal-size="full">
-						Import RSVP'd events from Facebook
-					</a>
+					data-toggle="modal"
+					data-target="#modal"
+					data-modal-template="importEvents"
+					data-modal-size="full">
+					Import RSVP'd events from Facebook
+				</a>
 			</div>
-		{{/if}}
+			{{/if}}
 
+		</div>
 	</div>
 </template>

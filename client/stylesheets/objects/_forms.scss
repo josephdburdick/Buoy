@@ -16,3 +16,7 @@ label.error {
 		margin-top: .25rem;
 	}
 }
+
+.form-group .btn ~ .btn{
+	margin-top: 0;
+}

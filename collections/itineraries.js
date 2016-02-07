@@ -1,4 +1,4 @@
-Itineraries = new Meteor.Collection('itineraries');
+Itineraries = new Mongo.Collection('itineraries');
 
 Itineraries.allow({
   insert: () => false,

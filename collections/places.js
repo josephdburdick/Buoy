@@ -1,4 +1,4 @@
-Places = new Meteor.Collection( 'places' );
+Places = new Mongo.Collection( 'places' );
 
 Places.allow({
   insert: () => false,

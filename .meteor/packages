@@ -31,7 +31,6 @@ reactive-var
 reactive-dict
 aldeed:collection2
 tracker
-babrahams:constellation
 service-configuration
 accounts-facebook
 http
@@ -40,3 +39,4 @@ aldeed:geocoder
 random
 momentjs:moment
 aldeed:autoform
+crosswalk

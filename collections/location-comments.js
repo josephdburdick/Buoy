@@ -1,4 +1,4 @@
-LocationComments = new Meteor.Collection( 'locationMessages' );
+LocationComments = new Mongo.Collection( 'locationMessages' );
 
 LocationComments.allow({
   insert: () => false,

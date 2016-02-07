@@ -1,4 +1,4 @@
-Attendees = new Meteor.Collection( 'attendees' );
+Attendees = new Mongo.Collection( 'attendees' );
 
 Attendees.allow({
   insert: () => false,

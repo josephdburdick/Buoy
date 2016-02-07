@@ -1,4 +1,4 @@
-Channels = new Meteor.Collection( 'channels' );
+Channels = new Mongo.Collection( 'channels' );
 
 Channels.allow({
   insert: () => false,

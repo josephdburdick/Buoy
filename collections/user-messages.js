@@ -1,4 +1,4 @@
-UserMessages = new Meteor.Collection( 'userMessages' );
+UserMessages = new Mongo.Collection( 'userMessages' );
 
 UserMessages.allow({
   insert: () => false,

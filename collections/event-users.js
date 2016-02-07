@@ -1,4 +1,4 @@
-EventUsers = new Meteor.Collection( 'eventUsers' );
+EventUsers = new Mongo.Collection( 'eventUsers' );
 
 EventUsers.allow({
   insert: () => false,
