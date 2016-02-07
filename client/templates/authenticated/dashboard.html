@@ -5,6 +5,12 @@
 		{{#if userHasEvents}}
 			{{> itineraries}}
 			{{ numberOfEvents }} Events
+
+			<div class="row">
+				{{#each userEvents}}
+					{{> Template.dynamic template="importEventItem" data=this }}
+				{{/each}}
+			</div>
 		{{else}}
 			<div class="well text-center">
 				<h1 class="text-muted">No Events</h1>

@@ -1,6 +1,6 @@
 Meteor.publish( 'userEvents', function(userId) {
 	check(userId, String);
-  return Events.find( { 'ownerId': this.userId } );
+  return Events.find({ ownerId: userId }, { sort: { 'start_time': -1 } });
 });
 
 Meteor.publish( 'eventsPlacesAndLocations', function() {

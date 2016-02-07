@@ -34,7 +34,11 @@ Template.dashboard.helpers({
 	},
 	facebookEvents(){
 		return FacebookEvents.find( {}, { sort: { 'start_time': 1 } });
+	},
+	userEvents(){
+		return Events.find( {}, { sort: { 'start_time': 1 } });
 	}
+
 });
 Template.dashboard.events({
 	'click [data-role="import-events"]': function(e, template){
