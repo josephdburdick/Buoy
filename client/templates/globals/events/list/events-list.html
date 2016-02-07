@@ -1,7 +1,14 @@
 <template name="eventsList">
+	<div class="lead">
+		{{#if pageTitle}}
+			{{pageTitle}}
+		{{else}}
+			Events
+		{{/if}}
+	</div>
 	<div class="row itineraries-list">
-		{{#each data}}
-			{{> Template.dynamic template="eventItemCard" data=this }}
+		{{#each eventsData}}
+			{{> eventCard}}
 		{{/each}}
 	</div>
 </template>

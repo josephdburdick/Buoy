@@ -6,13 +6,9 @@
 
 			{{#if userHasEvents}}
 				{{> itineraries}}
-			{{ numberOfEvents }} Events
+				{{ numberOfEvents }} Events
 
-			<div class="row">
-				{{#each userEvents}}
-					{{> Template.dynamic template="eventCard" data=this }}
-				{{/each}}
-			</div>
+				{{> eventsList eventsData=userEvents pageTitle="Events List"}}
 			{{else}}
 			<div class="well text-center">
 				<h1 class="text-muted">No Events</h1>
