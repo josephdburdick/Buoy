@@ -1,0 +1,25 @@
+<template name="eventCard">
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-6 itinerary-item" data-id="{{_id}}" data-fbId="{{fbId}}">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<header>
+					<a class="display-block lead" style="margin-bottom: 0;" href="{{pathFor 'eventDetail' eventId=_id}}">
+						{{name}}
+					</a>
+				</header>
+				<!-- <div class="collapse" id="collapse-{{_id}}"> -->
+					<hr>
+					{{description}}
+				<!-- </div> -->
+
+			</div>
+
+
+			<div class="panel-footer">
+				<small>
+					{{humanReadableTime start_time}}
+				</small>
+			</div>
+		</div>
+	</div>
+</template>

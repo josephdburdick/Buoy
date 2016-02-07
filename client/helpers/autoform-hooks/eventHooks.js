@@ -11,8 +11,9 @@ var eventHooks = {
   after: {
     insert: function (error, result) {
 			if (!error){
+				console.log(result);
 				FlowRouter.go('dashboard');
-				Bert.alert('Event added!');
+				Bert.alert('Event added!', 'success');
 			} else {
 				console.error(error);
 				Bert.alert(error, 'error');

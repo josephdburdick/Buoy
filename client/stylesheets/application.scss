@@ -19,7 +19,15 @@
 		margin-top: 0;
 	}
 }
+.panel-footer{
+	margin-top: 0;
+}
 
-[class^="col-"] ~ [class^="col-"]{
+[class^="col-"] ~ [class^="col-"],
+.btn ~ .btn{
+	margin-top: 0;
+}
+
+.m-top-0{
 	margin-top: 0;
 }

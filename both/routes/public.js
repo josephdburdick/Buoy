@@ -31,9 +31,17 @@ publicRoutes.route( '/reset-password/:token', {
 });
 
 
-publicRoutes.route( '/eventDetail', {
+publicRoutes.route( '/event/:eventId', {
   name: 'eventDetail',
   action() {
     BlazeLayout.render( 'default', { yield: 'eventDetail' } );
+  }
+});
+
+FlowRouter.route('/event/:eventId/edit', {
+	name: 'edit-event',
+  action: function(params, queryParams) {
+    console.log("Yeah! We are on the post:", params.postId);
+		BlazeLayout.render( 'default', { yield: 'eventUpdate' } );
   }
 });

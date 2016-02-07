@@ -5,12 +5,12 @@
 			<header class="lead">Your Events</header>
 
 			{{#if userHasEvents}}
-			{{> itineraries}}
+				{{> itineraries}}
 			{{ numberOfEvents }} Events
 
 			<div class="row">
 				{{#each userEvents}}
-				{{> Template.dynamic template="importEventItem" data=this }}
+					{{> Template.dynamic template="eventCard" data=this }}
 				{{/each}}
 			</div>
 			{{else}}

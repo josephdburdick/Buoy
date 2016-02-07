@@ -1,0 +1,7 @@
+<template name="eventsList">
+	<div class="row itineraries-list">
+		{{#each data}}
+			{{> Template.dynamic template="eventItemCard" data=this }}
+		{{/each}}
+	</div>
+</template>
