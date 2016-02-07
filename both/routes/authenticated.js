@@ -23,10 +23,9 @@ authenticatedRoutes.route( '/event/create', {
   }
 });
 
-
-authenticatedRoutes.route( '/profile', {
-  name: 'userProfile',
+authenticatedRoutes.route( '/user/:userId/profile', {
+  name: 'viewProfile',
   action() {
-    BlazeLayout.render( 'default', { yield: 'userProfile' } );
+    BlazeLayout.render( 'default', { yield: 'viewProfile' } );
   }
 });

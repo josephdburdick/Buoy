@@ -25,7 +25,7 @@
 			</a>
       <ul class="dropdown-menu" role="menu">
 				<li class="{{currentRoute 'dashboard'}}"><a href="{{pathFor 'dashboard'}}">My Events</a></li>
-				<li class="{{currentRoute 'userProfile'}}"><a href="{{pathFor 'userProfile'}}">My Profile</a></li>
+				<li class="{{currentRoute 'userProfile'}}"><a href="{{pathFor 'viewProfile' userId=currentUser._id}}">My Profile</a></li>
 				<li class="divider"></li>
         <li><a href="/" data-action="logout">Logout</a></li>
       </ul>

@@ -1,8 +1,8 @@
-Template.userProfile.onCreated( () => {
+Template.updateUserProfile.onCreated( () => {
   // Template.instance().subscribe(Meteor.user());
 });
 
-Template.userProfile.helpers({
+Template.updateUserProfile.helpers({
 	userProfile(){
     if(Meteor.user())
       return Meteor.user();

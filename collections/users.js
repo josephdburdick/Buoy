@@ -108,7 +108,6 @@ UserSchema.User = new SimpleSchema({
     type: String,
     optional: true
   },
-
   preferences: {
     type: Object,
 		optional: true
