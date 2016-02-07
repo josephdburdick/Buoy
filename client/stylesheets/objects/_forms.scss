@@ -9,9 +9,9 @@ label.error {
   color: lighten( red, 20% );
 }
 
-[type="text"], textarea{
+.form-control{
 	background-color: #fff;
-	
+
 	label ~ &{
 		margin-top: .25rem;
 	}

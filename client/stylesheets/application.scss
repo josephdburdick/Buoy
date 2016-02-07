@@ -13,3 +13,13 @@
 @import "components/itineraries-list";
 
 @import "vendor/flexboxgrid";
+
+.list-group{
+	.list-group-item ~ .list-group-item{
+		margin-top: 0;
+	}
+}
+
+[class^="col-"] ~ [class^="col-"]{
+	margin-top: 0;
+}
