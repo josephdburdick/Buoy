@@ -43,12 +43,12 @@ var eventHooks = {
 
   // Called when any submit operation succeeds
   onSuccess: function (formType, result) {
-		console.log(formType, result);
+		console.log(formtype, result);
 	},
 	//
   // // Called when any submit operation fails
   onError: function (formType, error) {
-		console.log(formType, error);
+		console.log(formtype, error);
 	},
 	//
   // // Called every time an insert or typeless form
