@@ -1,0 +1,33 @@
+<template name="eventDetail">
+	<div class="container">
+		<header class="lead">
+			Event Detail
+		</header>
+		{{#with event}}
+		<ul class="list-group">
+			<li class="list-group-item">ownerId: {{ownerId}}</li>
+			<li class="list-group-item">fbId: {{fbId}}</li>
+			<li class="list-group-item">name: {{name}}</li>
+			<li class="list-group-item">description: {{description}}</li>
+			<li class="list-group-item">places:
+				<ul>
+					{{#each place in places}}
+						<li>
+							{{place.name}}<br>
+							{{place.address}}<br>
+							{{place.coords}}
+						</li>
+					{{/each}}
+				</ul></li>
+			<li class="list-group-item">itineraryId: {{itineraryId}}</li>
+			<li class="list-group-item">picture: <img src="{{picture}}"></li>
+			<li class="list-group-item">privacy: {{privacy}}</li>
+			<li class="list-group-item">ticket_uri: {{ticket_uri}}</li>
+			<li class="list-group-item">start_time: {{start_time}}</li>
+			<li class="list-group-item">end_time: {{end_time}}</li>
+			<li class="list-group-item">updated_time: {{updated_time}}</li>
+			<li class="list-group-item">eventChannel: {{eventChannel}}</li>
+		</ul>
+		{{/with}}
+	</div>
+</template>
