@@ -46,12 +46,10 @@ Template.dashboard.events({
 		let facebook = Modules.client.facebook;
 
 		if (!!template.dictionary.facebook.keys.events){
-			$('#modal').modal('show');
 		} else {
 			let eventsData = facebook.getFacebookEventsPromise();
 			eventsData.then((events) => {
 				template.dictionary.facebook.set('events', events);
-				$('#modal').modal('show');
 				events.forEach((event, index, array) => {
 					let
 						then = new Date(event.start_time),

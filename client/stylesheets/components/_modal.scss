@@ -4,8 +4,8 @@
   .modal-dialog {
 
 		width: auto;
-		max-width: $modal-md;
-    margin: 30px auto;
+		max-width: 100%; //$modal-md;
+    margin: 30px 2rem;
   }
   .modal-content {
     @include box-shadow(0 5px 15px rgba(0,0,0,.5));
