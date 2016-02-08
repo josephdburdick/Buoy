@@ -134,13 +134,13 @@ EventsSchema = new SimpleSchema({
     	omit: true
     }
   },
-  eventChannel: {
-    type: Object,
-    optional: true, //will want to create an channel first and push Id or array here...
-		autoform: {
-    	omit: true
-    }
-  },
+  // eventChannel: {
+  //   type: Object,
+  //   optional: true, //will want to create an channel first and push Id or array here...
+	// 	autoform: {
+  //   	omit: true
+  //   }
+  // },
 	createdAt: {
     type: Date,
 		optional: true,
