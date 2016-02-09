@@ -2,12 +2,12 @@ Template.dashboard.onCreated(() => {
 	let self = Template.instance();
   self.subscribe('allUsers');
   self.subscribe('userData');
-	self.subscribe('userEvents', Meteor.userId());
+	self.subscribe('publicAndUserEvents', Meteor.userId());
 	self.subscribe('userFacebookEvents', Meteor.userId());
-	self.subscribe('places');
-	self.subscribe('markers');
-	self.subscribe('locations');
-	self.subscribe('eventsPlacesAndLocations');
+	// self.subscribe('places');
+	// self.subscribe('markers');
+	// self.subscribe('locations');
+	// self.subscribe('eventsPlacesAndLocations');
 
 	let facebook = Modules.client.facebook;
 	self.dictionary = {

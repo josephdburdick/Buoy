@@ -1,6 +1,16 @@
 Meteor.publish( 'userEvents', function(userId) {
 	check(userId, String);
-  return Events.find({ ownerId: userId }, { sort: { 'start_time': -1 } });
+  return [
+		Events.find({ ownerId: userId }, { sort: { 'start_time': -1 } })
+	];
+});
+
+Meteor.smartPublish('publicAndUserEvents', function(userId) {
+  check(userId, String);
+  return [
+    Events.find({ ownerId: userId }, { sort: { 'start_time': -1 } }),
+    Events.find({ privacy: 'EVERYONE' }, { sort: { 'start_time': -1 } })
+  ];
 });
 
 Meteor.publish( 'eventsPlacesAndLocations', function() {
@@ -13,6 +23,11 @@ Meteor.publish( 'eventsPlacesAndLocations', function() {
     places,
     Events.find({_id: {$in: eventIds}})
   ];
+});
+
+Meteor.publish( 'eventDetail', function(eventId) {
+	check(eventId, String);
+  return Events.find({ _id: eventId });
 });
 
 Meteor.publish( 'locations', function() {
