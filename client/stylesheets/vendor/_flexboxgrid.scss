@@ -1,3 +1,10 @@
+$gutterWidth: .5rem;
+
+
+$containerPadding: $gutterWidth * 2;
+$containerPadding: $gutterWidth * 2;
+$columnPadding: $gutterWidth;
+
 .container-fluid,
 .container {
   margin-right: auto;
@@ -5,8 +12,8 @@
 }
 
 .container-fluid {
-  padding-right: 2rem;
-  padding-left: 2rem;
+  padding-right: $containerPadding;
+  padding-left: $containerPadding;
 }
 
 .row {
@@ -27,8 +34,8 @@
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
+	margin-right: -$columnPadding;
+	margin-left: -$columnPadding;
 }
 
 .row.reverse {
@@ -78,8 +85,8 @@
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
+  padding-right: $columnPadding;
+  padding-left: $columnPadding;
 }
 
 .col-xs {
@@ -299,7 +306,7 @@
 
 @media only screen and (min-width: 48em) {
   .container {
-    width: 49rem;
+    max-width: 49rem;
   }
 
   .col-sm,
@@ -333,8 +340,8 @@
     -webkit-flex: 0 0 auto;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
+    padding-right: $columnPadding;
+    padding-left: $columnPadding;
   }
 
   .col-sm {
@@ -555,7 +562,7 @@
 
 @media only screen and (min-width: 64em) {
   .container {
-    width: 65rem;
+    max-width: 65rem;
   }
 
   .col-md,
@@ -589,8 +596,8 @@
     -webkit-flex: 0 0 auto;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
+    padding-right: $columnPadding;
+    padding-left: $columnPadding;
   }
 
   .col-md {
@@ -811,7 +818,7 @@
 
 @media only screen and (min-width: 75em) {
   .container {
-    width: 76rem;
+    max-width: 76rem;
   }
 
   .col-lg,
@@ -845,8 +852,8 @@
     -webkit-flex: 0 0 auto;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
+    padding-right: $columnPadding;
+    padding-left: $columnPadding;
   }
 
   .col-lg {

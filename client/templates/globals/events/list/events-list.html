@@ -1,14 +1,18 @@
 <template name="eventsList">
-	<div class="lead">
-		{{#if pageTitle}}
-			{{pageTitle}}
-		{{else}}
-			Events
-		{{/if}}
-	</div>
-	<div class="row itineraries-list">
-		{{#each eventsData}}
-			{{> eventCard}}
-		{{/each}}
-	</div>
+
+		<div class="lead">
+			{{#if pageTitle}}
+				{{pageTitle}}
+			{{else}}
+				Events
+			{{/if}}
+		</div>
+		<div class="itineraries-list">
+			<div class="row center-xs">
+				{{#each eventsData}}
+					{{> eventCard}}
+				{{/each}}
+			</div>
+		</div>
+
 </template>

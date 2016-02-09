@@ -1,0 +1,18 @@
+<template name="header">
+	<nav class="navbar navbar-inverse navbar-fixed-top" id="primary-nav" role="navigation">
+		<div class="wrap container-fluid">
+			<div class="row around-xs middle-xs">
+				<div class="col-xs">
+					<a class="navbar-brand" href="{{brandLink}}">{{appName}}</a>
+				</div>
+				<div class="col-xs">
+					{{#if currentUser}}
+						{{> authenticatedNavigation}}
+					{{else}}
+						{{> publicNavigation}}
+					{{/if}}
+				</div>
+			</div>
+		</div>
+	</nav>
+</template>

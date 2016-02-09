@@ -32,8 +32,20 @@
 	}
 }
 
+main, nav[role="navigation"]{
+	transition: all .2s ease-out;
+}
 .modal-open{
 	main, nav[role="navigation"]{
+		transition: all .2s ease-out;
 	  filter: blur(5px);
+	}
+}
+
+.modal{
+	transition: all .2s ease-out;
+	filter: blur(5px);
+	.modal-open &{
+		filter: blur(0px);
 	}
 }

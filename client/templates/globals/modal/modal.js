@@ -1,14 +1,11 @@
 Template.body.events({
   'click [data-toggle="modal"]': function(event, template){
-		console.log(event);
-
     let name = event.currentTarget.dataset.modalTemplate;
 		let modalSize = !!event.currentTarget.dataset.modalSize ? event.currentTarget.dataset.modalSize : null;
 		Session.set('modalSize', modalSize);
     Session.set('activeModal', name);
 
 		$('#modal').off('hidden.bs.modal').on('hidden.bs.modal', (event) => {
-			console.log(event);
 			Session.set('modalSize', null);
 			Session.set('activeModal', null);
 		});
