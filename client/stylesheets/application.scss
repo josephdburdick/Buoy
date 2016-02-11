@@ -41,6 +41,9 @@ $primaryNavigationHeight: 64px;
 		.wrap{
 			min-height: $navbar-height;
 		}
+		.rounded ~ .caret {
+			margin-left: 8px;
+		}
 	}
 	main {
 		flex: 1 0 auto;
