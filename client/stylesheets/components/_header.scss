@@ -1,27 +1,14 @@
-// #primary-nav{
-// 	a{
-// 		padding: 0 1rem;
-// 	}
-// }
-// #primate-nav-dropdown{
-// 	padding:
-// }
-
-a.dropdown-toggle{
-	display: block;
-	color: rgba(white, .8);
-	// padding: 0 1rem 0 2rem;
-	transition-property: background-color, color;
-	transition-duration: .1s;
-	transition-timing-function: ease-out;
-	background-color: rgba(black, 0);
-	&:active, .dropdown.open &{
-		background-color: rgba(black, .25);
+#primary-nav{	
+	a.dropdown-toggle{
+		display: inline-block;
+		color: rgba(white, .8);
+		// padding: 0 1rem 0 2rem;
+		transition-property: background-color, color;
+		transition-duration: .1s;
+		transition-timing-function: ease-out;
+		background-color: rgba(black, 0);
+		&:active, .dropdown.open &{
+			background-color: rgba(black, .25);
+		}
 	}
 }
-// }
-// .dropdown a.dropdown-toggle{
-// 	&:active{
-// 		background-color: rgba(black, .25);
-// 	}
-// }
