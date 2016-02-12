@@ -3,8 +3,8 @@
 	  <div class="modal-dialog {{modalSize}}">
 	    <div class="modal-content">
 	      <div class="modal-body">
-					{{#if activeModal}}
-	        	{{> Template.dynamic template=activeModal}}
+					{{#if activeModalTemplate}}
+	        	{{> Template.dynamic template=activeModalTemplate}}
 					{{else}}
 						{{> loading}}
 					{{/if}}
