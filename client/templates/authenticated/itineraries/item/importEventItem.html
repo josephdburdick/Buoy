@@ -1,5 +1,5 @@
 <template name="importEventItem">
-	<div class="col-xs-12 col-sm-6 col-lg-6 itinerary-item" data-id="{{_id}}" data-fbId="{{fbId}}">
+	<div class="col-xs-12 col-sm-6 col-lg-6 event-card" data-id="{{_id}}" data-fbId="{{fbId}}">
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<header>
@@ -11,10 +11,7 @@
 					<hr>
 					{{description}}
 				</div>
-
 			</div>
-
-
 			<div class="panel-footer">
 				<div class="row">
 					<div class="col-xs-12 col-md pull-left">
@@ -22,14 +19,12 @@
 							{{humanReadableTime start_time}}
 						</small>
 					</div>
-
 					<div class="col-xs text-right">
 						<div class="btn-group" role="group" aria-label="...">
-						  <button type="button" class="btn btn-default">Ignore</button>
-						  <button type="button" class="btn btn-primary">Import</button>
+						  <button type="button" class="btn btn-default" data-action="ignore">Ignore</button>
+						  <button type="button" class="btn btn-primary" data-action="import">Import</button>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
