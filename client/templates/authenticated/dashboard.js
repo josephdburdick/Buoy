@@ -33,10 +33,10 @@ Template.dashboard.helpers({
 		return Events.find().count();
 	},
 	facebookEvents(){
-		return FacebookEvents.find( {}, { sort: { 'start_time': 1 } });
+		return FacebookEvents.find( {}, { sort: { 'start_time': -1 } });
 	},
 	userEvents(){
-		return Events.find( {}, { sort: { 'start_time': 1 } });
+		return Events.find( {}, { sort: { 'start_time': -1 } });
 	}
 
 });
