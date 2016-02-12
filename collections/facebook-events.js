@@ -21,6 +21,11 @@ FacebookEventsSchema = new SimpleSchema({
     type: String,
     optional: true
   },
+	isImportedEvent: {
+		type: Boolean,
+		optional: false,
+		defaultValue: false
+	},
 	name: {
 		type: String,
 		optional: true,
@@ -68,10 +73,6 @@ FacebookEventsSchema = new SimpleSchema({
 		min: 0,
 		max: 2
 	},
-  itineraryId: {
-    type: String,
-  	optional: true //will want to create an itinerary first and push Id or array here...
-  },
   picture: {
     type: String,
   	optional: true
@@ -95,10 +96,6 @@ FacebookEventsSchema = new SimpleSchema({
   'updated_time': {
     type: String,
   	optional: true
-  },
-  eventChannel: {
-    type: Object,
-    optional: true //will want to create an channel first and push Id or array here...
   },
 	createdAt: {
     type: Date,
