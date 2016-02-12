@@ -1,10 +1,19 @@
 Meteor.methods({
-	'seedEvents': function() {
+	'seedEvents': (numberOfEvents) => {
+		if (!numberOfEvents){
+			numberOfEvents = 50;
+		}
+		check(numberOfEvents, Number);
+		
 		let
 			events = [],
 			myId = Meteor.users.findOne({username: 'josephdburdick'})._id;
 
-		_(25).times(() => {
+
+
+		console.log(`Generating ${numberOfEvents} events...`);
+
+		_(numberOfEvents).times(() => {
 			// Randomly generate an ownerId or assign it to me
 			let
 				places = [],
