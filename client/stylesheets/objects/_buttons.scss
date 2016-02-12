@@ -1,0 +1,70 @@
+.btn{
+	transition: all .2s;
+}
+.btn-outline {
+  background-color: transparent;
+  color: inherit;
+}
+
+.btn-default.btn-outline {
+  color: $btn-default-color;
+	border-color: rgba($btn-default-color, .95);
+	&:hover{
+		border-color: rgba($btn-default-color, 1);
+		background-color: rgba($btn-default-color, 1);
+	}
+}
+
+.btn-primary.btn-outline {
+  color: $brand-primary;
+	border-color: rgba($brand-primary, .95);
+	&:hover{
+		border-color: rgba($brand-primary, 1);
+		background-color: rgba($brand-primary, 1);
+	}
+}
+
+.btn-success.btn-outline {
+  color: $brand-success;
+	border-color: rgba($brand-success, .95);
+	&:hover{
+		border-color: rgba($brand-success, 1);
+		background-color: rgba($brand-success, 1);
+	}
+}
+
+.btn-info.btn-outline {
+  color: $brand-info;
+	border-color: rgba($brand-info, .95);
+	&:hover{
+		border-color: rgba($brand-info, 1);
+		background-color: rgba($brand-info, 1);
+	}
+}
+
+.btn-warning.btn-outline {
+  color: $brand-warning;
+	border-color: rgba($brand-warning, .95);
+	&:hover{
+		border-color: rgba($brand-warning, 1);
+		background-color: rgba($brand-warning, 1);
+	}
+}
+
+.btn-danger.btn-outline {
+  color: $brand-danger;
+	border-color: rgba($brand-danger, .95);
+	&:hover{
+		border-color: rgba($brand-danger, 1);
+		background-color: rgba($brand-danger, 1);
+	}
+}
+
+.btn-default.btn-outline:hover,
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,
+.btn-info.btn-outline:hover,
+.btn-warning.btn-outline:hover,
+.btn-danger.btn-outline:hover {
+  color: #fff;
+}

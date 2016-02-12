@@ -5,22 +5,23 @@
 @import "tools/extends";
 @import "objects/images";
 @import "objects/forms";
+@import "objects/buttons";
 @import "components/login";
 @import "components/modal";
 @import "components/itineraries-list";
-
+@import "components/events/event-card";
 @import "vendor/flexboxgrid";
 
 
 $globalMaxWidth: 1200px;
-$primaryNavigationHeight: 64px;
+$primaryNavigationHeight: 50px;
 
 %primary-nav-height{
 	min-height: $primaryNavigationHeight
 }
 
-#primary-navigation{
-	min-height: $primaryNavigationHeight
+#primary-nav .nav > li:not(.dropdown) {
+	display: inline-block;
 }
 
 .below-primary-nav{
@@ -55,7 +56,9 @@ $primaryNavigationHeight: 64px;
 		}
 	}
 }
-
+.no-margin-bottom{
+	margin-bottom: 0;
+}
 .wrap{
 	box-sizing: border-box;
 	width: 100%;
@@ -86,7 +89,6 @@ main{
 	}
 }
 
-[class^="col-"] ~ [class^="col-"],
 .btn ~ .btn{
 	margin-top: 0;
 }
@@ -135,4 +137,9 @@ main{
 		max-width: $globalMaxWidth;
 		margin: 0 auto;
 	}
+}
+
+.btn-lg{
+	padding-left: 15px;
+	padding-right: 15px;
 }
