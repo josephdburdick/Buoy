@@ -1,61 +1,56 @@
-<Template name="viewProfile">
-	<div>
-	{{> map}}
-	<div class="wrap container-fluid">
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="panel">
-					<div class="panel-body">
-						<div class="row">
-							<div class="col-md-3 col-lg-3 " align="center">
-								<div class="panel-heading">
-									<h3 class="panel-title">{{user.username}}</h3>
-								</div>
-								<img alt="User Pic" src="{{user.profile.picture}}" class="img-circle img-responsive"> </div>
-								<div class="col-md-9 col-lg-9 ">
-								<table class="table table-user-information">
-									<tbody>
-										<tr>
-											<td>Department:</td>
-											<td>Programming</td>
-										</tr>
-										<tr>
-											<td>Hire date:</td>
-											<td>06/23/2013</td>
-										</tr>
-										<tr>
-											<td>Date of Birth</td>
-											<td>01/24/1988</td>
-										</tr>
-										<tr>
-											<tr>
-												<td>Gender</td>
-												<td>Male</td>
-											</tr>
-											<tr>
-												<td>Home Address</td>
-												<td>Metro Manila,Philippines</td>
-											</tr>
-											<tr>
-												<td>Email</td>
-												<td><a href="mailto:info@support.com">info@support.com</a></td>
-											</tr>
-											<td>Phone Number</td>
-											<td>123-4567-890(Landline)
-												<br>
-												<br>555-4567-890(Mobile) </td>
-										</tr>
-									</tbody>
-								</table> <a href="#" class="btn btn-primary">My Sales Performance</a> <a href="#" class="btn btn-primary">Team Sales Performance</a> </div>
-						</div>
-					</div>
-					<div class="panel-footer"> <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a> <span class="pull-right">
-            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-	          <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-              </span> </div>
+<template name="viewProfile">
+	<div class="row middle-xs center-xs">
+		<div class="col-sm-8">
+			<div class="row center-xs middle-xs">
+				<div class="col-sm-12 col-md-5 text-center"> <img alt="User Pic" src="{{user.profile.picture}}" class="img-circle img-responsive"> </div>
+				<div class="col-sm-12 col-md-7 text-left">
+
+					<p class="lead no-margin-bottom">{{user.username}} <a href="#" class="btn btn-default btn-outline">Follow</a></p>
+
+					<p>A Bloggist in Brooklyn</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+
+					<table class="table table-user-information text-left">
+						<tbody>
+							<tr>
+								<td>Level:</td>
+								<td>Hood Ambassador</td>
+							</tr>
+							<tr>
+								<td>Events Created:</td>
+								<td>{{userEventsCount}}</td>
+							</tr>
+							<tr>
+								<td>User Since</td>
+								<td>{{user.createdAt}}</td>
+							</tr>
+						</tbody>
+					</table>
+
 				</div>
 			</div>
 		</div>
 	</div>
-	</div>
-</Template>
+	<!-- <div class="wrap container-fluid">
+		<div class="row middle-xs">
+			<div>
+				<div class="col-sm-4">
+					<img alt="User Pic" src="{{user.profile.picture}}" class="img-circle img-responsive">
+				</div>
+
+				<div class="col-sm-8">
+					<div class="page-title">{{user.username}} <a href="#" class="btn btn-outline btn-default">Follow</a></div>
+					<p class="lead">A Bloggist in Brooklyn</p>
+				</div>
+
+
+
+
+
+			</div>
+		</div>
+	</div> -->
+</template>
