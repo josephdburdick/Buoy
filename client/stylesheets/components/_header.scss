@@ -1,12 +1,14 @@
 
 #primary-nav a.dropdown-toggle{
 	display: inline-block;
-	color: rgba(white, .8);
-	// padding: 0 1rem 0 2rem;
 	transition-property: background-color, color;
 	transition-duration: .1s;
 	transition-timing-function: ease-out;
+	padding: 10px 20px;
+}
+#primary-nav .navbar-inverse .dropdown-toggle{
 	background-color: rgba(black, 0);
+	color: rgba(white, .8);
 }
 #primary-nav a.dropdown-toggle:active{
 	background-color: rgba(black, .25);
