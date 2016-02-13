@@ -1,9 +1,4 @@
-$gutterWidth: .5rem;
 
-
-$containerPadding: $gutterWidth * 2;
-$containerPadding: $gutterWidth * 2;
-$columnPadding: $gutterWidth;
 
 .container-fluid,
 .container {
@@ -12,8 +7,10 @@ $columnPadding: $gutterWidth;
 }
 
 .container-fluid {
-  padding-right: $containerPadding;
-  padding-left: $containerPadding;
+	@media (max-width: $container-large-desktop){
+		padding-right: $grid-gutter-width * 2;
+		padding-left: $grid-gutter-width * 2;
+	}
 }
 
 .row {
@@ -34,8 +31,8 @@ $columnPadding: $gutterWidth;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-	margin-right: -$columnPadding;
-	margin-left: -$columnPadding;
+	margin-right: -$grid-gutter-width;
+	margin-left: -$grid-gutter-width;
 }
 
 .row.reverse {
@@ -85,8 +82,8 @@ $columnPadding: $gutterWidth;
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
-  padding-right: $columnPadding;
-  padding-left: $columnPadding;
+  padding-right: $grid-gutter-width / 2;
+  padding-left: $grid-gutter-width / 2;
 }
 
 .col-xs {
@@ -340,8 +337,8 @@ $columnPadding: $gutterWidth;
     -webkit-flex: 0 0 auto;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
-    padding-right: $columnPadding;
-    padding-left: $columnPadding;
+    padding-right: $grid-gutter-width / 2;
+    padding-left: $grid-gutter-width / 2;
   }
 
   .col-sm {
@@ -596,8 +593,8 @@ $columnPadding: $gutterWidth;
     -webkit-flex: 0 0 auto;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
-    padding-right: $columnPadding;
-    padding-left: $columnPadding;
+    padding-right: $grid-gutter-width / 2;
+    padding-left: $grid-gutter-width / 2;
   }
 
   .col-md {
@@ -852,8 +849,8 @@ $columnPadding: $gutterWidth;
     -webkit-flex: 0 0 auto;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
-    padding-right: $columnPadding;
-    padding-left: $columnPadding;
+    padding-right: $grid-gutter-width / 2;
+    padding-left: $grid-gutter-width / 2;
   }
 
   .col-lg {

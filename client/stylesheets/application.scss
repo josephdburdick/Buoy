@@ -11,9 +11,6 @@
 @import "components/itineraries-list";
 @import "components/events/event-card";
 @import "vendor/flexboxgrid";
-
-
-$globalMaxWidth: 1200px;
 $primaryNavigationHeight: 50px;
 
 %primary-nav-height{
@@ -48,6 +45,7 @@ $primaryNavigationHeight: 50px;
 	}
 	main {
 		flex: 1 0 auto;
+		overflow-x: hidden;
 
 		& > * {
 			flex-grow: 1;
@@ -62,21 +60,19 @@ $primaryNavigationHeight: 50px;
 .wrap{
 	box-sizing: border-box;
 	width: 100%;
-  max-width: $globalMaxWidth;
+  max-width: $container-large-desktop;
   margin: 0 auto;
-	// background-color: rgba(yellow, .4);
 }
 
 .navbar{
 	border-radius: 0;
 }
 .navbar-default{
-	// background: none;
 	border: none;
 }
 
 main{
-	// background-color: rgba(red, .2);
+
 	& > .row {
 		margin-left: 0;
 		margin-right: 0;
@@ -134,7 +130,7 @@ main{
 		height: 25vw;
 		max-height: 50vh;
 		width: 100%;
-		max-width: $globalMaxWidth;
+		max-width: $container-large-desktop;
 		margin: 0 auto;
 	}
 }
