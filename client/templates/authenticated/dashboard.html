@@ -1,31 +1,38 @@
 <template name="dashboard">
-	<div>
-		{{> map}}
+	<div class="template-container">
+		{{> map fixed=true}}
+		{{> secondaryNav}}
 
-		<div class="wrap">
-			{{> itineraries}}
-		</div>
-
-		<div class="wrap container-fluid">
 			{{#if Template.subscriptionsReady}}
-				{{#if userHasEvents}}
-					{{ numberOfEvents }} Events
-					{{> eventsList eventsData=userEvents pageTitle="Events List"}}
+				{{#if subNotEmpty userEvents}}
+					<div class="bg-color">
+						<div class="wrap row center-xs middle-xs">
+							{{> sectionTitle title="Upcoming Events" badge=numberOfEvents}}
+							{{> eventsList eventsData=userEvents}}
+						</div>
+					</div>
 				{{else}}
-					<div class="well text-center">
-						<h1 class="text-muted">No Events</h1>
-						<hr>
-						<a href="{{pathFor 'insertEvent'}}">Create One</a>
-						<br> or
-						<br>
-						<a href data-role="import-events" data-toggle="modal" data-target="#modal" data-modal-template="importEvents" data-modal-size="full">
-							Import RSVP'd events from Facebook
-						</a>
+					<div class="wrap row center-xs middle-xs">
+						<div class="panel panel-default text-center">
+							<div class="panel-heading text-center">
+								<h4>
+									<i class="fa fa-info-circle"></i>
+									No Events</h4>
+							</div>
+							<div class="panel-body text-center">
+								<a href="{{pathFor 'insertEvent'}}">Create One</a>
+								<br> or
+								<br>
+								<a href data-role="import-events" data-toggle="modal" data-target="#modal" data-modal-template="importEvents" data-modal-size="full">
+									Import RSVP'd events from Facebook
+								</a>
+							</div>
+
+						</div>
 					</div>
 				{{/if}}
 			{{else}}
 				{{> loading}}
 			{{/if}}
 		</div>
-	</div>
 </template>
