@@ -1,8 +1,13 @@
-<template name="header">
+<template name="primaryNav">
 	<nav class="navbar navbar-inverse navbar-fixed-top" id="primary-nav" role="navigation">
 		<div class="wrap container-fluid">
-			<div class="row around-xs middle-xs">
-				<div class="col-xs">
+			<div class="row between-xs middle-xs">
+				<div class="col-xs text-left">
+					{{#if backButton}}
+						<a class="btn btn-primary navbar-btn" data-action="back"><i class="fa fa-chevron-left"></i> Back</a>
+					{{/if}}
+				</div>
+				<div class="col-xs text-center">
 					<a class="navbar-brand" href="{{brandLink}}">{{appName}}</a>
 				</div>
 				<div class="col-xs">

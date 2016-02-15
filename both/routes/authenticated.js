@@ -1,3 +1,4 @@
+
 const authenticatedRoutes = FlowRouter.group({
   name: 'authenticated'
 });
@@ -19,13 +20,23 @@ authenticatedRoutes.route( '/dashboard', {
 authenticatedRoutes.route( '/event/create', {
   name: 'insertEvent',
   action() {
-    BlazeLayout.render( 'default', { yield: 'insertEvent' } );
+    BlazeLayout.render( 'default', { yield: 'insertEvent', backButton: true } );
+  }
+});
+
+authenticatedRoutes.route( '/import', {
+  name: 'importEvents',
+  action() {
+    BlazeLayout.render( 'default', { yield: 'importEvents', backButton: true } );
   }
 });
 
 authenticatedRoutes.route( '/user/:userId/profile', {
   name: 'viewProfile',
   action() {
-    BlazeLayout.render( 'default', { yield: 'viewProfile' } );
+    BlazeLayout.render( 'default', {
+			yield: 'viewProfile',
+			backButton: true
+		} );
   }
 });

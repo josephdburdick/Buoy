@@ -1,0 +1,41 @@
+<template name="secondaryNav">
+	<nav class="navbar navbar-default" role="navigation" id="secondary-nav">
+		<div class="wrap">
+			<div class="navbar-header">
+				<button
+					type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+					data-target="#secondary-nav__collapse" aria-expanded="false" id="secondary-nav__hamburger">
+				  <span></span>
+				  <span></span>
+				  <span></span>
+				  <span></span>
+				</button>
+	    </div>
+
+	  	<div class="collapse navbar-collapse" id="secondary-nav__collapse">
+				<div class="row between-xs midde-xs">
+					<div class="col-sm">
+
+						<div class="btn-group" role="group">
+							<a href class="btn btn-sm btn-primary btn-outline active">Private</a>
+							<a href class="btn btn-sm btn-primary btn-outline">Public</a>
+						</div>
+					</div>
+					<div class="col-sm text-right">
+
+						<div class="btn-group" role="group">
+							<a href={{pathFor 'importEvents'}}
+								class="btn btn-sm btn-facebook">
+								<i class="fa fa-facebook-official"></i> Import Events
+							</a>
+
+							<a href={{pathFor 'insertEvent'}} class="btn btn-sm btn-success">
+								Create Event
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+</template>
