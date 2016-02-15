@@ -1,0 +1,11 @@
+<template name="sectionTitle">
+	<header style="margin: 20px auto;">
+		<h4>
+			{{#if title}}
+				{{title}} {{#if badge}}<sup><span class="badge">{{badge}}</span></sup>{{/if}}
+			{{else}}
+				Unknown Section Title
+			{{/if}}
+		</h4>
+	</header>
+</template>
