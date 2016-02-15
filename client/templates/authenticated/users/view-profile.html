@@ -1,56 +1,48 @@
 <template name="viewProfile">
-	<div class="row middle-xs center-xs">
-		<div class="col-sm-8">
-			<div class="row center-xs middle-xs">
-				<div class="col-sm-12 col-md-5 text-center"> <img alt="User Pic" src="{{user.profile.picture}}" class="img-circle img-responsive"> </div>
-				<div class="col-sm-12 col-md-7 text-left">
+	<div class="template-container below-primary-nav">
+		<div class="row middle-xs center-xs">
+			<div class="wrap">
+				<div class="col-xs-12 col-sm-9 col-md-7 col-lg-6 center-block">
+					<div class="panel panel-default">
+						<!-- Default panel contents -->
+						<div class="panel-heading">
+							<div class="row center-xs middle-xs">
+								<div class="col-xs-12 col-sm-4 col-md-5 col-lg-5"> <img alt="User Pic" src="{{user.profile.picture}}" class="img-circle"> </div>
+								<div class="col-xs-12 col-sm-6 col-md col-lg">
 
-					<p class="lead no-margin-bottom">{{user.username}} <a href="#" class="btn btn-default btn-outline">Follow</a></p>
-
-					<p>A Bloggist in Brooklyn</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12">
-
-					<table class="table table-user-information text-left">
-						<tbody>
-							<tr>
-								<td>Level:</td>
-								<td>Hood Ambassador</td>
-							</tr>
-							<tr>
-								<td>Events Created:</td>
-								<td>{{userEventsCount}}</td>
-							</tr>
-							<tr>
-								<td>User Since</td>
-								<td>{{user.createdAt}}</td>
-							</tr>
-						</tbody>
-					</table>
-
+									<p class="lead no-margin-bottom">{{user.username}}</p>
+									<p>A Bloggist in Brooklyn</p>
+									<a href="#" class="btn btn-default btn-outline">Follow</a>
+								</div>
+							</div>
+						</div>
+						<table class="table table-user-information text-left">
+							<tbody>
+								<tr>
+									<td class="text-right">Level</td>
+									<td>Hood Ambassador</td>
+								</tr>
+								<tr>
+									<td class="text-right">Events Created</td>
+									<td>{{userEventsCount}}</td>
+								</tr>
+								<tr>
+									<td class="text-right">Last Seen</td>
+									<td>{{timeFromNow user.heartbeat}}</td>
+								</tr>
+								<tr>
+									<td class="text-right">User Since</td>
+									<td>{{timeFromNow user.createdAt}}</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="panel-body">
+							<div class="text-muted">BIO</div>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- <div class="wrap container-fluid">
-		<div class="row middle-xs">
-			<div>
-				<div class="col-sm-4">
-					<img alt="User Pic" src="{{user.profile.picture}}" class="img-circle img-responsive">
-				</div>
-
-				<div class="col-sm-8">
-					<div class="page-title">{{user.username}} <a href="#" class="btn btn-outline btn-default">Follow</a></div>
-					<p class="lead">A Bloggist in Brooklyn</p>
-				</div>
-
-
-
-
-
-			</div>
-		</div>
-	</div> -->
 </template>
