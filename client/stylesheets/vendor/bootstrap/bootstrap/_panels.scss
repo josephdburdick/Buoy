@@ -269,3 +269,6 @@
 .panel-danger {
   @include panel-variant($panel-danger-border, $panel-danger-text, $panel-danger-heading-bg, $panel-danger-border);
 }
+.panel-facebook {
+  @include panel-variant($panel-default-border, $panel-primary-text, $panel-facebook-heading-bg, $panel-default-border);
+}

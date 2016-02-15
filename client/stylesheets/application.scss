@@ -1,30 +1,20 @@
-@import "tools/bootstrap-variables";
+@import "tools/bootstrap-overrides";
 @import "vendor/bootstrap/bootstrap";
 // @import "tools/bootstrap-bootswatch";
 
 @import "tools/extends";
+
 @import "objects/images";
 @import "objects/forms";
 @import "objects/buttons";
+@import "objects/navbar-toggle";
+
 @import "components/login";
 @import "components/modal";
-@import "components/itineraries-list";
+
+@import "components/events-list";
 @import "components/events/event-card";
 @import "vendor/flexboxgrid";
-$primaryNavigationHeight: 50px;
-
-%primary-nav-height{
-	min-height: $primaryNavigationHeight
-}
-
-#primary-nav .nav > li:not(.dropdown) {
-	display: inline-block;
-}
-
-.below-primary-nav{
-	margin-top: $primaryNavigationHeight !important;
-}
-
 @import "components/header";
 
 .layout{
@@ -32,51 +22,40 @@ $primaryNavigationHeight: 50px;
 	min-height: 100vh;
 	flex-direction: column;
 
-	#primary-nav{
-		flex: 0 0 $navbar-height;
-		margin-bottom: 0;
-
-		.wrap{
-			min-height: $navbar-height;
-		}
-		.rounded ~ .caret {
-			margin-left: 8px;
-		}
-	}
 	main {
 		flex: 1 0 auto;
 		overflow-x: hidden;
-
+		background-color: $navbar-default-bg;
 		& > * {
 			flex-grow: 1;
 			flex-shrink: 1;
 			flex-basis: auto;
 		}
+		& > .row {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+}
+.full-height{
+	display: flex;
+  flex-direction: column;
+	& > div {
+		flex: 1;
+		display: flex;
+	  justify-content: center;
+	  flex-direction: column;
 	}
 }
 .no-margin-bottom{
 	margin-bottom: 0;
 }
+
 .wrap{
 	box-sizing: border-box;
 	width: 100%;
   max-width: $container-large-desktop;
   margin: 0 auto;
-}
-
-.navbar{
-	border-radius: 0;
-}
-.navbar-default{
-	border: none;
-}
-
-main{
-
-	& > .row {
-		margin-left: 0;
-		margin-right: 0;
-	}
 }
 
 .list-group{
@@ -85,24 +64,18 @@ main{
 	}
 }
 
-.btn ~ .btn{
-	margin-top: 0;
+.bg-color {
+	position: relative;
+	background-color: $body-bg;
 }
-
-.m-top-0{
-	margin-top: 0;
+.bg-facebook{
+	background-color: $brand-facebook;
 }
-
-.panel {
-	text-align: left;
+.bg-contain{
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: contain;
 }
-.panel-footer{
-	margin-top: 0;
-}
-.panel hr{
-	margin: 1rem 0;
-}
-
 .bg-cover{
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -123,7 +96,11 @@ main{
 	background-image: linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc), linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc);
 	background-size: ($patternSize * 2) ($patternSize * 2);
 	background-position: 0 0, $patternSize $patternSize;
-
+	&.page-cover--fixed{
+		position: fixed;
+		width: 100%;
+		top: 0;
+	}
 	.embed-responsive{
 		padding-bottom:0;
 		min-height: 350px;
@@ -135,7 +112,37 @@ main{
 	}
 }
 
+.page-cover_window{
+	position: relative;
+	padding-bottom: 0;
+	min-height: 365px;
+	height: 27vw;
+	max-height: 50vh;
+	width: 100%;
+	max-width: $container-large-desktop;
+	margin: 0 auto;
+}
+
 .btn-lg{
 	padding-left: 15px;
 	padding-right: 15px;
+}
+
+.loader-container{
+	text-align: center;
+	position: relative;
+	height: 0;
+	padding-bottom: 10%;
+	#svg-loader{
+		margin: 0;
+    padding: 0;
+    transform: translateY(-50%);
+    top: 50%;
+    position: absolute;
+	}
+}
+
+.panel-card{
+	background: $panel-bg;
+	padding: $panel-body-padding * 2;
 }

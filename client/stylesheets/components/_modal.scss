@@ -25,10 +25,25 @@
 
 .modal-full{
 	max-width: none;
-	.modal-dialog, .modal-content{
+	margin: 0;
+	.modal-content{
 		max-width: none;
 		box-shadow: none;
 		background-color: transparent;
+		border: 0;
+		height: 100vh;
+		overflow: hidden;
+	}
+	.modal-header{
+		min-height: $navbar-height;
+    padding: $grid-gutter-width ($grid-gutter-width * 2);
+	}
+	.modal-body {
+    height: calc(100vh - #{$navbar-height});
+    overflow-y: auto;
+		.row {
+			min-height: 100%;
+		}
 	}
 }
 

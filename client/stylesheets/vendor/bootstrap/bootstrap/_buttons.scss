@@ -87,7 +87,9 @@ a.btn {
 .btn-danger {
   @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
 }
-
+.btn-facebook {
+  @include button-variant($btn-facebook-color, $btn-facebook-bg, $btn-facebook-border);
+}
 
 // Link buttons
 // -------------------------

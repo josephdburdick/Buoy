@@ -20,6 +20,8 @@
   @media (min-width: $grid-float-breakpoint) {
     border-radius: $navbar-border-radius;
   }
+	display: flex;
+  align-items: center;
 }
 
 
@@ -161,7 +163,7 @@
 // Brand/project name
 
 .navbar-brand {
-  float: left;
+  // float: left;
   padding: $navbar-padding-vertical $navbar-padding-horizontal;
   font-size: $font-size-large;
   line-height: $line-height-computed;
@@ -230,7 +232,7 @@
 // the nav the full height of the horizontal nav (above 768px).
 
 .navbar-nav {
-  margin: ($navbar-padding-vertical / 2) (-$navbar-padding-horizontal);
+  // margin: ($navbar-padding-vertical / 2) (-$navbar-padding-horizontal);
 
   > li > a {
     padding-top:    10px;
