@@ -45,4 +45,14 @@ Meteor.publish( 'markers', function() {
 Meteor.publish( 'userFacebookEvents', function(userId){
 	check(userId, String);
 	return FacebookEvents.find({ ownerId: userId }, { sort: { 'start_time': -1 } });
-})
+});
+
+Meteor.publish( 'nonImportedUserFacebookEvents', function(userId){
+	check(userId, String);
+	return FacebookEvents.find({ ownerId: userId, isImported: false }, { sort: { 'start_time': -1 } });
+});
+
+Meteor.publish( 'importedUserFacebookEvents', function(userId){
+	check(userId, String);
+	return FacebookEvents.find({ ownerId: userId, isImported: true }, { sort: { 'start_time': -1 } });
+});

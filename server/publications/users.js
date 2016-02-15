@@ -8,7 +8,7 @@ Meteor.publish('userData', function() {
 });
 
 
-// Publish the user directory which everbody can see
+// Publish the user directory which everybody can see
 Meteor.publish("allUsers", function () {
   if(!this.userId) return null;
   return Meteor.users.find({}, {
