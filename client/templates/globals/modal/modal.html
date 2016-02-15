@@ -2,6 +2,13 @@
 	<div class="modal fade" tabindex="-1" role="dialog" id="modal">
 	  <div class="modal-dialog {{modalSize}}">
 	    <div class="modal-content">
+				<div class="modal-header">
+					<div class="wrap container-fluid">
+						<div class="center-xs middle-xs">
+							<a class="btn close rounded" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+						</div>
+					</div>
+	      </div>
 	      <div class="modal-body">
 					{{#if activeModalTemplate}}
 	        	{{> Template.dynamic template=activeModalTemplate}}
