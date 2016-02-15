@@ -1,6 +1,11 @@
 <template name="map">
+	{{#if fixed}}
 	<div class="page-cover below-primary-nav">
-		<div class="embed-responsive embed-responsive-16by9">
+		<div class="embed-responsive"></div>
+	</div>
+	{{/if}}
+	<div class="page-cover {{#if fixed}}page-cover--fixed{{/if}} below-primary-nav">
+		<div class="embed-responsive">
 			<iframe class="embed-responsive-item"
 				width="600"
 				height="450"
