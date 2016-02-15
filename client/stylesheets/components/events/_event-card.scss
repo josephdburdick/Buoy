@@ -1,28 +1,20 @@
-.event-card{
-	@extend .col-xs-12; @extend .col-sm-6; @extend .col-md-6; @extend .col-lg-4;
-	transition: all .2s ease-out .2s;
-	transform: scale(1);
-	// & + &{
-	// 	@media (max-width: $screen-xs){
-	// 		margin-top: 2rem;
-	// 	}
-	// }
-	margin-bottom: 2rem;
-	&.event-importing{
-		transform: scale(1.125);
-	}
-	&.event-imported{
-		transform: scale(0) opacity(0);
-	}
+.panel {
+	text-align: left;
+}
+.panel-footer{
+	margin-top: 0;
+}
+.panel hr{
+	margin: 1rem 0;
+}
 
-	.modal-full &{
-		min-width: calc(25% - 2rem);
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		padding: 0 1rem 1rem;
-		@media(min-width: $screen-md){
-			padding: 0 2.4rem 2.4rem;
-		}
+.event-card{
+	transition: all $transition-speed $transition-ease $transition-speed / 2;
+	transform: scale(1);
+	opacity: 1;
+	margin-bottom: 2rem;
+	&.event-card--imported{
+		transform: scale(0);
+		opacity: 0;
 	}
 }

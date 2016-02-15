@@ -1,18 +1,9 @@
 <template name="eventsList">
-
-		<div class="lead">
-			{{#if pageTitle}}
-				{{pageTitle}}
-			{{else}}
-				Events
-			{{/if}}
+	<div class="events-list">
+		<div class="row center-xs {{className}}">
+			{{#each eventsData}}
+				{{> eventCard cardSize="col-xs-12 col-sm-6 col-lg-4" data=this importing=../importing}}
+			{{/each}}
 		</div>
-		<div class="itineraries-list">
-			<div class="row center-xs">
-				{{#each eventsData}}
-					{{> eventCard}}
-				{{/each}}
-			</div>
-		</div>
-
+	</div>
 </template>

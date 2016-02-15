@@ -10,4 +10,7 @@ Template.registerHelper('timeFromNow', (time) => {
 	return moment(time).fromNow();
 });
 
-$('[data-toggle="tooltip"]').tooltip();
+Template.registerHelper('subNotEmpty', (sub) => {
+	console.log()
+	return !!sub.count() ? sub.count() : !!sub.length;
+});

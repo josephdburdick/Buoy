@@ -1,21 +1,30 @@
 <template name="eventCard">
-	<div class="event-card" data-id="{{_id}}" data-fbId="{{fbId}}">
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<header>
+	{{#with data}}
+		<div class="{{../cardSize}} event-card" data-id="{{_id}}" data-fbId="{{fbId}}">
+			<div class="panel panel-default">
+				<header class="panel-heading">
 					<a class="display-block lead" style="margin-bottom: 0;" href="{{pathFor 'eventDetail' eventId=_id}}">
-						{{name}}
+						{{this.name}}
 					</a>
 				</header>
-				<hr>
-				{{description}}
-			</div>
-
-			<div class="panel-footer">
-				<small>
-					{{humanReadableTime start_time}}
-				</small>
+				<div class="panel-body">
+					{{description}}
+				</div>
+				<footer class="panel-footer">
+					<div class="row">
+						<div class="col-xs col-md pull-left">
+							<small>
+								{{timeFromNow start_time}}
+							</small>
+						</div>
+						{{#if ../importing}}
+							<div class="col-xs text-right">
+								{{> importActionsButtonGroup}}
+							</div>
+						{{/if}}
+					</div>
+				</footer>
 			</div>
 		</div>
-	</div>
+	{{/with}}
 </template>

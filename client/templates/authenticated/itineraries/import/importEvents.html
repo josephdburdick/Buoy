@@ -1,7 +1,28 @@
 <template name="importEvents">
-	<div class="row itineraries-list">
-		{{#each facebookEvents}}
-			{{> Template.dynamic template="importEventItem" data=this }}
-		{{/each}}
+	<div class="template-container below-primary-nav">
+		{{#if Template.subscriptionsReady}}
+			{{#if subNotEmpty availableFacebookEvents}}
+				<div class="row middle-xs center-xs">
+					<div class="wrap">
+						<div class="col-xs-12 center-block">
+							<div class="row center-xs middle-xs around-xs events-list full-height"> {{> eventsList eventsData=availableFacebookEvents importing=true className="middle-xs"}} </div>
+						</div>
+					</div>
+				</div>
+			{{else}}
+				<div class="row middle-xs center-xs full-height">
+					<div class="col-lg-4 col-md-5 col-sm-6 col-xs-12 center-block">
+						<div class="panel panel-facebook">
+							<header class="panel-heading">
+								<h3 class="panel-title">
+								<i class="fa fa-facebook-official" style="margin-right: 10px;"></i> No Facebook Events Retrieved</h3> </header>
+							<div class="panel-body"> No events found. Be sure to RSVP to Facebook events for them to be accessible by Buoy. </div>
+						</div>
+					</div>
+				</div>
+			{{/if}}
+		{{else}}
+			{{> loading}}
+		{{/if}}
 	</div>
 </template>
