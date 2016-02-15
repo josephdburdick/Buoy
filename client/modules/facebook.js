@@ -41,6 +41,8 @@ let facebook = {
 		// If the original facebook ID, ".id", appears anywhere remove it
 		if (event.id) delete event.id;
 
+		event.isImported = false;
+
 		return event;
 	},
 	addEventToUserFacebookEvents: (event) => {
@@ -49,8 +51,10 @@ let facebook = {
 		return new Promise((resolve, reject) => {
 			Meteor.call('upsertUserFacebookEvent', event, (error, response) => {
 				if ( error ){
+					console.log(error)
 					reject( error );
 				} else {
+					console.log(response);
 					if (response){
 						event._id = response;
 						resolve(event);
@@ -76,7 +80,14 @@ let facebook = {
 
 		events.forEach((event, index, array) => {
 			let processedFacebookEvent = Modules.client.facebook.processUserFacebookEvent(event);
-			Modules.client.facebook.addEventToUserFacebookEvents(processedFacebookEvent);
+			// Modules.client.facebook.addEventToUserFacebookEvents(processedFacebookEvent);
+			Meteor.call('insertFacebookEvent', processedFacebookEvent, (error, response) => {
+				if (!error){
+					return response;
+				} else {
+					return error;
+				}
+			});
 		});
 	},
 	getUserFacebookAccessToken: () => {
