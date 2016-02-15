@@ -1,62 +1,123 @@
-.btn{
-	transition: all .2s;
+button, .btn{
+	&:focus,
+	&:active,
+	&:hover{
+    outline:0px !important;
+    -webkit-appearance:none;
+	}
 }
+
+.btn{
+	transition: all $transition-speed $transition-ease;
+
+	&[class^="col-"]{
+		padding-left: inherit;
+		padding-right: inherit;
+	}
+}
+
+.btn ~ .btn{
+	margin-top: 0;
+}
+
 .btn-outline {
   background-color: transparent;
   color: inherit;
 }
 
+.btn-white {
+	color: #b2dbfb;
+	border-color: rgba(white, .25);
+	background-color: rgba(white, .15);
+
+	&:hover{
+		color: white;
+		border-color: rgba(white, 1);
+		background-color: rgba(white, .25);
+	}
+}
+
 .btn-default.btn-outline {
   color: $btn-default-color;
-	border-color: rgba($btn-default-color, .95);
+	border-color: rgba($btn-default-color, .75);
 	&:hover{
 		border-color: rgba($btn-default-color, 1);
 		background-color: rgba($btn-default-color, 1);
+	}
+	&.active{
+		color: white;
 	}
 }
 
 .btn-primary.btn-outline {
   color: $brand-primary;
-	border-color: rgba($brand-primary, .95);
+	border-color: rgba($brand-primary, .75);
 	&:hover{
 		border-color: rgba($brand-primary, 1);
 		background-color: rgba($brand-primary, 1);
+	}
+	&.active{
+		color: white;
+	}
+}
+
+.btn-facebook.btn-outline {
+  color: $brand-facebook;
+	border-color: rgba($brand-facebook, .75);
+	&:hover{
+		border-color: rgba($brand-facebook, 1);
+		background-color: rgba($brand-facebook, 1);
+	}
+	&.active{
+		color: white;
 	}
 }
 
 .btn-success.btn-outline {
   color: $brand-success;
-	border-color: rgba($brand-success, .95);
+	border-color: rgba($brand-success, .75);
 	&:hover{
 		border-color: rgba($brand-success, 1);
 		background-color: rgba($brand-success, 1);
+	}
+	&.active{
+		color: white;
 	}
 }
 
 .btn-info.btn-outline {
   color: $brand-info;
-	border-color: rgba($brand-info, .95);
+	border-color: rgba($brand-info, .75);
 	&:hover{
 		border-color: rgba($brand-info, 1);
 		background-color: rgba($brand-info, 1);
+	}
+	&.active{
+		color: white;
 	}
 }
 
 .btn-warning.btn-outline {
   color: $brand-warning;
-	border-color: rgba($brand-warning, .95);
+	border-color: rgba($brand-warning, .75);
 	&:hover{
 		border-color: rgba($brand-warning, 1);
 		background-color: rgba($brand-warning, 1);
+	}
+	&.active{
+		color: white;
 	}
 }
 
 .btn-danger.btn-outline {
   color: $brand-danger;
-	border-color: rgba($brand-danger, .95);
+	border-color: rgba($brand-danger, .75);
 	&:hover{
 		border-color: rgba($brand-danger, 1);
 		background-color: rgba($brand-danger, 1);
+	}
+	&.active{
+		color: white;
 	}
 }
 
