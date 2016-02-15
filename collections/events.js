@@ -87,7 +87,8 @@ EventsSchema = new SimpleSchema({
 		type: [Number],
     decimal: true,
     minCount: 2,
-    maxCount: 2
+    maxCount: 2,
+		optional: true
 	},
   itineraryId: {
     type: String,

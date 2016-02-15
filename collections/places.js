@@ -16,10 +16,13 @@ let Schema = Schema || {};
 
 PlacesSchema = new SimpleSchema({
   events: {
-    type: [Object],
+    type: Array,
     label: "The event IDs of that contain this place",
 		optional: true
   },
+	"events.$": {
+		type: Object
+	},
 	"events.$._id": {
 		type: String,
 		optional: true
@@ -42,7 +45,18 @@ PlacesSchema = new SimpleSchema({
 		label: "The name of this place"
 	},
 	locations : {
-		type: [String],
+		type: Array,
+		optional: true
+	},
+	"locations.$" : {
+		type: Object
+	},
+	"locations.$.fbId":{
+		type: String,
+		optional: true
+	},
+	"locations.$._id":{
+		type: String,
 		optional: true
 	},
 	createdAt: {
