@@ -1,6 +1,4 @@
 let events = {
-
-
 	processEvent: (event) => {
 		console.log('> processEvent function');
 		let processedEvent = event;
@@ -51,33 +49,42 @@ let events = {
 	},
   processPlace: (event) => {
 		console.log('> processPlace function');
-		let place = !!event.place ? event.place : {};
-		let location = {};
+		let place = !!event.place ? event.place : false;
+		let location = place ? {} : false;
 		if (place){
 			location = !!event.place.location ? event.place.location : {};
 			// If there's no fbId, assign it then trash the original.
 			if (!place.fbId) place.fbId = place.id;
-			// if (place.id) delete place.id;
+			if (place.id) delete place.id;
+			// Add events to place
+			place.events = !!place.events ? place.events : [];
+
+			if (!!event.place && !place.events.length){
+				place.events.push({
+					name: event.place.name,
+					fbId: event.place.fbId,
+					street: event.place.location.street,
+					coords: [event.place.location.latitude, event.place.location.longitude]
+				});
+			}
+			// Add locations to place
+			place.locations = !!place.locations ? place.locations : [];
+			if (!!event.place.location && !place.locations.length){
+				place.locations.push({
+					fbId: place.fbId
+				});
+			}
 		}
 
-		// Add events to place
-		place.events = !!place.events ? place.events : [];
+		// No place found. Generate one until a user inputs real values.
+		if (!place){
+			place = {
+				location: {
 
-		if (!!event.place && !place.events.length){
-			place.events.push({
-				name: event.place.name,
-				fbId: event.place.fbId
-			});
+				}
+			}
 		}
 
-		// Add locations to place
-		place.locations = !!place.locations ? place.locations : [];
-		if (!!event.location && !place.locations.length){
-			place.locations.push({
-				fbId: place.fbId
-			});
-		}
-		Template.instance().dictionary.facebook.set('currentPlace', place);
 
 		return place;
 	},
