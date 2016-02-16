@@ -1,5 +1,5 @@
 <template name="sectionTitle">
-	<header class="lead text-center">
+	<header class="lead text-center {{#if marginTop}}margin-top--20px{{/if}}">
 		{{#if faIcon}}<i class="fa {{faIcon}}"></i>{{/if}}
 		{{#if title}}
 			{{title}} {{#if badge}}<sup><span class="badge">{{badge}}</span></sup>{{/if}}

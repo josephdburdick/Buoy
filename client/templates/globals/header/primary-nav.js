@@ -18,7 +18,7 @@ Template.primaryNav.onRendered(() => {
 		if (!!$secondaryNav){
 			let
 				opacity = 1,
-				secondaryNavLimit = $secondaryNav.offset().top;
+				secondaryNavLimit = $('#secondary-nav').offset().top;
 
       if(st <= secondaryNavLimit) {
 				opacity = secondaryNavLimit / st - 1;

@@ -1,6 +1,6 @@
 <template name="dashboard">
 	<div>
-		<div class="row bottom-xs center-xs" style="height:400px">
+		<div class="row bottom-xs center-xs">
 			<div class="col-xs-12">
 				{{> map fixed=true}}
 			</div>
@@ -10,7 +10,7 @@
 				{{> secondaryNav}}
 			</div>
 		</div>
-		<div class="row top-xs middle-sm center-xs">
+		<div class="bg-color row top-xs middle-sm center-xs">
 			{{#if Template.subscriptionsReady}}
 				{{#if subNotEmpty userEvents}}
 					<div class="wrap container-fluid">

@@ -80,7 +80,6 @@ let facebook = {
 
 		events.forEach((event, index, array) => {
 			let processedFacebookEvent = Modules.client.facebook.processUserFacebookEvent(event);
-			// Modules.client.facebook.addEventToUserFacebookEvents(processedFacebookEvent);
 			Meteor.call('insertFacebookEvent', processedFacebookEvent, (error, response) => {
 				if (!error){
 					return response;
@@ -91,16 +90,20 @@ let facebook = {
 		});
 	},
 	getUserFacebookAccessToken: () => {
-		return new Promise((resolve, reject) => {
-			Meteor.call('getFacebookAccessToken', (error, response) => {
-				if (!error){
-					token = response;
-					resolve(response);
-				} else {
-					reject(error);
-				}
+		if (!!Session.get('facebookAccessToken')){
+			return Session.get('facebookAccessToken');
+		} else {
+			return new Promise((resolve, reject) => {
+				Meteor.call('getFacebookAccessToken', (error, response) => {
+					if (!error){
+						token = response;
+						resolve(response);
+					} else {
+						reject(error);
+					}
+				});
 			});
-		});
+		}
 	}
 };
 

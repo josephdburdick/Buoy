@@ -49,10 +49,24 @@ Meteor.publish( 'userFacebookEvents', function(userId){
 
 Meteor.publish( 'nonImportedUserFacebookEvents', function(userId){
 	check(userId, String);
-	return FacebookEvents.find({ ownerId: userId, isImported: false }, { sort: { 'start_time': -1 } });
+	return FacebookEvents.find({
+			ownerId: userId,
+			isImported: { $eq: false }
+		},
+		{
+			sort: { 'start_time': -1 }
+		}
+	);
 });
 
 Meteor.publish( 'importedUserFacebookEvents', function(userId){
 	check(userId, String);
-	return FacebookEvents.find({ ownerId: userId, isImported: true }, { sort: { 'start_time': -1 } });
+	return FacebookEvents.find({
+			ownerId: userId,
+			isImported: { $eq: true }
+		},
+		{
+			sort: { 'start_time': -1 }
+		}
+	);
 });

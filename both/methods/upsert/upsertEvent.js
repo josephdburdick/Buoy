@@ -16,7 +16,7 @@ Meteor.methods({
 						});
 					} else {
 						Events.upsert( {
-							_id: event._id,
+							_id: event._id
 						}, {
 							$set: event,
 						});

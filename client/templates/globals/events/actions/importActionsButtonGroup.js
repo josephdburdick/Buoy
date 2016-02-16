@@ -13,7 +13,7 @@ Template.importActionsButtonGroup.events({
 				activeEventClass = 'event-card--active-import',
 				importedEventClass = 'event-card--imported',
 				activeImportModalClass = 'importing-event';
-				
+
 			let
 				$eventCard = $(`[data-id="${Session.get('activeFacebookEventId')}"]`),
 				eventObj = template.data,
@@ -24,13 +24,13 @@ Template.importActionsButtonGroup.events({
 			if (eventObj.location) delete eventObj.location;
 			$eventCard.addClass(activeEventClass);
 
+			let fbEventObj = FacebookEvents.findOne({_id: $eventCard.data('id')});
+			fbEventObj.isImported = true;
+
 			Meteor.call('insertEvent', eventObj, (error, success) => {
 				let $eventCard = $(`[data-id="${Session.get('activeFacebookEventId')}"]`);
 				if (!error) {
-					let fbEventObj = FacebookEvents.findOne({_id: $eventCard.data('id')});
-					fbEventObj.isImported = true;
-
-					Meteor.call('upsertUserFacebookEvent', fbEventObj, (error, success) => {
+					Meteor.call('updateFacebookEventImportStatus', {_id: fbEventObj._id, fbId: fbEventObj.fbId, isImported: true}, (error, success) => {
 						if (!error){
 							console.log(success);
 							$eventCard.addClass(importedEventClass);
@@ -40,6 +40,7 @@ Template.importActionsButtonGroup.events({
 						}
 					});
 					Bert.alert(`Event ${success} imported.`, 'success');
+					FlowRouter.go('dashboard');
 				} else {
 					Bert.alert(error.message, 'error');
 					$eventCard.addClass(activeEventClass);

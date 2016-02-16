@@ -1,48 +1,60 @@
 <template name="eventDetail">
 	<div>
-	{{#with event}}
+		{{#with event}}
 
-		{{> map fixed=true}}
-		{{> secondaryNav}}
+		<div class="row bottom-xs center-xs">
+			<div class="col-xs-12">
+				{{> map fixed=true}}
+			</div>
+		</div>
+		<div class="row top-xs center-xs">
+			<div class="col-xs-12">
+				{{> secondaryNav}}
+			</div>
+		</div>
+		<div class="bg-color row top-xs middle-sm center-xs">
+			<div class="wrap container-fluid">
+				<div class="wrap row center-xs middle-xs beyond-primary-nav">
+					<div>
+						{{> sectionTitle title=name}}
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-sm-6">
+									<ul class="list-group">
+										<li class="list-group-item">ownerId: {{ownerId}}</li>
+										<li class="list-group-item">fbId: {{fbId}}</li>
+										<li class="list-group-item">name: {{name}}</li>
+										<li class="list-group-item">description: {{description}}</li>
+										<li class="list-group-item">itineraryId: {{itineraryId}}</li>
+										<li class="list-group-item">privacy: {{privacy}}</li>
+										<li class="list-group-item">ticket_uri: {{ticket_uri}}</li>
+										<li class="list-group-item">start_time: {{start_time}}</li>
+										<li class="list-group-item">end_time: {{end_time}}</li>
+										<li class="list-group-item">updated_time: {{updated_time}}</li>
+										<li class="list-group-item">eventChannel: {{eventChannel}}</li>
+									</ul>
 
-		<div class="wrap container-fluid">
-			{{> sectionTitle title=name}}
-			<div class="panel panel-default">
-				<div class="panel-body">
-					<div class="row">
-						<div class="col-sm-6">
-							<ul class="list-group">
-								<li class="list-group-item">ownerId: {{ownerId}}</li>
-								<li class="list-group-item">fbId: {{fbId}}</li>
-								<li class="list-group-item">name: {{name}}</li>
-								<li class="list-group-item">description: {{description}}</li>
-								<li class="list-group-item">itineraryId: {{itineraryId}}</li>
-								<li class="list-group-item">privacy: {{privacy}}</li>
-								<li class="list-group-item">ticket_uri: {{ticket_uri}}</li>
-								<li class="list-group-item">start_time: {{start_time}}</li>
-								<li class="list-group-item">end_time: {{end_time}}</li>
-								<li class="list-group-item">updated_time: {{updated_time}}</li>
-								<li class="list-group-item">eventChannel: {{eventChannel}}</li>
-							</ul>
-
-						</div>
-						<div class="col-sm-6">
-							Places:
-							<ul class="list-group">
-								{{#each place in places}}
-								<li class="list-group-item">
-									{{place.name}}<br>
-									{{place.address}}<br>
-									{{place.coords}}
-								</li>
-								{{/each}}
-							</ul>
+								</div>
+								<div class="col-sm-6">
+									Places:
+									<ul class="list-group">
+										{{#each place in places}}
+										<li class="list-group-item">
+											{{place.name}}<br>
+											{{place.address}}<br>
+											{{place.coords}}
+										</li>
+										{{/each}}
+									</ul>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
-	{{/with}}
+		{{/with}}
 	</div>
 </template>
