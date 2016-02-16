@@ -54,3 +54,10 @@ FlowRouter.route('/event/:eventId/edit', {
 		} );
   }
 });
+
+publicRoutes.route( '/loading', {
+  name: 'loading',
+  action() {
+    BlazeLayout.render( 'default', { yield: 'loading' } );
+  }
+});
