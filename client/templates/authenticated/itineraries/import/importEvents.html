@@ -1,11 +1,12 @@
 <template name="importEvents">
-	<div class="template-container below-primary-nav">
+	<div class="template-container beyond-primary-nav--padded">
 		{{#if Template.subscriptionsReady}}
 			{{#if subNotEmpty availableFacebookEvents}}
 				<div class="row middle-xs center-xs">
-					<div class="wrap">
+					<div class="wrap container-fluid">
 						<div class="col-xs-12 center-block">
-							<div class="row center-xs middle-xs around-xs events-list full-height"> {{> eventsList eventsData=availableFacebookEvents importing=true className="middle-xs"}} </div>
+							<div class="row center-xs middle-xs around-xs events-list full-height">
+								{{> eventsList eventsData=availableFacebookEvents importing=true className="top-xs middle-sm"}} </div>
 						</div>
 					</div>
 				</div>

@@ -1,6 +1,6 @@
 <template name="publicNavigation">
   <ul class="nav navbar-nav navbar-right text-right">
-    <li class="{{currentRoute 'login'}}"><a href="{{pathFor 'login'}}">Login</a></li>
-    <li class="{{currentRoute 'signup'}}"><a href="{{pathFor 'signup'}}">Sign Up</a></li>
+    {{#if currentRoute 'signup'}}<li class="{{currentRoute 'login'}}"><a href="{{pathFor 'login'}}">Login</a></li>{{/if}}
+    {{#if currentRoute 'login'}}<li class="{{currentRoute 'signup'}}"><a href="{{pathFor 'signup'}}">Sign Up</a></li>{{/if}}
   </ul>
 </template>

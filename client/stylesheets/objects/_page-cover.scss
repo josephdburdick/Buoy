@@ -1,0 +1,36 @@
+.page-cover{
+	&--pattered{
+		// background-image: url('bg/ps_neutral/ps_neutral.png');
+		$patternSize: 5px;
+		background-color: #fff;
+		background-image: linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc), linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc);
+		background-size: ($patternSize * 2) ($patternSize * 2);
+		background-position: 0 0, $patternSize $patternSize;
+	}
+	&--fixed{
+		position: fixed;
+		width: 100%;
+		top: 0;
+		left: 0;
+		right: 0;
+	}
+	.embed-responsive{
+		padding-bottom:0;
+		min-height: 350px;
+		height: 25vw;
+		max-height: 50vh;
+		width: 100%;
+		max-width: $container-large-desktop;
+		margin: 0 auto;
+	}
+	&._window{
+		position: relative;
+		padding-bottom: 0;
+		min-height: 365px;
+		height: 27vw;
+		max-height: 50vh;
+		width: 100%;
+		max-width: $container-large-desktop;
+		margin: 0 auto;
+	}
+}

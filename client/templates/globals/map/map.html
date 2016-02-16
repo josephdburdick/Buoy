@@ -1,18 +1,20 @@
 <template name="map">
-	{{#if fixed}}
-	<div class="page-cover below-primary-nav">
-		<div class="embed-responsive"></div>
-	</div>
-	{{/if}}
-	<div class="page-cover {{#if fixed}}page-cover--fixed{{/if}} below-primary-nav">
-		<div class="embed-responsive">
-			<iframe class="embed-responsive-item"
-				width="600"
-				height="450"
-				frameborder="0" style="border:0"
-				src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDNTLXSgVYiuu55T4xZW-RZf6LF6F6tfj0
+	<div class="col-xs-12">
+		{{#if fixed}}
+		<div class="page-cover beyond-primary-nav">
+			<div class="embed-responsive"></div>
+		</div>
+		{{/if}}
+		<div class="page-cover {{#if fixed}}page-cover--fixed{{/if}} beyond-primary-nav">
+			<div class="embed-responsive">
+				<iframe class="embed-responsive-item"
+					width="600"
+					height="450"
+					frameborder="0" style="border:0"
+					src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDNTLXSgVYiuu55T4xZW-RZf6LF6F6tfj0
 					&q=Soho,+New+York" allowfullscreen>
-			</iframe>
+				</iframe>
+			</div>
 		</div>
 	</div>
 </template>

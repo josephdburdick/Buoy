@@ -1,33 +1,41 @@
 <template name="dashboard">
-	<div class="template-container">
-		{{> map fixed=true}}
-		{{> secondaryNav}}
-
+	<div>
+		<div class="row bottom-xs center-xs" style="height:400px">
+			<div class="col-xs-12">
+				{{> map fixed=true}}
+			</div>
+		</div>
+		<div class="row top-xs center-xs">
+			<div class="col-xs-12">
+				{{> secondaryNav}}
+			</div>
+		</div>
+		<div class="row top-xs middle-sm center-xs">
 			{{#if Template.subscriptionsReady}}
 				{{#if subNotEmpty userEvents}}
-					<div class="bg-color">
+					<div class="wrap container-fluid">
 						<div class="wrap row center-xs middle-xs">
 							{{> sectionTitle title="Upcoming Events" badge=numberOfEvents}}
 							{{> eventsList eventsData=userEvents}}
 						</div>
 					</div>
 				{{else}}
-					<div class="wrap row center-xs middle-xs">
-						<div class="panel panel-default text-center">
-							<div class="panel-heading text-center">
-								<h4>
-									<i class="fa fa-info-circle"></i>
-									No Events</h4>
+					<div class="wrap row center-xs middle-xs beyond-primary-nav">
+						<div>
+							<header class="lead">
+								<i class="fa fa-info-circle"></i>
+								No Events
+							</header>
+							<div class="panel panel-default text-center">
+								<div class="panel-body text-center">
+									<a href="{{pathFor 'insertEvent'}}">Create One</a>
+									<br> or
+									<br>
+									<a href data-role="import-events" data-toggle="modal" data-target="#modal" data-modal-template="importEvents" data-modal-size="full">
+										Import RSVP'd events from Facebook
+									</a>
+								</div>
 							</div>
-							<div class="panel-body text-center">
-								<a href="{{pathFor 'insertEvent'}}">Create One</a>
-								<br> or
-								<br>
-								<a href data-role="import-events" data-toggle="modal" data-target="#modal" data-modal-template="importEvents" data-modal-size="full">
-									Import RSVP'd events from Facebook
-								</a>
-							</div>
-
 						</div>
 					</div>
 				{{/if}}
@@ -35,4 +43,5 @@
 				{{> loading}}
 			{{/if}}
 		</div>
+	</div>
 </template>

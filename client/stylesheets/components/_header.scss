@@ -16,8 +16,12 @@ $primaryNavigationHeight: 50px;
 	display: inline-block;
 }
 
-.below-primary-nav{
-	margin-top: $primaryNavigationHeight !important;
+.beyond-primary-nav{
+	padding-top: $primaryNavigationHeight !important;
+}
+
+.beyond-primary-nav--padded{
+	padding-top: $primaryNavigationHeight + ($grid-gutter-width * 2) !important;
 }
 
 #primary-nav{

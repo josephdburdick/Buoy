@@ -1,12 +1,13 @@
-
 @mixin grid-width($cols, $has-gutter:true) {
- @if $has-gutter {
-   width: calc(((100% / #{$grid-columns}) * #{$cols}) - #{$grid-gutter-width});
-	 margin-left: $grid-gutter-width / 2;
-	 margin-right: $grid-gutter-width / 2;
- } @else {
-   width: calc((100% / #{$grid-columns}) * #{$cols});
- }
+  @if $has-gutter {
+    width: calc(((100% / #{$grid-columns}) * #{$cols}) - #{$grid-gutter-width});
+    margin-left: $grid-gutter-width / 2;
+    margin-right: $grid-gutter-width / 2;
+  }
+
+  @else {
+    width: calc((100% / #{$grid-columns}) * #{$cols});
+  }
 }
 
 .container-fluid,
@@ -41,12 +42,11 @@
   margin-right: -#{$grid-gutter-width / 2};
   margin-left: -#{$grid-gutter-width / 2};
 
-	&--no-padding{
-
-	}
+  &--no-padding {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
-
-
 
 .row.reverse {
   -webkit-box-orient: horizontal;
@@ -266,7 +266,7 @@
   -webkit-align-items: flex-start;
   -ms-flex-align: start;
   -ms-grid-row-align: flex-start;
-      align-items: flex-start;
+  align-items: flex-start;
 }
 
 .middle-xs {
@@ -274,7 +274,7 @@
   -webkit-align-items: center;
   -ms-flex-align: center;
   -ms-grid-row-align: center;
-      align-items: center;
+  align-items: center;
 }
 
 .bottom-xs {
@@ -282,7 +282,7 @@
   -webkit-align-items: flex-end;
   -ms-flex-align: end;
   -ms-grid-row-align: flex-end;
-      align-items: flex-end;
+  align-items: flex-end;
 }
 
 .around-xs {
@@ -519,7 +519,7 @@
     -webkit-align-items: flex-start;
     -ms-flex-align: start;
     -ms-grid-row-align: flex-start;
-        align-items: flex-start;
+    align-items: flex-start;
   }
 
   .middle-sm {
@@ -527,7 +527,7 @@
     -webkit-align-items: center;
     -ms-flex-align: center;
     -ms-grid-row-align: center;
-        align-items: center;
+    align-items: center;
   }
 
   .bottom-sm {
@@ -535,7 +535,7 @@
     -webkit-align-items: flex-end;
     -ms-flex-align: end;
     -ms-grid-row-align: flex-end;
-        align-items: flex-end;
+    align-items: flex-end;
   }
 
   .around-sm {
@@ -773,7 +773,7 @@
     -webkit-align-items: flex-start;
     -ms-flex-align: start;
     -ms-grid-row-align: flex-start;
-        align-items: flex-start;
+    align-items: flex-start;
   }
 
   .middle-md {
@@ -781,7 +781,7 @@
     -webkit-align-items: center;
     -ms-flex-align: center;
     -ms-grid-row-align: center;
-        align-items: center;
+    align-items: center;
   }
 
   .bottom-md {
@@ -789,7 +789,7 @@
     -webkit-align-items: flex-end;
     -ms-flex-align: end;
     -ms-grid-row-align: flex-end;
-        align-items: flex-end;
+    align-items: flex-end;
   }
 
   .around-md {
@@ -1027,7 +1027,7 @@
     -webkit-align-items: flex-start;
     -ms-flex-align: start;
     -ms-grid-row-align: flex-start;
-        align-items: flex-start;
+    align-items: flex-start;
   }
 
   .middle-lg {
@@ -1035,7 +1035,7 @@
     -webkit-align-items: center;
     -ms-flex-align: center;
     -ms-grid-row-align: center;
-        align-items: center;
+    align-items: center;
   }
 
   .bottom-lg {
@@ -1043,7 +1043,7 @@
     -webkit-align-items: flex-end;
     -ms-flex-align: end;
     -ms-grid-row-align: flex-end;
-        align-items: flex-end;
+    align-items: flex-end;
   }
 
   .around-lg {
@@ -1072,4 +1072,61 @@
     -ms-flex-order: 1;
     order: 1;
   }
+}
+
+[class*="col-"] {
+  float: none !important;
+}
+
+.flexbox-parent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* align items in Main Axis */
+  align-items: stretch;
+  /* align items in Cross Axis */
+  align-content: stretch;
+  /* Extra space in Cross Axis */
+  background: rgba(255, 255, 255, .1);
+}
+
+.flexbox-item {
+  padding: 8px;
+}
+
+.flexbox-item-grow {
+  flex: 1;
+  /* same as flex: 1 1 auto; */
+}
+
+.flexbox-item.header {
+  background: rgba(255, 0, 0, .1);
+}
+
+.flexbox-item.footer {
+  background: rgba(0, 255, 0, .1);
+}
+
+.flexbox-item.content {
+  background: rgba(0, 0, 255, .1);
+}
+
+.fill-area {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  /* align items in Main Axis */
+  align-items: stretch;
+  /* align items in Cross Axis */
+  align-content: stretch;
+  /* Extra space in Cross Axis */
+}
+
+.fill-area-content {
+  background: rgba(0, 0, 0, .3);
+  border: 1px solid #000000;
+  /* Needed for when the area gets squished too far and there is content that can't be displayed */
+  overflow: auto;
 }

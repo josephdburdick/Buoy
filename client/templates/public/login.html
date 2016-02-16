@@ -1,8 +1,8 @@
 <template name="login">
-	<div class="row middle-xs center-xs">
+	<div class="row middle-xs center-xs beyond-primary-nav--padded">
 		<div class="text-center">
-			<header class="lead">Login</header>
-			<form id="login" class="login text-left">
+			{{> sectionTitle title="Login"}}
+			<form id="login" class="login panel panel-default text-left">
 				<div class="form-group">
 					<label for="emailAddress">Email Address</label>
 					<input type="email" name="emailAddress" class="form-control" placeholder="Email Address">
@@ -19,5 +19,4 @@
 			<p>Don't have an account? <a href="{{pathFor 'signup'}}">Sign Up</a>.</p>
 		</div>
 	</div>
-
 </template>

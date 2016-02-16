@@ -608,7 +608,7 @@ $modal-content-border-color:                   transparent !default;
 $modal-content-fallback-border-color:          #999 !default;
 
 //** Modal backdrop background color
-$modal-backdrop-bg:           #000 !default;
+$modal-backdrop-bg:           $brand-primary !default;
 //** Modal backdrop opacity
 $modal-backdrop-opacity:      .85 !default;
 //** Modal header border color

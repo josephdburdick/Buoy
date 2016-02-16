@@ -1,0 +1,40 @@
+.layout{
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+
+	main {
+		flex: 1 0 auto;
+		overflow-x: hidden;
+		background-color: $navbar-default-bg;
+		& > * {
+			flex-grow: 1;
+			flex-shrink: 1;
+			flex-basis: auto;
+		}
+		& > .row {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+}
+.full-height{
+	display: flex;
+  flex-direction: column;
+	& > div {
+		flex: 1;
+		display: flex;
+	  justify-content: center;
+	  flex-direction: column;
+	}
+}
+.no-margin-bottom{
+	margin-bottom: 0;
+}
+
+.wrap{
+	box-sizing: border-box;
+	width: 100%;
+  max-width: $container-large-desktop;
+  margin: 0 auto;
+}

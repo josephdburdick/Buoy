@@ -1,10 +1,12 @@
 <template name="insertEvent">
-	<div class="template-container below-primary-nav">
+	<div class="template-container beyond-primary-nav--padded">
 		<div class="row middle-xs center-xs">
 			<div class="wrap">
-				<div class="col-xs-12 col-sm-9 col-md-7 col-lg-6 center-block">
+				<div class="layout">
 					{{> sectionTitle title="Create Event"}}
-					{{> quickForm schema=EventsSchema collection="Events" id="insertEventForm" type="insert"}}
+					<div class="panel panel-default col-xs-12 col-sm-9 col-md-7 col-lg-6 center-block">					
+						{{> quickForm schema=EventsSchema collection="Events" id="insertEventForm" type="insert"}}
+					</div>
 				</div>
 			</div>
 		</div>

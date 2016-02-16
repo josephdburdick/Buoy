@@ -2,50 +2,47 @@
 	<div>
 	{{#with event}}
 
-	{{> map fixed=true}}
-	<!-- <div class="embed-responsive embed-responsive-16by9 page-cover below-primary">
-		<div class="embed-responsive-item bg-cover blurry" style="background-image:url('{{picture}}')">
-		</div>
-	</div> -->
+		{{> map fixed=true}}
+		{{> secondaryNav}}
 
-	<div class="wrap container-fluid">
-		<h1 class="lead">
-			Event Detail
-		</h1>
-		<div class="row">
-			<div class="col-sm-6">
+		<div class="wrap container-fluid">
+			{{> sectionTitle title=name}}
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-sm-6">
+							<ul class="list-group">
+								<li class="list-group-item">ownerId: {{ownerId}}</li>
+								<li class="list-group-item">fbId: {{fbId}}</li>
+								<li class="list-group-item">name: {{name}}</li>
+								<li class="list-group-item">description: {{description}}</li>
+								<li class="list-group-item">itineraryId: {{itineraryId}}</li>
+								<li class="list-group-item">privacy: {{privacy}}</li>
+								<li class="list-group-item">ticket_uri: {{ticket_uri}}</li>
+								<li class="list-group-item">start_time: {{start_time}}</li>
+								<li class="list-group-item">end_time: {{end_time}}</li>
+								<li class="list-group-item">updated_time: {{updated_time}}</li>
+								<li class="list-group-item">eventChannel: {{eventChannel}}</li>
+							</ul>
 
-				<ul class="list-group">
-					<li class="list-group-item">ownerId: {{ownerId}}</li>
-					<li class="list-group-item">fbId: {{fbId}}</li>
-					<li class="list-group-item">name: {{name}}</li>
-					<li class="list-group-item">description: {{description}}</li>
-					<li class="list-group-item">itineraryId: {{itineraryId}}</li>
-					<li class="list-group-item">privacy: {{privacy}}</li>
-					<li class="list-group-item">ticket_uri: {{ticket_uri}}</li>
-					<li class="list-group-item">start_time: {{start_time}}</li>
-					<li class="list-group-item">end_time: {{end_time}}</li>
-					<li class="list-group-item">updated_time: {{updated_time}}</li>
-					<li class="list-group-item">eventChannel: {{eventChannel}}</li>
-				</ul>
-
+						</div>
+						<div class="col-sm-6">
+							Places:
+							<ul class="list-group">
+								{{#each place in places}}
+								<li class="list-group-item">
+									{{place.name}}<br>
+									{{place.address}}<br>
+									{{place.coords}}
+								</li>
+								{{/each}}
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="col-sm-6">
-				Places:
-					<ul class="list-group">
-						{{#each place in places}}
-							<li class="list-group-item">
-								{{place.name}}<br>
-								{{place.address}}<br>
-								{{place.coords}}
-							</li>
-						{{/each}}
-					</ul>
 
-			</div>
 		</div>
-
-	</div>
 	{{/with}}
 	</div>
 </template>
