@@ -6,7 +6,6 @@ Template.importEvents.onCreated(() => {
 	self.facebookEvents = self.subscribe('nonImportedUserFacebookEvents', Meteor.userId());
 
 	let init = (() => {
-		debugger;
 		if (!Session.set('facebookAccessToken')){
 			facebook.getUserFacebookAccessToken().then((data) => {
 				Session.set('facebookAccessToken', data);

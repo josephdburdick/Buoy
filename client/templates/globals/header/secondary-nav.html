@@ -1,4 +1,5 @@
 <template name="secondaryNav">
+	{{#if activeSubNavTemplate}}
 	<nav class="navbar navbar-default" role="navigation" id="secondary-nav">
 		<div class="wrap container-fluid">
 			<div>
@@ -12,27 +13,10 @@
 				</button>
 
 				<div class="collapse navbar-collapse" id="secondary-nav__collapse">
-					<div class="row between-xs middle-xs">
-						<div>
-							<div class="btn-group" role="group">
-								<a href class="btn btn-sm btn-primary btn-outline active">Private</a>
-								<a href class="btn btn-sm btn-primary btn-outline">Public</a>
-							</div>
-						</div>
-						<div>
-							<div class="btn-group" role="group">
-								<a href={{pathFor 'importEvents'}} class="btn btn-sm btn-facebook">
-									<i class="fa fa-facebook-official"></i>
-									Import Events
-								</a>
-								<a href={{pathFor 'insertEvent'}} class="btn btn-sm btn-success">
-									Create Event
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+        	{{> Template.dynamic template=activeSubNavTemplate}}
+`				</div>
+`			</div>
 		</div>
 	</nav>
+	{{/if}}
 </template>
