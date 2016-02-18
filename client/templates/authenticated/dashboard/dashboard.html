@@ -7,7 +7,7 @@
 		</div>
 		<div class="row top-xs center-xs">
 			<div class="col-xs-12">
-				{{> secondaryNav activeSubNavTemplate="dashboardSecondaryNav"}}
+				{{> secondaryNav activeTemplateName="dashboardSecondaryNav"}}
 			</div>
 		</div>
 		<div class="bg-color row top-xs middle-sm center-xs">
@@ -17,6 +17,7 @@
 						<div class="wrap row center-xs middle-xs">
 							{{> sectionTitle title="Upcoming Events" badge=numberOfEvents}}
 							{{> eventsList eventsData=userEvents}}
+
 						</div>
 					</div>
 				{{else}}
@@ -31,7 +32,7 @@
 									<a href="{{pathFor 'insertEvent'}}">Create One</a>
 									<br> or
 									<br>
-									<a href data-role="import-events" data-toggle="modal" data-target="#modal" data-modal-template="importEvents" data-modal-size="full">
+									<a href="{{pathFor 'importEvents'}}">
 										Import RSVP'd events from Facebook
 									</a>
 								</div>

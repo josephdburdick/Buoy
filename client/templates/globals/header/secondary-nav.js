@@ -30,3 +30,9 @@ Template.secondaryNav.onRendered(() => {
 		}
 	});
 });
+
+Template.secondaryNav.helpers({
+	'activeTemplateName': () => {
+		return Template.instance().data.activeTemplateName
+	}
+})

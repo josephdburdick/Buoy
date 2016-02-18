@@ -1,5 +1,5 @@
 <template name="secondaryNav">
-	{{#if activeSubNavTemplate}}
+
 	<nav class="navbar navbar-default" role="navigation" id="secondary-nav">
 		<div class="wrap container-fluid">
 			<div>
@@ -11,12 +11,13 @@
 					<span></span>
 					<span></span>
 				</button>
-
 				<div class="collapse navbar-collapse" id="secondary-nav__collapse">
-        	{{> Template.dynamic template=activeSubNavTemplate}}
-`				</div>
-`			</div>
+					{{#if activeTemplateName}}
+				    {{> Template.dynamic template=activeTemplateName }}
+				  {{/if}}
+				</div>
+			</div>
 		</div>
 	</nav>
-	{{/if}}
+
 </template>
