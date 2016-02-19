@@ -1,4 +1,9 @@
 let events = {
+	getFacebookEventDetail(query){
+		debugger;
+		// Modules.both.facebook.getFacebookData({token: Session.get('facebookAccessToken'), query: `/${query}`})
+		// Meteor.call('getFacebookData', {token: Session.get('facebookAccessToken'), query: `/${query}`})
+	},
 	processEvent: (event) => {
 		console.log('> processEvent function');
 		let processedEvent = event;
@@ -23,7 +28,6 @@ let events = {
 
 						// process/add place
 						let place = processPlace(event);
-						debugger;
 						// processedEvent.places = [];
 						// processedEvent.places.push(event);
 						//
@@ -84,8 +88,6 @@ let events = {
 				}
 			}
 		}
-
-
 		return place;
 	},
 	addPlace: (place) => {

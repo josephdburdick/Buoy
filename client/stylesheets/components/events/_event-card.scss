@@ -17,4 +17,9 @@
 		transform: scale(0);
 		opacity: 0;
 	}
+
+	.panel-body{
+		overflow-y: scroll;
+		max-height: 320px;
+	}
 }

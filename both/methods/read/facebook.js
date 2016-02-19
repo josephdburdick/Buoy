@@ -11,7 +11,7 @@ Meteor.methods({
 					let accessToken = Meteor.call('getFacebookAccessToken');
 					if (!!accessToken){
 						params.token = accessToken;
-						console.log('Facebook access token grabbed from server. Try grabbing from the client next time.');
+						console.warn('Facebook access token grabbed from server. Try grabbing from the client next time.');
 					} else {
 						console.error('No Facebook access token. \nTry logging in with Facebook to acceess this feature.');
 						return false;
