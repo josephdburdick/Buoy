@@ -20,13 +20,13 @@ Template.importActionsButtonGroup.events({
 				place = Modules.client.events.processPlace(eventObj);
 
 			Modules.both.facebook.getFacebookData({
-				token: eventFBId,
-				query: `${eventFBId}?fields=attending_count,can_guests_invite,cover,declined_count,description,admins,attending,declined,feed,owner,start_time,maybe,interested,posts,is_viewer_admin,id,updated_time,comments,picture,name,category,type,maybe_count,noreply_count,interested_count`
+				token: Session.get('facebookAccessToken'),
+				query: `/${eventFBId}?fields=attending_count,can_guests_invite,cover,declined_count,description,admins,attending,declined,feed,owner,start_time,maybe,interested,posts,is_viewer_admin,id,updated_time,comments,picture,name,category,type,maybe_count,noreply_count,interested_count`
 			}).then((eventDetailObj) => {
 					debugger;
 				})
 				.catch((error) => {
-					debugger;
+					Bert.alert(error.reason, 'danger');
 				})
 
 

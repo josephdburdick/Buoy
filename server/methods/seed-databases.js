@@ -4,7 +4,7 @@ Meteor.methods({
 			numberOfEvents = 50;
 		}
 		check(numberOfEvents, Number);
-		
+
 		let
 			events = [],
 			myId = Meteor.users.findOne({username: 'josephdburdick'})._id;
@@ -35,7 +35,7 @@ Meteor.methods({
 				ownerId: linkedOwnerId,
 				fbId: faker.random.uuid(),
 				name: faker.lorem.sentence(),
-				description: faker.lorem.paragraph(),
+				description: _.sample([faker.lorem.paragraph(), faker.lorem.paragraph() + faker.lorem.paragraph()]),
 				places: places,
 				itineraryId: faker.internet.password(),
 				picture: faker.image.nightlife(),

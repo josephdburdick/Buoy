@@ -27,8 +27,8 @@ Meteor.methods({
 				});
 
 				let
-				facebookGraphAPIRequest = Modules.both.facebook.facebookGraphAPIString(params),
-				response = HTTP.get(facebookGraphAPIRequest);
+  				facebookGraphAPIRequest = Modules.both.facebook.facebookGraphAPIString(params),
+  				response = HTTP.get(facebookGraphAPIRequest);
 
 				if (response.statusCode === 200){
 					return response;

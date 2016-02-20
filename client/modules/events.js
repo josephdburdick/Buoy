@@ -1,9 +1,4 @@
 let events = {
-	getFacebookEventDetail(query){
-		debugger;
-		// Modules.both.facebook.getFacebookData({token: Session.get('facebookAccessToken'), query: `/${query}`})
-		// Meteor.call('getFacebookData', {token: Session.get('facebookAccessToken'), query: `/${query}`})
-	},
 	processEvent: (event) => {
 		console.log('> processEvent function');
 		let processedEvent = event;
