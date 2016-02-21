@@ -1,27 +1,27 @@
 <template name="eventDetail">
-	<div>
+	{{#if Template.subscriptionsReady}}
 		{{#with event}}
+			<div class="row top-xs center-xs">
+				<div class="wrap">
+					{{> map fixed=true}}
+				</div>
+			</div>
 
-		<div class="row bottom-xs center-xs">
-			<div class="col-xs-12">
-				{{> map fixed=true}}
+			<div class="row top-xs center-xs">
+				<div class="col-xs-12">
+					{{> secondaryNav activeTemplateName="eventDetailSecondaryNav"}}
+				</div>
 			</div>
-		</div>
-		<div class="row top-xs center-xs">
-			<div class="col-xs-12">
-				{{> secondaryNav activeTemplateName="eventDetailSecondaryNav"}}
-			</div>
-		</div>
-		<div class="bg-color row top-xs middle-sm center-xs">
-			<div class="wrap container-fluid">
-				<div class="wrap row center-xs middle-xs beyond-primary-nav">
-					<div>
-						{{> sectionTitle title=name}}
-					</div>
-					<div class="panel panel-default">
+
+			<div class="full-height row top-xs middle-sm center-xs bg-color">
+				<div class="wrap row center-xs middle-xs">
+					{{> sectionTitle title=name}}
+
+					<div class="text-left">
 						<div class="panel-body">
 							<div class="row">
-								<div class="col-sm-6">
+								<div class="col-sm-8 last-xs last-sm">
+									Details:
 									<ul class="list-group">
 										<li class="list-group-item">ownerId: {{ownerId}}</li>
 										<li class="list-group-item">fbId: {{fbId}}</li>
@@ -35,9 +35,8 @@
 										<li class="list-group-item">updated_time: {{updated_time}}</li>
 										<li class="list-group-item">eventChannel: {{eventChannel}}</li>
 									</ul>
-
 								</div>
-								<div class="col-sm-6">
+								<div class="col-sm-4 last-lg last-md">
 									Places:
 									<ul class="list-group">
 										{{#each place in places}}
@@ -54,7 +53,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
 		{{/with}}
-	</div>
+	{{else}}
+		{{> loading}}
+	{{/if}}
 </template>

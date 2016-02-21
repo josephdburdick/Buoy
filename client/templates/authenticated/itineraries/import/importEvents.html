@@ -1,23 +1,22 @@
 <template name="importEvents">
-	<div class="template-container beyond-primary-nav--padded">
+	<div class="full-height beyond-primary-nav--padded">
 		{{#if Template.subscriptionsReady}}
 			{{#if subNotEmpty availableFacebookEvents}}
-				<div class="row middle-xs center-xs">
-					<div class="wrap container-fluid">
-						<div class="col-xs-12 center-block">
-							<div class="row center-xs middle-xs around-xs events-list full-height">
-								{{> eventsList eventsData=availableFacebookEvents importing=true className="top-xs middle-sm"}} </div>
+				<div class="full-height row middle-xs center-xs">
+					<div class="col-xs-12 center-block container">
+						<div class="row center-xs middle-xs around-xs events-list full-height">
+							{{> eventsList eventsData=availableFacebookEvents importing=true className="top-xs middle-sm"}}
 						</div>
 					</div>
 				</div>
 			{{else}}
-				<div class="row middle-xs center-xs full-height">
+				<div class="full-height row middle-xs center-xs">
 					<div class="col-lg-4 col-md-5 col-sm-6 col-xs-12 center-block">
 						<div class="panel panel-facebook">
 							<header class="panel-heading">
 								<h3 class="panel-title">
 								<i class="fa fa-facebook-official" style="margin-right: 10px;"></i> No Facebook Events Retrieved</h3> </header>
-							<div class="panel-body"> No events found. Be sure to RSVP to Facebook events for them to be accessible by Buoy. </div>
+							<div class="panel-body"> No events found. Be sure to RSVP to Facebook events to have them accessible by Buoy. </div>
 						</div>
 					</div>
 				</div>

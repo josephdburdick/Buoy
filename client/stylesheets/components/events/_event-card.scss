@@ -12,12 +12,19 @@
 	transition: all $transition-speed $transition-ease $transition-speed / 2;
 	transform: scale(1);
 	opacity: 1;
+
 	margin-bottom: 2rem;
+
+	&:last-child{
+		margin-bottom: 0;
+	}
 	&.event-card--imported{
 		transform: scale(0);
 		opacity: 0;
 	}
-
+	.panel-heading .lead {
+		margin-bottom: 0;
+	}
 	.panel-body{
 		overflow-y: scroll;
 		max-height: 25vh;
