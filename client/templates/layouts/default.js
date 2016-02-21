@@ -24,7 +24,8 @@ Template.default.helpers({
 	redirectPublic() {
 		return handleRedirect([
 			'index',
-			'dashboard'
+			'dashboard',
+			'importEvents'
 		], '/login' );
 	}
 });
