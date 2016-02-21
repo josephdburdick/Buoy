@@ -35,7 +35,7 @@ EventsSchema = new SimpleSchema({
 		type: String,
 		optional: true,
 		autoform: {
-			placeholder: "Event Name"
+			placeholder: 'Event Name'
 		}
 	},
   description: {
@@ -43,56 +43,147 @@ EventsSchema = new SimpleSchema({
   	optional: true,
 		autoform: {
       afFieldInput: {
-        type: "textarea"
+        type: 'textarea'
       },
-			placeholder: "Event Description"
+			placeholder: 'Event Description'
     }
   },
+  type: {
+    type: String,
+    optional: true,
+    label: "Privacy",
+    allowedValues: ['public', 'private'],
+    autoform: {
+      afFieldInput: {
+        firstOption: false
+      },
+      options: {
+        public: "Public",
+        private: "Private"
+      }
+    }
+  },
+  can_guests_invite: {
+    type: Boolean,
+    optional: true,
+    autoform: {
+      placeholder: true
+    }
+  },
+  // attendees: {
+  //   type: Object,
+  //   optional: true
+  // },
+  // 'attendees.$':{
+  //   type: Array,
+  //   optional: true,
+  //   autoform: {
+  //   	omit: true
+  //   }
+  // },
+  // 'attendees.$.$':{
+  //   type: String
+  // },
+  // 'attendees.$.$.fbId': {
+  //   type: String
+  // },
+  // 'attendees.$.$.name': {
+  //   type: String
+  // },
+
   places: {
     type: Array,
     optional: true
   },
-	"places.$": {
+	'places.$': {
 		type: Object
 	},
-	"places.$._id": {
+	'places.$._id': {
 		type: String,
 		optional: true,
 		autoform: {
     	omit: true
     }
 	},
-	"places.$.ownerId": {
+	'places.$.ownerId': {
 		type: String,
 		optional: true,
 		autoform: {
     	omit: true
     }
 	},
-	"places.$.name": {
+	'places.$.name': {
 		type: String,
 		optional: true,
 		autoform: {
-			placeholder: "Place Name"
+			placeholder: 'Place Name'
 		}
 	},
-	"places.$.address": {
+	'places.$.address': {
 		type: String,
 		optional: true,
 		autoform: {
-			placeholder: "Street Address"
+      omit: true,
+			placeholder: 'Street Address'
 		}
 	},
-	"places.$.coords": {
+	'places.$.coords': {
 		type: [Number],
     decimal: true,
     minCount: 2,
     maxCount: 2,
-		optional: true
+		optional: true,
+    autoform: {
+      omit: true
+		}
 	},
+
   itineraryId: {
     type: String,
   	optional: true, //will want to create an itinerary first and push Id or array here...
+		autoform: {
+    	omit: true
+    }
+  },
+
+  cover: {
+    type: Object,
+    optional: true,
+    autoform: {
+      omit: true
+    }
+  },
+  'cover.fbId': {
+    type: String,
+  	optional: true,
+		autoform: {
+    	omit: true
+    }
+  },
+  'cover.offset_x': {
+    type: Number,
+  	optional: true,
+		autoform: {
+    	omit: true
+    }
+  },
+  'cover.offset_y': {
+    type: Number,
+  	optional: true,
+		autoform: {
+    	omit: true
+    }
+  },
+  is_viewer_admin: {
+    type: Boolean,
+  	optional: true,
+		autoform: {
+    	omit: true
+    }
+  },
+  'cover.source': {
+    type: String,
+  	optional: true,
 		autoform: {
     	omit: true
     }
@@ -103,13 +194,6 @@ EventsSchema = new SimpleSchema({
 		autoform: {
     	omit: true
     }
-  },
-  privacy: {
-    type: String,
-  	optional: true,
-		autoform: {
-			placeholder: "true"
-		}
   },
   'ticket_uri': {
     type: String,
@@ -135,6 +219,14 @@ EventsSchema = new SimpleSchema({
     	omit: true
     }
   },
+  'rsvp_status': {
+    type: String,
+  	optional: true,
+		autoform: {
+    	omit: true
+    }
+  },
+
   // eventChannel: {
   //   type: Object,
   //   optional: true, //will want to create an channel first and push Id or array here...

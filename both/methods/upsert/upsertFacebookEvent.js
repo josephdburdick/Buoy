@@ -6,11 +6,13 @@ Meteor.methods({
     check( event, Object );
 		let documentId;
 		try {
-			FacebookEvents.upsert( {
+			let response = FacebookEvents.upsert( {
+        _id: event._id,
 				fbId: event.fbId
 			}, {
 				$set: event
 			});
+      return response;
 		} catch( exception ) {
 			return exception;
 		}

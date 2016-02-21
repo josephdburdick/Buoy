@@ -7,11 +7,9 @@ Meteor.methods({
 
 	    if (!params.token){
 				try {
-					console.log('No Facebook access token. Attempting server retrieval.');
 					let accessToken = Meteor.call('getFacebookAccessToken');
 					if (!!accessToken){
 						params.token = accessToken;
-						console.warn('Facebook access token grabbed from server. Try grabbing from the client next time.');
 					} else {
 						console.error('No Facebook access token. \nTry logging in with Facebook to acceess this feature.');
 						return false;
@@ -44,11 +42,16 @@ Meteor.methods({
     if (!Meteor.userId()) {
       throw new Meteor.Error("not-authorized");
     }
+	  if (Meteor.isClient){
+	    return Session.get('facebookAccessToken');
+	  }
 		if (Meteor.isServer){
 			try {
 				return Meteor.user().services.facebook.accessToken;
-			} catch(e) {
-				return null;
+			} catch(error) {
+        console.error(error);
+        console.log('No accessToken in getAccesstoken');
+        return false;
 			}
 		}
   }

@@ -3,14 +3,14 @@ Template.secondaryNav.onRendered(() => {
 		self = Template.instance(),
 		$primaryNav = $('#primary-nav'),
 		$secondaryNav = $('#secondary-nav'),
-		secondaryNavLimit = $secondaryNav.offset().top, //- $primaryNav.outerHeight(),
+		secondaryNavLimit = $secondaryNav.offset().top,
 		$navClone;
 
 	$(window).on('scroll', () => {
 		let
 			st = $(this).scrollTop(),
 			decoyID = 'secondary-nav_decoy',
-			secondaryNavDecoyHTML = `<div id="${decoyID}" style="height: ${$secondaryNav.outerHeight()}px;"></div>`,
+			secondaryNavDecoyHTML = `<div id="${decoyID}" class="navbar navbar-default" style="height: ${$secondaryNav.outerHeight()}px;margin-bottom:0;"></div>`,
 			$decoyEl;
 
 

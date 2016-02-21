@@ -51,7 +51,7 @@ Meteor.publish( 'nonImportedUserFacebookEvents', function(userId){
 	check(userId, String);
 	return FacebookEvents.find({
 			ownerId: userId,
-			isImported: { $eq: false }
+			isImported: { $ne: true }
 		},
 		{
 			sort: { 'start_time': -1 }

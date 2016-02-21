@@ -3,7 +3,7 @@ Template.primaryNav.onRendered(() => {
   let
     self = Template.instance(),
     $primaryNav = $('#primary-nav'),
-    $secondaryNav = !!$('#secondary-nav') ? $('#secondary-nav') : false,
+    $secondaryNav = !!$('#secondary-nav').length ? $('#secondary-nav') : false,
     primaryNavLimit = $primaryNav.outerHeight();
 
 

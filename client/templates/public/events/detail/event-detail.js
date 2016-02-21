@@ -6,6 +6,7 @@ Template.eventDetail.onCreated(() => {
 
 Template.eventDetail.helpers({
 	event(){
+		console.log(Events.findOne());
 		return Events.findOne();
 	}
 });

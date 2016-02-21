@@ -58,10 +58,19 @@ let events = {
 			// Add events to place
 			place.events = !!place.events ? place.events : [];
 
-			if (!!event.place && !place.events.length){
-				place.events.push({
-					name: event.place.name,
+			if (!!event.place && !event.places){
+				event.places = [{
 					fbId: event.place.fbId,
+					eventId: event._id,
+					name: event.place.name,
+					street: event.place.location.street,
+					coords: [event.place.location.latitude, event.place.location.longitude]
+				}];
+			} else if (!!event.place && !!event.places) {
+				event.places.push({
+					fbId: event.place.fbId,
+					eventId: event._id,
+					name: event.place.name,
 					street: event.place.location.street,
 					coords: [event.place.location.latitude, event.place.location.longitude]
 				});
@@ -72,12 +81,13 @@ let events = {
 				place.locations.push({
 					fbId: place.fbId
 				});
+				delete place.location
 			}
 		}
 
 		// No place found. Generate one until a user inputs real values.
 		if (!place){
-			place = {
+			places = {
 				location: {
 
 				}

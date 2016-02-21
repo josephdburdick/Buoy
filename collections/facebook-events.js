@@ -33,7 +33,7 @@ FacebookEventsSchema = new SimpleSchema({
 			let
 				time = this.siblingField('start_time'),
 				dayPeriod = Modules.both.getDayPeriod(time),
-				humanizedDate = `${moment(time).format("dddd")} ${dayPeriod}, ${moment(time).format("MMMM Do YYYY, h:mm:ss")}`;
+				humanizedDate = `${moment(time).format('dddd')} ${dayPeriod}, ${moment(time).format('MMMM Do YYYY, h:mm:ss')}`;
 				console.log(humanizedDate);
 			return humanizedDate;
 		}
@@ -42,37 +42,50 @@ FacebookEventsSchema = new SimpleSchema({
     type: String,
   	optional: true
   },
+
   places: {
-    type: [Object],
-    optional: true,
-		label: "The place IDs for this event",
+    type: Array,
+    optional: true
   },
-	"places.$._id": {
-		type: String,
-		optional: true
+	'places.$': {
+		type: Object
 	},
-	"places.$.ownerId": {
-		type: String,
-		optional: true
-	},
-	"places.$.name": {
+	'places.$._id': {
 		type: String,
 		optional: true,
-		defaultValue: function() {
-			return "Default Event Name";
+		autoform: {
+    	omit: true
+    }
+	},
+	'places.$.ownerId': {
+		type: String,
+		optional: true,
+		autoform: {
+    	omit: true
+    }
+	},
+	'places.$.name': {
+		type: String,
+		optional: true,
+		autoform: {
+			placeholder: 'Place Name'
 		}
 	},
-	"places.$.address": {
+	'places.$.address': {
 		type: String,
+		optional: true,
+		autoform: {
+			placeholder: 'Street Address'
+		}
+	},
+	'places.$.coords': {
+		type: [Number],
+    decimal: true,
+    minCount: 2,
+    maxCount: 2,
 		optional: true
 	},
-	"places.$.coords": {
-		type: [Number],
-		optional: true,
-		defaultValue: [],
-		min: 0,
-		max: 2
-	},
+
   picture: {
     type: String,
   	optional: true
