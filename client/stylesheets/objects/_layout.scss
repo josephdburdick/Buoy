@@ -8,9 +8,7 @@
 		overflow-x: hidden;
 		background-color: $navbar-default-bg;
 		& > * {
-			flex-grow: 1;
-			flex-shrink: 1;
-			flex-basis: auto;
+			display: flex;
 		}
 		& > .row {
 			margin-left: 0;
@@ -21,12 +19,12 @@
 .full-height{
 	display: flex;
   flex-direction: column;
-	& > div {
-		flex: 1;
-		display: flex;
-	  justify-content: center;
-	  flex-direction: column;
-	}
+	flex: 1;
+}
+.full-width{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
 }
 .no-margin-bottom{
 	margin-bottom: 0;
