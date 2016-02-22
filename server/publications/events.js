@@ -9,7 +9,7 @@ Meteor.smartPublish('publicAndUserEvents', function(userId) {
   check(userId, String);
   return [
     Events.find({ ownerId: userId }, { sort: { 'start_time': -1 } }),
-    Events.find({ privacy: 'EVERYONE' }, { sort: { 'start_time': -1 } })
+    Events.find({ type: 'public' }, { sort: { 'start_time': -1 } })
   ];
 });
 

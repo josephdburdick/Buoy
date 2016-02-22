@@ -17,21 +17,29 @@ Meteor.methods({
 			// Randomly generate an ownerId or assign it to me
 			let
 				places = [],
-				linkedOwnerId = _.sample([faker.internet.password(), myId]);
+				linkedOwnerId = _.sample([faker.internet.password(), myId]),
+				generatedEventId = faker.random.uuid();
 
 			_(_.sample([2, 3, 4, 5, 6])).times(() => {
 				let place = {
 					_id: faker.internet.password(),
-					ownerId: linkedOwnerId,
+					eventId: generatedEventId,
 					name: faker.company.companyName(),
-					address: faker.address.streetAddress(),
-					coords: [faker.address.latitude(), faker.address.longitude()]
+					street: faker.address.streetAddress(),
+					city: faker.address.city(),
+					state: faker.address.state(),
+					country: faker.address.country(),
+					zip: faker.address.zipCode(),
+					coords: [faker.address.longitude(), faker.address.latitude()]
 				};
 
 				places.push(place);
 			});
-
+			_.each(places, (place, index) => {
+				place.order = index + 1;
+			});
 			let event = {
+				_id: generatedEventId,
 				ownerId: linkedOwnerId,
 				fbId: faker.random.uuid(),
 				name: faker.lorem.sentence(),
@@ -39,7 +47,7 @@ Meteor.methods({
 				places: places,
 				itineraryId: faker.internet.password(),
 				picture: faker.image.nightlife(),
-				privacy: _.sample(['EVERYONE', 'ALL_FRIENDS', 'FRIENDS_OF_FRIENDS', 'CUSTOM', 'SELF']),
+				type: _.sample(['public', 'private']),
 				'ticket_uri': faker.internet.url(),
 				'start_time': faker.date.future(),
 				'end_time': faker.date.future(),
