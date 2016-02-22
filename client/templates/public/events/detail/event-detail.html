@@ -7,11 +7,11 @@
 				</div>
 			</div>
 
-			<div class="row top-xs center-xs">
+			<!-- <div class="row top-xs center-xs">
 				<div class="col-xs-12">
 					{{> secondaryNav activeTemplateName="eventDetailSecondaryNav"}}
 				</div>
-			</div>
+			</div> -->
 
 			<div class="full-height row top-xs middle-sm center-xs bg-color">
 				<div class="wrap row center-xs middle-xs">
@@ -37,16 +37,25 @@
 										</div>
 									</div>
 
-									<div class="h3 small text-uppercase">Details:</div>
+									<div class="h3 small text-uppercase">
+										Details:
+									</div>
 									<div class="row">
 										<div class="col-xs-12">
 											<div class="panel panel-default">
 												<div class="panel-body">
-													<div class="pull-right">
-														<div class="small text-uppercase">privacy</div>
-														{{type}}
+													<div class="row">
+														<div class="col-xs-6">
+															<div class="small text-uppercase">
+																description
+															</div>
+														</div>
+														<div class="col-xs-6">
+															<div class="pull-right label text-uppercase {{#if typeIs "public"}}label-success{{else}}label-info{{/if}}">
+																{{type}}
+															</div>
+														</div>
 													</div>
-													<div class="small text-uppercase">description</div>
 													{{#markdown}}{{description}}{{/markdown}}
 												</div>
 											</div>

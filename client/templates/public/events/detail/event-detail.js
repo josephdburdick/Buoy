@@ -8,5 +8,8 @@ Template.eventDetail.helpers({
 	event(){
 		console.log(Events.findOne());
 		return Events.findOne();
+	},
+	typeIs(type){
+		return this.type === type;
 	}
 });
