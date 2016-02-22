@@ -104,6 +104,14 @@ UserSchema.User = new SimpleSchema({
     type: Object,
     optional: true
   },
+  'profile.age_range.min': {
+    type: Number,
+    optional: true
+  },
+  'profile.age_range.max': {
+    type: Number,
+    optional: true
+  },
   'profile.biography': {
     type: String,
     optional: true
