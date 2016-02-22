@@ -70,7 +70,13 @@ Template.importActionsButtonGroup.events({
 							place.fbId = place.id;
 							delete place.id;
 						}
+						if (place.latitude && place.longitude){
+							place.coords = [place.longitude, place.latitude]
+							delete place.latitude;
+							delete place.longitude;
+						}
 						if (place.location) delete place.location;
+						place.order = 1;
 						eventObj.places = [place];
 
 						//Clean up
@@ -107,7 +113,7 @@ Template.importActionsButtonGroup.events({
 							Meteor.call('updateFacebookEventImportStatus', {_id: eventObj._id, fbId: eventObj.fbId, isImported: true}, (error, success) => {
 								if (!error){
 									console.log(success);
-									Bert.alert(`Added <strong>${eventObj.name}</strong>.`, 'success');
+									Bert.alert(`Added <strong>${eventObj.name}</strong>`, 'success');
 									$eventCard.addClass(importedEventClass);
 								} else {
 									Bert.alert('Unable to update import status of Facebook Event. You may see it again.', 'info');
@@ -122,10 +128,10 @@ Template.importActionsButtonGroup.events({
 						}
 					});
 				})
-				// .catch((error) => {
-				// 	console.log(error);
-				// 	Bert.alert(error.message, 'danger');
-				// });
+				.catch((error) => {
+					console.log(error);
+					Bert.alert(error.message, 'danger');
+				});
 		} else {
 			Bert.alert('Event has already been imported', 'warning');
 		}
