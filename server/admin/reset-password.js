@@ -1,6 +1,6 @@
-Accounts.emailTemplates.resetPassword.siteName = () => "Application Name";
-Accounts.emailTemplates.resetPassword.from     = () => "Application Name <admin@application.com>";
-Accounts.emailTemplates.resetPassword.subject  = () => "[Application Name] Reset Your Password";
+Accounts.emailTemplates.resetPassword.siteName = () => "Buoy Events";
+Accounts.emailTemplates.resetPassword.from     = () => "Buoy Events <admin@application.com>";
+Accounts.emailTemplates.resetPassword.subject  = () => "[Buoy Events] Reset Your Password";
 
 Accounts.emailTemplates.resetPassword.text = ( user, url ) => {
   let emailAddress   = user.emails[0].address,
