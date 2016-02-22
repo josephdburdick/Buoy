@@ -42,9 +42,12 @@ button, .btn{
 	border-color: rgba($btn-default-color, .75);
 	&:hover{
 		border-color: rgba($btn-default-color, 1);
-		background-color: rgba($btn-default-color, 1);
+		background-color: rgba($btn-default-color, .15);
+		color: $btn-default-color;
 	}
 	&.active{
+		border-color: rgba($btn-default-color, 1);
+		background-color: rgba($btn-default-color, 1);
 		color: white;
 	}
 }
@@ -56,9 +59,6 @@ button, .btn{
 		border-color: rgba($brand-primary, 1);
 		background-color: rgba($brand-primary, 1);
 	}
-	&.active{
-		color: white;
-	}
 }
 
 .btn-facebook.btn-outline {
@@ -67,9 +67,6 @@ button, .btn{
 	&:hover{
 		border-color: rgba($brand-facebook, 1);
 		background-color: rgba($brand-facebook, 1);
-	}
-	&.active{
-		color: white;
 	}
 }
 
@@ -80,9 +77,6 @@ button, .btn{
 		border-color: rgba($brand-success, 1);
 		background-color: rgba($brand-success, 1);
 	}
-	&.active{
-		color: white;
-	}
 }
 
 .btn-info.btn-outline {
@@ -91,9 +85,6 @@ button, .btn{
 	&:hover{
 		border-color: rgba($brand-info, 1);
 		background-color: rgba($brand-info, 1);
-	}
-	&.active{
-		color: white;
 	}
 }
 
@@ -104,9 +95,6 @@ button, .btn{
 		border-color: rgba($brand-warning, 1);
 		background-color: rgba($brand-warning, 1);
 	}
-	&.active{
-		color: white;
-	}
 }
 
 .btn-danger.btn-outline {
@@ -116,16 +104,14 @@ button, .btn{
 		border-color: rgba($brand-danger, 1);
 		background-color: rgba($brand-danger, 1);
 	}
-	&.active{
-		color: white;
-	}
 }
 
-.btn-default.btn-outline:hover,
-.btn-primary.btn-outline:hover,
-.btn-success.btn-outline:hover,
-.btn-info.btn-outline:hover,
-.btn-warning.btn-outline:hover,
-.btn-danger.btn-outline:hover {
-  color: #fff;
+.btn-primary.btn-outline,
+.btn-success.btn-outline,
+.btn-info.btn-outline,
+.btn-warning.btn-outline,
+.btn-danger.btn-outline {
+	&:hover, &.active {
+		color: #fff;
+	}
 }
