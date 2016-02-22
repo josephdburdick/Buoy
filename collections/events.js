@@ -93,40 +93,82 @@ EventsSchema = new SimpleSchema({
 
   places: {
     type: Array,
-    optional: true
+    optional: true,
+    minCount: 1
   },
 	'places.$': {
 		type: Object
 	},
-	'places.$._id': {
-		type: String,
-		optional: true,
-		autoform: {
-    	omit: true
+  'places.$._id': {
+    type: String,
+    optional: true,
+    autoform: {
+      omit: true
     }
-	},
-	'places.$.ownerId': {
-		type: String,
-		optional: true,
-		autoform: {
-    	omit: true
+  },
+  'places.$.order': {
+    type: Number,
+    optional: true,
+    autoform: {
+      omit: true
     }
-	},
-	'places.$.name': {
-		type: String,
-		optional: true,
-		autoform: {
-			placeholder: 'Place Name'
-		}
-	},
-	'places.$.address': {
-		type: String,
-		optional: true,
-		autoform: {
-      omit: true,
-			placeholder: 'Street Address'
-		}
-	},
+  },
+  'places.$.eventId': {
+    type: String,
+    optional: true,
+    autoform: {
+      omit: true
+    }
+  },
+  'places.$.fbId': {
+    type: String,
+    optional: true,
+    autoform: {
+      omit: true
+    }
+  },
+  'places.$.name': {
+    type: String,
+    optional: true,
+    autoform: {
+      placeholder: 'Place Name'
+    }
+  },
+  'places.$.street': {
+    type: String,
+    optional: true,
+    autoform: {
+      omit: true
+    }
+  },
+  'places.$.city': {
+    type: String,
+    optional: true,
+    autoform: {
+      omit: true
+    }
+  },
+  'places.$.state': {
+    type: String,
+    optional: true,
+    autoform: {
+      omit: true
+    }
+  },
+  'places.$.country': {
+    type: String,
+    optional: true,
+    autoform: {
+      omit: true
+    }
+  },
+  'places.$.zip': {
+    type: String,
+    optional: true,
+    autoform: {
+      omit: true
+    }
+  },
 	'places.$.coords': {
 		type: [Number],
     decimal: true,
@@ -137,7 +179,6 @@ EventsSchema = new SimpleSchema({
       omit: true
 		}
 	},
-
   itineraryId: {
     type: String,
   	optional: true, //will want to create an itinerary first and push Id or array here...
@@ -145,7 +186,6 @@ EventsSchema = new SimpleSchema({
     	omit: true
     }
   },
-
   cover: {
     type: Object,
     optional: true,
