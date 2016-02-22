@@ -34,11 +34,11 @@ let extendAccounts = () => {
       user.profile.picture = "http://graph.facebook.com/" + user.services.facebook.id + "/picture/?type=large";
       user.profile.gender = user.services.facebook.gender;
       user.profile.locale = user.services.facebook.locale;
-			faker.locale = user.services.facebook.locale;
       user.profile.age_range = user.services.facebook.age_range;
     }
-		if (!user.username)
-			user.username = _createUsernameFromEmail(user.emails[0].address);
+
+    if (!user.username)
+      user.username = _createUsernameFromEmail(user.emails[0].address);
 
     return user;
   });

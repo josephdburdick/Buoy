@@ -1,10 +1,7 @@
 <template name="dashboardSecondaryNav">
 	<div class="row between-xs middle-xs">
 		<div>
-			<div class="btn-group" role="group">
-				<a href class="btn btn-sm btn-primary btn-outline active">Private</a>
-				<a href class="btn btn-sm btn-primary btn-outline">Public</a>
-			</div>
+			{{> eventsListFilter activeFilter=activeFilter}}
 		</div>
 		<div>
 			<div class="btn-group" role="group">
