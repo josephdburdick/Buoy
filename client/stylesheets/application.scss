@@ -25,15 +25,12 @@ html,body{
 	padding: 0;
 }
 
-.list-group{
-	.list-group-item ~ .list-group-item{
-		margin-top: 0;
-	}
-}
-
 .bg-color {
 	position: relative;
 	background-color: #eee;
+	&--dark{
+		background-color: darken($brand-primary, 10%);
+	}
 }
 .bg-facebook{
 	background-color: $brand-facebook;
@@ -74,8 +71,21 @@ html,body{
     position: absolute;
 	}
 }
-
+.panel {
+	margin-bottom: 0;
+	& + &{
+		margin-top: 10px;
+	}
+}
 .panel-card{
 	background: $panel-bg;
 	padding: $panel-body-padding * 2;
+}
+
+.list-group{
+	margin-bottom: 0;
+
+	& + & {
+		margin-top: 10px;
+	}
 }

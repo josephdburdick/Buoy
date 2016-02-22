@@ -1,7 +1,7 @@
 <template name="dashboard">
 	{{#if Template.subscriptionsReady}}
 		{{#if subNotEmpty userEvents}}
-			<div class="row top-xs center-xs">
+			<div class="row top-xs center-xs bg-color--dark">
 				<div class="wrap">
 					{{> map fixed=true}}
 				</div>
@@ -33,7 +33,7 @@
 								<br> or
 								<br>
 								<a href="{{pathFor 'importEvents'}}">
-									Import RSVP'd events from Facebook
+									Import events from Facebook
 								</a>
 							</div>
 						</div>
