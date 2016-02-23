@@ -45,7 +45,7 @@ publicRoutes.route( '/event/:eventId', {
   }
 });
 
-FlowRouter.route('/event/:eventId/edit', {
+publicRoutes.route('/event/:eventId/edit', {
 	name: 'edit-event',
   action: function(params, queryParams) {
     console.log("Yeah! We are on the post:", params.postId);
