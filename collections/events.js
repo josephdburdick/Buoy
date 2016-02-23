@@ -305,6 +305,21 @@ EventsSchema = new SimpleSchema({
   }
 });
 
+SchemaTest = new SimpleSchema({
+  address: {
+    type: EventsSchema,
+    optional: true,
+    autoform: {
+      type: 'google-places-input'
+      // geopointName: "myOwnGeopointName" //optional, you can use a custom geopoint name
+    }
+  },
+  text: { // useless in our example
+    type: String,
+    optional: true
+  }
+});
+
 Events.attachSchema(EventsSchema);
 SimpleSchema.debug = true;
 Schema.Events = EventsSchema;

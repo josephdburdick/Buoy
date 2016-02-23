@@ -3,6 +3,10 @@ Template.dashboard.onCreated(() => {
   self.subscribe('allUsers');
   self.subscribe('userData');
 	self.subscribe('publicAndUserEvents', Meteor.userId());
+
+	if (! Session.get('activeEventListFilterValue')){
+		Session.set('activeEventListFilterValue', 'all');
+	}
 });
 
 Template.dashboard.helpers({
@@ -16,6 +20,10 @@ Template.dashboard.helpers({
 		return FacebookEvents.find( {isImported: false}, { sort: { 'start_time': -1 } });
 	},
 	userEvents(){
-		return Events.find( {}, { sort: { 'start_time': -1 } });
+		if (Session.equals('activeEventListFilterValue', 'all')){
+			return Events.find( { }, { sort: { 'start_time': -1 } });
+		} else {
+			return Events.find( { type: Session.get('activeEventListFilterValue') }, { sort: { 'start_time': -1 } });
+		}
 	}
 });
