@@ -6,6 +6,7 @@ Template.dashboard.onCreated(() => {
 
 	if (! Session.get('activeEventListFilterValue')){
 		Session.set('activeEventListFilterValue', 'all');
+		// $('[data-events-filter="all"]').addClass('active');
 	}
 });
 

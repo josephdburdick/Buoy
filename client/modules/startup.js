@@ -1,5 +1,5 @@
 let startup = () => {
-  GoogleMaps.load({libraries: 'places'});
+  //GoogleMaps.load({libraries: 'places'});
 };
 
 Modules.client.startup = startup;

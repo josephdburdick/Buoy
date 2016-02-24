@@ -15,7 +15,7 @@ Template.eventsListFilter.events({
 });
 
 Template.eventsListFilter.helpers({
-  activeFilterButton: function(button){
-    //debugger;
+  isActiveFilter: function(button){
+    debugger;
   }
 });
