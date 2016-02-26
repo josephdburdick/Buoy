@@ -1,0 +1,22 @@
+<template name="secondaryNav">
+	<nav class="navbar navbar-default" role="navigation" id="secondary-nav">
+		<div class="wrap col-xs-12">
+			<div>
+				<button
+					type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+					data-target="#secondary-nav__collapse" aria-expanded="false" id="secondary-nav__hamburger">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+				<div class="collapse navbar-collapse" id="secondary-nav__collapse">
+					{{#if activeTemplateName}}
+				    {{> Template.dynamic template=activeTemplateName }}
+				  {{/if}}
+				</div>
+			</div>
+		</div>
+	</nav>
+
+</template>

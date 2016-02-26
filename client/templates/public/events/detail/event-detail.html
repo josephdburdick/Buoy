@@ -1,0 +1,96 @@
+<template name="eventDetail">
+	{{#if Template.subscriptionsReady}}
+		{{#with event}}
+			<div class="row top-xs center-xs bg-color--dark">
+				<div class="wrap">
+					{{> map}}
+				</div>
+			</div>
+
+			<!-- <div class="row top-xs center-xs">
+				<div class="col-xs-12">
+					{{> secondaryNav activeTemplateName="eventDetailSecondaryNav"}}
+				</div>
+			</div> -->
+
+			<div class="full-height row top-xs middle-sm center-xs bg-color">
+				<div class="wrap row center-xs middle-xs">
+					{{> sectionTitle title=name}}
+
+					<div class="text-left">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-8 col-sm-6 col-xs-12 last-xs last-sm">
+									<div class="h3 small text-uppercase">Time:</div>
+									<div class="panel panel-default">
+										<div class="panel-body">
+											<div class="row">
+												<div class="col-xs-6">
+													<div class="small text-uppercase">Begins</div>
+													{{timeFromNow start_time}}
+												</div>
+												<div class="col-xs-6">
+													<div class="small text-uppercase">Updated</div>
+													{{timeFromNow updated_time}}
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="h3 small text-uppercase">
+										Details:
+									</div>
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="panel panel-default">
+												<div class="panel-body">
+													<div class="row">
+														<div class="col-xs-6">
+															<div class="small text-uppercase">
+																description
+															</div>
+														</div>
+														<div class="col-xs-6">
+															<div class="pull-right label text-uppercase {{#if typeIs "public"}}label-success{{else}}label-info{{/if}}">
+																{{type}}
+															</div>
+														</div>
+													</div>
+													{{#markdown}}{{description}}{{/markdown}}
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4 col-sm-6 col-xs-12 last-lg last-md">
+									<div class="h3 small text-uppercase">Places:</div>
+									{{#each place in places}}
+										<div class="panel panel-default">
+											<ul class="list-group">
+												<li class="list-group-item">
+													<div class="row">
+														<div class="col-sm-1 col-xs-2">
+															<span class="badge">{{place.order}}</span>
+														</div>
+														<div class="col-sm">
+															<strong>{{place.name}}</strong><br>
+															{{place.street}}<br>
+															{{place.coords}}
+														</div>
+													</div>
+												</li>
+											</ul>
+										</div>
+									{{/each}}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<!-- </div> -->
+		{{/with}}
+	{{else}}
+		{{> loading}}
+	{{/if}}
+</template>

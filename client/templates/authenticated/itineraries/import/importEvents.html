@@ -1,0 +1,44 @@
+<template name="importEvents">
+	<div class="full-height beyond-primary-nav--padded">
+		{{#if Template.subscriptionsReady}}
+			{{#if subNotEmpty availableFacebookEvents}}
+				<div class="full-height row middle-xs center-xs">
+					<div class="col-xs-12 center-block container">
+						<div class="row center-xs middle-xs around-xs events-list full-height">
+							{{> eventsList eventsData=availableFacebookEvents importing=true className="top-xs middle-sm"}}
+						</div>
+					</div>
+				</div>
+			{{else}}
+				<div class="full-height row middle-xs center-xs">
+					<div class="col-lg-4 col-md-5 col-sm-6 col-xs-12 center-block">
+						<div class="panel panel-warning">
+							<header class="panel-heading">
+								<h3 class="panel-title">
+								<i class="fa fa-facebook-official" style="margin-right: 10px;"></i> No Facebook Events available</h3>
+							</header>
+							<div class="panel-body">
+								<p>
+									No events found.
+								</p>
+								<p>
+									Possible reasons:
+								</p>
+								<ol>
+									<li>You've already imported all Facebook events.</li>
+									<li>You haven't RSVP'd to Facebook events (on Facebook) to have them accessible by Buoy.</li>
+									<li>You have no upcoming events on Facebook.</li>
+								</ol>
+							</div>
+							<div class="panel-footer text-right">
+								<a href="{{pathFor 'dashboard'}}" class="btn btn-default">OK</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			{{/if}}
+		{{else}}
+			{{> loading}}
+		{{/if}}
+	</div>
+</template>

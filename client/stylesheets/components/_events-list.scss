@@ -1,0 +1,17 @@
+.events-list{
+	flex-wrap: wrap;
+	flex-flow: row wrap;
+  align-items: stretch;
+
+	.panel{
+		margin-bottom: 0;
+
+		.modal-full &{
+			margin-bottom: 0;
+	    display: flex;
+	    flex: 1;
+	    flex-direction: column;
+	    justify-content: space-between;
+		}
+	}
+}

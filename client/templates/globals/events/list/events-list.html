@@ -1,0 +1,9 @@
+<template name="eventsList">
+	<div class="col-xs-12 events-list">
+		<div class="row center-xs {{className}}">
+			{{#each eventsData}}
+				{{> eventCard cardSize="col-xs-12 col-sm-6 col-lg-4" data=this importing=../importing}}
+			{{/each}}
+		</div>
+	</div>
+</template>

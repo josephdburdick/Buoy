@@ -1,0 +1,47 @@
+<template name="dashboard">
+	{{#if Template.subscriptionsReady}}
+		{{#if subNotEmpty userEvents}}
+			<div class="row top-xs center-xs bg-color--dark">
+				<div class="wrap">
+					{{> map fixed=true}}
+				</div>
+			</div>
+		{{/if}}
+	{{/if}}
+	<div class="row top-xs center-xs">
+		<div class="wrap">
+			{{> secondaryNav activeTemplateName="dashboardSecondaryNav"}}
+		</div>
+	</div>
+	<div class="full-height row top-xs middle-sm center-xs bg-color">
+		{{#if Template.subscriptionsReady}}
+			{{#if subNotEmpty userEvents}}
+				<div class="wrap row center-xs middle-xs">
+					{{> sectionTitle title="Upcoming Events" badge=numberOfEvents}}
+					{{> eventsList eventsData=userEvents}}
+				</div>
+			{{else}}
+				<div class="full-width full-height wrap row center-xs middle-xs beyond-primary-nav">
+					<div>
+						<header class="lead">
+							<i class="fa fa-info-circle"></i>
+							No Events
+						</header>
+						<div class="panel panel-default text-center">
+							<div class="panel-body text-center">
+								<a href="{{pathFor 'insertEvent'}}">Create One</a>
+								<br> or
+								<br>
+								<a href="{{pathFor 'importEvents'}}">
+									Import events from Facebook
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			{{/if}}
+		{{else}}
+			{{> loading}}
+		{{/if}}
+	</div>
+</template>

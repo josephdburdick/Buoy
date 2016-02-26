@@ -1,0 +1,36 @@
+<template name="eventCard">
+	{{#with data}}
+		<div class="{{../cardSize}} event-card" data-id="{{_id}}" data-fbId="{{fbId}}">
+			<div class="panel panel-default {{#if ../importing}}panel-facebook{{/if}}">
+				<header class="panel-heading">
+					{{#if ../importing}}
+						<div class="lead">
+							<i class="fa fa-facebook-official pull-right " style="color: rgba(0, 0, 0, 0.25)"></i> {{this.name}}
+						</div>
+					{{else}}
+						<a class="display-block lead" href="{{pathFor 'eventDetail' eventId=_id}}">
+							{{this.name}}
+						</a>
+					{{/if}}
+				</header>
+				<div class="panel-body">
+					{{#markdown}}{{description}}{{/markdown}}
+				</div>
+				<footer class="panel-footer">
+					<div class="row">
+						<div class="col-xs col-md pull-left">
+							<small>
+								{{timeFromNow start_time}}
+							</small>
+						</div>
+						{{#if ../importing}}
+							<div class="col-xs text-right">
+								{{> importActionsButtonGroup}}
+							</div>
+						{{/if}}
+					</div>
+				</footer>
+			</div>
+		</div>
+	{{/with}}
+</template>

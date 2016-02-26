@@ -20,7 +20,8 @@ settings.json
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -97,8 +98,6 @@ node_modules
 sftp-config.json
 
 
-#!! ERROR: atom is undefined. Use list command to see defined gitignore types !!#
-
 ### Windows ###
 # Windows image file caches
 Thumbs.db
@@ -118,3 +117,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+.DS_Store
+settings-production.json
+npm-debug.log

@@ -1,0 +1,53 @@
+<template name="viewProfile">
+
+	<div class="row center-xs bottom-xs padding-top--60px margin-bottom--20px">
+		<div class="col-xs-12 col-sm-8 col-md-6 col-lg-5">
+			<div class="row middle-xs around-xs">
+				<div class="col-xs-12 col-sm-6">
+					<img alt="User Pic" src="{{user.profile.picture}}" class="img-circle">
+				</div>
+				<div class="col-xs-12 col-sm-6">
+					<p class="lead no-margin-bottom">{{user.username}}</p>
+					<p>A Bloggist in Brooklyn</p>
+					<a href="#" class="btn btn-default btn-outline">Follow</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row top-xs center-xs">
+		<div class="col-xs-12 col-sm-8 col-md-6 col-lg-5">
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<table class="table table-user-information text-left">
+					<tbody>
+						<tr>
+							<td class="text-right">Represents</td>
+							<td>Lower East Side, Soho, Bushwick, Bedstuy</td>
+						</tr>
+						<tr>
+							<td class="text-right">Level</td>
+							<td>Hood Ambassador</td>
+						</tr>
+						<tr>
+							<td class="text-right">Events Created</td>
+							<td>{{userEventsCount}}</td>
+						</tr>
+						<tr>
+							<td class="text-right">Last Seen</td>
+							<td>{{timeFromNow user.heartbeat}}</td>
+						</tr>
+						<tr>
+							<td class="text-right">User Since</td>
+							<td>{{timeFromNow user.createdAt}}</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="panel-body">
+					<header class="text-muted">BIO</header>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</div>
+			</div>
+		</div>
+	</div>
+
+</template>

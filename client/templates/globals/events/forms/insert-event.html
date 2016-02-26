@@ -1,0 +1,12 @@
+<template name="insertEvent">
+	<div class="full-height full-width row middle-xs center-xs beyond-primary-nav--padded">
+		<div class="col-xs-12">
+			{{> sectionTitle title="Create Event"}}
+		</div>
+
+		<div class="panel panel-default col-xs-12 col-sm-9 col-md-7 col-lg-6 center-block">
+			{{> quickForm schema=SchemaTest collection="Events" id="insertEventForm" type="insert"}}
+		</div>
+
+	</div>
+</template>

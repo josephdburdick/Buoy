@@ -1,0 +1,18 @@
+<template name="dashboardSecondaryNav">
+	<div class="row between-xs middle-xs">
+		<div>
+			{{> eventsListFilter}}
+		</div>
+		<div>
+			<div class="btn-group" role="group">
+				<a href={{pathFor 'importEvents'}} class="btn btn-sm btn-facebook">
+					<i class="fa fa-facebook-official"></i>
+					Import Events
+				</a>
+				<a href={{pathFor 'insertEvent'}} class="btn btn-sm btn-success">
+					Create Event
+				</a>
+			</div>
+		</div>
+	</div>
+</template>

@@ -1,0 +1,60 @@
+$size: 9px;
+
+.navbar-toggle{
+  width: 60px;
+  height: 45px;
+  position: relative;
+  margin: 0 auto;
+  transform: rotate(0deg) scale(.5);
+  transition: ($transition-speed * 2) $transition-ease;
+  cursor: pointer;
+}
+
+.navbar-toggle span {
+  display: block;
+  position: absolute;
+  height: $size;
+  width: 100%;
+  background-color: $gray-light;
+  border-radius: $size;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: $transition-speed $transition-ease;
+}
+
+.navbar-toggle span:nth-child(1) {
+  top: 0px;
+}
+
+.navbar-toggle span:nth-child(2),
+.navbar-toggle span:nth-child(3) {
+  top: $size * 2;
+}
+
+.navbar-toggle span:nth-child(4) {
+  top: $size * 4;
+}
+
+.navbar-toggle:not(.collapsed) span {
+	background: $gray;
+}
+.navbar-toggle:not(.collapsed) span:nth-child(1) {
+  top: $size * 2;
+  width: 0%;
+  left: 50%;
+}
+
+.navbar-toggle:not(.collapsed) span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.navbar-toggle:not(.collapsed) span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.navbar-toggle:not(.collapsed) span:nth-child(4) {
+  top: $size * 2;
+  width: 0%;
+  left: 50%;
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Buoy",
+  "version": "1.0.1",
+  "description": "Your on-the-go event manager",
+  "scripts": {
+    "start": "meteor --settings settings-development.json",
+		"debug": "meteor debug --settings settings-development.json",
+		"android-emulator": "meteor run android --settings settings-development.json",
+		"android-device": "meteor run android-device --settings settings-development.json -p 4000",
+    "staging": "meteor deploy buoy_staging.meteor.com --settings settings-development.json",
+    "production": "meteor deploy production.meteor.com --settings settings-production.json"
+  }
+}
