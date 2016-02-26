@@ -1,10 +1,6 @@
 # Buoy
-A starting point for Meteor apps.
 
-- Most stable branch: dev-blaze
-- Dependencies: Meteor and Facebook App ID + Secret environment variables.
-
-#Tasks:
+##Tasks:
 - [X] Authenticate with Facebook
 - [X] Add import Facebook event button to user dashboard.
 - [X] Populate events, places, and locations collections from Facebook API
