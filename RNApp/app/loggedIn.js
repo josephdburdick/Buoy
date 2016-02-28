@@ -1,16 +1,19 @@
 import React, {
+  ScrollView, TouchableHighlight,
   View,
   Text
 } from 'react-native';
+import _ from 'lodash';
+import Contacts from 'react-native-contacts';
 
 import ddpClient from './ddp';
-
 import Button from './button';
 
 export default React.createClass({
   getInitialState() {
     return {
-      posts: {}
+      posts: {},
+      contacts: []
     }
   },
 
@@ -53,8 +56,29 @@ export default React.createClass({
     });
   },
 
+  handleContactRetrieval() {
+    Contacts.getAll((err, contacts) => {
+      if(err && err.type === 'permissionDenied'){
+        // x.x
+      } else {
+        _.each(contacts, (contact) => {
+          ddpClient.call('addContact', contact);
+        })
+
+        this.setState({contacts: contacts});
+      }
+    })
+  },
+
   render() {
     let count = Object.keys(this.state.posts).length;
+    let contacts = this.state.contacts.map((contact, index) => {
+      return (
+        <TouchableHighlight key={index} onPress={() => console.log('pressed')}>
+          <Text id={index}>{contact.givenName}</Text>
+        </TouchableHighlight>
+      );
+    });
     return (
       <View>
         <Text>Posts: {count}</Text>
@@ -62,6 +86,14 @@ export default React.createClass({
         <Button text="Decrement" onPress={this.handleDecrement}/>
 
         <Button text="Sign Out" onPress={() => this.props.changedSignedIn(false)} />
+
+        <Button text="Get Contacts" onPress={this.handleContactRetrieval}/>
+        <View>
+          <Text>Contacts</Text>
+          <ScrollView>
+            {contacts}
+          </ScrollView>
+        </View>
       </View>
     );
   }

@@ -90,10 +90,12 @@ ddpClient.loginWithToken = (loginToken, cb) => {
  *
  Sign out
  */
-AsyncStorage.multiRemove(['userId', 'loginToken', 'loginTokenExpires']).
-  then((res) => {
-    ddpClient.call("logout", [], cb)
-  });
+ddpClient.logout = (cb) => {
+ AsyncStorage.multiRemove(['userId', 'loginToken', 'loginTokenExpires']).
+   then((res) => {
+     ddpClient.call("logout", [], cb)
+   });
+}
 
 
 

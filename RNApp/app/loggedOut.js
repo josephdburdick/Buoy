@@ -40,6 +40,24 @@ export default React.createClass({
       if (res) {
         this.props.changedSignedIn(true);
       } else {
+        console.error(err);
+        this.props.changedSignedIn(false);
+      }
+    });
+
+    // Clear the input values on submit
+    this.refs.email.setNativeProps({text: ''});
+    this.refs.password.setNativeProps({text: ''});
+  },
+
+  handleSignUp() {
+    let { email, password } = this.state;
+    ddpClient.signUpWithEmail(email, password, (err, res) => {
+      ddpClient.onAuthResponse(err, res);
+      if (res) {
+        this.props.changedSignedIn(true);
+      } else {
+        console.error(err);
         this.props.changedSignedIn(false);
       }
     });
