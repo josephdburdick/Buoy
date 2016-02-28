@@ -3,10 +3,10 @@ Template.dashboard.onCreated(() => {
   self.subscribe('allUsers');
   self.subscribe('userData');
 	self.subscribe('publicAndUserEvents', Meteor.userId());
+	self.subscribe('posts');
 
 	if (! Session.get('activeEventListFilterValue')){
 		Session.set('activeEventListFilterValue', 'all');
-		// $('[data-events-filter="all"]').addClass('active');
 	}
 });
 
