@@ -1,72 +1,59 @@
-import React, {View, Text, StyleSheet} from 'react-native';
+import React, {
+  View,
+  StyleSheet
+} from 'react-native';
 
-import Button from './button';
 import ddpClient from './ddp';
-
+import LoggedIn from './loggedIn';
+import LoggedOut from './loggedOut';
 
 export default React.createClass({
   getInitialState() {
-    return {connected: false, posts: {}}
+    return {
+      connected: false,
+      signedIn: false
+    }
   },
 
   componentDidMount() {
     ddpClient.connect((err, wasReconnect) => {
       let connected = true;
-      if (err)
-        connected = false;
+      if (err) connected = false;
 
-      this.setState({connected: connected});
-      this.makeSubscription();
-      this.observePosts();
+      this.setState({ connected: connected });
     });
   },
 
-  makeSubscription() {
-    ddpClient.subscribe("posts", [], () => {
-      this.setState({posts: ddpClient.collections.posts});
-    });
+  changedSignedIn(status = false) {
+    this.setState({signedIn: status});
   },
 
-  handleIncrement() {
-    ddpClient.call('addPost');
-  },
-
-  handleDecrement() {
-    ddpClient.call('deletePost');
-  },
-
-  observePosts() {
-    let observer = ddpClient.observe("posts");
-    observer.added = (id) => {
-      this.setState({posts: ddpClient.collections.posts})
-    }
-    observer.changed = (id, oldFields, clearedFields, newFields) => {
-      this.setState({posts: ddpClient.collections.posts})
-    }
-    observer.removed = (id, oldValue) => {
-      this.setState({posts: ddpClient.collections.posts})
-    }
-  },
   render() {
-    const styles = StyleSheet.create({
-      container: {
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: '#F5FCFF'
-      },
-      center: {
-        alignItems: 'center'
-      }
-    });
-    let count = Object.keys(this.state.posts).length;
+    let body;
+
+    if (this.state.connected && this.state.signedIn) {
+      body = <LoggedIn changedSignedIn={this.changedSignedIn} />; // Note the change here as well
+    } else if (this.state.connected) {
+      body = <LoggedOut changedSignedIn={this.changedSignedIn} />;
+    }
+
     return (
       <View style={styles.container}>
         <View style={styles.center}>
-          <Text>Posts: {count}</Text>
-          <Button text="Increment" onPress={this.handleIncrement}/>
-          <Button text="Decrement" onPress={this.handleDecrement}/>
+          {body}
         </View>
       </View>
     );
+  }
+});
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  center: {
+    alignItems: 'center'
   }
 });

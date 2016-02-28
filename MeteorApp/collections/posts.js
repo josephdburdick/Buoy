@@ -15,7 +15,10 @@ Posts.deny({
 Meteor.methods({
   'addPost': function() {
     console.log('add Post');
-    Posts.insert({title: 'Post ' + Random.id()});
+    Posts.insert({
+      title: 'Post ' + Random.id(),
+      userId: this.userId
+    });
   },
 
   'deletePost': function() {
