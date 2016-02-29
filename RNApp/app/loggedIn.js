@@ -1,5 +1,6 @@
 import React, {
-  ScrollView, TouchableHighlight,
+  ScrollView,
+  TouchableHighlight,
   View,
   Text
 } from 'react-native';
@@ -12,11 +13,16 @@ import Button from './button';
 export default React.createClass({
   getInitialState() {
     return {
+      connected: false,
       posts: {},
       contacts: []
     }
   },
-
+  handleSignOut() {
+    ddpClient.logout(() => {
+      this.props.changedSignedIn(false)
+    });
+  },
   componentDidMount() {
     this.makeSubscription();
     this.observePosts();
@@ -88,12 +94,12 @@ export default React.createClass({
         <Button text="Sign Out" onPress={() => this.props.changedSignedIn(false)} />
 
         <Button text="Get Contacts" onPress={this.handleContactRetrieval}/>
-        <View>
-          <Text>Contacts</Text>
-          <ScrollView>
-            {contacts}
-          </ScrollView>
-        </View>
+
+        <Text>Contacts</Text>
+        <ScrollView>
+          {contacts}
+        </ScrollView>
+
       </View>
     );
   }
