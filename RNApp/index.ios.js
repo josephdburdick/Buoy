@@ -10,4 +10,4 @@ class RNApp extends Component {
     return <App />;
   }
 }
-AppRegistry.registerComponent('RNApp', () => RNApp);  
+AppRegistry.registerComponent('RNApp', () => RNApp);

@@ -1,4 +1,5 @@
 import DDPClient from 'ddp-client';
+import hash from 'hash.js';
 import { AsyncStorage } from 'react-native';
 
 let ddpClient = new DDPClient({
@@ -19,7 +20,7 @@ let ddpClient = new DDPClient({
 ddpClient.signUpWithEmail = (email, password, cb) => {
   let params = {
     email: email,
-    password: password
+    password: ddpClient.sha256(password)
   };
 
   return ddpClient.call('createUser', [params], cb);
@@ -28,7 +29,7 @@ ddpClient.signUpWithEmail = (email, password, cb) => {
 ddpClient.signUpWithUsername = (username, password, cb) => {
   let params = {
     username: username,
-    password: password
+    password: ddpClient.sha256(password)
   };
 
   return ddpClient.call('createUser', [params], cb);
@@ -43,10 +44,10 @@ ddpClient.loginWithEmail = (email, password, cb) => {
     user: {
       email: email
     },
-    password: password
+    password: ddpClient.sha256(password)
   };
 
-  return ddpClient.call("login", [params], cb)
+  return ddpClient.call("login", [params], cb);
 };
 
 ddpClient.loginWithUsername = (username, password, cb) => {
@@ -54,10 +55,10 @@ ddpClient.loginWithUsername = (username, password, cb) => {
     user: {
       username: username
     },
-    password: password
+    password: ddpClient.sha256(password)
   };
 
-  return ddpClient.call("login", [params], cb)
+  return ddpClient.call("login", [params], cb);
 };
 
 /*
@@ -74,7 +75,7 @@ ddpClient.onAuthResponse = (err, res) => {
   } else {
     AsyncStorage.multiRemove(['userId', 'loginToken', 'loginTokenExpires']);
   }
-}
+};
 
 /*
  *
@@ -83,8 +84,8 @@ ddpClient.onAuthResponse = (err, res) => {
 ddpClient.loginWithToken = (loginToken, cb) => {
   let params = { resume: loginToken };
 
-  return ddpClient.call("login", [params], cb)
-}
+  return ddpClient.call("login", [params], cb);
+};
 
 /*
  *
@@ -93,10 +94,21 @@ ddpClient.loginWithToken = (loginToken, cb) => {
 ddpClient.logout = (cb) => {
  AsyncStorage.multiRemove(['userId', 'loginToken', 'loginTokenExpires']).
    then((res) => {
-     ddpClient.call("logout", [], cb)
+     ddpClient.call("logout", [], cb);
    });
-}
+};
 
+/*
+ *
+ Encryption
+ */
+
+ ddpClient.sha256 = (password) => {
+   return {
+     digest: hash.sha256().update(password).digest('hex'),
+     algorithm: 'sha-256'
+   };
+ };
 
 
 export default ddpClient;
