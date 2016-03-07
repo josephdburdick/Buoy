@@ -1,59 +1,52 @@
-import React, {
-  View,
-  StyleSheet
-} from 'react-native';
+import React, { Component } from 'react-native';
+
+import SignIn from './containers/signIn';
+import SignOut from './containers/signOut';
 
 import ddpClient from './ddp';
-import LoggedIn from './loggedIn';
-import LoggedOut from './loggedOut';
 
-export default React.createClass({
-  getInitialState() {
-    return {
+export default class RNApp extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
       connected: false,
       signedIn: false
-    }
-  },
+    };
+  }
 
-  componentDidMount() {
-    ddpClient.connect((err, wasReconnect) => {
-      let connected = true;
-      if (err) connected = false;
-
-      this.setState({ connected: connected });
+  componentWillMount() {
+    ddpClient.connect((error, wasReconnect) => {
+      if (error) {
+        this.setState({connected: false});
+      } else {
+        this.setState({connected: true});
+        ddpClient.loginWithToken((err, res) => {
+          if (!err) this.handleSignedInStatus(true);
+        });
+      }
     });
-  },
+  }
 
-  changedSignedIn(status = false) {
-    this.setState({signedIn: status});
-  },
+  handleSignedInStatus(status = false) {
+    this.setState({ signedIn: status });
+  }
 
   render() {
-    let body;
-
-    if (this.state.connected && this.state.signedIn) {
-      body = <LoggedIn changedSignedIn={this.changedSignedIn} />; // Note the change here as well
-    } else if (this.state.connected) {
-      body = <LoggedOut changedSignedIn={this.changedSignedIn} />;
+    let { connected, signedIn } = this.state;
+    if (connected && signedIn) {
+      return (
+        <SignOut
+          changedSignedIn={(status) => this.handleSignedInStatus(status)}
+          />
+      );
+    } else {
+      return (
+        <SignIn
+          connected={connected}
+          changedSignedIn={(status) => this.handleSignedInStatus(status)}
+          />
+      );
     }
-
-    return (
-      <View style={styles.container}>
-        <View style={styles.center}>
-          {body}
-        </View>
-      </View>
-    );
   }
-});
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#F5FCFF'
-  },
-  center: {
-    alignItems: 'center'
-  }
-});
+}

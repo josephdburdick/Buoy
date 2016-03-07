@@ -24,6 +24,7 @@ Meteor.publish("allUsers", function () {
 // User Profile
 Meteor.publish('userProfile', function(userId) {
   if(!this.userId) return null;
+  console.log(userId);
 	check(userId, String);
 
   return Meteor.users.find({_id: userId}, {

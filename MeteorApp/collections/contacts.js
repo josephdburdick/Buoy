@@ -25,7 +25,8 @@ Meteor.methods({
     );
   }
 });
-
-Meteor.publish('contacts', function() {
-  return Contacts.find();
-});
+if (Meteor.isServer){
+  Meteor.publish('contacts', function() {
+    return Contacts.find();
+  });
+}

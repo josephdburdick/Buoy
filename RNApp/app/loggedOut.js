@@ -14,7 +14,7 @@ export default React.createClass({
     return {
       email: '',
       password: ''
-    }
+    };
   },
 
   componentDidMount() {
@@ -91,7 +91,7 @@ export default React.createClass({
         <Button text="Sign In" onPress={this.handleSignIn} />
         <Button text="Sign Up" onPress={this.handleSignUp} />
       </View>
-    )
+    );
   }
 });
 

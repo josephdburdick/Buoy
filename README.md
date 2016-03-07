@@ -1,11 +1,17 @@
 # Buoy
 
 ##Tasks:
+=======
+- Most stable branch: dev-react-native
+- Dependencies: Meteor and Facebook App ID + Secret environment variables.
+
+#Tasks:
 - [X] Authenticate with Facebook
 - [X] Add import Facebook event button to user dashboard.
 - [X] Populate events, places, and locations collections from Facebook API
 - [X] Modularize methods to create Facebook event Import button
-- [ ] Refractor population methods into their own files
+- [X] Refractor population methods into their own files
+- [X] Implement React Native boilerplate
 - [ ] Get contacts info from Device API
 
 <table>
@@ -17,6 +23,10 @@
     <tr>
       <th>Meteor Version</th>
       <td>v1.2.1</td>
+    </tr>
+    <tr>
+      <th>React Native Version</th>
+      <td>v0.20.0</td>
     </tr>
   </tbody>
 </table>

@@ -42,7 +42,7 @@ let facebook = {
 		if (!params.token){
 			Modules.both.facebook.getAccessToken()
 				.then((token) => {
-					params.token = token
+					params.token = token;
 				});
 		}
 
@@ -56,7 +56,7 @@ let facebook = {
 				} else {
 					resolve( response );
 				}
-			})
+			});
 		});
 	},
 	getFacebookEventsPromise: () => {

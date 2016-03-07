@@ -6,5 +6,12 @@ Template.signup.onRendered( () => {
 });
 
 Template.signup.events({
-  'submit form': ( event ) => event.preventDefault()
+  'submit form': ( event ) => event.preventDefault(),
+  'click [data-action="facebook-signup"]': ( event ) => {
+		event.preventDefault();
+
+    Modules.client.facebook.loginWithFacebook({}, () => {
+			FlowRouter.go('dashboard');
+		});
+	}
 });

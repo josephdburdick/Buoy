@@ -38,8 +38,8 @@ publicRoutes.route( '/event/:eventId', {
 			yield: 'eventDetail',
 			backButton: (() => {
 				if (!!Meteor.userId()) {
-					return true
-				} else { return false }
+					return true;
+				} else { return false; }
 			})()
 		} );
   }

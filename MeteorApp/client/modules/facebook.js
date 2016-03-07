@@ -1,6 +1,6 @@
 let facebook = {
 	loginWithFacebook: ( params, callback ) => {
-	  params = params || {}
+	  params = params || {};
 	  params.requestPermissions = !!params.requestPermissions ? params.requestPermissions : Meteor.settings.public.services.facebook.permissions;
 	  params.redirectUrl = !!params.redirectUrl ? params.redirectUrl : Meteor.settings.public.services.facebook.redirectUrl;
 		console.log('Calling loginWithFacebook...');

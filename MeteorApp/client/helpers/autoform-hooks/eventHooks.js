@@ -20,6 +20,6 @@ var eventHooks = {
 			}
 		}
   }
-}
+};
 
 AutoForm.addHooks('insertEventForm', eventHooks);

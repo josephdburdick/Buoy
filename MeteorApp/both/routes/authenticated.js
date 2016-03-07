@@ -31,12 +31,22 @@ authenticatedRoutes.route( '/import', {
   }
 });
 
-authenticatedRoutes.route( '/user/:userId/profile', {
+authenticatedRoutes.route( '/user/:userId', {
   name: 'viewProfile',
   action() {
     BlazeLayout.render( 'default', {
 			yield: 'viewProfile',
 			backButton: true
+		} );
+  }
+});
+
+authenticatedRoutes.route( '/user/:userId/edit', {
+  name: 'editProfile',
+  action() {
+    BlazeLayout.render( 'default', {
+			yield: 'editProfile',
+			backButton: false
 		} );
   }
 });

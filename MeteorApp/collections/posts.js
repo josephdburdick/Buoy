@@ -30,7 +30,8 @@ Meteor.methods({
     }
   }
 });
-
-Meteor.publish('posts', function() {
-  return Posts.find();
-});
+if (Meteor.isServer){
+  Meteor.publish('posts', function() {
+    return Posts.find();
+  });
+}
