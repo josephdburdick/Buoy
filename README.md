@@ -1,9 +1,9 @@
 # Buoy
-
-##Tasks:
-=======
 - Most stable branch: dev-react-native
-- Dependencies: Meteor and Facebook App ID + Secret environment variables.
+- Dependencies:
+  * Meteor
+  * Facebook App ID + Secret environment variables
+  * React Native
 
 #Tasks:
 - [X] Authenticate with Facebook
