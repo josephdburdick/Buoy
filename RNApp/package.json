@@ -1,0 +1,17 @@
+{
+  "name": "Buoy",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "ios": "open ios/RNApp.xcodeproj",
+    "android": "react-native run-android"
+  },
+  "dependencies": {
+    "ddp-client": "spencercarli/node-ddp-client",
+    "hash.js": "^1.0.3",
+    "lodash": "^4.5.1",
+    "react-native": "^0.20.0",
+    "react-native-contacts": "^0.2.1"
+  }
+}
