@@ -1,10 +1,15 @@
 import React, {
+  ScrollView,
+  TouchableHighlight,
   Component,
   StyleSheet,
   Text,
   View
 } from 'react-native';
+import _ from 'lodash';
+import Contacts from 'react-native-contacts';
 
+import Navigation from '../navigation';
 import Button from '../components/button';
 import ddpClient from '../ddp';
 
@@ -50,6 +55,7 @@ export default class SignOut extends Component {
         </Text>
         <Text>{email}</Text>
         <Button text="Sign Out" onPress={() => this.handleSignOut()}/>
+        <Navigation />
       </View>
     );
   }
