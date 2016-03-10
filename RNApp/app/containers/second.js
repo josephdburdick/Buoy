@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {
+  View,
+  Text,
+  ToolbarAndroid
+} from 'react-native';
 
-class Second extends React.Component{
+export default class Second extends Component{
   render() {
     return (
-      <View style={styles.container}>
-        <ToolbarAndroid style={styles.toolbar}
-                        title={this.props.title}
-                        navIcon={this.props.title}
-                        onIconClicked={this.props.navigator.pop}
-                        titleColor={'#FFFFFF'}/>
+      <View>
         <Text>
           Second screen
         </Text>

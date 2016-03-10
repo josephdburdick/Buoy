@@ -17,7 +17,7 @@ export default class SignIn extends Component {
       email: '',
       password: '',
       error: null
-    }
+    };
   }
 
   validInput() {
@@ -37,7 +37,7 @@ export default class SignIn extends Component {
     if (this.validInput()) {
       ddpClient.loginWithEmail(this.state.email, this.state.password, (error, res) => {
         if (error) {
-          this.setState({error: error.reason})
+          this.setState({error: error.reason});
         } else {
           this.props.changedSignedIn(true);
         }
@@ -49,7 +49,7 @@ export default class SignIn extends Component {
     if (this.validInput()) {
       ddpClient.signUpWithEmail(this.state.email, this.state.password, (error, res) => {
         if (error) {
-          this.setState({error: error.reason})
+          this.setState({error: error.reason});
         } else {
           this.props.changedSignedIn(true);
         }

@@ -1,8 +1,14 @@
-import React, {Navigator, Component} from 'react';
+import React, {Component} from 'react';
+import {
+  View,
+  Text,
+  Navigator
+} from 'react-native';
+
 import First from './containers/first';
 import Second from './containers/second';
 
-class Navigation extends React.Component{
+export default class Navigation extends Component{
   render() {
     return (
       <Navigator
