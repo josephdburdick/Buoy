@@ -12,7 +12,7 @@ export default class Navigation extends Component{
   render() {
     return (
       <Navigator
-        style=""
+        style="flex:1"
         initialRoute={{id: 'first'}}
         renderScene={this.navigatorRenderScene}/>
     );

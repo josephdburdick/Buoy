@@ -8,11 +8,11 @@ import {
 export default class Second extends Component{
   render() {
     return (
-      <View>
+
         <Text>
           Second screen
         </Text>
-      </View>
+      
     );
   }
 }

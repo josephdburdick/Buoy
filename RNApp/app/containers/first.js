@@ -14,11 +14,11 @@ export default class First extends Component{
   }
   render() {
     return (
-      <View>
-        <TouchableHighlight onPress={this.navSecond.bind(this)}>
+
+
           <Text>Navigate to second screen</Text>
-        </TouchableHighlight>
-      </View>
+
+      
     );
   }
 }
