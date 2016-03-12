@@ -55,7 +55,7 @@ export default class SignOut extends Component {
         </Text>
         <Text>{email}</Text>
         <Button text="Sign Out" onPress={() => this.handleSignOut()}/>
-        <Text>Hi</Text>
+        <Navigation id="first" />
       </View>
     );
   }
