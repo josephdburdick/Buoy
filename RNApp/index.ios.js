@@ -5,9 +5,9 @@ import React, {
 
 import App from './app';
 
-class RNApp extends Component {
+class Buoy extends Component {
   render() {
     return <App />;
   }
 }
-AppRegistry.registerComponent('RNApp', () => RNApp);
+AppRegistry.registerComponent('Buoy', () => Buoy);
