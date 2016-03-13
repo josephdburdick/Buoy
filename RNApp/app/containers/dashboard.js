@@ -85,17 +85,14 @@ export default React.createClass({
   render() {
     let self = this;
     let count = Object.keys(self.state.events).length;
-    let events =  Object.keys(this.state.events).map((event, index) => {
 
+    let events =  !!!count ? [] : Object.values(self.state.events).map((event, index) => {
       return (
         <TouchableHighlight key={index} onPress={() => console.log('pressed')}>
-          <Text id={index}>{event}</Text>
+          <Text id={index}>{event.name}</Text>
         </TouchableHighlight>
       );
     });
-
-
-
 
     return (
       <View style={styles.container}>
