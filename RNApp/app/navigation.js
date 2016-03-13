@@ -5,15 +5,14 @@ import {
   Navigator
 } from 'react-native';
 
-import First from './containers/first';
-import Second from './containers/second';
+import Dashboard from './containers/dashboard';
 
 export default class Navigation extends Component{
   navigatorRenderScene(route, navigator) {
     _navigator = navigator;
     switch (route.id) {
-      case 'first':
-      return (<First navigator={navigator} title="first"/>);
+      case 'dashboard':
+      return (<Dashboard navigator={navigator} title="dashboard"/>);
       case 'second':
       return (<Second navigator={navigator} title="second" />);
     }
@@ -21,7 +20,7 @@ export default class Navigation extends Component{
   render() {
     return (
       <Navigator
-        initialRoute={{id: 'first'}}
+        initialRoute={{id: 'dashboard'}}
         renderScene={this.navigatorRenderScene}/>
     );
   }

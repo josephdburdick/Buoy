@@ -1,7 +1,8 @@
 import React, { Component } from 'react-native';
 
 import SignIn from './containers/signIn';
-import SignOut from './containers/signOut';
+// import SignOut from './containers/signOut';
+import Navigation from './navigation';
 
 import ddpClient from './ddp';
 
@@ -36,9 +37,7 @@ export default class RNApp extends Component {
     let { connected, signedIn } = this.state;
     if (connected && signedIn) {
       return (
-        <SignOut
-          changedSignedIn={(status) => this.handleSignedInStatus(status)}
-          />
+        <Navigation />
       );
     } else {
       return (

@@ -2,18 +2,27 @@ import React, {Component} from 'react';
 import {
   View,
   Text,
-  StyleSheet
+  StyleSheet,
+  TouchableHighlight
 } from 'react-native';
 
-export default class Second extends Component{
+export default class Dashboard extends Component{
+  navSecond(){
+    this.props.navigator.push({
+      id: 'second'
+    });
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.main}>Second Screen</Text>
+        <TouchableHighlight onPress={this.navSecond.bind(this)}>
+          <Text style={styles.main}>Navigate to second screen</Text>
+        </TouchableHighlight>
       </View>
     );
   }
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
