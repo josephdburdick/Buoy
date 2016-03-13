@@ -8,7 +8,7 @@ const getDB = (env) => {
     case 'dev':
     default:
       return {
-        host: '192.168.1.2',
+        host: '192.168.1.10',
         port: '3000'
       }
   }

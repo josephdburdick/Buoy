@@ -63,6 +63,9 @@ export default class SignIn extends Component {
     if (this.props.connected) {
       signIn = <Button text="Sign In" onPress={() => this.handleSignIn()} />;
       createAccount = <Button text="Create Account" onPress={() => this.handleCreateAccount()} />;
+    } else {
+      signIn = <Text>Unable to connect to server. Please try again.</Text>;
+      createAccount = <Text></Text>;
     }
 
     return (
@@ -118,7 +121,7 @@ const styles = StyleSheet.create({
     padding: 5
   },
   buttons: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   error: {
     color: 'red',
