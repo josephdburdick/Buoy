@@ -7,6 +7,7 @@ Meteor.publish( 'userEvents', function(userId) {
 
 Meteor.smartPublish('publicAndUserEvents', function(userId) {
   check(userId, String);
+	console.log(`Publishing public and user events to ${userId}`);
   return [
     Events.find({ ownerId: userId }, { sort: { 'start_time': -1 } }),
     Events.find({ type: 'public' }, { sort: { 'start_time': -1 } })

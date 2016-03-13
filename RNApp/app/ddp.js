@@ -45,8 +45,15 @@ ddpClient.subscribePromise = (pubName, params) => {
     console.warn('Params must be passed as an array to ddp.subscribe');
   }
   return new Promise((resolve, reject) => {
-    ddpClient.subscribe(pubName, params, () => {
-      resolve(true);
+    console.log(pubName, params);
+    ddpClient.subscribe(pubName, params, (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        console.log(result);
+        debugger;
+        resolve(result); //was true
+       }
     });
   });
 };
@@ -120,6 +127,7 @@ ddpClient.loginWithToken = (cb) => {
   AsyncStorage.getItem('loginToken')
     .then((token) => {
       if (token) {
+
         params.resume = token;
         ddpClient.call("login", [params], cb);
       }

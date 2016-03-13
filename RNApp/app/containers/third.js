@@ -8,7 +8,7 @@ class Second extends React.Component{
   componentDidMount() {
     this.makeSubscription();
     this.observePosts();
-  },
+  }
 
   observePosts() {
     let observer = ddpClient.observe('posts');
@@ -22,27 +22,27 @@ class Second extends React.Component{
     observer.removed = (id, oldValue) => {
       this.setState({ posts: ddpClient.collections.posts });
     };
-  },
+  }
 
   makeSubscription() {
     ddpClient.subscribe("posts", [], () => {
       this.setState({posts: ddpClient.collections.posts});
     });
-  },
+  }
 
   handleIncrement() {
     ddpClient.call('addPost');
-  },
+  }
 
   handleDecrement() {
     ddpClient.call('deletePost');
-  },
+  }
 
   handleSignOut() {
     ddpClient.logout(() => {
       this.props.changedSignedIn(false);
     });
-  },
+  }
 
   handleContactRetrieval() {
     Contacts.getAll((err, contacts) => {
@@ -56,7 +56,7 @@ class Second extends React.Component{
         this.setState({contacts: contacts});
       }
     });
-  },
+  }
 
   render() {
     return (

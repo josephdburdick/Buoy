@@ -11,7 +11,7 @@ const getDB = (env) => {
       };
     default:
       return {
-        host: '192.168.1.10',
+        host: '192.168.1.3',
         port: '3000'
       };
   }
@@ -23,7 +23,7 @@ let opts = {
   ddpConfig: {
     maintainCollections : true,
   }
-}
+};
 
 Object.assign(opts.ddpConfig, getDB(opts.env));
 
