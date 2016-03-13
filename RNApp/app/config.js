@@ -4,13 +4,16 @@ const getDB = (env) => {
     case 'staging':
       return {
         url: '' // Websocket URL for your app. For a meteor app use `wss://my-app.meteor.com/websocket`
-      }
+      };
     case 'dev':
+      return{
+        url: ''
+      };
     default:
       return {
         host: '192.168.1.10',
         port: '3000'
-      }
+      };
   }
 };
 
