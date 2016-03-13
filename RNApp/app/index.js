@@ -2,7 +2,7 @@ import React, { Component } from 'react-native';
 
 import SignIn from './containers/signIn';
 // import SignOut from './containers/signOut';
-import Navigation from './navigation';
+import Navigation from './components/Navigator/NavigatorExample';
 
 import ddpClient from './ddp';
 
